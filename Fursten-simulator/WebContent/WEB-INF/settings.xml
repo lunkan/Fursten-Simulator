@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+    <databases>
+        <database>
+            <name>default</name>
+            <driver>com.mysql.jdbc.Driver</driver>
+			<url>jdbc:mysql://localhost:3306/fursten</url>
+			<user>root</user>
+			<password></password>
+			<port></port>
+        </database>
+        <database>
+            <name>test</name>
+            <driver>com.mysql.jdbc.Driver</driver>
+			<url>jdbc:mysql://localhost:3306/furstentest</url>
+			<user>root</user>
+			<password></password>
+			<port></port>
+        </database>
+    </databases>
+	<edit-world>
+		<layers>
+			<layer>org.fursten.worldeditor.layer.SimpleLayer</layer>
+			<layer>org.fursten.worldeditor.layer.GridLayer</layer>
+			<!-- <layer>org.fursten.worldeditor.layer.DependentLayer</layer> -->
+		</layers>
+	</edit-world>
+</settings>
