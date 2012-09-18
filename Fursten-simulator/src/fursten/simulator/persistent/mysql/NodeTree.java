@@ -1,4 +1,4 @@
-package fursten.simulator.nodetree;
+package fursten.simulator.persistent.mysql;
 
 import java.awt.Rectangle;
 import java.io.Serializable;
@@ -7,7 +7,7 @@ import java.util.List;
 
 import fursten.simulator.node.Node;
 
-public class QuadTree implements Serializable  {
+public class NodeTree implements Serializable  {
 	
 	static final long serialVersionUID = 10275539472837495L;
     private QNode root;
@@ -65,7 +65,7 @@ public class QuadTree implements Serializable  {
         }
     }
     
-    public QuadTree(int logDim) {
+    public NodeTree(int logDim) {
     	
     	//Must be based on base 2
     	int dim = (int)Math.pow(2, logDim);

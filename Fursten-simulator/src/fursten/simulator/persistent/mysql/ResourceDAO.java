@@ -7,8 +7,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,7 +50,7 @@ public class ResourceDAO implements ResourceManager {
 	}
 	
 	public int delete(int key) {
-		ArrayList<Integer> recources = new ArrayList<Integer>();
+		HashSet<Integer> recources = new HashSet<Integer>();
 		recources.add(key);
 		return delete(recources);
 	}
@@ -60,7 +63,7 @@ public class ResourceDAO implements ResourceManager {
 			}
 		}
 			
-		ArrayList<Integer> recources = new ArrayList<Integer>();
+		HashSet<Integer> recources = new HashSet<Integer>();
 		recources.add(key);
 		List<Resource> result = get(recources);
 		
@@ -132,7 +135,7 @@ public class ResourceDAO implements ResourceManager {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public int delete(List<Integer> keys) {
+	public int delete(Set<Integer> keys) {
 			
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
@@ -193,7 +196,7 @@ public class ResourceDAO implements ResourceManager {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Resource> get(List<Integer> keys) {
+	public List<Resource> get(Set<Integer> keys) {
 		
 		ArrayList<Resource> result = new ArrayList<Resource>();
 		
@@ -238,7 +241,7 @@ public class ResourceDAO implements ResourceManager {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Integer> getKeys() {
+	public Set<Integer> getKeys() {
 		
 		if(cachedResourcesMap == null) {
 				
@@ -256,20 +259,20 @@ public class ResourceDAO implements ResourceManager {
 					cachedResourcesMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(resourcesBin.getBinaryStream());
 				}
 				else {
-					return new ArrayList<Integer>();
+					return new HashSet<Integer>();
 				}
 				
 				statement.close();
 			}
 			catch(Exception e) {
 				logger.log(Level.SEVERE, "Retry no: " + e.toString());
-				return new ArrayList<Integer>();
+				return new HashSet<Integer>();
 			}
 			finally {
 				DAOFactory.freeConnection(con);
 			}
 		}
 		
-		return Collections.list(Collections.enumeration(cachedResourcesMap.keySet()));
+		return cachedResourcesMap.keySet();
 	}
 }

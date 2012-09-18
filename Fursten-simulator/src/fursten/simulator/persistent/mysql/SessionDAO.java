@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 import javax.sql.rowset.serial.SerialBlob;
 
 import fursten.simulator.node.Node;
-import fursten.simulator.nodetree.QuadTree;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.session.Session;
 import fursten.utils.BinaryTranslator;

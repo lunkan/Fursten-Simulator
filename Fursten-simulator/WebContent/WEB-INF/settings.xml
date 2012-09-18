@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
+     <simulator>
+         <!--
+        <death-rate>1.0F</death-rate>;
+		<restlessness>10</restlessness>
+		 -->
+    </simulator>
     <databases>
         <database>
             <name>default</name>

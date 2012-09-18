@@ -13,4 +13,14 @@ public class SimulatorSettings extends Settings {
 	public static SimulatorSettings getInstance() {
 		return instance;
     }
+	
+	/*public float getNodeDeathRate() {
+		float deathRate = Float.parseFloat(getConfigurator().getString("simulator.death-rate"));
+		return deathRate;
+	}
+	
+	public int getNodeRestlessness() {
+		int restlessness = Integer.parseInt(getConfigurator().getString("simulator.restlessness"));
+		return restlessness;
+	}*/
 }

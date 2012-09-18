@@ -12,8 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
@@ -22,7 +24,6 @@ import java.util.zip.GZIPOutputStream;
 import javax.sql.rowset.serial.SerialBlob;
 
 import fursten.simulator.node.Node;
-import fursten.simulator.nodetree.QuadTree;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.resource.Resource;
 import fursten.utils.BinaryTranslator;
@@ -30,11 +31,11 @@ import fursten.utils.BinaryTranslator;
 class NodeDAO implements NodeManager {
 
 	private static final Logger logger = Logger.getLogger(NodeDAO.class.getName());
-	private static HashMap<Integer, QuadTree> cachedNodeTreeMap = null;
+	private static HashMap<Integer, NodeTree> cachedNodeTreeMap = null;
 	private static NodeDAO instance = new NodeDAO();
 	
 	private NodeDAO() {
-		cachedNodeTreeMap = new HashMap<Integer, QuadTree>();
+		cachedNodeTreeMap = new HashMap<Integer, NodeTree>();
 	}
 	
 	public static NodeDAO getInstance() {
@@ -46,7 +47,7 @@ class NodeDAO implements NodeManager {
 	}
 	
 	public void clearCache() {
-		cachedNodeTreeMap = new HashMap<Integer, QuadTree>();
+		cachedNodeTreeMap = new HashMap<Integer, NodeTree>();
 	}
 	
 	public int deleteByResourceKey(int resourceKey) {
@@ -97,16 +98,16 @@ class NodeDAO implements NodeManager {
 				ResultSet resultSet = statement.executeQuery();
 				boolean isNew = true;
 				
-				QuadTree nodeTree;
+				NodeTree nodeTree;
 				Blob nodesBin;
 				
 				if(resultSet.first()) {
 					isNew = false;
 					nodesBin = resultSet.getBlob("node_tree");
-					nodeTree = (QuadTree)BinaryTranslator.binaryToObject(nodesBin.getBinaryStream());
+					nodeTree = (NodeTree)BinaryTranslator.binaryToObject(nodesBin.getBinaryStream());
 				}
 				else {
-					nodeTree = new QuadTree(31);
+					nodeTree = new NodeTree(31);
 				}
 				
 				statement.close();
@@ -169,7 +170,7 @@ class NodeDAO implements NodeManager {
 				}
 				else {
 					Blob nodesBin = resultSet.getBlob("node_tree");
-					QuadTree nodeTree = (QuadTree)BinaryTranslator.binaryToObject(nodesBin.getBinaryStream());
+					NodeTree nodeTree = (NodeTree)BinaryTranslator.binaryToObject(nodesBin.getBinaryStream());
 					statement.close();
 					
 					//Remove nodes
@@ -195,7 +196,7 @@ class NodeDAO implements NodeManager {
 			}
 		}
 		
-		return 1;
+		return nodes.size();
 	}
 	
 	public boolean deleteAll() {
@@ -220,7 +221,7 @@ class NodeDAO implements NodeManager {
 	
 	public List<Node> get(Rectangle bounds) {
 		
-		ArrayList<Integer> resourceKeys = new ArrayList<Integer>();
+		HashSet<Integer> resourceKeys = new HashSet<Integer>();
 		
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
@@ -249,13 +250,13 @@ class NodeDAO implements NodeManager {
 
 	public List<Node> get(Rectangle bounds, Integer resource) {
 		
-		ArrayList<Integer> resourceKeys = new ArrayList<Integer>();
+		HashSet<Integer> resourceKeys = new HashSet<Integer>();
 		resourceKeys.add(resource);
 		return get(bounds, resourceKeys);
 		
 	}
 	
-	public List<Node> get(Rectangle bounds, List<Integer> resources) {
+	public List<Node> get(Rectangle bounds, Set<Integer> resources) {
 		
 		Connection con = null; 
 		ArrayList<Node> result = new ArrayList<Node>();
@@ -279,7 +280,7 @@ class NodeDAO implements NodeManager {
 					
 					if(resultSet.first()) {
 						Blob nodeBin = resultSet.getBlob("node_tree");
-						QuadTree nodeTree = (QuadTree)BinaryTranslator.binaryToObject(nodeBin.getBinaryStream());
+						NodeTree nodeTree = (NodeTree)BinaryTranslator.binaryToObject(nodeBin.getBinaryStream());
 						resultSet.close();
 						
 						//Cache tree (last version!)

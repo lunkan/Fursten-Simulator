@@ -1,10 +1,12 @@
-package fursten.simultor.persistent;
+package fursten.simulator.persistent;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import junit.framework.TestCase;
 
@@ -131,8 +133,8 @@ public class DAOFactoryTest extends TestCase {
     		RM.delete(RM.getKeys());
     		
     		//get resources to delete
-    		List<Integer> deleteResources = getResourceSample(i, resourceKeys);
-    		List<Integer> sampleResourceKeys = getResourceSample(NUM_RESOURCES, resourceKeys);
+    		Set<Integer> deleteResources = getResourceSample(i, resourceKeys);
+    		Set<Integer> sampleResourceKeys = getResourceSample(NUM_RESOURCES, resourceKeys);
     		
     		//Calculate reference values
     		HashMap<Integer, Resource> refResources = new HashMap<Integer, Resource>();
@@ -223,7 +225,7 @@ public class DAOFactoryTest extends TestCase {
     		
     		List<Node> nodes = getRandomNodes(NUM_NODES, resourceKeys, rect);
     		List<Node> deletedNodes = getNodeSample((rand.nextInt(NUM_NODES)), nodes);
-    		List<Integer> resources = getResourceSample(i, resourceKeys);
+    		Set<Integer> resources = getResourceSample(i, resourceKeys);
     		
     		Rectangle sampleRect = new Rectangle(
     				-rand.nextInt(Integer.MAX_VALUE/2),
@@ -314,10 +316,10 @@ public class DAOFactoryTest extends TestCase {
     	return resources;
     }
     
-    private List<Integer> getResourceSample(int num, List<Integer> resources) {
+    private Set<Integer> getResourceSample(int num, List<Integer> resources) {
     	
     	Random rand = new Random();
-    	List<Integer> clonedResources = new ArrayList<Integer>(resources);
+    	HashSet<Integer> clonedResources = new HashSet<Integer>(resources);
     	
     	if(clonedResources.size() <= num)
     		return clonedResources;

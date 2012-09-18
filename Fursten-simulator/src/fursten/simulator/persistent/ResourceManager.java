@@ -1,6 +1,7 @@
 package fursten.simulator.persistent;
 
 import java.util.List;
+import java.util.Set;
 
 import fursten.simulator.resource.Resource;
 
@@ -13,10 +14,10 @@ public interface ResourceManager {
 	public Resource get(int key);
 	
 	public int insert(List<Resource> recources);
-	public int delete(List<Integer> keys);
+	public int delete(Set<Integer> keys);
 	public boolean deleteAll();
-	public List<Resource> get(List<Integer> keys);
+	public List<Resource> get(Set<Integer> keys);
 	
-	public List<Integer> getKeys();
+	public Set<Integer> getKeys();
 }
 
