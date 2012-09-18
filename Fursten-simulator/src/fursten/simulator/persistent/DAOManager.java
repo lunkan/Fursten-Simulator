@@ -10,7 +10,7 @@ public abstract class DAOManager {
 		return new fursten.simulator.persistent.mysql.DAOFactory();
 	}
 	
-	public static PersistentTestHelper getTestHelper() {
+	public static DAOTestHelper getTestHelper() {
 		return new fursten.simulator.persistent.mysql.TestHelper();
 	}
 }

@@ -81,62 +81,72 @@ class SessionDAO implements SessionManager {
 	@Override
 	public int setActive(Session session) {
 		
-		int retries = 3;
-		while (retries > 0) {
-			
-			Connection con = DAOFactory.getConnection();
-			PreparedStatement statement = null;
-			
-			try {
-				statement = con.prepareStatement("select session_object from sessions where id = ?");
-				statement.setInt(1, CURRENT_SESSION_ID);
-				statement.setMaxRows(1);
-				ResultSet result = statement.executeQuery();
-				boolean isNew = true;
-				
-				if(result.first())
-					isNew = false;
-					
-				cachedSession = session;
-				Blob sessionBin = new SerialBlob(BinaryTranslator.objectToBinary(session));
-				statement.close();
-				
-				if(isNew) {
-					statement = con.prepareStatement("insert into sessions(id, session_object) values (?, ?)");
-					statement.setInt(1, CURRENT_SESSION_ID);
-					statement.setBlob(2, sessionBin);
-					statement.executeUpdate();
-					statement.close();
-				}
-				else {
-					statement = con.prepareStatement("update sessions set session_object = ? where id = ?");
-					statement.setBlob(1, sessionBin);
-					statement.setInt(2, CURRENT_SESSION_ID);
-					statement.executeUpdate();
-					statement.close();
-				}
-				
-			    return 1;
-			}
-			catch(Exception e) {
-				if (retries >= 3) {
-					logger.log(Level.SEVERE, "Retry no: " + retries + " #" + e.toString());
-					return -1;
-				}
-			}
-			finally {
-				DAOFactory.freeConnection(con);
-			}
-			
-			retries--;
-		}
+		Connection con = DAOFactory.getConnection();
+		PreparedStatement statement = null;
 		
-		return 0;
+		try {
+			statement = con.prepareStatement("select session_object from sessions where id = ?");
+			statement.setInt(1, CURRENT_SESSION_ID);
+			statement.setMaxRows(1);
+			ResultSet result = statement.executeQuery();
+			boolean isNew = true;
+			
+			if(result.first())
+				isNew = false;
+				
+			cachedSession = session;
+			Blob sessionBin = new SerialBlob(BinaryTranslator.objectToBinary(session));
+			statement.close();
+			
+			if(isNew) {
+				statement = con.prepareStatement("insert into sessions(id, session_object) values (?, ?)");
+				statement.setInt(1, CURRENT_SESSION_ID);
+				statement.setBlob(2, sessionBin);
+				statement.executeUpdate();
+				statement.close();
+			}
+			else {
+				statement = con.prepareStatement("update sessions set session_object = ? where id = ?");
+				statement.setBlob(1, sessionBin);
+				statement.setInt(2, CURRENT_SESSION_ID);
+				statement.executeUpdate();
+				statement.close();
+			}
+			
+		    return 1;
+		}
+		catch(Exception e) {
+			logger.log(Level.SEVERE, "Retry no: " + e.toString());
+			return 0;
+		}
+		finally {
+			DAOFactory.freeConnection(con);
+		}
 	}
 	
 	@Override
 	public List<Session> getHistory() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public boolean deleteAll() {
+		
+		Connection con = DAOFactory.getConnection();
+		PreparedStatement statement = null;
+		
+		try {
+			statement = con.prepareStatement("truncate sessions");
+			statement.executeUpdate();
+			statement.close();
+			return true;
+		}
+		catch(Exception e) {
+			logger.log(Level.SEVERE, "Retry no: " + e.toString());
+			return false;
+		}
+		finally {
+			DAOFactory.freeConnection(con);
+		}
 	}
 }

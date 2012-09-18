@@ -36,7 +36,12 @@ public class QuadTree implements Serializable  {
         }*/
         
         public boolean intersect(Rectangle rect) {
-        	return rect.contains(x-d, y-d, d*2, d*2);
+     	   
+        	if(x - d > rect.getMaxX()) return false;
+        	else if(x + d < rect.getMinX()) return false;
+        	else if(y - d > rect.getMaxY()) return false;
+        	else if(y + d < rect.getMinY()) return false;
+        	else return true;
         }
         
         public QNode getSubCell(int x, int y) {

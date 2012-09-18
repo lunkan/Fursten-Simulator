@@ -71,7 +71,7 @@ public class DAOFactory extends DAOManager {
 	}
 	
 	public ResourceManager getResourceManager() {
-		return null;//ResourceDAO.getInstance();
+		return ResourceDAO.getInstance();
 	}
 	
 	public SessionManager getSessionManager() {

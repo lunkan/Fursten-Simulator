@@ -8,5 +8,6 @@ public interface SessionManager {
 	public int setActive(Session session);
 	public Session getActive();
 	public boolean clear();
+	public boolean deleteAll();
 	public List<Session> getHistory();
 }

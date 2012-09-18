@@ -1,5 +1,9 @@
 package fursten.simulator.persistent.mysql;
 
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,23 +12,23 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.sql.rowset.serial.SerialBlob;
+
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.resource.Resource;
+import fursten.simulator.session.Session;
+import fursten.utils.BinaryTranslator;
 
 public class ResourceDAO implements ResourceManager {
 
 	private static final Logger logger = Logger.getLogger(ResourceDAO.class.getName());
-	private static final String RESOURCE_TREE_KEY = "recourceTree";
+	private static final int RESOURCE_TREE_ID = 1;
 	private static HashMap<Integer, Resource> cachedResourcesMap = null;
 	
 	private static ResourceDAO instance = new ResourceDAO();
 	
 	private ResourceDAO() {
-		
-		//if(cachedResourcesMap == null) {
-			cachedResourcesMap = new HashMap<Integer, Resource>();
-		//}
-			System.out.println("AppEngineResourceDAO init");
+		//...
 	}
 	
 	public static ResourceDAO getInstance() {
@@ -32,7 +36,7 @@ public class ResourceDAO implements ResourceManager {
     }
 	
 	public void clearCache() {
-		cachedResourcesMap = new HashMap<Integer, Resource>();
+		cachedResourcesMap = null;
 	}
 	
 	public int insert(Resource recource) {
@@ -42,7 +46,7 @@ public class ResourceDAO implements ResourceManager {
 		return insert(recources);
 	}
 	
-	public boolean delete(int key) {
+	public int delete(int key) {
 		ArrayList<Integer> recources = new ArrayList<Integer>();
 		recources.add(key);
 		return delete(recources);
@@ -68,208 +72,204 @@ public class ResourceDAO implements ResourceManager {
 	
 	@SuppressWarnings("unchecked")
 	public int insert(List<Resource> recources)  {
+			
+		Connection con = DAOFactory.getConnection();
+		PreparedStatement statement = null;
 		
-		/*PersistentWrapper wrapper;
-		HashMap<Integer, Resource> resourceMap;
-		
-		int retries = 3;
-		while (true) {
+		try {
+			statement = con.prepareStatement("select resource_object from resources where id = ?");
+			statement.setInt(1, RESOURCE_TREE_ID);
+			statement.setMaxRows(1);
+			ResultSet resultSet = statement.executeQuery();
+			boolean isNew = true;
 			
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			Transaction txn = pm.currentTransaction();
+			HashMap<Integer, Resource> resourceMap;
+			Blob resourcesBin;
 			
-			try {
-				
-				txn.begin();
-				
-				try {
-					wrapper = pm.getObjectById(PersistentWrapper.class, RESOURCE_TREE_KEY);
-					wrapper = pm.detachCopy(wrapper);
-					resourceMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(wrapper.byteData.getBytes());
-				}
-				catch (javax.jdo.JDOObjectNotFoundException notFound) {
-					wrapper = new PersistentWrapper();
-					wrapper.key = KeyFactory.createKey(PersistentWrapper.class.getSimpleName(), RESOURCE_TREE_KEY);
-					resourceMap = new HashMap<Integer, Resource>();
-				}
-				catch(Exception e) {
-					logger.log(Level.SEVERE, "Could not read Object", e);
-					return -1;
-				}
-				
-				//Insert resources
-				for(Resource insertResource : recources) {
-					resourceMap.put(insertResource.getKey(), insertResource);
-				}
-				
-				//Cache map (last version!)
-				cachedResourcesMap = resourceMap;
-				
-				//Save tree
-				wrapper.byteData = new Blob(BinaryTranslator.objectToBinary(resourceMap));
-				pm.makePersistent(wrapper);
-				txn.commit();
-				
-			    break;
+			if(resultSet.first()) {
+				isNew = false;
+				resourcesBin = resultSet.getBlob("resource_object");
+				resourceMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(resourcesBin.getBinaryStream());
 			}
-			catch(Exception e) {
-				if (retries >= 3) {
-					logger.log(Level.SEVERE, "Retry no: " + retries + " #" + e.toString());
-					return -1;
-				}
-			}
-			finally {
-			    if (txn.isActive()) {
-			        txn.rollback();
-			    }
-			    
-			    pm.close();
+			else {
+				resourceMap = new HashMap<Integer, Resource>();
 			}
 			
-			retries++;
+			statement.close();
+			
+			//Insert resources
+			for(Resource insertResource : recources) {
+				resourceMap.put(insertResource.getKey(), insertResource);
+			}
+			
+			resourcesBin = new SerialBlob(BinaryTranslator.objectToBinary(resourceMap));
+			
+			if(isNew) {
+				statement = con.prepareStatement("insert into resources(id, resource_object) values (?, ?)");
+				statement.setInt(1, RESOURCE_TREE_ID);
+				statement.setBlob(2, resourcesBin);
+				statement.executeUpdate();
+				statement.close();
+			}
+			else {
+				statement = con.prepareStatement("update resources set resource_object = ? where id = ?");
+				statement.setBlob(1, resourcesBin);
+				statement.setInt(2, RESOURCE_TREE_ID);
+				statement.executeUpdate();
+				statement.close();
+			}
+			
+			cachedResourcesMap = resourceMap;
+		    return recources.size();
 		}
-		
-		return recources.size();*/
-		
-		return 0;
+		catch(Exception e) {
+			logger.log(Level.SEVERE, "Retry no: " + e.toString());
+			return 0;
+		}
+		finally {
+			DAOFactory.freeConnection(con);
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
-	public boolean delete(List<Integer> keys) {
-		
-		/*PersistentWrapper wrapper;
-		HashMap<Integer, Resource> resourceMap;
-		
-		int retries = 3;
-		while (true) {
+	public int delete(List<Integer> keys) {
 			
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			Transaction txn = pm.currentTransaction();
-			
-			try {
-				
-				txn.begin();
-				
-				wrapper = pm.getObjectById(PersistentWrapper.class, RESOURCE_TREE_KEY);
-				wrapper = pm.detachCopy(wrapper);
-				resourceMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(wrapper.byteData.getBytes());
-				
-				//Delete recources
-				for(Integer resourceKey : keys) {
-					resourceMap.remove(resourceKey);
-				}
-				
-				//Cache map (last version!)
-				cachedResourcesMap = resourceMap;
-				
-				wrapper.byteData = new Blob(BinaryTranslator.objectToBinary(resourceMap));
-				pm.makePersistent(wrapper);
-			    txn.commit();
-			    
-			    break;
-			}
-			catch (javax.jdo.JDOObjectNotFoundException notFound) {
-				//no recources to delete
-				break;
-			}
-			catch(Exception e) {
-				if (retries >= 3) {
-					logger.log(Level.SEVERE, e.toString());
-					return false;
-				}
-			}
-			finally {
-			    if (txn.isActive()) {
-			        txn.rollback();
-			    }
-			    
-			    pm.close();
-			}
-			
-			retries++;
-		}*/
+		Connection con = DAOFactory.getConnection();
+		PreparedStatement statement = null;
 		
-		return true;
+		try {
+			statement = con.prepareStatement("select resource_object from resources where id = ?");
+			statement.setInt(1, RESOURCE_TREE_ID);
+			statement.setMaxRows(1);
+			ResultSet resultSet = statement.executeQuery();
+			
+			if(!resultSet.first())
+				return 0;
+			
+			Blob resourcesBin = resultSet.getBlob("resource_object");
+			HashMap<Integer, Resource> resourceMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(resourcesBin.getBinaryStream());
+			statement.close();
+			
+			for(Integer resourceKey : keys)
+				resourceMap.remove(resourceKey);
+			
+			resourcesBin = new SerialBlob(BinaryTranslator.objectToBinary(resourceMap));
+			statement = con.prepareStatement("update resources set resource_object = ? where id = ?");
+			statement.setBlob(1, resourcesBin);
+			statement.setInt(2, RESOURCE_TREE_ID);
+			statement.executeUpdate();
+			statement.close();
+			
+			cachedResourcesMap = resourceMap;
+		    return keys.size();
+		}
+		catch(Exception e) {
+			logger.log(Level.SEVERE, "Retry no: " + e.toString());
+			return 0;
+		}
+		finally {
+			DAOFactory.freeConnection(con);
+		}
+	}
+	
+	public boolean deleteAll() {
+		
+		Connection con = DAOFactory.getConnection();
+		PreparedStatement statement = null;
+			
+		try {
+			statement = con.prepareStatement("truncate resources");
+			statement.executeUpdate();
+			statement.close();
+			return true;
+		}
+		catch(Exception e) {
+			logger.log(Level.SEVERE, "Retry no: " + e.toString());
+			return false;
+		}
+		finally {
+			DAOFactory.freeConnection(con);
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Resource> get(List<Integer> keys) {
 		
-		/*PersistentWrapper wrapper;
-		HashMap<Integer, Resource> resourceMap;
-		PersistenceManager pm = PMF.get().getPersistenceManager();
 		ArrayList<Resource> result = new ArrayList<Resource>();
 		
-		if(cachedResourcesMap.size() == 0) {
+		if(cachedResourcesMap == null) {
+				
+			Connection con = DAOFactory.getConnection();
+			PreparedStatement statement = null;
 			
 			try {
-				wrapper = pm.getObjectById(PersistentWrapper.class, RESOURCE_TREE_KEY);
-				resourceMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(wrapper.byteData.getBytes());
+				statement = con.prepareStatement("select resource_object from resources where id = ?");
+				statement.setInt(1, RESOURCE_TREE_ID);
+				statement.setMaxRows(1);
+				ResultSet resultSet = statement.executeQuery();
 				
-				//Cache map (last version!)
-				cachedResourcesMap = resourceMap;
-				
-				//Add nodes
-				for(Integer resourceKey : keys) {
-					if(resourceMap.containsKey(resourceKey)) {
-						result.add(resourceMap.get(resourceKey));
-					}
+				if(resultSet.first()) {
+					Blob resourcesBin = resultSet.getBlob("resource_object");
+					cachedResourcesMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(resourcesBin.getBinaryStream());
 				}
-			}
-			catch (javax.jdo.JDOObjectNotFoundException notFound) {
-				//No resources
+				else {
+					return result;
+				}
+				
+				statement.close();
 			}
 			catch(Exception e) {
-				logger.log(Level.SEVERE, "Could not read Object", e);
-				return null;
+				logger.log(Level.SEVERE, "Retry no: " + e.toString());
+				return result;
 			}
 			finally {
-				pm.close();
+				DAOFactory.freeConnection(con);
 			}
 		}
 		
-		else {
-			//Add nodes
-			for(Integer resourceKey : keys) {
-				if(cachedResourcesMap.containsKey(resourceKey)) {
-					result.add(cachedResourcesMap.get(resourceKey));
-				}
+		//Add nodes
+		for(Integer resourceKey : keys) {
+			if(cachedResourcesMap.containsKey(resourceKey)) {
+				result.add(cachedResourcesMap.get(resourceKey));
 			}
 		}
 		
-		return result;*/
-		return null;
+		return result;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Integer> getKeys() {
 		
-		/*if(cachedResourcesMap.size() != 0) {
-			return Collections.list(Collections.enumeration(cachedResourcesMap.keySet()));
-		}
-		else {
-			
-			PersistenceManager pm = PMF.get().getPersistenceManager();
+		if(cachedResourcesMap == null) {
+				
+			Connection con = DAOFactory.getConnection();
+			PreparedStatement statement = null;
 			
 			try {
-				PersistentWrapper wrapper = pm.getObjectById(PersistentWrapper.class, RESOURCE_TREE_KEY);
-				HashMap<Integer, Resource> resourcesMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(wrapper.byteData.getBytes());
+				statement = con.prepareStatement("select resource_object from resources where id = ?");
+				statement.setInt(1, RESOURCE_TREE_ID);
+				statement.setMaxRows(1);
+				ResultSet resultSet = statement.executeQuery();
 				
-				cachedResourcesMap = resourcesMap;
-				return Collections.list(Collections.enumeration(resourcesMap.keySet()));
-			}
-			catch (javax.jdo.JDOObjectNotFoundException notFound) {
-				return new ArrayList<Integer>();
+				if(resultSet.first()) {
+					Blob resourcesBin = resultSet.getBlob("resource_object");
+					cachedResourcesMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(resourcesBin.getBinaryStream());
+				}
+				else {
+					return new ArrayList<Integer>();
+				}
+				
+				statement.close();
 			}
 			catch(Exception e) {
-				logger.log(Level.SEVERE, "Could not read Object", e);
-				return null;
+				logger.log(Level.SEVERE, "Retry no: " + e.toString());
+				return new ArrayList<Integer>();
 			}
 			finally {
-				pm.close();
+				DAOFactory.freeConnection(con);
 			}
-		}*/
+		}
 		
-		return null;
+		return Collections.list(Collections.enumeration(cachedResourcesMap.keySet()));
 	}
 }

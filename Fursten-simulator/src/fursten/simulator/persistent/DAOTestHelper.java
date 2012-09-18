@@ -1,6 +1,6 @@
 package fursten.simulator.persistent;
 
-public interface PersistentTestHelper {
+public interface DAOTestHelper {
 
 	boolean setUp();
 	boolean tearDown();
