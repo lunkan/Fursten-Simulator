@@ -138,6 +138,7 @@ class SessionDAO implements SessionManager {
 			statement = con.prepareStatement("truncate sessions");
 			statement.executeUpdate();
 			statement.close();
+			clear();
 			return true;
 		}
 		catch(Exception e) {

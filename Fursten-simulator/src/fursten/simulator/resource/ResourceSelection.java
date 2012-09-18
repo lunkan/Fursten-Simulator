@@ -24,6 +24,22 @@ public class ResourceSelection {
 		method = Method.MATCH;
 	}
 	
+	public ResourceSelection(Set<Integer> keys) {
+		this.keys = keys;
+		method = Method.MATCH;
+	}
+	
+	public ResourceSelection(int key, Method method) {
+		keys = new HashSet<Integer>();
+		keys.add(key);
+		this.method = method;
+	}
+	
+	public ResourceSelection(Set<Integer> keys, Method method) {
+		this.keys = keys;
+		this.method = method;
+	}
+	
 	public ResourceSelection setMethod(Method method) {
 		this.method = method;
 		return this;

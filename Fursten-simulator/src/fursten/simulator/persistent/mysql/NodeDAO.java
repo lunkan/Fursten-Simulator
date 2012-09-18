@@ -208,6 +208,8 @@ class NodeDAO implements NodeManager {
 			statement = con.prepareStatement("truncate nodes");
 			statement.executeUpdate();
 			statement.close();
+			
+			clearCache();
 			return true;
 		}
 		catch(Exception e) {

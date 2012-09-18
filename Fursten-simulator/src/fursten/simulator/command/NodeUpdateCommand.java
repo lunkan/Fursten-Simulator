@@ -57,8 +57,8 @@ public class NodeUpdateCommand implements SimulatorCommand {
 			for(Node node : insertNodes) {
 				if(!validResourceKeys.contains(node.getR()))
 					throw new Exception("Failed adding node becouse resourceId: " + node.getR() + " does not have a resource attached to it. No nodes where added.");
-				else if(!activeSession.getBounds().contains(node.getX(), node.getY()))
-					throw new Exception("Failed adding node becouse node: " + node.toString() + " is out of bounds. World bounds: " + activeSession.getBounds().toString());
+				else if(!activeSession.getRect().contains(node.getX(), node.getY()))
+					throw new Exception("Failed adding node becouse node: " + node.toString() + " is out of bounds. World bounds: " + activeSession.getRect().toString());
 			}
 			
 			insertedNum = NM.insert(insertNodes);

@@ -12,13 +12,13 @@ public class Session implements Serializable {
 	private int tick;
 	private long id;
 	
-	private Rectangle bounds;
+	private Rectangle rect;
 	
 	public Session(){
 		name = DEFAULT_NAME;
 		tick = 0;
 		id = System.currentTimeMillis();
-		bounds = new Rectangle(-50000, -50000, 100000, 100000);
+		rect = new Rectangle(-50000, -50000, 100000, 100000);
 	}
 
 	public String getName() {
@@ -41,15 +41,15 @@ public class Session implements Serializable {
 		this.tick = tick;
 	}
 	
-	public Rectangle getBounds() {
-		return bounds;
+	public Rectangle getRect() {
+		return rect;
 	}
 	
-	public void setBounds(Rectangle bounds) {
-		this.bounds = bounds;
+	public void setRect(Rectangle rect) {
+		this.rect = rect;
 	}
 	
 	public String toString() {
-		return "Session " + name + "@" + id + " " + bounds.toString() + ". current tick:"+tick;
+		return "Session " + name + "@" + id + " " + rect.toString() + ". current tick:"+tick;
 	}
 }

@@ -97,7 +97,7 @@ public class SimulatorRunCommand implements SimulatorCommand {
 		spore.setY(y + seedY);
 		
 		//Check that no node is out of world bounds
-		if(!activeSession.getBounds().contains(spore.getX(), spore.getY()))
+		if(!activeSession.getRect().contains(spore.getX(), spore.getY()))
 			return null;
 		
 		float stability = nodeMath.calculateStability(spore.getX(), spore.getY(), resource);

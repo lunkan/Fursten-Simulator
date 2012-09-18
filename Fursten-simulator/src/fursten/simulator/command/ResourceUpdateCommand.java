@@ -48,11 +48,8 @@ public class ResourceUpdateCommand implements SimulatorCommand {
 		if(deleteResources != null) {
 			
 			//Delete all nodes in of the resource type
-			for(Integer resourceKey : validResourceKeys) {
-				if(NM.deleteByResourceKey(resourceKey) != 1) {
-					throw new Exception("Database may be corrupt! Nodes with resource key " + resourceKey + " could not be deleted.");
-				}
-			}
+			for(Integer resourceKey : validResourceKeys)
+				NM.deleteByResourceKey(resourceKey);
 			
 			//Delete all resources
 			numDeleted = RM.delete(deleteResources);
@@ -67,7 +64,7 @@ public class ResourceUpdateCommand implements SimulatorCommand {
 				throw new Exception("Database may be corrupt! Resources could not be inserted.");
 		}
 			
-		logger.log(Level.INFO, "Deleted " + numInserted + " resources, Inserted " + numDeleted + " resources. Time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
+		logger.log(Level.INFO, "Deleted " + numDeleted + " resources, Inserted " + numInserted + " resources. Time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return null;
 	}
 }

@@ -184,10 +184,11 @@ public class ResourceDAO implements ResourceManager {
 			statement = con.prepareStatement("truncate resources");
 			statement.executeUpdate();
 			statement.close();
+			clearCache();
 			return true;
 		}
 		catch(Exception e) {
-			logger.log(Level.SEVERE, "Retry no: " + e.toString());
+			logger.log(Level.SEVERE, e.toString());
 			return false;
 		}
 		finally {
