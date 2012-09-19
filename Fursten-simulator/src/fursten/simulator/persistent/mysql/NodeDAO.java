@@ -300,6 +300,9 @@ class NodeDAO implements NodeManager {
 					logger.log(Level.SEVERE, "Could not read Object", e);
 					return null;
 				}
+				finally {
+					DAOFactory.freeConnection(con);
+				}
 			}
 		}
 		

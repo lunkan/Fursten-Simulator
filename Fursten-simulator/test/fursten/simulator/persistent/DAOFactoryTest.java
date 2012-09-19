@@ -141,7 +141,7 @@ public class DAOFactoryTest extends TestCase {
     	    for(Integer key: resources.keySet()) {
     	    	refResources.put(key, resources.get(key));           
     	    }
-    		
+    	    
     		//Delete resources
     		for(Integer deletedResource : deleteResources) {
     			refResources.remove(deletedResource);
@@ -317,19 +317,19 @@ public class DAOFactoryTest extends TestCase {
     }
     
     private Set<Integer> getResourceSample(int num, List<Integer> resources) {
-    	
+		
     	Random rand = new Random();
-    	HashSet<Integer> clonedResources = new HashSet<Integer>(resources);
+    	ArrayList<Integer> clonedResources = new ArrayList<Integer>(resources);
     	
     	if(clonedResources.size() <= num)
-    		return clonedResources;
+    		return new HashSet<Integer>(clonedResources);
     	
     	while(clonedResources.size() > num) {
     		int index = rand.nextInt(clonedResources.size());
     		clonedResources.remove(index);
     	}
     	
-    	return clonedResources;//sampleResources;
+    	return new HashSet<Integer>(clonedResources);//sampleResources;
     }
     
     private List<Node> getRandomNodes(int num, List<Integer> resourceKeys, Rectangle rect) {

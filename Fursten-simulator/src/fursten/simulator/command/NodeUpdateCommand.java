@@ -68,7 +68,7 @@ public class NodeUpdateCommand implements SimulatorCommand {
 		}
 		
 		
-		logger.log(Level.INFO, "Deleted " + insertedNum + " nodes, Inserted " + insertedNum + " resources. Time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
+		logger.log(Level.INFO, "Deleted " + deletedNum + " nodes, Inserted " + insertedNum + " resources. Time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return null;
 	}
 }

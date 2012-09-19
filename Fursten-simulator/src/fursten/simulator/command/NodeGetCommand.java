@@ -1,6 +1,7 @@
 package fursten.simulator.command;
 
 import java.awt.Rectangle;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -23,6 +24,13 @@ public class NodeGetCommand implements SimulatorCommand {
 		
 		this.rect = rect;
 		this.filter = filter;
+	}
+	
+	public NodeGetCommand(Rectangle rect, int resourceKey){
+		
+		this.rect = rect;
+		filter = new HashSet<Integer>();
+		filter.add(resourceKey);
 	}
 	
 	public String getName() {

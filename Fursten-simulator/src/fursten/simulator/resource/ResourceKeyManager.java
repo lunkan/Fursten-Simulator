@@ -1,12 +1,17 @@
 package fursten.simulator.resource;
 
 import java.math.BigInteger;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class ResourceKeyManager {
 	
 	private Set<Integer> resourceKeys;
+	
+	public ResourceKeyManager() {
+		this.resourceKeys = new HashSet<Integer>();
+	}
 	
 	public ResourceKeyManager(Set<Integer> resourceKeys) {
 		this.resourceKeys = resourceKeys;
