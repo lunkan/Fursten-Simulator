@@ -2,6 +2,8 @@ package fursten.simulator.command;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -67,7 +69,27 @@ public class SimulatorRunCommand implements SimulatorCommand {
 			    	}
 					else {
 						//get offspring that has the chans to get born - if ref = 0 no child was born
-						int offspringKey = resource.getOffspringByValue(rand.nextFloat());
+						HashMap<Integer, Float> offspringMap = resource.getOffspringMap();
+						HashMap<Float, Integer> offspringRandMap = new HashMap<Float, Integer>();
+						
+						Float mapValue = 0f;
+						for(Integer offspringKey : offspringMap.keySet()) {
+							mapValue += offspringMap.get(offspringKey);
+							offspringRandMap.put(mapValue, offspringKey);
+						}
+						
+						ArrayList<Float> offspringValues = new ArrayList<Float>(offspringRandMap.keySet());
+						Collections.sort(offspringValues);
+						
+						Float randVal = rand.nextFloat();
+						Integer offspringKey = 0;
+						for(Float offspringValue : offspringValues) {
+							if(randVal <= offspringValue) {
+								offspringKey = offspringRandMap.get(offspringValue);
+								break;
+							}	
+						}
+						
 						if(offspringKey != 0) {
 							Node spore = runSpore(node.getX(), node.getY(), offspringKey);
 							if(spore != null)

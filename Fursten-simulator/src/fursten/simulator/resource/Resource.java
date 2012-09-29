@@ -70,17 +70,6 @@ public class Resource implements Serializable {
 		offsprings.add(index, offspring);
 	}
 	
-	public int getOffspringByValue(float randValue) {
-
-		for(OffspringNode offspring : offsprings) {
-			if(randValue < offspring.value)
-				return offspring.key;
-		}
-		
-		//return resource reference 0 - no resource with that name
-		return 0;
-	}
-	
 	public HashMap<Integer, Float> getOffspringMap() {
 		
 		HashMap<Integer, Float> offspringMap = new HashMap<Integer, Float>(); 

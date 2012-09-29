@@ -26,7 +26,7 @@ import javax.sql.rowset.serial.SerialBlob;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.resource.Resource;
-import fursten.utils.BinaryTranslator;
+import fursten.util.BinaryTranslator;
 
 class NodeDAO implements NodeManager {
 

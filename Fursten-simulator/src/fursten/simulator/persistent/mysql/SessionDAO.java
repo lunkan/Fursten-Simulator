@@ -13,7 +13,7 @@ import javax.sql.rowset.serial.SerialBlob;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.session.Session;
-import fursten.utils.BinaryTranslator;
+import fursten.util.BinaryTranslator;
 
 class SessionDAO implements SessionManager {
 

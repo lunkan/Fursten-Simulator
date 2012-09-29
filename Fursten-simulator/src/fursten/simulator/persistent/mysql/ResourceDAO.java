@@ -20,7 +20,7 @@ import javax.sql.rowset.serial.SerialBlob;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.resource.Resource;
 import fursten.simulator.session.Session;
-import fursten.utils.BinaryTranslator;
+import fursten.util.BinaryTranslator;
 
 public class ResourceDAO implements ResourceManager {
 

@@ -1,5 +1,7 @@
 package fursten.simulator.persistent;
 
+import fursten.util.persistent.DAOTestHelper;
+
 public abstract class DAOManager {
 
 	public abstract NodeManager getNodeManager();

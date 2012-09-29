@@ -11,6 +11,7 @@ import fursten.simulator.persistent.DAOManager;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.SessionManager;
+import fursten.util.persistent.ConnectionPool;
 
 public class DAOFactory extends DAOManager {
 

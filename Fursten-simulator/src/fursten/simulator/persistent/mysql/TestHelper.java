@@ -1,7 +1,7 @@
 package fursten.simulator.persistent.mysql;
 
 import fursten.simulator.persistent.DAOManager;
-import fursten.simulator.persistent.DAOTestHelper;
+import fursten.util.persistent.DAOTestHelper;
 
 public class TestHelper implements DAOTestHelper {
 
