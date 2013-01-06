@@ -17,7 +17,7 @@ public class DAOFactory extends DAOManager {
 
 	private static final Logger logger = Logger.getLogger(DAOFactory.class.getName());
 	private static ConnectionPool connectionPool;
-	private static String DATABASE;
+	private static String DATABASE = "default";
 	
 	private static void createConnection() {
 		

@@ -10,16 +10,16 @@ import java.util.logging.Logger;
 
 import javax.sql.rowset.serial.SerialBlob;
 
+import fursten.simulator.instance.Instance;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.SessionManager;
-import fursten.simulator.session.Session;
 import fursten.util.BinaryTranslator;
 
 class SessionDAO implements SessionManager {
 
 	private static final Logger logger = Logger.getLogger(SessionDAO.class.getName());
 	private static final int CURRENT_SESSION_ID = 1;
-	private static Session cachedSession;
+	private static Instance cachedSession;
 	
 	private static SessionDAO instance = new SessionDAO();
 	
@@ -36,10 +36,10 @@ class SessionDAO implements SessionManager {
 			
 			if(resultSet.first()) {
 				Blob sessionBin = resultSet.getBlob("session_object");
-				cachedSession = (Session)BinaryTranslator.binaryToObject(sessionBin.getBinaryStream());
+				cachedSession = (Instance)BinaryTranslator.binaryToObject(sessionBin.getBinaryStream());
 			}
 			else {
-				Session session = new Session();
+				Instance session = new Instance();
 				setActive(session);
 			}
 			
@@ -60,13 +60,13 @@ class SessionDAO implements SessionManager {
 	@Override
 	public boolean clear() {
 		
-		Session session = new Session();
+		Instance session = new Instance();
 		setActive(session);
 		return false;
 	}
 
 	@Override
-	public Session getActive() {
+	public Instance getActive() {
 		
 		if(cachedSession != null) {
 			return cachedSession;
@@ -78,7 +78,7 @@ class SessionDAO implements SessionManager {
 	}
 
 	@Override
-	public int setActive(Session session) {
+	public int setActive(Instance session) {
 		
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
@@ -124,7 +124,7 @@ class SessionDAO implements SessionManager {
 	}
 	
 	@Override
-	public List<Session> getHistory() {
+	public List<Instance> getHistory() {
 		// TODO Auto-generated method stub
 		return null;
 	}

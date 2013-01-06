@@ -1,13 +1,14 @@
 package fursten.simulator.persistent;
 
 import java.util.List;
-import fursten.simulator.session.Session;
+
+import fursten.simulator.instance.Instance;
 
 public interface SessionManager {
 
-	public int setActive(Session session);
-	public Session getActive();
+	public int setActive(Instance session);
+	public Instance getActive();
 	public boolean clear();
 	public boolean deleteAll();
-	public List<Session> getHistory();
+	public List<Instance> getHistory();
 }

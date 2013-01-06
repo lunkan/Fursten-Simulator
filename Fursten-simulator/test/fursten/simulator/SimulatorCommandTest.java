@@ -15,14 +15,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fursten.simulator.command.NodeGetCommand;
-import fursten.simulator.command.NodeUpdateCommand;
+import fursten.simulator.command.NodeEditCommand;
 import fursten.simulator.command.ResourceGetCommand;
-import fursten.simulator.command.ResourceUpdateCommand;
+import fursten.simulator.command.ResourceEditCommand;
 import fursten.simulator.command.SimulatorInitializeCommand;
 import fursten.simulator.command.SimulatorRunCommand;
+import fursten.simulator.instance.Instance;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.DAOManager;
-import fursten.simulator.persistent.DAOTestHelper;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.SessionManager;
@@ -30,7 +30,7 @@ import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.ResourceKeyManager;
 import fursten.simulator.resource.ResourceSelection;
-import fursten.simulator.session.Session;
+import fursten.util.persistent.DAOTestHelper;
 
 public class SimulatorCommandTest {
 
@@ -78,9 +78,10 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     		RM.insert(resource);
     		NM.insert(new ArrayList<Node>(Arrays.asList(node)));
     		
-    		Session session = new Session();
-    		session.setRect(rect);
-    		session.setName(TEST_NAME);
+    		Instance session = new Instance()
+    			.setName(TEST_NAME)
+    			.setWidth(Integer.MAX_VALUE)
+    			.setHeight(Integer.MAX_VALUE);
     		
     		//Perform test and measure time
     		long startTime = System.currentTimeMillis();
@@ -90,7 +91,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     		//Log result
     		exeLog.add("Initialize Tot exe time =  " + (System.currentTimeMillis() - startTime) + "ms");
     		
-    		Session activeSession = SM.getActive();
+    		Instance activeSession = SM.getActive();
     		assertEquals(session.getRect(), activeSession.getRect());
     		assertEquals(session.getName(), activeSession.getName());
     		
@@ -152,8 +153,8 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	
     	//Updatera resources
     	int keyToDelete = resources.get(rand.nextInt(resources.size())).getKey();
-    	new ResourceUpdateCommand(null, resources).execute();
-    	new ResourceUpdateCommand(new HashSet<Integer>(Arrays.asList(keyToDelete))).execute();
+    	new ResourceEditCommand(null, resources).execute();
+    	new ResourceEditCommand(new HashSet<Integer>(Arrays.asList(keyToDelete))).execute();
     	
     	//Get resources
     	ResourceSelection selection = new ResourceSelection(RM.getKeys());
@@ -211,8 +212,11 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	Random rand = new Random();
     	
     	//Generate Session
-    	Session session = new Session();
-		session.setRect(rect);
+    	Instance session = new Instance()
+    		.setName("Testing run command")
+    		.setWidth(WORLD_W)
+    		.setHeight(WORLD_H);
+    	
 		session.setName("Testing run command");
 		new SimulatorInitializeCommand(session).execute();
 		
@@ -235,7 +239,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	wolfResource.putOffspring(wolfKey, 1);
     	
     	ArrayList<Resource> resources = new ArrayList<Resource>(Arrays.asList(sheepResource, wolfResource, grassResource));
-    	new ResourceUpdateCommand(null, resources).execute();
+    	new ResourceEditCommand(null, resources).execute();
     	
     	//Generate nodes
     	ArrayList<Node> nodes = new ArrayList<Node>();
@@ -258,7 +262,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     		}
     	}
     	
-    	new NodeUpdateCommand(null, nodes).execute();
+    	new NodeEditCommand(null, nodes).execute();
 		
 		//Perform test and measure time
 		long startTime = System.currentTimeMillis();
@@ -268,13 +272,10 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	
 		long totTime = System.currentTimeMillis() - startTime;
 		
-    	//Expected span of num Nodes is 30-35 more likely 31-33
-    	//If not within span there is probably a bug in the calculations
+    	//Expected span of num Nodes - if not within span there is probably a bug in the calculations
     	List<Node> grassNodes = (List<Node>)new NodeGetCommand(rect, grassKey).execute();
     	List<Node> sheepNodes = (List<Node>)new NodeGetCommand(rect, sheepKey).execute();
     	List<Node> wolfNodes = (List<Node>)new NodeGetCommand(rect, wolfKey).execute();
-    	
-    	//System.out.println("1:" + grassNodes.size() + " 2:" + sheepNodes.size() + " 3:" + wolfNodes.size());
     	
     	assertEquals(200, grassNodes.size());
     	assertEquals(100, sheepNodes.size(), 80);

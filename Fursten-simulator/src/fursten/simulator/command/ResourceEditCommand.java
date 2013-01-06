@@ -11,19 +11,19 @@ import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
 
-public class ResourceUpdateCommand implements SimulatorCommand {
+public class ResourceEditCommand implements SimulatorCommand {
 
-	protected static final Logger logger = Logger.getLogger(ResourceUpdateCommand.class.getName());
+	protected static final Logger logger = Logger.getLogger(ResourceEditCommand.class.getName());
 	public static final String NAME = "DeleteResources";
 	
 	private Set<Integer> deleteResources;
 	private List<Resource> insertResources;
 
-	public ResourceUpdateCommand(Set<Integer> deleteResources) {
+	public ResourceEditCommand(Set<Integer> deleteResources) {
 		this.deleteResources = deleteResources;
 	}
 	
-	public ResourceUpdateCommand(Set<Integer> deleteResources, List<Resource> insertResources) {
+	public ResourceEditCommand(Set<Integer> deleteResources, List<Resource> insertResources) {
 		this.deleteResources = deleteResources;
 		this.insertResources = insertResources;
 	}

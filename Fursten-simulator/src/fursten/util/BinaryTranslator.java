@@ -1,4 +1,4 @@
-package fursten.utils;
+package fursten.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

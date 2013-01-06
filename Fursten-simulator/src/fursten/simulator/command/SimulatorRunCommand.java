@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fursten.simulator.SimulatorSettings;
+import fursten.simulator.instance.Instance;
 import fursten.simulator.node.Node;
 import fursten.simulator.node.NodeStabilityCalculator;
 import fursten.simulator.persistent.NodeManager;
@@ -18,7 +19,6 @@ import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
-import fursten.simulator.session.Session;
 
 public class SimulatorRunCommand implements SimulatorCommand {
 	
@@ -29,7 +29,7 @@ public class SimulatorRunCommand implements SimulatorCommand {
 	private Rectangle rect;
 	private NodeStabilityCalculator nodeMath;
 	private ResourceManager RM;
-	private Session activeSession;
+	private Instance activeSession;
 	
 	public SimulatorRunCommand(Rectangle rect){
 		this.rect = rect;

@@ -1,15 +1,15 @@
 package fursten.simulator.command;
 
+import fursten.simulator.instance.Instance;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
-import fursten.simulator.session.Session;
 
 public class SimulatorInitializeCommand implements SimulatorCommand {
 
 	public static final String NAME = "Initialize";
-	private Session session;
+	private Instance session;
 
-	public SimulatorInitializeCommand(Session session) {
+	public SimulatorInitializeCommand(Instance session) {
 		this.session = session;
 	}
 	

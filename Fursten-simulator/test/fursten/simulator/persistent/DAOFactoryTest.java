@@ -14,15 +14,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import fursten.simulator.instance.Instance;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.DAOManager;
-import fursten.simulator.persistent.DAOTestHelper;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
-import fursten.simulator.session.Session;
+import fursten.util.persistent.DAOTestHelper;
 
 public class DAOFactoryTest extends TestCase {
 
@@ -56,8 +56,8 @@ public class DAOFactoryTest extends TestCase {
     		// Perform test and measure time
     		long startTime = System.currentTimeMillis();
     		
-    		Session session = SM.getActive();
-    		assertEquals(session.getName(), Session.DEFAULT_NAME);
+    		Instance session = SM.getActive();
+    		assertEquals(session.getName(), "Untitled");
     		assertEquals(session.getTick(), 0);
     		long initTime = System.currentTimeMillis() - startTime;
     		
@@ -66,7 +66,7 @@ public class DAOFactoryTest extends TestCase {
     		SM.setActive(session);
     		long insertTime = System.currentTimeMillis() - initTime;
     		
-    		Session fetchedSession = SM.getActive();
+    		Instance fetchedSession = SM.getActive();
     		assertEquals(fetchedSession.getName(), TEST_NAME);
     		assertEquals(fetchedSession.getTick(), i);
     		long readTime = System.currentTimeMillis() - insertTime;
@@ -75,8 +75,8 @@ public class DAOFactoryTest extends TestCase {
     		long clearTime = System.currentTimeMillis() - readTime;
     		long exeTime = System.currentTimeMillis() - startTime;
     		
-    		Session clearedSession = SM.getActive();
-    		assertEquals(clearedSession.getName(), Session.DEFAULT_NAME);
+    		Instance clearedSession = SM.getActive();
+    		assertEquals(clearedSession.getName(), "Untitled");
     		assertEquals(clearedSession.getTick(), 0);
     		
     		//Log result

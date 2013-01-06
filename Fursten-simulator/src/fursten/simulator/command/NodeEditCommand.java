@@ -5,26 +5,26 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fursten.simulator.instance.Instance;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
-import fursten.simulator.session.Session;
 
-public class NodeUpdateCommand implements SimulatorCommand {
+public class NodeEditCommand implements SimulatorCommand {
 	
-	protected static final Logger logger = Logger.getLogger(NodeUpdateCommand.class.getName());
+	protected static final Logger logger = Logger.getLogger(NodeEditCommand.class.getName());
 	public static final String NAME = "UpdateNode";
 	
 	private List<Node> deleteNodes;
 	private List<Node> insertNodes;
 	
-	public NodeUpdateCommand(List<Node> deleteNodes) {
+	public NodeEditCommand(List<Node> deleteNodes) {
 		this.deleteNodes = deleteNodes;
 	}
 
-	public NodeUpdateCommand(List<Node> deleteNodes, List<Node> insertNodes) {
+	public NodeEditCommand(List<Node> deleteNodes, List<Node> insertNodes) {
 		this.deleteNodes = deleteNodes;
 		this.insertNodes = insertNodes;
 	}
@@ -48,7 +48,7 @@ public class NodeUpdateCommand implements SimulatorCommand {
 		if(insertNodes != null) {
 			
 			SessionManager SM = DAOFactory.get().getSessionManager();
-			Session activeSession = SM.getActive();
+			Instance activeSession = SM.getActive();
 			
 			ResourceManager RM = DAOFactory.get().getResourceManager();
 			Set<Integer> validResourceKeys = RM.getKeys();

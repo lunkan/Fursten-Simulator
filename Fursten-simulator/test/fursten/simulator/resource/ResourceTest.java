@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fursten.simulator.persistent.DAOManager;
-import fursten.simulator.persistent.DAOTestHelper;
+import fursten.util.persistent.DAOTestHelper;
 
 public class ResourceTest {
 
