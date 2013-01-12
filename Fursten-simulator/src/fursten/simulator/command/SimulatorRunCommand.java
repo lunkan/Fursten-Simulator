@@ -10,7 +10,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import fursten.simulator.SimulatorSettings;
 import fursten.simulator.instance.Instance;
 import fursten.simulator.node.Node;
 import fursten.simulator.node.NodeStabilityCalculator;

@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import fursten.core.DatabaseSettings;
-import fursten.simulator.SimulatorSettings;
+import fursten.simulator.Settings;
+import fursten.simulator.Settings.DatabaseSettings;
 import fursten.simulator.persistent.DAOManager;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
@@ -17,11 +17,10 @@ public class DAOFactory extends DAOManager {
 
 	private static final Logger logger = Logger.getLogger(DAOFactory.class.getName());
 	private static ConnectionPool connectionPool;
-	private static String DATABASE = "default";
 	
 	private static void createConnection() {
 		
-		DatabaseSettings dbSettings = SimulatorSettings.getInstance().getDatabaseSettings(DATABASE);
+		DatabaseSettings dbSettings = Settings.getInstance().getDatabaseSettings();
 		
 		try {
 			connectionPool = new ConnectionPool(dbSettings.getDriver(), dbSettings.getUrl(), dbSettings.getUser(), dbSettings.getPassword(), 2, 10, false);
@@ -30,15 +29,6 @@ public class DAOFactory extends DAOManager {
 			logger.log(Level.SEVERE, "Could not create connection from pool " + e.getMessage());
 			e.printStackTrace();
 		}
-	}
-	
-	public static boolean setDatabase(String value) {
-		
-		if(DATABASE != null)
-			return false;
-		
-		DATABASE = value;
-		return true;
 	}
 	
 	public static Connection getConnection() {

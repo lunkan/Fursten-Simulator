@@ -3,6 +3,7 @@ package fursten.simulator;
 import java.awt.Rectangle;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fursten.simulator.command.NodeGetCommand;
@@ -24,6 +25,8 @@ public class Facade {
 	
 	public static boolean init(String name, int width, int height) {
 		
+		logger.log(Level.INFO, "Calling Facade.init(name:"+name+", width:"+width+", height:"+height+")");
+		
 		Instance session = new Instance()
 			.setName(name)
 			.setWidth(width)
@@ -43,10 +46,23 @@ public class Facade {
 		return true;
 	}
 	
-	public static Instance getStatus() {
+	public static Status getStatus() {
+		
+		logger.log(Level.INFO, "Calling Facade.getStatus");
 		
 		SessionManager SM = DAOFactory.get().getSessionManager();
-		return SM.getActive();
+		Instance instance = SM.getActive();
+		
+		if(instance == null)
+			return null;
+		
+		Status status = new Status()
+			.setName(instance.getName())
+			.setWidth(instance.getWidth())
+			.setHeight(instance.getHeight())
+			.setTick(instance.getTick());
+		
+		return status;
 	}
 	
 	public static boolean run() {

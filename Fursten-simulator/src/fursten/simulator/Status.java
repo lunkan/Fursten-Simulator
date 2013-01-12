@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Status {
 
 	private String name;
-	private long id;
 	private int width;
 	private int height;
 	private int tick;
@@ -16,13 +15,6 @@ public class Status {
 	}
 	public Status setName(String name) {
 		this.name = name;
-		return this;
-	}
-	public long getId() {
-		return id;
-	}
-	public Status setId(long id) {
-		this.id = id;
 		return this;
 	}
 	public int getWidth() {
@@ -45,5 +37,8 @@ public class Status {
 	public Status setTick(int tick) {
 		this.tick = tick;
 		return this;
+	}
+	public String toString() {
+		return "Status[name:'"+name+"' width:"+width+" height:"+height+" tick:"+tick+"]";
 	}
 }
