@@ -42,11 +42,11 @@ public class ResourceDAO implements ResourceManager {
 		cachedResourcesMap = null;
 	}
 	
-	public int insert(Resource recource) {
+	public int insert(Resource resource) {
 		
-		ArrayList<Resource> recources = new ArrayList<Resource>();
-		recources.add(recource);
-		return insert(recources);
+		ArrayList<Resource> resources = new ArrayList<Resource>();
+		resources.add(resource);
+		return insert(resources);
 	}
 	
 	public int delete(int key) {
@@ -75,11 +75,12 @@ public class ResourceDAO implements ResourceManager {
 	
 	@SuppressWarnings("unchecked")
 	public int insert(List<Resource> recources)  {
-			
+		
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
 		
 		try {
+			
 			statement = con.prepareStatement("select resource_object from resources where id = ?");
 			statement.setInt(1, RESOURCE_TREE_ID);
 			statement.setMaxRows(1);
@@ -274,6 +275,6 @@ public class ResourceDAO implements ResourceManager {
 			}
 		}
 		
-		return cachedResourcesMap.keySet();
+		return new HashSet<Integer>(cachedResourcesMap.keySet());
 	}
 }

@@ -10,6 +10,8 @@ import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
+import fursten.simulator.resource.ResourceKeyManager;
+import fursten.simulator.resource.ResourceWrapper;
 
 public class ResourceEditCommand implements SimulatorCommand {
 
@@ -58,6 +60,15 @@ public class ResourceEditCommand implements SimulatorCommand {
 		}
 		
 		if(insertResources != null) {
+			
+			//Validate resources
+			ResourceWrapper resourceWrapper = new ResourceWrapper();
+			for(Resource resource : insertResources) {
+				if(!resourceWrapper.setResource(resource).isValid()) {
+					logger.log(Level.WARNING, "Resources is invalid: " + resource);
+					throw new Exception("Resources is invalid.");
+				}
+			}
 			
 			numInserted = RM.insert(insertResources);
 			if(numInserted != insertResources.size())

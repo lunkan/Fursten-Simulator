@@ -28,8 +28,10 @@ import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
+import fursten.simulator.resource.Resource.Offspring;
 import fursten.simulator.resource.ResourceKeyManager;
 import fursten.simulator.resource.ResourceSelection;
+import fursten.simulator.resource.ResourceWrapper;
 import fursten.util.persistent.DAOTestHelper;
 
 public class SimulatorCommandTest {
@@ -68,14 +70,16 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     				rand.nextInt(Integer.MAX_VALUE)
     			);
     		
-    		Resource resource = new Resource(1);
+    		Resource resourceData = new Resource();
+    		resourceData.setKey(1);
+    		ResourceWrapper resource = new ResourceWrapper(resourceData);
     		Node node = new Node(1);
     		
     		ResourceManager RM = DAOManager.get().getResourceManager();
     		NodeManager NM = DAOManager.get().getNodeManager();
     		SessionManager SM = DAOManager.get().getSessionManager();
     		
-    		RM.insert(resource);
+    		RM.insert(resource.getResource());
     		NM.insert(new ArrayList<Node>(Arrays.asList(node)));
     		
     		Instance session = new Instance()
@@ -134,12 +138,12 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	ArrayList<Resource> resources = new ArrayList<Resource>();
     	for(int r = 0; r < NUM_RESOURCES; r++) {
     		
-    		Resource resource = new Resource(RKM.getNext(0));
-    		resource.setName("Resource@" + r);
-        	resource.setThreshold(rand.nextFloat());
+    		ResourceWrapper resource = new ResourceWrapper(RKM.getNext(0));
+    		resource.getResource().setName("Resource@" + r);
+        	resource.getResource().setThreshold(rand.nextFloat());
     		
     		for(int o = 0; o < NUM_OFFSPRINGS; o++) {
-        		resource.putOffspring(rand.nextInt(), rand.nextFloat());
+    			resource.putOffspring(rand.nextInt(), rand.nextFloat());
         	}
     		
     		for(int g = 0; g < NUM_WEIGHT_GROUPS; g++) {
@@ -148,7 +152,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
         		}
         	}
     		
-    		resources.add(resource);
+    		resources.add(resource.getResource());
     	}
     	
     	//Updatera resources
@@ -161,13 +165,15 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	List<Resource> retrivedResources = (List<Resource>)new ResourceGetCommand(selection).execute();
     	
     	//Validate
-    	for(Resource retrivedResource : retrivedResources) {
+    	for(Resource retrivedResourceObj : retrivedResources) {
+    		
+    		ResourceWrapper retrivedResource = new ResourceWrapper(retrivedResourceObj);
     		
     		//Get reference
-    		Resource refResource = null;
+    		ResourceWrapper refResource = null;
     		for(Resource refRes : resources) {
     			if(refRes.getKey() == retrivedResource.getKey()) {
-    				refResource = refRes;
+    				refResource = new ResourceWrapper(refRes);
     				break;
     			}
     		}
@@ -226,9 +232,9 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	int sheepKey = RMK.getNext(animalKey);
     	int wolfKey = RMK.getNext(animalKey);
     	
-    	Resource grassResource = new Resource(grassKey);
-    	Resource sheepResource = new Resource(sheepKey);
-    	Resource wolfResource = new Resource(wolfKey);
+    	ResourceWrapper grassResource = new ResourceWrapper(grassKey);
+    	ResourceWrapper sheepResource = new ResourceWrapper(sheepKey);
+    	ResourceWrapper wolfResource = new ResourceWrapper(wolfKey);
     	
     	sheepResource.putWeight(0, grassKey, 2);
     	sheepResource.putWeight(0, wolfKey, -0.25f);
@@ -238,7 +244,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	wolfResource.putWeight(0, sheepKey, 0.25f);
     	wolfResource.putOffspring(wolfKey, 1);
     	
-    	ArrayList<Resource> resources = new ArrayList<Resource>(Arrays.asList(sheepResource, wolfResource, grassResource));
+    	ArrayList<Resource> resources = new ArrayList<Resource>(Arrays.asList(sheepResource.getResource(), wolfResource.getResource(), grassResource.getResource()));
     	new ResourceEditCommand(null, resources).execute();
     	
     	//Generate nodes

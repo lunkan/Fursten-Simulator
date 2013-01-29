@@ -10,6 +10,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+//import fursten.rest.jaxb.ResourceObj.ResourceWeight;
+
+@XmlRootElement
 public class Resource implements Serializable {
 	
 	static final long serialVersionUID = 10275539472837495L;
@@ -18,18 +23,18 @@ public class Resource implements Serializable {
 	private String name;
 	private float threshold;
 	
-	private ArrayList<OffspringNode> offsprings;
-	private ArrayList<HashMap<Integer, Float>> weights;
+	private ArrayList<Offspring> offsprings;
+	private ArrayList<WeightGroup> weightGroups;
 	
-	public Resource(int key) {
-		this.key = key;
-		this.name = "untitled";
-		offsprings = new ArrayList<OffspringNode>();
-		weights = new ArrayList<HashMap<Integer, Float>>();
+	public Resource() {
 	}
 	
 	public int getKey() {
 		return key;
+	}
+	
+	public void setKey(int key) {
+		this.key = key;
 	}
 	
 	public String getName() {
@@ -48,74 +53,83 @@ public class Resource implements Serializable {
 		this.threshold = threshold;
 	}
 	
-	public boolean isStatic() {
-		return (weights.size() == 0);
+	public void setOffsprings(ArrayList<Offspring> offsprings) {
+		this.offsprings = offsprings;
 	}
 	
-	public void putOffspring(int key, float value) {
-
-		OffspringNode offspring = new OffspringNode();
-		offspring.key = key;
-		offspring.value = value;
+	public ArrayList<Offspring> getOffsprings() {
+		return this.offsprings;
+	}
+	
+	public void setWeightGroups(ArrayList<WeightGroup> weightGroups) {
+		this.weightGroups = weightGroups;
+	}
+	
+	public ArrayList<WeightGroup> getWeightGroups() {
+		return this.weightGroups;
+	}
+	
+	public String toString() {
 		
-		//add offsprings in sorted order.
-		int index = 0;
-		for(int i = 0; i < offsprings.size(); i++) {
-			if(offsprings.get(i).value < offspring.value)
-				break;
-			else
-				index = i;
+		String weightStr = "[";
+		if(weightGroups != null) {
+			for(WeightGroup weightGroup : weightGroups) {
+				weightStr += weightGroup.toString() + ",";
+			}
 		}
+		weightStr += "]";
 		
-		offsprings.add(index, offspring);
-	}
-	
-	public HashMap<Integer, Float> getOffspringMap() {
 		
-		HashMap<Integer, Float> offspringMap = new HashMap<Integer, Float>(); 
-		for(OffspringNode offspring : offsprings) {
-			offspringMap.put(offspring.key, offspring.value);
+		String offspringStr = "[";
+		if(offsprings != null) {
+			for(Offspring offspring : offsprings) {
+				offspringStr += offspring.toString() + ",";
+			}
 		}
+		offspringStr += "]";
 		
-		return offspringMap;
+		return "Resource@"+ this.hashCode() +":{key:"+ key +" name:" + name + " threshold:" + threshold + " weights:" + weightStr + " offsprings:" + offspringStr + "}";
 	}
 	
-	public int numGroups() {
-		return weights.size();
-	}
-	
-	public void putWeight(int group, int key, float weight) {
-
-		while(weights.size() <= group)
-			weights.add(new HashMap<Integer, Float>());
-		
-		weights.get(group).put(key, weight);
-	}
-	
-	public float getWeight(int group, int key) {
-		
-		return weights.get(group).get(key);
-	}
-	
-	public Set<Integer> getDependencies() {
-		
-		HashSet<Integer> DependencyKeys = new HashSet<Integer>();
-		for(int i = 0; i < weights.size(); i++) {
-			DependencyKeys.addAll(getDependencies(i));
-		}
-		
-		return DependencyKeys;
-	}
-	
-	public Set<Integer> getDependencies(int group) {
-		return weights.get(group).keySet();
-	}
-	
-	static class OffspringNode implements Serializable {
+	public static class Offspring implements Serializable {
 
 		static final long serialVersionUID = 10275539472837495L;
 		
 		public int key;
 		public float value;
+		
+		public String toString() {
+			return "{key:"+ key +", value:"+ value +"}";
+		}
+	}
+	
+	public static class WeightGroup implements Serializable {
+
+		static final long serialVersionUID = 10275539472837495L;
+		
+		public ArrayList<Weight> weights;
+		
+		public String toString() {
+			
+			String weightGroupStr = "[";
+			for(Weight weight : weights) {
+				weightGroupStr += weight.toString() + ",";
+			}
+			weightGroupStr += "]";
+			
+			return weightGroupStr;
+		}
+	}
+	
+	public static class Weight implements Serializable {
+
+		static final long serialVersionUID = 10275539472837495L;
+		
+		public int key;
+		public float value;
+		
+		public String toString() {
+			return "{key:"+ key +", value:"+ value +"}";
+		}
 	}
 }

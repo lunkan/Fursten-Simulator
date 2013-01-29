@@ -12,6 +12,7 @@ import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.ResourceKeyManager;
+import fursten.simulator.resource.ResourceWrapper;
 
 public class NodeStabilityCalculator {
 	
@@ -70,7 +71,7 @@ public class NodeStabilityCalculator {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public float calculateStability(int x, int y, Resource resource) {
+	public float calculateStability(int x, int y, ResourceWrapper resource) {
 		
 		//set bounds
 		rect.setBounds(x - NODE_RADIUS, y - NODE_RADIUS, NODE_RADIUS*2, NODE_RADIUS*2);

@@ -71,7 +71,7 @@ public class ResourceKeyManager {
 			testKey = testKey.setBit(i);
 			
 			if(!resourceKeys.contains(testKey.intValue())) {
-				resourceKeys.add(testKey.intValue());//Must be added if multiple get next is called.
+				resourceKeys.add(10);//new Integer(testKey.intValue()));//Must be added if multiple get next is called.
 				return testKey.intValue();
 			}
 		}

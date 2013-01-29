@@ -1,6 +1,7 @@
 package fursten.simulator;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -14,9 +15,13 @@ import fursten.simulator.command.SimulatorInitializeCommand;
 import fursten.simulator.command.SimulatorRunCommand;
 import fursten.simulator.instance.Instance;
 import fursten.simulator.node.Node;
+import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
+import fursten.simulator.resource.ResourceKeyManager;
+import fursten.simulator.resource.ResourceIndex;
+import fursten.simulator.resource.ResourceIndex.ResourceItem;
 import fursten.simulator.resource.ResourceSelection;
 
 public class Facade {
@@ -31,7 +36,6 @@ public class Facade {
 			.setName(name)
 			.setWidth(width)
 			.setHeight(height);
-		
 		
 		try {
 			new SimulatorInitializeCommand(session).execute();
@@ -101,15 +105,50 @@ public class Facade {
 		}
 	}
 	
+	public static boolean addResource(int parentKey, Resource resource) {
+		
+		System.out.println(resource);
+		
+		ResourceManager RM = DAOFactory.get().getResourceManager();
+		ResourceKeyManager keyManager = new ResourceKeyManager(RM.getKeys());
+		
+		//Create new key by extending parent key
+		int newKey = keyManager.getNext(parentKey);
+		resource.setKey(newKey);
+		
+		List<Resource> resources = new ArrayList<Resource>();
+		resources.add(resource);
+		return editResources(null, resources);
+	}
+
+	public static boolean putResource(Resource resource) {
+		
+		List<Resource> resources = new ArrayList<Resource>();
+		resources.add(resource);
+		return editResources(null, resources);
+	}
+
 	public static boolean editResources(Set<Integer> delete, List<Resource> put) {
 		
 		try {
 			new ResourceEditCommand(delete, put).execute();
 			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public static ResourceIndex getResourceIndex()  {
+		
+		ResourceIndex resourceIndex = new ResourceIndex();
+		List<Resource> resources = getResources(new ResourceSelection());
+		for(Resource resource : resources) {
+			resourceIndex.add(resource.getKey(), resource.getName());
+		}
+		
+		return resourceIndex;
+		
 	}
 	
 	@SuppressWarnings("unchecked")

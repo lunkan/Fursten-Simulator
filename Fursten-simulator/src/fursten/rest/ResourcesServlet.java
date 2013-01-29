@@ -22,6 +22,8 @@ import fursten.rest.jaxb.ResourceCollection;
 import fursten.rest.jaxb.ResourceObj;
 import fursten.simulator.Facade;
 import fursten.simulator.Status;
+import fursten.simulator.resource.Resource;
+import fursten.simulator.resource.ResourceIndex;
 
 @Path("/resources")
 public class ResourcesServlet {
@@ -43,27 +45,22 @@ public class ResourcesServlet {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response newRootResources(ResourceObj resource, @Context HttpServletResponse servletResponse) throws IOException {
+	public Response newRootResource(Resource resource, @Context HttpServletResponse servletResponse) throws IOException {
 		
-		//{"name":"New Resourcingas","threshold":100,"offsprings":[{"resource":"14","value":1}],"weightgroups":[{"weights":[{"resource":"12","value":35},{"resource":"11","value":37}]},{"weights":[{"resource":"12","value":35}]}],"atomat":""}
-		System.out.println("ok here I'am");
-		System.out.println(resource);
-		
-		return Response.status(Response.Status.OK).build();
-		
-		/*response.setStatus( SC_OK );
-		   response.close();
-		   
-		servletResponse.setStatus(SC_OK);
-		servletResponse.close();*/
+		//Add new resource as root resource. parent=0
+		if(Facade.addResource(0, resource))
+			return Response.status(Response.Status.OK).build();
+		else
+			return Response.status(Response.Status.BAD_REQUEST).build();
 	}
 	
-	/*@GET
-	@Produces({ MediaType.APPLICATION_JSON })
-	public Status getJSON() {
-		Status status = Facade.getStatus();
-		return status;
-	}*/
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ResourceIndex getResources() {
+		
+		return Facade.getResourceIndex();
+	}
 	
 	/*@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })

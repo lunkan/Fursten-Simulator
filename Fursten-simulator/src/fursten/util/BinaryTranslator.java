@@ -24,6 +24,8 @@ public class BinaryTranslator {
 			return buffer.toByteArray();
 		}
 		catch(Exception e) {
+			System.out.print(e.getMessage());
+			e.printStackTrace();
 			return null;
 		}
 	}

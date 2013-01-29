@@ -18,6 +18,7 @@ import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
+import fursten.simulator.resource.ResourceWrapper;
 
 public class SimulatorRunCommand implements SimulatorCommand {
 	
@@ -56,7 +57,7 @@ public class SimulatorRunCommand implements SimulatorCommand {
 		
 		for(Integer resourceKey : resourceKeys) {
 			
-			Resource resource = RM.get(resourceKey);
+			ResourceWrapper resource = new ResourceWrapper(RM.get(resourceKey));
 			
 			if(!resource.isStatic()) {
 				
@@ -108,7 +109,7 @@ public class SimulatorRunCommand implements SimulatorCommand {
 
 	private Node runSpore(int x, int y, int r) {
 
-		Resource resource = RM.get(r);
+		ResourceWrapper resource = new ResourceWrapper(RM.get(r));
 		
 		int seedX = rand.nextInt(NodeStabilityCalculator.NODE_RADIUS*8)-(NodeStabilityCalculator.NODE_RADIUS*4);
 		int seedY = rand.nextInt(NodeStabilityCalculator.NODE_RADIUS*8)-(NodeStabilityCalculator.NODE_RADIUS*4);

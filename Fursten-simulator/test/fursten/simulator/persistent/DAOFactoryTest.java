@@ -22,6 +22,7 @@ import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
+import fursten.simulator.resource.ResourceWrapper;
 import fursten.util.persistent.DAOTestHelper;
 
 public class DAOFactoryTest extends TestCase {
@@ -123,7 +124,7 @@ public class DAOFactoryTest extends TestCase {
     	List<Integer> resourceKeys = getRandomResources(NUM_RESOURCES);
     	HashMap<Integer, Resource> resources = new HashMap<Integer, Resource>();
     	for(Integer resourceKey : resourceKeys) {
-    		Resource resource = new Resource(resourceKey);
+    		Resource resource = new ResourceWrapper(resourceKey).getResource();
     		resources.put(resourceKey, resource);
     	}
     	

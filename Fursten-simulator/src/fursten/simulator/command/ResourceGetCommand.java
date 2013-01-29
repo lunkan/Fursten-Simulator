@@ -11,6 +11,7 @@ import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.ResourceKeyManager;
 import fursten.simulator.resource.ResourceSelection;
+import fursten.simulator.resource.ResourceWrapper;
 
 public class ResourceGetCommand implements SimulatorCommand {
 
@@ -88,8 +89,9 @@ public class ResourceGetCommand implements SimulatorCommand {
 				}
 				
 				resources = new ArrayList<Resource>();
-				for(Integer nextKey : nextKeys)
-					resources.add(new Resource(nextKey));
+				for(Integer nextKey : nextKeys) {
+					resources.add(new ResourceWrapper(nextKey).getResource());
+				}
 				
 				break;
 				
