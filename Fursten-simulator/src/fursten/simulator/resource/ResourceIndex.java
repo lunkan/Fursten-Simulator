@@ -9,12 +9,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ResourceIndex {
 	
 	private ArrayList<ResourceItem> resources;
-	  
-	public ArrayList<ResourceItem> getList() {
+	
+	public ResourceIndex() {
+	}
+	
+	public ArrayList<ResourceItem> getResourceIndex() {
 		return resources;
 	}
 
-	public void setList(ArrayList<ResourceItem> resources) {
+	public void setResourceIndex(ArrayList<ResourceItem> resources) {
 		this.resources = resources;
 	}
 	

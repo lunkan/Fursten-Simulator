@@ -11,30 +11,29 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
+import fursten.simulator.Facade;
 import fursten.simulator.Status;
 import fursten.simulator.instance.Instance;
 
 @Path("/instance")
 public class InstanceServlet {
 	
-	/*@POST
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Instance postXML() {
-		Instance instance = new Instance();
-		return instance;
-	}*/
-	
 	@POST
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Instance transactionRequest(Instance instance){
+	public Response newWorld(Instance instance){
 		
 		System.out.println("name: " + instance.getName());
 		System.out.println("width: " + instance.getWidth());
 		System.out.println("height: " + instance.getHeight());
 		
-		return instance;
+		//Create new World
+		if(Facade.init(instance.getName(), instance.getWidth(), instance.getHeight()))
+			return Response.status(Response.Status.OK).build();
+		else
+			return Response.status(Response.Status.BAD_REQUEST).build();
 	}
 	
 	/*@POST
