@@ -2,6 +2,8 @@ package fursten.simulator.resource;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,6 +31,16 @@ public class ResourceIndex {
 		item.key = key;
 		item.name =	name;
 		resources.add(item);
+	}
+	
+	public Set<Integer> getKeySet() {
+		
+		HashSet<Integer> keys = new HashSet<Integer>();
+		for(ResourceItem item : resources) {
+			keys.add(item.key);
+		}
+		
+		return keys;
 	}
 	
 	public static class ResourceItem implements Serializable {

@@ -38,10 +38,6 @@ class SessionDAO implements SessionManager {
 				Blob sessionBin = resultSet.getBlob("session_object");
 				cachedSession = (Instance)BinaryTranslator.binaryToObject(sessionBin.getBinaryStream());
 			}
-			else {
-				Instance session = new Instance();
-				setActive(session);
-			}
 			
 			statement.close();
 		}

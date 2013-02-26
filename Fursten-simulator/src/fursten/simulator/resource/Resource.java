@@ -95,11 +95,11 @@ public class Resource implements Serializable {
 
 		static final long serialVersionUID = 10275539472837495L;
 		
-		public int key;
+		public int resource;
 		public float value;
 		
 		public String toString() {
-			return "{key:"+ key +", value:"+ value +"}";
+			return "{resource:"+ resource +", value:"+ value +"}";
 		}
 	}
 	
@@ -125,11 +125,11 @@ public class Resource implements Serializable {
 
 		static final long serialVersionUID = 10275539472837495L;
 		
-		public int key;
+		public int resource;
 		public float value;
 		
 		public String toString() {
-			return "{key:"+ key +", value:"+ value +"}";
+			return "{resource:"+ resource +", value:"+ value +"}";
 		}
 	}
 }

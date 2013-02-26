@@ -60,16 +60,16 @@ public class ResourceWrapper {
 			
 		offspringMap = new HashMap<Integer, Float>(); 
 		for(Offspring offspring : this.resource.getOffsprings()) {
-			offspringMap.put(offspring.key, offspring.value);
+			offspringMap.put(offspring.resource, offspring.value);
 		}
 		
 		return offspringMap;
 	}
 	
-	public void putOffspring(int key, float value) {
+	public void putOffspring(int resource, float value) {
 
 		Offspring offspring = new Offspring();
-		offspring.key = key;
+		offspring.resource = resource;
 		offspring.value = value;
 		this.resource.getOffsprings().add(offspring);
 		
@@ -86,7 +86,7 @@ public class ResourceWrapper {
 			
 			weightMap.add(new HashMap<Integer, Float>());
 			for(Weight weight : this.resource.getWeightGroups().get(i).weights) {
-				weightMap.get(i).put(weight.key, weight.value);
+				weightMap.get(i).put(weight.resource, weight.value);
 			}
 		}
 		
@@ -97,7 +97,7 @@ public class ResourceWrapper {
 		return getWeightMap().get(group).get(key);
 	}
 	
-	public void putWeight(int group, int key, float value) {
+	public void putWeight(int group, int resource, float value) {
 
 		while(this.resource.getWeightGroups().size() <= group) {
 			WeightGroup weightGroup = new WeightGroup();
@@ -106,7 +106,7 @@ public class ResourceWrapper {
 		}
 		
 		Weight weight = new Weight();
-		weight.key = key;
+		weight.resource = resource;
 		weight.value = value;
 		this.resource.getWeightGroups().get(group).weights.add(weight);
 		
