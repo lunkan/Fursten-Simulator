@@ -251,11 +251,9 @@ class NodeDAO implements NodeManager {
 	}
 
 	public List<Node> get(Rectangle bounds, Integer resource) {
-		
 		HashSet<Integer> resourceKeys = new HashSet<Integer>();
 		resourceKeys.add(resource);
 		return get(bounds, resourceKeys);
-		
 	}
 	
 	public List<Node> get(Rectangle bounds, Set<Integer> resources) {

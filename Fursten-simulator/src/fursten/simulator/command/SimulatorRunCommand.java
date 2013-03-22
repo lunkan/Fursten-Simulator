@@ -45,7 +45,10 @@ public class SimulatorRunCommand implements SimulatorCommand {
 		rand = new Random();
 		
 		SessionManager SM = DAOFactory.get().getSessionManager();
-		activeSession = SM.getActive();
+		Instance session = SM.getActive();
+		int tick = session.getTick() + 1;
+		session.setTick(tick);
+		SM.setActive(session);
 		
 		NodeManager NM = DAOFactory.get().getNodeManager();
 		RM = DAOFactory.get().getResourceManager();

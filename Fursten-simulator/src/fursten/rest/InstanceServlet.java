@@ -25,10 +25,6 @@ public class InstanceServlet {
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response newWorld(Instance instance){
 		
-		System.out.println("name: " + instance.getName());
-		System.out.println("width: " + instance.getWidth());
-		System.out.println("height: " + instance.getHeight());
-		
 		//Create new World
 		if(Facade.init(instance.getName(), instance.getWidth(), instance.getHeight()))
 			return Response.status(Response.Status.OK).build();

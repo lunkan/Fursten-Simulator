@@ -11,6 +11,7 @@ import fursten.simulator.command.NodeGetCommand;
 import fursten.simulator.command.NodeEditCommand;
 import fursten.simulator.command.ResourceGetCommand;
 import fursten.simulator.command.ResourceEditCommand;
+import fursten.simulator.command.SampleCommand;
 import fursten.simulator.command.SimulatorInitializeCommand;
 import fursten.simulator.command.SimulatorRunCommand;
 import fursten.simulator.instance.Instance;
@@ -23,6 +24,7 @@ import fursten.simulator.resource.ResourceKeyManager;
 import fursten.simulator.resource.ResourceIndex;
 import fursten.simulator.resource.ResourceIndex.ResourceItem;
 import fursten.simulator.resource.ResourceSelection;
+import fursten.simulator.sample.Sample;
 
 public class Facade {
 
@@ -81,6 +83,18 @@ public class Facade {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<Sample> getSamples(List<Sample> samples) {
+		
+		try {
+			return (List<Sample>) new SampleCommand(samples).execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 	
 	public static boolean editNodes(List<Node> delete, List<Node> put) {
