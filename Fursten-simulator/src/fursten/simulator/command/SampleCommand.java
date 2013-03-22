@@ -41,7 +41,9 @@ public class SampleCommand implements SimulatorCommand {
 		
 		for(Sample sample : samples) {
 			
-			if(resource.getResource().getKey() != sample.getR())
+			if(resource == null)
+				resource = new ResourceWrapper(RM.get(sample.getR()));
+			else if(resource.getResource().getKey() != sample.getR())
 				resource = new ResourceWrapper(RM.get(sample.getR()));
 			
 			if(!resource.isStatic()) {
