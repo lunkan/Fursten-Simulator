@@ -102,9 +102,9 @@ public class NodeStabilityCalculator {
 			for(Node neighbor : NM.get(rect, dependencyKeys)){
 				
 				int distance = (int) (Math.sqrt(Math.pow(x-neighbor.getX(),2) + Math.pow(y-neighbor.getY(),2)));
-				int impact = NODE_RADIUS - distance;
+				float impact = (NODE_RADIUS - (float)distance) / (float)NODE_RADIUS;
 					
-				float value = 0;
+				float value = 0f;
 				for(int dependencyKey : resource.getDependencies(weightGroup)) {
 					
 					BigInteger selectBigKey = BigInteger.valueOf((long)dependencyKey);
@@ -125,7 +125,7 @@ public class NodeStabilityCalculator {
 		for(Node neighbor : NM.get(rect, resource.getKey())) {
 			
 			int distance = (int) (Math.sqrt(Math.pow(x-neighbor.getX(),2) + Math.pow(y-neighbor.getY(),2)));
-			int impact = NODE_RADIUS - distance;
+			float impact = (NODE_RADIUS - (float)distance) / (float)NODE_RADIUS;
 			
 			if(impact > 0 && distance != 0) {	
 				stability -= impact;
