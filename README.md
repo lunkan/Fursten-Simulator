@@ -58,10 +58,18 @@ Tar bort resursen med id = {id}
 
 ### Nodes
 
-GET 	/rest/nodes
-PUT 	/rest/nodes
+GET: "/rest/nodes"  
+Produce: "application/json", "application/x-protobuf"  
+Returnerar en lista med noder
+
 POST	/rest/nodes
+
+PUT: "/rest/nodes"
+Consume: "application/json", "application/x-protobuf"  
+Ersätter samtliga noder med en ny lista av noder  
+
 DELETE	/rest/nodes
-	
+Tar bort samtliga noder
+
 POST	/rest/nodes/inject
 POST	/rest/nodes/remove
