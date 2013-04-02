@@ -23,7 +23,8 @@ GET		/rest/status
 
 ### Resources
 
-GET: "/rest/resources"
+GET: "/rest/resources"  
+Params: details (true/false)
 Produce: "application/json", "application/x-protobuf"  
 Returnerar alla resurser som en lista. I nuläget består listan bara av id och namn, men jag tänker att en parameter "details=true" resulterar i att en fulständig lista skickas tillbaka  
 
@@ -58,32 +59,33 @@ Tar bort resursen med id = {id}
 
 ### Nodes
 
-GET: "/rest/nodes"
-Params: x, y, w (width), h (height), filter (resource id:s)  
+GET: "/rest/nodes"  
+Params: x, y, w (width), h (height), filter (resource id:s)
 Produce: "application/json", "application/x-protobuf"  
 Returnerar en lista med noder
 
-POST	/rest/nodes (inte implementerad)    
+*POST	/rest/nodes (?)    
 Consume: "application/json", "application/x-protobuf"  
 Adderar en lista med noder  
 
-PUT: "/rest/nodes" (inte implementerad)  
+*PUT: "/rest/nodes"  
 Consume: "application/json", "application/x-protobuf"  
 Ersätter samtliga noder med en ny lista av noder.  
 
 DELETE	"/rest/nodes"
+*Params: x, y, w (width), h (height), filter (resource id:s)  
 Tar bort samtliga noder.
 
 ### Node transactions
 
-POST: "/rest/node-transaction" (inte implementerad)  
+*POST: "/rest/node-transaction"
 Consume: "application/json", "application/x-protobuf"  
 Adderar och tar bort noder i en transaktion. Om något går fel rullas hela transaktionen tillbaka.  
 
-POST: "/rest/nodes/inject" (kommer tas bort)
+POST: "/rest/nodes/inject" (-)
 Consume: "application/json"    
 Adderar en lista med noder  
 
-POST: "/rest/nodes/remove" (kommer tas bort)
+POST: "/rest/nodes/remove" (-)
 Consume: "application/json"    
-Tar bort en lista med noder 
+Tar bort en lista med noder
