@@ -23,14 +23,29 @@ GET		/rest/status
 
 ### Resources
 
-GET		/rest/resources
-POST	/rest/resources
-DELETE	/rest/resources
+GET: "/rest/resources"  
+Returnerar alla resurser som en lista. I nuläget består listan bara av id och namn, men jag tänker att en parameter "details=true" resulterar i att en fulständig lista skickas tillbaka  
 
-GET		/rest/resources/{id}
-POST	/rest/resources/{id}
-PUT		/rest/resources/{id}
-DELETE	/rest/resources/{id}
+GET: "/rest/resources/{id}"  
+Hämtar data för en enskild resurs  
+
+POST: "/rest/resources"  
+Lägger till en ny root-resurs och returnerar den nya resursen med ett id genererat av servern  
+
+POST: "rest/resources/{id}  
+lägger till en ny resurs som barn till resursen med id = {id}  
+
+PUT: "/rest/resources"  
+Ersätter den befintliga listan av resurser med en helt ny lista  
+
+PUT: "/rest/resources/{id}"  
+Ersätter resursen med id = {id} med ny data  
+
+DELETE: "/rest/resources"  
+Tar bort samtliga resurser  
+
+DELETE: "/rest/resources/{id}"  
+Tar bort resursen med id = {id}  
 
 ### Nodes
 
