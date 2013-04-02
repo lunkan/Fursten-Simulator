@@ -1,15 +1,21 @@
 package fursten.rest;
 
+import java.awt.Rectangle;
+import java.awt.event.MouseWheelEvent;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.WeakHashMap;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -17,20 +23,39 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.StreamingOutput;
 import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.ext.MessageBodyWriter;
+import javax.ws.rs.ext.Provider;
 
-import fursten.rest.jaxb.ResJAXB;
-import fursten.rest.jaxb.ResourceCollection;
-import fursten.rest.jaxb.ResourceObj;
 import fursten.simulator.Facade;
-import fursten.simulator.Status;
+import fursten.simulator.node.Node;
 import fursten.simulator.resource.Resource;
+import fursten.simulator.resource.Resource.Offspring;
+import fursten.simulator.resource.Resource.Weight;
+import fursten.simulator.resource.Resource.WeightGroup;
 import fursten.simulator.resource.ResourceIndex;
 import fursten.simulator.resource.ResourceSelection;
+
+import org.fursten.message.proto.SimulatorProtos.MNode;
+import org.fursten.message.proto.SimulatorProtos.MResource;
+import org.fursten.message.proto.SimulatorProtos.MResourceStyle;
+import org.fursten.message.proto.SimulatorProtos.NodeRequest;
+import org.fursten.message.proto.SimulatorProtos.ResourceRequest;
+import org.fursten.message.proto.SimulatorProtos.MResource.Builder;
+import org.fursten.message.proto.SimulatorProtos.MResource.Tag;
+import org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape;
+import org.fursten.message.proto.SimulatorProtos.ResourceResponse;
+
+import com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Type;
+import com.google.protobuf.Message;
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.Annotation;
 
 @Path("/resources")
 public class ResourceServlet {
@@ -56,7 +81,7 @@ public class ResourceServlet {
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response newResource(@PathParam("id") String hexId, Resource resource) throws IOException {
+	public Response newChildResource(@PathParam("id") String hexId, Resource resource) throws IOException {
 		
 		int id = Integer.parseInt(hexId);//, 16);
 		
@@ -70,10 +95,61 @@ public class ResourceServlet {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public ResourceIndex getResources() {
+	public ResourceIndex getJSONResources() {
 		
 		return Facade.getResourceIndex();
 	}
+	
+	@GET
+    @Produces("application/x-protobuf")
+    public ResourceResponse getProtobufResources() {
+		
+		org.fursten.message.proto.SimulatorProtos.ResourceResponse.Builder resourceResponseBuilder = ResourceResponse.newBuilder();
+		
+		List<Resource> resources = Facade.getResources(new ResourceSelection());
+		for(Resource recource : resources) {
+			
+			Builder resourceBuilder = MResource.newBuilder();
+			resourceBuilder.setKey(recource.getKey());
+			resourceBuilder.setName(recource.getName());
+			resourceBuilder.setThreshold(recource.getThreshold());
+			
+			//Weights
+			if(recource.hasWeights()) {
+				
+				for(int i = 0; i < recource.getWeightGroups().size(); i++) {
+					
+					for(Weight weight : recource.getWeightGroups().get(i).weights) {
+						
+						resourceBuilder.addWeight(org.fursten.message.proto.SimulatorProtos.MResource.Weight.newBuilder()
+							.setResourceReference(weight.resource)
+							.setGroup(i)
+							.setValue(weight.value)
+							.build()
+						);
+					}
+				}
+			}
+			
+			//Offsprings
+			if(recource.hasOffsprings()) {
+				for(Offspring offspring : recource.getOffsprings()) {
+				
+					resourceBuilder.addOffspring(org.fursten.message.proto.SimulatorProtos.MResource.Offspring.newBuilder()
+						.setResourceReference(offspring.resource)
+						.setValue(offspring.value)
+						.build()
+					);
+				}
+			}
+			
+			resourceBuilder.build();
+			resourceResponseBuilder.addResource(resourceBuilder);
+		}
+		
+		resourceResponseBuilder.setSuccess(true);
+		return resourceResponseBuilder.build();
+    }
 	
 	@GET
 	@Path("/{id}")
@@ -98,15 +174,66 @@ public class ResourceServlet {
 	}
 	
 	@PUT
+	@Consumes("application/x-protobuf")
+	public Response replaceResources(ResourceResponse resourceResponse) throws IOException {
+		
+		System.out.println("@Consumes(application/x-protobuf)");
+		
+		//Delete all resources
+		System.out.println("DELETED ALL");
+		Set<Integer> keys = Facade.getResourceIndex().getKeySet();
+		if(keys.size() > 0)
+			if(!Facade.editResources(keys, null))
+				return Response.status(Response.Status.BAD_REQUEST).build();
+		
+		ArrayList<Resource> resources = new ArrayList<Resource>();
+		for(MResource mresource : resourceResponse.getResourceList()) {
+			
+			//Weights
+			ArrayList<WeightGroup> weightGroups = new ArrayList<WeightGroup>();
+			for(org.fursten.message.proto.SimulatorProtos.MResource.Weight mweight : mresource.getWeightList()) {
+				
+				while(weightGroups.size() < (mweight.getGroup() +1))
+					weightGroups.add(new WeightGroup());
+				
+				Weight weight = new Weight();
+				weight.value = mweight.getValue();
+				weight.resource = mweight.getResourceReference();
+				weightGroups.get(mweight.getGroup()).weights.add(weight);
+			}
+			
+			//Offsprings
+			ArrayList<Offspring> offsprings = new ArrayList<Offspring>();
+			for(org.fursten.message.proto.SimulatorProtos.MResource.Offspring moffspring : mresource.getOffspringList()) {
+				
+				Offspring offspring = new Offspring();
+				offspring.resource = moffspring.getResourceReference();
+				offspring.value = moffspring.getValue();
+				offsprings.add(offspring);
+			}
+			
+			Resource resource = new Resource();
+			resource.setKey(mresource.getKey());
+			resource.setName(mresource.getName());
+			resource.setThreshold(mresource.getThreshold());
+			resource.setWeightGroups(weightGroups);
+			resource.setOffsprings(offsprings);
+			resources.add(resource);
+		}
+		
+		System.out.println("PARSED");
+		
+		if(Facade.editResources(null, resources))
+			return Response.status(Response.Status.OK).build();
+		else
+			return Response.status(Response.Status.BAD_REQUEST).build();
+	}
+	
+	@PUT
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response editResource(@PathParam("id") String hexId, Resource resource) throws IOException {
-		
-		System.out.println("PUT resource " + hexId);
-		System.out.println("PUT resource " + resource);
-		
-		//int id = Integer.parseInt(hexId);//, 16);
 		
 		ArrayList<Resource> resources = new ArrayList<Resource>();
 		resources.add(resource);

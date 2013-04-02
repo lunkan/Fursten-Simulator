@@ -69,6 +69,24 @@ public class Resource implements Serializable {
 		return this.weightGroups;
 	}
 	
+	public boolean hasWeights() {
+		if (this.weightGroups == null)
+			return false;
+		else if(this.weightGroups.size() == 0)
+			return false;
+		else
+			return true;
+	}
+	
+	public boolean hasOffsprings() {
+		if (this.offsprings == null)
+			return false;
+		else if(this.offsprings.size() == 0)
+			return false;
+		else
+			return true;
+	}
+	
 	public String toString() {
 		
 		String weightStr = "[";

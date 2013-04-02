@@ -36,8 +36,10 @@ public class ResourceIndex {
 	public Set<Integer> getKeySet() {
 		
 		HashSet<Integer> keys = new HashSet<Integer>();
-		for(ResourceItem item : resources) {
-			keys.add(item.key);
+		if(resources != null) {
+			for(ResourceItem item : resources) {
+				keys.add(item.key);
+			}
 		}
 		
 		return keys;

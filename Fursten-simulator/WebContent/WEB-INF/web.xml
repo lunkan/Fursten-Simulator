@@ -12,6 +12,13 @@
       <param-name>com.sun.jersey.config.property.packages</param-name>
       <param-value>fursten.rest</param-value>
     </init-param>
+    <init-param>
+        <param-name>jaxrs.providers</param-name>
+        <param-value>
+            fursten.rest.providers.ProtobufMessageBodyWriter
+       		fursten.rest.providers.ProtobufMessageBodyReader
+        </param-value>
+    </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
