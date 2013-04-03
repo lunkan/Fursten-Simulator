@@ -20,10 +20,6 @@ API
 !: Funktionaliteten är inte implementerad ännu  
 (-): Funktionaliteten kan komma att tas bort  
 
-### Status
-
-GET		/rest/status
-
 ### Resources
 
 **GET:** "/rest/resources"  
