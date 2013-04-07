@@ -21,6 +21,37 @@ public class ResourceKeyManager {
 		return resourceKeys.contains(key);
 	}
 	
+	public Set<Integer> getKeysByMethod(int key, ResourceSelectMethod method) {
+		
+		switch(method) {
+			case CHILDREN:
+				return getChildren(key);
+			case PARENTS:
+				return getParents(key);
+			default:
+				return null;
+		}
+	}
+	
+	public Set<Integer> getKeysByMethod(Set<Integer> keys, ResourceSelectMethod method) {
+		
+		TreeSet<Integer> results = new TreeSet<Integer>();
+		switch(method) {
+			case CHILDREN:
+				for(Integer key : keys) {
+					results.addAll(getChildren(key));
+				}
+				return results;
+			case PARENTS:
+				for(Integer key : keys) {
+					results.addAll(getParents(key));
+				}
+				return results;
+			default:
+				return null;
+		}
+	}
+	
 	public TreeSet<Integer> getChildren(int key) {
 		
 		TreeSet<Integer> results = new TreeSet<Integer>();

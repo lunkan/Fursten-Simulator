@@ -43,15 +43,15 @@ import fursten.simulator.resource.Resource.WeightGroup;
 import fursten.simulator.resource.ResourceIndex;
 import fursten.simulator.resource.ResourceSelection;
 
-import org.fursten.message.proto.SimulatorProtos.MNode;
-import org.fursten.message.proto.SimulatorProtos.MResource;
-import org.fursten.message.proto.SimulatorProtos.MResourceStyle;
-import org.fursten.message.proto.SimulatorProtos.NodeRequest;
-import org.fursten.message.proto.SimulatorProtos.ResourceRequest;
-import org.fursten.message.proto.SimulatorProtos.MResource.Builder;
-import org.fursten.message.proto.SimulatorProtos.MResource.Tag;
-import org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape;
-import org.fursten.message.proto.SimulatorProtos.ResourceResponse;
+import org.fursten.message.proto._SimulatorProtos.MNode;
+import org.fursten.message.proto._SimulatorProtos.MResource;
+import org.fursten.message.proto._SimulatorProtos.MResourceStyle;
+import org.fursten.message.proto._SimulatorProtos.NodeRequest;
+import org.fursten.message.proto._SimulatorProtos.ResourceRequest;
+import org.fursten.message.proto._SimulatorProtos.MResource.Builder;
+import org.fursten.message.proto._SimulatorProtos.MResource.Tag;
+import org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape;
+import org.fursten.message.proto._SimulatorProtos.ResourceResponse;
 
 import com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Type;
 import com.google.protobuf.Message;
@@ -104,7 +104,7 @@ public class ResourceServlet {
     @Produces("application/x-protobuf")
     public ResourceResponse getProtobufResources() {
 		
-		org.fursten.message.proto.SimulatorProtos.ResourceResponse.Builder resourceResponseBuilder = ResourceResponse.newBuilder();
+		org.fursten.message.proto._SimulatorProtos.ResourceResponse.Builder resourceResponseBuilder = ResourceResponse.newBuilder();
 		
 		List<Resource> resources = Facade.getResources(new ResourceSelection());
 		for(Resource recource : resources) {
@@ -121,7 +121,7 @@ public class ResourceServlet {
 					
 					for(Weight weight : recource.getWeightGroups().get(i).weights) {
 						
-						resourceBuilder.addWeight(org.fursten.message.proto.SimulatorProtos.MResource.Weight.newBuilder()
+						resourceBuilder.addWeight(org.fursten.message.proto._SimulatorProtos.MResource.Weight.newBuilder()
 							.setResourceReference(weight.resource)
 							.setGroup(i)
 							.setValue(weight.value)
@@ -135,7 +135,7 @@ public class ResourceServlet {
 			if(recource.hasOffsprings()) {
 				for(Offspring offspring : recource.getOffsprings()) {
 				
-					resourceBuilder.addOffspring(org.fursten.message.proto.SimulatorProtos.MResource.Offspring.newBuilder()
+					resourceBuilder.addOffspring(org.fursten.message.proto._SimulatorProtos.MResource.Offspring.newBuilder()
 						.setResourceReference(offspring.resource)
 						.setValue(offspring.value)
 						.build()
@@ -191,7 +191,7 @@ public class ResourceServlet {
 			
 			//Weights
 			ArrayList<WeightGroup> weightGroups = new ArrayList<WeightGroup>();
-			for(org.fursten.message.proto.SimulatorProtos.MResource.Weight mweight : mresource.getWeightList()) {
+			for(org.fursten.message.proto._SimulatorProtos.MResource.Weight mweight : mresource.getWeightList()) {
 				
 				while(weightGroups.size() < (mweight.getGroup() +1))
 					weightGroups.add(new WeightGroup());
@@ -204,7 +204,7 @@ public class ResourceServlet {
 			
 			//Offsprings
 			ArrayList<Offspring> offsprings = new ArrayList<Offspring>();
-			for(org.fursten.message.proto.SimulatorProtos.MResource.Offspring moffspring : mresource.getOffspringList()) {
+			for(org.fursten.message.proto._SimulatorProtos.MResource.Offspring moffspring : mresource.getOffspringList()) {
 				
 				Offspring offspring = new Offspring();
 				offspring.resource = moffspring.getResourceReference();

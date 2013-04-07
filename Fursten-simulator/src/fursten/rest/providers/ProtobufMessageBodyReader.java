@@ -17,11 +17,11 @@ import com.google.protobuf.GeneratedMessage;
 import com.google.protobuf.Message;
 
 @Provider
-@Consumes("application/x-protobuf")
+@Consumes("application/x-protobuff")
 public class ProtobufMessageBodyReader implements MessageBodyReader<Message> {
 
 	public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-		System.out.println("@Reader isReadable");
+		System.out.println("@Reader isReadable 2");
         return Message.class.isAssignableFrom(type);
     }
 
@@ -29,7 +29,7 @@ public class ProtobufMessageBodyReader implements MessageBodyReader<Message> {
                 MediaType mediaType, MultivaluedMap<String, String> httpHeaders, 
                 InputStream entityStream) throws IOException, WebApplicationException {
     	
-    	System.out.println("@Reader readFrom");
+    	System.out.println("@Reader readFrom 2");
     	
         try {
         	Method newBuilder = type.getMethod("newBuilder");

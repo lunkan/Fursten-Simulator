@@ -3,8 +3,8 @@
 
 package org.fursten.message.proto;
 
-public final class SimulatorProtos {
-  private SimulatorProtos() {}
+public final class _SimulatorProtos {
+  private _SimulatorProtos() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
@@ -19,7 +19,7 @@ public final class SimulatorProtos {
     /**
      * <code>required .messages.Note.NoteType type = 1;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note.NoteType getType();
+    org.fursten.message.proto._SimulatorProtos.Note.NoteType getType();
 
     // optional .messages.Note.NoteCode code = 2;
     /**
@@ -29,7 +29,7 @@ public final class SimulatorProtos {
     /**
      * <code>optional .messages.Note.NoteCode code = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note.NoteCode getCode();
+    org.fursten.message.proto._SimulatorProtos.Note.NoteCode getCode();
 
     // optional string message = 3;
     /**
@@ -99,7 +99,7 @@ public final class SimulatorProtos {
             }
             case 8: {
               int rawValue = input.readEnum();
-              org.fursten.message.proto.SimulatorProtos.Note.NoteType value = org.fursten.message.proto.SimulatorProtos.Note.NoteType.valueOf(rawValue);
+              org.fursten.message.proto._SimulatorProtos.Note.NoteType value = org.fursten.message.proto._SimulatorProtos.Note.NoteType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -110,7 +110,7 @@ public final class SimulatorProtos {
             }
             case 16: {
               int rawValue = input.readEnum();
-              org.fursten.message.proto.SimulatorProtos.Note.NoteCode value = org.fursten.message.proto.SimulatorProtos.Note.NoteCode.valueOf(rawValue);
+              org.fursten.message.proto._SimulatorProtos.Note.NoteCode value = org.fursten.message.proto._SimulatorProtos.Note.NoteCode.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(2, rawValue);
               } else {
@@ -138,14 +138,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_Note_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_Note_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_Note_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_Note_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.Note.class, org.fursten.message.proto.SimulatorProtos.Note.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.Note.class, org.fursten.message.proto._SimulatorProtos.Note.Builder.class);
     }
 
     public static com.google.protobuf.Parser<Note> PARSER =
@@ -229,7 +229,7 @@ public final class SimulatorProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.Note.getDescriptor().getEnumTypes().get(0);
+        return org.fursten.message.proto._SimulatorProtos.Note.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final NoteType[] VALUES = values();
@@ -365,7 +365,7 @@ public final class SimulatorProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.Note.getDescriptor().getEnumTypes().get(1);
+        return org.fursten.message.proto._SimulatorProtos.Note.getDescriptor().getEnumTypes().get(1);
       }
 
       private static final NoteCode[] VALUES = values();
@@ -393,7 +393,7 @@ public final class SimulatorProtos {
     private int bitField0_;
     // required .messages.Note.NoteType type = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
-    private org.fursten.message.proto.SimulatorProtos.Note.NoteType type_;
+    private org.fursten.message.proto._SimulatorProtos.Note.NoteType type_;
     /**
      * <code>required .messages.Note.NoteType type = 1;</code>
      */
@@ -403,13 +403,13 @@ public final class SimulatorProtos {
     /**
      * <code>required .messages.Note.NoteType type = 1;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note.NoteType getType() {
+    public org.fursten.message.proto._SimulatorProtos.Note.NoteType getType() {
       return type_;
     }
 
     // optional .messages.Note.NoteCode code = 2;
     public static final int CODE_FIELD_NUMBER = 2;
-    private org.fursten.message.proto.SimulatorProtos.Note.NoteCode code_;
+    private org.fursten.message.proto._SimulatorProtos.Note.NoteCode code_;
     /**
      * <code>optional .messages.Note.NoteCode code = 2;</code>
      */
@@ -419,7 +419,7 @@ public final class SimulatorProtos {
     /**
      * <code>optional .messages.Note.NoteCode code = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note.NoteCode getCode() {
+    public org.fursten.message.proto._SimulatorProtos.Note.NoteCode getCode() {
       return code_;
     }
 
@@ -467,8 +467,8 @@ public final class SimulatorProtos {
     }
 
     private void initFields() {
-      type_ = org.fursten.message.proto.SimulatorProtos.Note.NoteType.ERROR;
-      code_ = org.fursten.message.proto.SimulatorProtos.Note.NoteCode.UNKNOWN;
+      type_ = org.fursten.message.proto._SimulatorProtos.Note.NoteType.ERROR;
+      code_ = org.fursten.message.proto._SimulatorProtos.Note.NoteCode.UNKNOWN;
       message_ = "";
     }
     private byte memoizedIsInitialized = -1;
@@ -529,53 +529,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.Note parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.Note parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.Note parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.Note parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.Note parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.Note parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.Note parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.Note parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.Note parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.Note parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.Note parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.Note parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.Note parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.Note parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.Note parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.Note parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.Note parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.Note parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.Note parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.Note parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -584,7 +584,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.Note prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.Note prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -600,17 +600,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.NoteOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.NoteOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_Note_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_Note_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_Note_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_Note_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.Note.class, org.fursten.message.proto.SimulatorProtos.Note.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.Note.class, org.fursten.message.proto._SimulatorProtos.Note.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.Note.newBuilder()
@@ -633,9 +633,9 @@ public final class SimulatorProtos {
 
       public Builder clear() {
         super.clear();
-        type_ = org.fursten.message.proto.SimulatorProtos.Note.NoteType.ERROR;
+        type_ = org.fursten.message.proto._SimulatorProtos.Note.NoteType.ERROR;
         bitField0_ = (bitField0_ & ~0x00000001);
-        code_ = org.fursten.message.proto.SimulatorProtos.Note.NoteCode.UNKNOWN;
+        code_ = org.fursten.message.proto._SimulatorProtos.Note.NoteCode.UNKNOWN;
         bitField0_ = (bitField0_ & ~0x00000002);
         message_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -648,23 +648,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_Note_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_Note_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.Note getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.Note getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.Note build() {
-        org.fursten.message.proto.SimulatorProtos.Note result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.Note build() {
+        org.fursten.message.proto._SimulatorProtos.Note result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.Note buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.Note result = new org.fursten.message.proto.SimulatorProtos.Note(this);
+      public org.fursten.message.proto._SimulatorProtos.Note buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.Note result = new org.fursten.message.proto._SimulatorProtos.Note(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -685,16 +685,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.Note) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.Note)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.Note) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.Note)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.Note other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.Note other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance()) return this;
         if (other.hasType()) {
           setType(other.getType());
         }
@@ -722,11 +722,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.Note parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.Note parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.Note) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.Note) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -738,7 +738,7 @@ public final class SimulatorProtos {
       private int bitField0_;
 
       // required .messages.Note.NoteType type = 1;
-      private org.fursten.message.proto.SimulatorProtos.Note.NoteType type_ = org.fursten.message.proto.SimulatorProtos.Note.NoteType.ERROR;
+      private org.fursten.message.proto._SimulatorProtos.Note.NoteType type_ = org.fursten.message.proto._SimulatorProtos.Note.NoteType.ERROR;
       /**
        * <code>required .messages.Note.NoteType type = 1;</code>
        */
@@ -748,13 +748,13 @@ public final class SimulatorProtos {
       /**
        * <code>required .messages.Note.NoteType type = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.NoteType getType() {
+      public org.fursten.message.proto._SimulatorProtos.Note.NoteType getType() {
         return type_;
       }
       /**
        * <code>required .messages.Note.NoteType type = 1;</code>
        */
-      public Builder setType(org.fursten.message.proto.SimulatorProtos.Note.NoteType value) {
+      public Builder setType(org.fursten.message.proto._SimulatorProtos.Note.NoteType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -768,13 +768,13 @@ public final class SimulatorProtos {
        */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = org.fursten.message.proto.SimulatorProtos.Note.NoteType.ERROR;
+        type_ = org.fursten.message.proto._SimulatorProtos.Note.NoteType.ERROR;
         onChanged();
         return this;
       }
 
       // optional .messages.Note.NoteCode code = 2;
-      private org.fursten.message.proto.SimulatorProtos.Note.NoteCode code_ = org.fursten.message.proto.SimulatorProtos.Note.NoteCode.UNKNOWN;
+      private org.fursten.message.proto._SimulatorProtos.Note.NoteCode code_ = org.fursten.message.proto._SimulatorProtos.Note.NoteCode.UNKNOWN;
       /**
        * <code>optional .messages.Note.NoteCode code = 2;</code>
        */
@@ -784,13 +784,13 @@ public final class SimulatorProtos {
       /**
        * <code>optional .messages.Note.NoteCode code = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.NoteCode getCode() {
+      public org.fursten.message.proto._SimulatorProtos.Note.NoteCode getCode() {
         return code_;
       }
       /**
        * <code>optional .messages.Note.NoteCode code = 2;</code>
        */
-      public Builder setCode(org.fursten.message.proto.SimulatorProtos.Note.NoteCode value) {
+      public Builder setCode(org.fursten.message.proto._SimulatorProtos.Note.NoteCode value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -804,7 +804,7 @@ public final class SimulatorProtos {
        */
       public Builder clearCode() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        code_ = org.fursten.message.proto.SimulatorProtos.Note.NoteCode.UNKNOWN;
+        code_ = org.fursten.message.proto._SimulatorProtos.Note.NoteCode.UNKNOWN;
         onChanged();
         return this;
       }
@@ -1007,14 +1007,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MNode_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MNode_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MNode_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MNode_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.MNode.class, org.fursten.message.proto.SimulatorProtos.MNode.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.MNode.class, org.fursten.message.proto._SimulatorProtos.MNode.Builder.class);
     }
 
     public static com.google.protobuf.Parser<MNode> PARSER =
@@ -1152,53 +1152,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MNode parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MNode parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1207,7 +1207,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.MNode prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.MNode prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1223,17 +1223,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MNode_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MNode_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MNode_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MNode_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.MNode.class, org.fursten.message.proto.SimulatorProtos.MNode.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.MNode.class, org.fursten.message.proto._SimulatorProtos.MNode.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.MNode.newBuilder()
@@ -1271,23 +1271,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MNode_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MNode_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.MNode getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.MNode.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.MNode getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.MNode.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.MNode build() {
-        org.fursten.message.proto.SimulatorProtos.MNode result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.MNode build() {
+        org.fursten.message.proto._SimulatorProtos.MNode result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.MNode buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.MNode result = new org.fursten.message.proto.SimulatorProtos.MNode(this);
+      public org.fursten.message.proto._SimulatorProtos.MNode buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.MNode result = new org.fursten.message.proto._SimulatorProtos.MNode(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1308,16 +1308,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.MNode) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.MNode)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.MNode) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.MNode)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.MNode other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.MNode.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.MNode other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.MNode.getDefaultInstance()) return this;
         if (other.hasX()) {
           setX(other.getX());
         }
@@ -1351,11 +1351,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.MNode parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.MNode parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.MNode) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.MNode) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1483,12 +1483,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MNode deleteNodes = 1;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> 
         getDeleteNodesList();
     /**
      * <code>repeated .messages.MNode deleteNodes = 1;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MNode getDeleteNodes(int index);
+    org.fursten.message.proto._SimulatorProtos.MNode getDeleteNodes(int index);
     /**
      * <code>repeated .messages.MNode deleteNodes = 1;</code>
      */
@@ -1496,24 +1496,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MNode deleteNodes = 1;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
         getDeleteNodesOrBuilderList();
     /**
      * <code>repeated .messages.MNode deleteNodes = 1;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder getDeleteNodesOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder getDeleteNodesOrBuilder(
         int index);
 
     // repeated .messages.MNode putNodes = 2;
     /**
      * <code>repeated .messages.MNode putNodes = 2;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> 
         getPutNodesList();
     /**
      * <code>repeated .messages.MNode putNodes = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MNode getPutNodes(int index);
+    org.fursten.message.proto._SimulatorProtos.MNode getPutNodes(int index);
     /**
      * <code>repeated .messages.MNode putNodes = 2;</code>
      */
@@ -1521,24 +1521,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MNode putNodes = 2;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
         getPutNodesOrBuilderList();
     /**
      * <code>repeated .messages.MNode putNodes = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder getPutNodesOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder getPutNodesOrBuilder(
         int index);
 
     // repeated .messages.NodeRequest.NodeSelection getNodes = 3;
     /**
      * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection> 
         getGetNodesList();
     /**
      * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection getGetNodes(int index);
+    org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection getGetNodes(int index);
     /**
      * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
      */
@@ -1546,12 +1546,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> 
         getGetNodesOrBuilderList();
     /**
      * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder getGetNodesOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder getGetNodesOrBuilder(
         int index);
   }
   /**
@@ -1607,26 +1607,26 @@ public final class SimulatorProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                deleteNodes_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MNode>();
+                deleteNodes_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MNode>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              deleteNodes_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MNode.PARSER, extensionRegistry));
+              deleteNodes_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MNode.PARSER, extensionRegistry));
               break;
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                putNodes_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MNode>();
+                putNodes_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MNode>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              putNodes_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MNode.PARSER, extensionRegistry));
+              putNodes_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MNode.PARSER, extensionRegistry));
               break;
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                getNodes_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection>();
+                getNodes_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              getNodes_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.PARSER, extensionRegistry));
+              getNodes_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.PARSER, extensionRegistry));
               break;
             }
           }
@@ -1652,14 +1652,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.NodeRequest.class, org.fursten.message.proto.SimulatorProtos.NodeRequest.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.NodeRequest.class, org.fursten.message.proto._SimulatorProtos.NodeRequest.Builder.class);
     }
 
     public static com.google.protobuf.Parser<NodeRequest> PARSER =
@@ -1805,14 +1805,14 @@ public final class SimulatorProtos {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.class, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.class, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder.class);
       }
 
       public static com.google.protobuf.Parser<NodeSelection> PARSER =
@@ -1978,53 +1978,53 @@ public final class SimulatorProtos {
         return super.writeReplace();
       }
 
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseFrom(byte[] data)
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseFrom(java.io.InputStream input)
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseDelimitedFrom(java.io.InputStream input)
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseDelimitedFrom(
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -2033,7 +2033,7 @@ public final class SimulatorProtos {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection prototype) {
+      public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
@@ -2049,17 +2049,17 @@ public final class SimulatorProtos {
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder {
+         implements org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_descriptor;
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_fieldAccessorTable
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.class, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder.class);
+                  org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.class, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder.class);
         }
 
         // Construct using org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.newBuilder()
@@ -2099,23 +2099,23 @@ public final class SimulatorProtos {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_descriptor;
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_NodeSelection_descriptor;
         }
 
-        public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection getDefaultInstanceForType() {
-          return org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.getDefaultInstance();
+        public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection getDefaultInstanceForType() {
+          return org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.getDefaultInstance();
         }
 
-        public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection build() {
-          org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection result = buildPartial();
+        public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection build() {
+          org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection buildPartial() {
-          org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection result = new org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection(this);
+        public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection buildPartial() {
+          org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection result = new org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2140,16 +2140,16 @@ public final class SimulatorProtos {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection) {
-            return mergeFrom((org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection)other);
+          if (other instanceof org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection) {
+            return mergeFrom((org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection other) {
-          if (other == org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection other) {
+          if (other == org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.getDefaultInstance()) return this;
           if (other.hasX()) {
             setX(other.getX());
           }
@@ -2190,11 +2190,11 @@ public final class SimulatorProtos {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection parsedMessage = null;
+          org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection) e.getUnfinishedMessage();
+            parsedMessage = (org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -2350,17 +2350,17 @@ public final class SimulatorProtos {
 
     // repeated .messages.MNode deleteNodes = 1;
     public static final int DELETENODES_FIELD_NUMBER = 1;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> deleteNodes_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> deleteNodes_;
     /**
      * <code>repeated .messages.MNode deleteNodes = 1;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> getDeleteNodesList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> getDeleteNodesList() {
       return deleteNodes_;
     }
     /**
      * <code>repeated .messages.MNode deleteNodes = 1;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
         getDeleteNodesOrBuilderList() {
       return deleteNodes_;
     }
@@ -2373,30 +2373,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MNode deleteNodes = 1;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MNode getDeleteNodes(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MNode getDeleteNodes(int index) {
       return deleteNodes_.get(index);
     }
     /**
      * <code>repeated .messages.MNode deleteNodes = 1;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder getDeleteNodesOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder getDeleteNodesOrBuilder(
         int index) {
       return deleteNodes_.get(index);
     }
 
     // repeated .messages.MNode putNodes = 2;
     public static final int PUTNODES_FIELD_NUMBER = 2;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> putNodes_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> putNodes_;
     /**
      * <code>repeated .messages.MNode putNodes = 2;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> getPutNodesList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> getPutNodesList() {
       return putNodes_;
     }
     /**
      * <code>repeated .messages.MNode putNodes = 2;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
         getPutNodesOrBuilderList() {
       return putNodes_;
     }
@@ -2409,30 +2409,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MNode putNodes = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MNode getPutNodes(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MNode getPutNodes(int index) {
       return putNodes_.get(index);
     }
     /**
      * <code>repeated .messages.MNode putNodes = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder getPutNodesOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder getPutNodesOrBuilder(
         int index) {
       return putNodes_.get(index);
     }
 
     // repeated .messages.NodeRequest.NodeSelection getNodes = 3;
     public static final int GETNODES_FIELD_NUMBER = 3;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection> getNodes_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection> getNodes_;
     /**
      * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection> getGetNodesList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection> getGetNodesList() {
       return getNodes_;
     }
     /**
      * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> 
         getGetNodesOrBuilderList() {
       return getNodes_;
     }
@@ -2445,13 +2445,13 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection getGetNodes(int index) {
+    public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection getGetNodes(int index) {
       return getNodes_.get(index);
     }
     /**
      * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder getGetNodesOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder getGetNodesOrBuilder(
         int index) {
       return getNodes_.get(index);
     }
@@ -2533,53 +2533,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2588,7 +2588,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.NodeRequest prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.NodeRequest prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -2604,17 +2604,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.NodeRequestOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.NodeRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.NodeRequest.class, org.fursten.message.proto.SimulatorProtos.NodeRequest.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.NodeRequest.class, org.fursten.message.proto._SimulatorProtos.NodeRequest.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.NodeRequest.newBuilder()
@@ -2667,23 +2667,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeRequest_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeRequest_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.NodeRequest getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.NodeRequest.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.NodeRequest getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.NodeRequest.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.NodeRequest build() {
-        org.fursten.message.proto.SimulatorProtos.NodeRequest result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.NodeRequest build() {
+        org.fursten.message.proto._SimulatorProtos.NodeRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.NodeRequest buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.NodeRequest result = new org.fursten.message.proto.SimulatorProtos.NodeRequest(this);
+      public org.fursten.message.proto._SimulatorProtos.NodeRequest buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.NodeRequest result = new org.fursten.message.proto._SimulatorProtos.NodeRequest(this);
         int from_bitField0_ = bitField0_;
         if (deleteNodesBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2717,16 +2717,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.NodeRequest) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.NodeRequest)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.NodeRequest) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.NodeRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.NodeRequest other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.NodeRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.NodeRequest other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.NodeRequest.getDefaultInstance()) return this;
         if (deleteNodesBuilder_ == null) {
           if (!other.deleteNodes_.isEmpty()) {
             if (deleteNodes_.isEmpty()) {
@@ -2835,11 +2835,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.NodeRequest parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.NodeRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.NodeRequest) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.NodeRequest) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2851,22 +2851,22 @@ public final class SimulatorProtos {
       private int bitField0_;
 
       // repeated .messages.MNode deleteNodes = 1;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> deleteNodes_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> deleteNodes_ =
         java.util.Collections.emptyList();
       private void ensureDeleteNodesIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          deleteNodes_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MNode>(deleteNodes_);
+          deleteNodes_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MNode>(deleteNodes_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MNode, org.fursten.message.proto.SimulatorProtos.MNode.Builder, org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> deleteNodesBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MNode, org.fursten.message.proto._SimulatorProtos.MNode.Builder, org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> deleteNodesBuilder_;
 
       /**
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> getDeleteNodesList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> getDeleteNodesList() {
         if (deleteNodesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(deleteNodes_);
         } else {
@@ -2886,7 +2886,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode getDeleteNodes(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MNode getDeleteNodes(int index) {
         if (deleteNodesBuilder_ == null) {
           return deleteNodes_.get(index);
         } else {
@@ -2897,7 +2897,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
       public Builder setDeleteNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode value) {
         if (deleteNodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2914,7 +2914,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
       public Builder setDeleteNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode.Builder builderForValue) {
         if (deleteNodesBuilder_ == null) {
           ensureDeleteNodesIsMutable();
           deleteNodes_.set(index, builderForValue.build());
@@ -2927,7 +2927,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
-      public Builder addDeleteNodes(org.fursten.message.proto.SimulatorProtos.MNode value) {
+      public Builder addDeleteNodes(org.fursten.message.proto._SimulatorProtos.MNode value) {
         if (deleteNodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2944,7 +2944,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
       public Builder addDeleteNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode value) {
         if (deleteNodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2961,7 +2961,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
       public Builder addDeleteNodes(
-          org.fursten.message.proto.SimulatorProtos.MNode.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MNode.Builder builderForValue) {
         if (deleteNodesBuilder_ == null) {
           ensureDeleteNodesIsMutable();
           deleteNodes_.add(builderForValue.build());
@@ -2975,7 +2975,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
       public Builder addDeleteNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode.Builder builderForValue) {
         if (deleteNodesBuilder_ == null) {
           ensureDeleteNodesIsMutable();
           deleteNodes_.add(index, builderForValue.build());
@@ -2989,7 +2989,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
       public Builder addAllDeleteNodes(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MNode> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MNode> values) {
         if (deleteNodesBuilder_ == null) {
           ensureDeleteNodesIsMutable();
           super.addAll(values, deleteNodes_);
@@ -3028,14 +3028,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode.Builder getDeleteNodesBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MNode.Builder getDeleteNodesBuilder(
           int index) {
         return getDeleteNodesFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder getDeleteNodesOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder getDeleteNodesOrBuilder(
           int index) {
         if (deleteNodesBuilder_ == null) {
           return deleteNodes_.get(index);  } else {
@@ -3045,7 +3045,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
            getDeleteNodesOrBuilderList() {
         if (deleteNodesBuilder_ != null) {
           return deleteNodesBuilder_.getMessageOrBuilderList();
@@ -3056,31 +3056,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode.Builder addDeleteNodesBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MNode.Builder addDeleteNodesBuilder() {
         return getDeleteNodesFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MNode.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MNode.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode.Builder addDeleteNodesBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MNode.Builder addDeleteNodesBuilder(
           int index) {
         return getDeleteNodesFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MNode.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MNode.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MNode deleteNodes = 1;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MNode.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MNode.Builder> 
            getDeleteNodesBuilderList() {
         return getDeleteNodesFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MNode, org.fursten.message.proto.SimulatorProtos.MNode.Builder, org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MNode, org.fursten.message.proto._SimulatorProtos.MNode.Builder, org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
           getDeleteNodesFieldBuilder() {
         if (deleteNodesBuilder_ == null) {
           deleteNodesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MNode, org.fursten.message.proto.SimulatorProtos.MNode.Builder, org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MNode, org.fursten.message.proto._SimulatorProtos.MNode.Builder, org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder>(
                   deleteNodes_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -3091,22 +3091,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MNode putNodes = 2;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> putNodes_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> putNodes_ =
         java.util.Collections.emptyList();
       private void ensurePutNodesIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          putNodes_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MNode>(putNodes_);
+          putNodes_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MNode>(putNodes_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MNode, org.fursten.message.proto.SimulatorProtos.MNode.Builder, org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> putNodesBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MNode, org.fursten.message.proto._SimulatorProtos.MNode.Builder, org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> putNodesBuilder_;
 
       /**
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> getPutNodesList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> getPutNodesList() {
         if (putNodesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(putNodes_);
         } else {
@@ -3126,7 +3126,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode getPutNodes(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MNode getPutNodes(int index) {
         if (putNodesBuilder_ == null) {
           return putNodes_.get(index);
         } else {
@@ -3137,7 +3137,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
       public Builder setPutNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode value) {
         if (putNodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3154,7 +3154,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
       public Builder setPutNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode.Builder builderForValue) {
         if (putNodesBuilder_ == null) {
           ensurePutNodesIsMutable();
           putNodes_.set(index, builderForValue.build());
@@ -3167,7 +3167,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
-      public Builder addPutNodes(org.fursten.message.proto.SimulatorProtos.MNode value) {
+      public Builder addPutNodes(org.fursten.message.proto._SimulatorProtos.MNode value) {
         if (putNodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3184,7 +3184,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
       public Builder addPutNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode value) {
         if (putNodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3201,7 +3201,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
       public Builder addPutNodes(
-          org.fursten.message.proto.SimulatorProtos.MNode.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MNode.Builder builderForValue) {
         if (putNodesBuilder_ == null) {
           ensurePutNodesIsMutable();
           putNodes_.add(builderForValue.build());
@@ -3215,7 +3215,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
       public Builder addPutNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode.Builder builderForValue) {
         if (putNodesBuilder_ == null) {
           ensurePutNodesIsMutable();
           putNodes_.add(index, builderForValue.build());
@@ -3229,7 +3229,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
       public Builder addAllPutNodes(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MNode> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MNode> values) {
         if (putNodesBuilder_ == null) {
           ensurePutNodesIsMutable();
           super.addAll(values, putNodes_);
@@ -3268,14 +3268,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode.Builder getPutNodesBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MNode.Builder getPutNodesBuilder(
           int index) {
         return getPutNodesFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder getPutNodesOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder getPutNodesOrBuilder(
           int index) {
         if (putNodesBuilder_ == null) {
           return putNodes_.get(index);  } else {
@@ -3285,7 +3285,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
            getPutNodesOrBuilderList() {
         if (putNodesBuilder_ != null) {
           return putNodesBuilder_.getMessageOrBuilderList();
@@ -3296,31 +3296,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode.Builder addPutNodesBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MNode.Builder addPutNodesBuilder() {
         return getPutNodesFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MNode.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MNode.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode.Builder addPutNodesBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MNode.Builder addPutNodesBuilder(
           int index) {
         return getPutNodesFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MNode.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MNode.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MNode putNodes = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MNode.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MNode.Builder> 
            getPutNodesBuilderList() {
         return getPutNodesFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MNode, org.fursten.message.proto.SimulatorProtos.MNode.Builder, org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MNode, org.fursten.message.proto._SimulatorProtos.MNode.Builder, org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
           getPutNodesFieldBuilder() {
         if (putNodesBuilder_ == null) {
           putNodesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MNode, org.fursten.message.proto.SimulatorProtos.MNode.Builder, org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MNode, org.fursten.message.proto._SimulatorProtos.MNode.Builder, org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder>(
                   putNodes_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -3331,22 +3331,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.NodeRequest.NodeSelection getNodes = 3;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection> getNodes_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection> getNodes_ =
         java.util.Collections.emptyList();
       private void ensureGetNodesIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          getNodes_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection>(getNodes_);
+          getNodes_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection>(getNodes_);
           bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> getNodesBuilder_;
+          org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> getNodesBuilder_;
 
       /**
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection> getGetNodesList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection> getGetNodesList() {
         if (getNodesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(getNodes_);
         } else {
@@ -3366,7 +3366,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection getGetNodes(int index) {
+      public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection getGetNodes(int index) {
         if (getNodesBuilder_ == null) {
           return getNodes_.get(index);
         } else {
@@ -3377,7 +3377,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
       public Builder setGetNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection value) {
+          int index, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection value) {
         if (getNodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3394,7 +3394,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
       public Builder setGetNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder builderForValue) {
         if (getNodesBuilder_ == null) {
           ensureGetNodesIsMutable();
           getNodes_.set(index, builderForValue.build());
@@ -3407,7 +3407,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
-      public Builder addGetNodes(org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection value) {
+      public Builder addGetNodes(org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection value) {
         if (getNodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3424,7 +3424,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
       public Builder addGetNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection value) {
+          int index, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection value) {
         if (getNodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3441,7 +3441,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
       public Builder addGetNodes(
-          org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder builderForValue) {
         if (getNodesBuilder_ == null) {
           ensureGetNodesIsMutable();
           getNodes_.add(builderForValue.build());
@@ -3455,7 +3455,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
       public Builder addGetNodes(
-          int index, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder builderForValue) {
         if (getNodesBuilder_ == null) {
           ensureGetNodesIsMutable();
           getNodes_.add(index, builderForValue.build());
@@ -3469,7 +3469,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
       public Builder addAllGetNodes(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection> values) {
         if (getNodesBuilder_ == null) {
           ensureGetNodesIsMutable();
           super.addAll(values, getNodes_);
@@ -3508,14 +3508,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder getGetNodesBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder getGetNodesBuilder(
           int index) {
         return getGetNodesFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder getGetNodesOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder getGetNodesOrBuilder(
           int index) {
         if (getNodesBuilder_ == null) {
           return getNodes_.get(index);  } else {
@@ -3525,7 +3525,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> 
            getGetNodesOrBuilderList() {
         if (getNodesBuilder_ != null) {
           return getNodesBuilder_.getMessageOrBuilderList();
@@ -3536,31 +3536,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder addGetNodesBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder addGetNodesBuilder() {
         return getGetNodesFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder addGetNodesBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder addGetNodesBuilder(
           int index) {
         return getGetNodesFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.NodeRequest.NodeSelection getNodes = 3;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder> 
            getGetNodesBuilderList() {
         return getGetNodesFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder> 
           getGetNodesFieldBuilder() {
         if (getNodesBuilder_ == null) {
           getNodesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelection.Builder, org.fursten.message.proto.SimulatorProtos.NodeRequest.NodeSelectionOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelection.Builder, org.fursten.message.proto._SimulatorProtos.NodeRequest.NodeSelectionOrBuilder>(
                   getNodes_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
@@ -3598,12 +3598,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getDeleteNotificationList();
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getDeleteNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getDeleteNotification(int index);
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
@@ -3611,24 +3611,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getDeleteNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
         int index);
 
     // repeated .messages.Note put_notification = 3;
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getPutNotificationList();
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getPutNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getPutNotification(int index);
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
@@ -3636,24 +3636,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getPutNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
         int index);
 
     // repeated .messages.Note get_notification = 4;
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getGetNotificationList();
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getGetNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getGetNotification(int index);
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
@@ -3661,24 +3661,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getGetNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
         int index);
 
     // repeated .messages.MNode node = 5;
     /**
      * <code>repeated .messages.MNode node = 5;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> 
         getNodeList();
     /**
      * <code>repeated .messages.MNode node = 5;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MNode getNode(int index);
+    org.fursten.message.proto._SimulatorProtos.MNode getNode(int index);
     /**
      * <code>repeated .messages.MNode node = 5;</code>
      */
@@ -3686,12 +3686,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MNode node = 5;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
         getNodeOrBuilderList();
     /**
      * <code>repeated .messages.MNode node = 5;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder getNodeOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder getNodeOrBuilder(
         int index);
   }
   /**
@@ -3752,34 +3752,34 @@ public final class SimulatorProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                deleteNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                deleteNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              deleteNotification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              deleteNotification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                putNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                putNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              putNotification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              putNotification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                getNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                getNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              getNotification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              getNotification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
             case 42: {
               if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                node_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MNode>();
+                node_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MNode>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              node_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MNode.PARSER, extensionRegistry));
+              node_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MNode.PARSER, extensionRegistry));
               break;
             }
           }
@@ -3808,14 +3808,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeResponse_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeResponse_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeResponse_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.NodeResponse.class, org.fursten.message.proto.SimulatorProtos.NodeResponse.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.NodeResponse.class, org.fursten.message.proto._SimulatorProtos.NodeResponse.Builder.class);
     }
 
     public static com.google.protobuf.Parser<NodeResponse> PARSER =
@@ -3852,17 +3852,17 @@ public final class SimulatorProtos {
 
     // repeated .messages.Note delete_notification = 2;
     public static final int DELETE_NOTIFICATION_FIELD_NUMBER = 2;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> deleteNotification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> deleteNotification_;
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getDeleteNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getDeleteNotificationList() {
       return deleteNotification_;
     }
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getDeleteNotificationOrBuilderList() {
       return deleteNotification_;
     }
@@ -3875,30 +3875,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getDeleteNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getDeleteNotification(int index) {
       return deleteNotification_.get(index);
     }
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
         int index) {
       return deleteNotification_.get(index);
     }
 
     // repeated .messages.Note put_notification = 3;
     public static final int PUT_NOTIFICATION_FIELD_NUMBER = 3;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> putNotification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> putNotification_;
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getPutNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getPutNotificationList() {
       return putNotification_;
     }
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getPutNotificationOrBuilderList() {
       return putNotification_;
     }
@@ -3911,30 +3911,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getPutNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getPutNotification(int index) {
       return putNotification_.get(index);
     }
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
         int index) {
       return putNotification_.get(index);
     }
 
     // repeated .messages.Note get_notification = 4;
     public static final int GET_NOTIFICATION_FIELD_NUMBER = 4;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getNotification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getNotification_;
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getGetNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getGetNotificationList() {
       return getNotification_;
     }
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getGetNotificationOrBuilderList() {
       return getNotification_;
     }
@@ -3947,30 +3947,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getGetNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getGetNotification(int index) {
       return getNotification_.get(index);
     }
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
         int index) {
       return getNotification_.get(index);
     }
 
     // repeated .messages.MNode node = 5;
     public static final int NODE_FIELD_NUMBER = 5;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> node_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> node_;
     /**
      * <code>repeated .messages.MNode node = 5;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> getNodeList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> getNodeList() {
       return node_;
     }
     /**
      * <code>repeated .messages.MNode node = 5;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
         getNodeOrBuilderList() {
       return node_;
     }
@@ -3983,13 +3983,13 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MNode node = 5;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MNode getNode(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MNode getNode(int index) {
       return node_.get(index);
     }
     /**
      * <code>repeated .messages.MNode node = 5;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder getNodeOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder getNodeOrBuilder(
         int index) {
       return node_.get(index);
     }
@@ -4097,53 +4097,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.NodeResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.NodeResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4152,7 +4152,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.NodeResponse prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.NodeResponse prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -4168,17 +4168,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.NodeResponseOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.NodeResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeResponse_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeResponse_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeResponse_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.NodeResponse.class, org.fursten.message.proto.SimulatorProtos.NodeResponse.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.NodeResponse.class, org.fursten.message.proto._SimulatorProtos.NodeResponse.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.NodeResponse.newBuilder()
@@ -4240,23 +4240,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_NodeResponse_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_NodeResponse_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.NodeResponse getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.NodeResponse.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.NodeResponse getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.NodeResponse.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.NodeResponse build() {
-        org.fursten.message.proto.SimulatorProtos.NodeResponse result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.NodeResponse build() {
+        org.fursten.message.proto._SimulatorProtos.NodeResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.NodeResponse buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.NodeResponse result = new org.fursten.message.proto.SimulatorProtos.NodeResponse(this);
+      public org.fursten.message.proto._SimulatorProtos.NodeResponse buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.NodeResponse result = new org.fursten.message.proto._SimulatorProtos.NodeResponse(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4305,16 +4305,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.NodeResponse) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.NodeResponse)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.NodeResponse) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.NodeResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.NodeResponse other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.NodeResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.NodeResponse other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.NodeResponse.getDefaultInstance()) return this;
         if (other.hasSuccess()) {
           setSuccess(other.getSuccess());
         }
@@ -4462,11 +4462,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.NodeResponse parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.NodeResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.NodeResponse) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.NodeResponse) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -4511,22 +4511,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note delete_notification = 2;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> deleteNotification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> deleteNotification_ =
         java.util.Collections.emptyList();
       private void ensureDeleteNotificationIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          deleteNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(deleteNotification_);
+          deleteNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(deleteNotification_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> deleteNotificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> deleteNotificationBuilder_;
 
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getDeleteNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getDeleteNotificationList() {
         if (deleteNotificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(deleteNotification_);
         } else {
@@ -4546,7 +4546,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getDeleteNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getDeleteNotification(int index) {
         if (deleteNotificationBuilder_ == null) {
           return deleteNotification_.get(index);
         } else {
@@ -4557,7 +4557,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder setDeleteNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (deleteNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4574,7 +4574,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder setDeleteNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (deleteNotificationBuilder_ == null) {
           ensureDeleteNotificationIsMutable();
           deleteNotification_.set(index, builderForValue.build());
@@ -4587,7 +4587,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public Builder addDeleteNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addDeleteNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (deleteNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4604,7 +4604,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder addDeleteNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (deleteNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4621,7 +4621,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder addDeleteNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (deleteNotificationBuilder_ == null) {
           ensureDeleteNotificationIsMutable();
           deleteNotification_.add(builderForValue.build());
@@ -4635,7 +4635,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder addDeleteNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (deleteNotificationBuilder_ == null) {
           ensureDeleteNotificationIsMutable();
           deleteNotification_.add(index, builderForValue.build());
@@ -4649,7 +4649,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder addAllDeleteNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (deleteNotificationBuilder_ == null) {
           ensureDeleteNotificationIsMutable();
           super.addAll(values, deleteNotification_);
@@ -4688,14 +4688,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getDeleteNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getDeleteNotificationBuilder(
           int index) {
         return getDeleteNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
           int index) {
         if (deleteNotificationBuilder_ == null) {
           return deleteNotification_.get(index);  } else {
@@ -4705,7 +4705,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getDeleteNotificationOrBuilderList() {
         if (deleteNotificationBuilder_ != null) {
           return deleteNotificationBuilder_.getMessageOrBuilderList();
@@ -4716,31 +4716,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addDeleteNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addDeleteNotificationBuilder() {
         return getDeleteNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addDeleteNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addDeleteNotificationBuilder(
           int index) {
         return getDeleteNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getDeleteNotificationBuilderList() {
         return getDeleteNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getDeleteNotificationFieldBuilder() {
         if (deleteNotificationBuilder_ == null) {
           deleteNotificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   deleteNotification_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -4751,22 +4751,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note put_notification = 3;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> putNotification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> putNotification_ =
         java.util.Collections.emptyList();
       private void ensurePutNotificationIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          putNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(putNotification_);
+          putNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(putNotification_);
           bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> putNotificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> putNotificationBuilder_;
 
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getPutNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getPutNotificationList() {
         if (putNotificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(putNotification_);
         } else {
@@ -4786,7 +4786,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getPutNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getPutNotification(int index) {
         if (putNotificationBuilder_ == null) {
           return putNotification_.get(index);
         } else {
@@ -4797,7 +4797,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder setPutNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (putNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4814,7 +4814,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder setPutNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (putNotificationBuilder_ == null) {
           ensurePutNotificationIsMutable();
           putNotification_.set(index, builderForValue.build());
@@ -4827,7 +4827,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public Builder addPutNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addPutNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (putNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4844,7 +4844,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder addPutNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (putNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4861,7 +4861,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder addPutNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (putNotificationBuilder_ == null) {
           ensurePutNotificationIsMutable();
           putNotification_.add(builderForValue.build());
@@ -4875,7 +4875,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder addPutNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (putNotificationBuilder_ == null) {
           ensurePutNotificationIsMutable();
           putNotification_.add(index, builderForValue.build());
@@ -4889,7 +4889,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder addAllPutNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (putNotificationBuilder_ == null) {
           ensurePutNotificationIsMutable();
           super.addAll(values, putNotification_);
@@ -4928,14 +4928,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getPutNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getPutNotificationBuilder(
           int index) {
         return getPutNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
           int index) {
         if (putNotificationBuilder_ == null) {
           return putNotification_.get(index);  } else {
@@ -4945,7 +4945,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getPutNotificationOrBuilderList() {
         if (putNotificationBuilder_ != null) {
           return putNotificationBuilder_.getMessageOrBuilderList();
@@ -4956,31 +4956,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addPutNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addPutNotificationBuilder() {
         return getPutNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addPutNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addPutNotificationBuilder(
           int index) {
         return getPutNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getPutNotificationBuilderList() {
         return getPutNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getPutNotificationFieldBuilder() {
         if (putNotificationBuilder_ == null) {
           putNotificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   putNotification_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
@@ -4991,22 +4991,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note get_notification = 4;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getNotification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getNotification_ =
         java.util.Collections.emptyList();
       private void ensureGetNotificationIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          getNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(getNotification_);
+          getNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(getNotification_);
           bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> getNotificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> getNotificationBuilder_;
 
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getGetNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getGetNotificationList() {
         if (getNotificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(getNotification_);
         } else {
@@ -5026,7 +5026,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getGetNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getGetNotification(int index) {
         if (getNotificationBuilder_ == null) {
           return getNotification_.get(index);
         } else {
@@ -5037,7 +5037,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder setGetNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (getNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5054,7 +5054,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder setGetNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (getNotificationBuilder_ == null) {
           ensureGetNotificationIsMutable();
           getNotification_.set(index, builderForValue.build());
@@ -5067,7 +5067,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public Builder addGetNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addGetNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (getNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5084,7 +5084,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder addGetNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (getNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5101,7 +5101,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder addGetNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (getNotificationBuilder_ == null) {
           ensureGetNotificationIsMutable();
           getNotification_.add(builderForValue.build());
@@ -5115,7 +5115,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder addGetNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (getNotificationBuilder_ == null) {
           ensureGetNotificationIsMutable();
           getNotification_.add(index, builderForValue.build());
@@ -5129,7 +5129,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder addAllGetNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (getNotificationBuilder_ == null) {
           ensureGetNotificationIsMutable();
           super.addAll(values, getNotification_);
@@ -5168,14 +5168,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getGetNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getGetNotificationBuilder(
           int index) {
         return getGetNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
           int index) {
         if (getNotificationBuilder_ == null) {
           return getNotification_.get(index);  } else {
@@ -5185,7 +5185,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getGetNotificationOrBuilderList() {
         if (getNotificationBuilder_ != null) {
           return getNotificationBuilder_.getMessageOrBuilderList();
@@ -5196,31 +5196,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addGetNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addGetNotificationBuilder() {
         return getGetNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addGetNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addGetNotificationBuilder(
           int index) {
         return getGetNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getGetNotificationBuilderList() {
         return getGetNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getGetNotificationFieldBuilder() {
         if (getNotificationBuilder_ == null) {
           getNotificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   getNotification_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
@@ -5231,22 +5231,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MNode node = 5;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> node_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> node_ =
         java.util.Collections.emptyList();
       private void ensureNodeIsMutable() {
         if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-          node_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MNode>(node_);
+          node_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MNode>(node_);
           bitField0_ |= 0x00000010;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MNode, org.fursten.message.proto.SimulatorProtos.MNode.Builder, org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> nodeBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MNode, org.fursten.message.proto._SimulatorProtos.MNode.Builder, org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> nodeBuilder_;
 
       /**
        * <code>repeated .messages.MNode node = 5;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MNode> getNodeList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MNode> getNodeList() {
         if (nodeBuilder_ == null) {
           return java.util.Collections.unmodifiableList(node_);
         } else {
@@ -5266,7 +5266,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode node = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode getNode(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MNode getNode(int index) {
         if (nodeBuilder_ == null) {
           return node_.get(index);
         } else {
@@ -5277,7 +5277,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode node = 5;</code>
        */
       public Builder setNode(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode value) {
         if (nodeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5294,7 +5294,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode node = 5;</code>
        */
       public Builder setNode(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode.Builder builderForValue) {
         if (nodeBuilder_ == null) {
           ensureNodeIsMutable();
           node_.set(index, builderForValue.build());
@@ -5307,7 +5307,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode node = 5;</code>
        */
-      public Builder addNode(org.fursten.message.proto.SimulatorProtos.MNode value) {
+      public Builder addNode(org.fursten.message.proto._SimulatorProtos.MNode value) {
         if (nodeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5324,7 +5324,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode node = 5;</code>
        */
       public Builder addNode(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode value) {
         if (nodeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5341,7 +5341,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode node = 5;</code>
        */
       public Builder addNode(
-          org.fursten.message.proto.SimulatorProtos.MNode.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MNode.Builder builderForValue) {
         if (nodeBuilder_ == null) {
           ensureNodeIsMutable();
           node_.add(builderForValue.build());
@@ -5355,7 +5355,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode node = 5;</code>
        */
       public Builder addNode(
-          int index, org.fursten.message.proto.SimulatorProtos.MNode.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MNode.Builder builderForValue) {
         if (nodeBuilder_ == null) {
           ensureNodeIsMutable();
           node_.add(index, builderForValue.build());
@@ -5369,7 +5369,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MNode node = 5;</code>
        */
       public Builder addAllNode(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MNode> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MNode> values) {
         if (nodeBuilder_ == null) {
           ensureNodeIsMutable();
           super.addAll(values, node_);
@@ -5408,14 +5408,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode node = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode.Builder getNodeBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MNode.Builder getNodeBuilder(
           int index) {
         return getNodeFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MNode node = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder getNodeOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder getNodeOrBuilder(
           int index) {
         if (nodeBuilder_ == null) {
           return node_.get(index);  } else {
@@ -5425,7 +5425,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode node = 5;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
            getNodeOrBuilderList() {
         if (nodeBuilder_ != null) {
           return nodeBuilder_.getMessageOrBuilderList();
@@ -5436,31 +5436,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MNode node = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode.Builder addNodeBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MNode.Builder addNodeBuilder() {
         return getNodeFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MNode.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MNode.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MNode node = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MNode.Builder addNodeBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MNode.Builder addNodeBuilder(
           int index) {
         return getNodeFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MNode.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MNode.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MNode node = 5;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MNode.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MNode.Builder> 
            getNodeBuilderList() {
         return getNodeFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MNode, org.fursten.message.proto.SimulatorProtos.MNode.Builder, org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MNode, org.fursten.message.proto._SimulatorProtos.MNode.Builder, org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder> 
           getNodeFieldBuilder() {
         if (nodeBuilder_ == null) {
           nodeBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MNode, org.fursten.message.proto.SimulatorProtos.MNode.Builder, org.fursten.message.proto.SimulatorProtos.MNodeOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MNode, org.fursten.message.proto._SimulatorProtos.MNode.Builder, org.fursten.message.proto._SimulatorProtos.MNodeOrBuilder>(
                   node_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
@@ -5523,12 +5523,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource.Weight weight = 4;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Weight> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Weight> 
         getWeightList();
     /**
      * <code>repeated .messages.MResource.Weight weight = 4;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResource.Weight getWeight(int index);
+    org.fursten.message.proto._SimulatorProtos.MResource.Weight getWeight(int index);
     /**
      * <code>repeated .messages.MResource.Weight weight = 4;</code>
      */
@@ -5536,24 +5536,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource.Weight weight = 4;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder> 
         getWeightOrBuilderList();
     /**
      * <code>repeated .messages.MResource.Weight weight = 4;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder getWeightOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder getWeightOrBuilder(
         int index);
 
     // repeated .messages.MResource.Offspring offspring = 5;
     /**
      * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Offspring> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Offspring> 
         getOffspringList();
     /**
      * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResource.Offspring getOffspring(int index);
+    org.fursten.message.proto._SimulatorProtos.MResource.Offspring getOffspring(int index);
     /**
      * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
      */
@@ -5561,24 +5561,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder> 
         getOffspringOrBuilderList();
     /**
      * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder getOffspringOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder getOffspringOrBuilder(
         int index);
 
     // repeated .messages.MResource.Tag tag = 6;
     /**
      * <code>repeated .messages.MResource.Tag tag = 6;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Tag> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Tag> 
         getTagList();
     /**
      * <code>repeated .messages.MResource.Tag tag = 6;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResource.Tag getTag(int index);
+    org.fursten.message.proto._SimulatorProtos.MResource.Tag getTag(int index);
     /**
      * <code>repeated .messages.MResource.Tag tag = 6;</code>
      */
@@ -5586,12 +5586,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource.Tag tag = 6;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder> 
         getTagOrBuilderList();
     /**
      * <code>repeated .messages.MResource.Tag tag = 6;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder getTagOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder getTagOrBuilder(
         int index);
   }
   /**
@@ -5662,26 +5662,26 @@ public final class SimulatorProtos {
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                weight_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource.Weight>();
+                weight_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource.Weight>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              weight_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MResource.Weight.PARSER, extensionRegistry));
+              weight_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MResource.Weight.PARSER, extensionRegistry));
               break;
             }
             case 42: {
               if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                offspring_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource.Offspring>();
+                offspring_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource.Offspring>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              offspring_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MResource.Offspring.PARSER, extensionRegistry));
+              offspring_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MResource.Offspring.PARSER, extensionRegistry));
               break;
             }
             case 50: {
               if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-                tag_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource.Tag>();
+                tag_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource.Tag>();
                 mutable_bitField0_ |= 0x00000020;
               }
-              tag_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MResource.Tag.PARSER, extensionRegistry));
+              tag_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MResource.Tag.PARSER, extensionRegistry));
               break;
             }
           }
@@ -5707,14 +5707,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.MResource.class, org.fursten.message.proto.SimulatorProtos.MResource.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.MResource.class, org.fursten.message.proto._SimulatorProtos.MResource.Builder.class);
     }
 
     public static com.google.protobuf.Parser<MResource> PARSER =
@@ -5845,14 +5845,14 @@ public final class SimulatorProtos {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Weight_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Weight_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Weight_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Weight_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.MResource.Weight.class, org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.MResource.Weight.class, org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder.class);
       }
 
       public static com.google.protobuf.Parser<Weight> PARSER =
@@ -5990,53 +5990,53 @@ public final class SimulatorProtos {
         return super.writeReplace();
       }
 
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseFrom(byte[] data)
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseFrom(java.io.InputStream input)
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseDelimitedFrom(java.io.InputStream input)
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseDelimitedFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Weight parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Weight parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -6045,7 +6045,7 @@ public final class SimulatorProtos {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.MResource.Weight prototype) {
+      public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.MResource.Weight prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
@@ -6061,17 +6061,17 @@ public final class SimulatorProtos {
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder {
+         implements org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Weight_descriptor;
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Weight_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Weight_fieldAccessorTable
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Weight_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.fursten.message.proto.SimulatorProtos.MResource.Weight.class, org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder.class);
+                  org.fursten.message.proto._SimulatorProtos.MResource.Weight.class, org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder.class);
         }
 
         // Construct using org.fursten.message.proto.SimulatorProtos.MResource.Weight.newBuilder()
@@ -6109,23 +6109,23 @@ public final class SimulatorProtos {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Weight_descriptor;
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Weight_descriptor;
         }
 
-        public org.fursten.message.proto.SimulatorProtos.MResource.Weight getDefaultInstanceForType() {
-          return org.fursten.message.proto.SimulatorProtos.MResource.Weight.getDefaultInstance();
+        public org.fursten.message.proto._SimulatorProtos.MResource.Weight getDefaultInstanceForType() {
+          return org.fursten.message.proto._SimulatorProtos.MResource.Weight.getDefaultInstance();
         }
 
-        public org.fursten.message.proto.SimulatorProtos.MResource.Weight build() {
-          org.fursten.message.proto.SimulatorProtos.MResource.Weight result = buildPartial();
+        public org.fursten.message.proto._SimulatorProtos.MResource.Weight build() {
+          org.fursten.message.proto._SimulatorProtos.MResource.Weight result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public org.fursten.message.proto.SimulatorProtos.MResource.Weight buildPartial() {
-          org.fursten.message.proto.SimulatorProtos.MResource.Weight result = new org.fursten.message.proto.SimulatorProtos.MResource.Weight(this);
+        public org.fursten.message.proto._SimulatorProtos.MResource.Weight buildPartial() {
+          org.fursten.message.proto._SimulatorProtos.MResource.Weight result = new org.fursten.message.proto._SimulatorProtos.MResource.Weight(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -6146,16 +6146,16 @@ public final class SimulatorProtos {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.fursten.message.proto.SimulatorProtos.MResource.Weight) {
-            return mergeFrom((org.fursten.message.proto.SimulatorProtos.MResource.Weight)other);
+          if (other instanceof org.fursten.message.proto._SimulatorProtos.MResource.Weight) {
+            return mergeFrom((org.fursten.message.proto._SimulatorProtos.MResource.Weight)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.MResource.Weight other) {
-          if (other == org.fursten.message.proto.SimulatorProtos.MResource.Weight.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.MResource.Weight other) {
+          if (other == org.fursten.message.proto._SimulatorProtos.MResource.Weight.getDefaultInstance()) return this;
           if (other.hasResourceReference()) {
             setResourceReference(other.getResourceReference());
           }
@@ -6189,11 +6189,11 @@ public final class SimulatorProtos {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.fursten.message.proto.SimulatorProtos.MResource.Weight parsedMessage = null;
+          org.fursten.message.proto._SimulatorProtos.MResource.Weight parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.fursten.message.proto.SimulatorProtos.MResource.Weight) e.getUnfinishedMessage();
+            parsedMessage = (org.fursten.message.proto._SimulatorProtos.MResource.Weight) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -6412,14 +6412,14 @@ public final class SimulatorProtos {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Offspring_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Offspring_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Offspring_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Offspring_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.MResource.Offspring.class, org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.MResource.Offspring.class, org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder.class);
       }
 
       public static com.google.protobuf.Parser<Offspring> PARSER =
@@ -6529,53 +6529,53 @@ public final class SimulatorProtos {
         return super.writeReplace();
       }
 
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseFrom(byte[] data)
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseFrom(java.io.InputStream input)
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseDelimitedFrom(java.io.InputStream input)
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseDelimitedFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Offspring parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Offspring parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -6584,7 +6584,7 @@ public final class SimulatorProtos {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.MResource.Offspring prototype) {
+      public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.MResource.Offspring prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
@@ -6600,17 +6600,17 @@ public final class SimulatorProtos {
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder {
+         implements org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Offspring_descriptor;
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Offspring_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Offspring_fieldAccessorTable
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Offspring_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.fursten.message.proto.SimulatorProtos.MResource.Offspring.class, org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder.class);
+                  org.fursten.message.proto._SimulatorProtos.MResource.Offspring.class, org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder.class);
         }
 
         // Construct using org.fursten.message.proto.SimulatorProtos.MResource.Offspring.newBuilder()
@@ -6646,23 +6646,23 @@ public final class SimulatorProtos {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Offspring_descriptor;
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Offspring_descriptor;
         }
 
-        public org.fursten.message.proto.SimulatorProtos.MResource.Offspring getDefaultInstanceForType() {
-          return org.fursten.message.proto.SimulatorProtos.MResource.Offspring.getDefaultInstance();
+        public org.fursten.message.proto._SimulatorProtos.MResource.Offspring getDefaultInstanceForType() {
+          return org.fursten.message.proto._SimulatorProtos.MResource.Offspring.getDefaultInstance();
         }
 
-        public org.fursten.message.proto.SimulatorProtos.MResource.Offspring build() {
-          org.fursten.message.proto.SimulatorProtos.MResource.Offspring result = buildPartial();
+        public org.fursten.message.proto._SimulatorProtos.MResource.Offspring build() {
+          org.fursten.message.proto._SimulatorProtos.MResource.Offspring result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public org.fursten.message.proto.SimulatorProtos.MResource.Offspring buildPartial() {
-          org.fursten.message.proto.SimulatorProtos.MResource.Offspring result = new org.fursten.message.proto.SimulatorProtos.MResource.Offspring(this);
+        public org.fursten.message.proto._SimulatorProtos.MResource.Offspring buildPartial() {
+          org.fursten.message.proto._SimulatorProtos.MResource.Offspring result = new org.fursten.message.proto._SimulatorProtos.MResource.Offspring(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -6679,16 +6679,16 @@ public final class SimulatorProtos {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.fursten.message.proto.SimulatorProtos.MResource.Offspring) {
-            return mergeFrom((org.fursten.message.proto.SimulatorProtos.MResource.Offspring)other);
+          if (other instanceof org.fursten.message.proto._SimulatorProtos.MResource.Offspring) {
+            return mergeFrom((org.fursten.message.proto._SimulatorProtos.MResource.Offspring)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.MResource.Offspring other) {
-          if (other == org.fursten.message.proto.SimulatorProtos.MResource.Offspring.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.MResource.Offspring other) {
+          if (other == org.fursten.message.proto._SimulatorProtos.MResource.Offspring.getDefaultInstance()) return this;
           if (other.hasResourceReference()) {
             setResourceReference(other.getResourceReference());
           }
@@ -6715,11 +6715,11 @@ public final class SimulatorProtos {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.fursten.message.proto.SimulatorProtos.MResource.Offspring parsedMessage = null;
+          org.fursten.message.proto._SimulatorProtos.MResource.Offspring parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.fursten.message.proto.SimulatorProtos.MResource.Offspring) e.getUnfinishedMessage();
+            parsedMessage = (org.fursten.message.proto._SimulatorProtos.MResource.Offspring) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -6895,14 +6895,14 @@ public final class SimulatorProtos {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Tag_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Tag_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Tag_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Tag_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.MResource.Tag.class, org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.MResource.Tag.class, org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder.class);
       }
 
       public static com.google.protobuf.Parser<Tag> PARSER =
@@ -7011,53 +7011,53 @@ public final class SimulatorProtos {
         return super.writeReplace();
       }
 
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseFrom(byte[] data)
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseFrom(java.io.InputStream input)
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseDelimitedFrom(java.io.InputStream input)
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseDelimitedFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.fursten.message.proto.SimulatorProtos.MResource.Tag parseFrom(
+      public static org.fursten.message.proto._SimulatorProtos.MResource.Tag parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -7066,7 +7066,7 @@ public final class SimulatorProtos {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.MResource.Tag prototype) {
+      public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.MResource.Tag prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
@@ -7082,17 +7082,17 @@ public final class SimulatorProtos {
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder {
+         implements org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Tag_descriptor;
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Tag_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Tag_fieldAccessorTable
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Tag_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.fursten.message.proto.SimulatorProtos.MResource.Tag.class, org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder.class);
+                  org.fursten.message.proto._SimulatorProtos.MResource.Tag.class, org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder.class);
         }
 
         // Construct using org.fursten.message.proto.SimulatorProtos.MResource.Tag.newBuilder()
@@ -7126,23 +7126,23 @@ public final class SimulatorProtos {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_Tag_descriptor;
+          return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_Tag_descriptor;
         }
 
-        public org.fursten.message.proto.SimulatorProtos.MResource.Tag getDefaultInstanceForType() {
-          return org.fursten.message.proto.SimulatorProtos.MResource.Tag.getDefaultInstance();
+        public org.fursten.message.proto._SimulatorProtos.MResource.Tag getDefaultInstanceForType() {
+          return org.fursten.message.proto._SimulatorProtos.MResource.Tag.getDefaultInstance();
         }
 
-        public org.fursten.message.proto.SimulatorProtos.MResource.Tag build() {
-          org.fursten.message.proto.SimulatorProtos.MResource.Tag result = buildPartial();
+        public org.fursten.message.proto._SimulatorProtos.MResource.Tag build() {
+          org.fursten.message.proto._SimulatorProtos.MResource.Tag result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public org.fursten.message.proto.SimulatorProtos.MResource.Tag buildPartial() {
-          org.fursten.message.proto.SimulatorProtos.MResource.Tag result = new org.fursten.message.proto.SimulatorProtos.MResource.Tag(this);
+        public org.fursten.message.proto._SimulatorProtos.MResource.Tag buildPartial() {
+          org.fursten.message.proto._SimulatorProtos.MResource.Tag result = new org.fursten.message.proto._SimulatorProtos.MResource.Tag(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -7155,16 +7155,16 @@ public final class SimulatorProtos {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.fursten.message.proto.SimulatorProtos.MResource.Tag) {
-            return mergeFrom((org.fursten.message.proto.SimulatorProtos.MResource.Tag)other);
+          if (other instanceof org.fursten.message.proto._SimulatorProtos.MResource.Tag) {
+            return mergeFrom((org.fursten.message.proto._SimulatorProtos.MResource.Tag)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.MResource.Tag other) {
-          if (other == org.fursten.message.proto.SimulatorProtos.MResource.Tag.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.MResource.Tag other) {
+          if (other == org.fursten.message.proto._SimulatorProtos.MResource.Tag.getDefaultInstance()) return this;
           if (other.hasName()) {
             bitField0_ |= 0x00000001;
             name_ = other.name_;
@@ -7186,11 +7186,11 @@ public final class SimulatorProtos {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.fursten.message.proto.SimulatorProtos.MResource.Tag parsedMessage = null;
+          org.fursten.message.proto._SimulatorProtos.MResource.Tag parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.fursten.message.proto.SimulatorProtos.MResource.Tag) e.getUnfinishedMessage();
+            parsedMessage = (org.fursten.message.proto._SimulatorProtos.MResource.Tag) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -7364,17 +7364,17 @@ public final class SimulatorProtos {
 
     // repeated .messages.MResource.Weight weight = 4;
     public static final int WEIGHT_FIELD_NUMBER = 4;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Weight> weight_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Weight> weight_;
     /**
      * <code>repeated .messages.MResource.Weight weight = 4;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Weight> getWeightList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Weight> getWeightList() {
       return weight_;
     }
     /**
      * <code>repeated .messages.MResource.Weight weight = 4;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder> 
         getWeightOrBuilderList() {
       return weight_;
     }
@@ -7387,30 +7387,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource.Weight weight = 4;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResource.Weight getWeight(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MResource.Weight getWeight(int index) {
       return weight_.get(index);
     }
     /**
      * <code>repeated .messages.MResource.Weight weight = 4;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder getWeightOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder getWeightOrBuilder(
         int index) {
       return weight_.get(index);
     }
 
     // repeated .messages.MResource.Offspring offspring = 5;
     public static final int OFFSPRING_FIELD_NUMBER = 5;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Offspring> offspring_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Offspring> offspring_;
     /**
      * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Offspring> getOffspringList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Offspring> getOffspringList() {
       return offspring_;
     }
     /**
      * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder> 
         getOffspringOrBuilderList() {
       return offspring_;
     }
@@ -7423,30 +7423,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResource.Offspring getOffspring(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MResource.Offspring getOffspring(int index) {
       return offspring_.get(index);
     }
     /**
      * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder getOffspringOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder getOffspringOrBuilder(
         int index) {
       return offspring_.get(index);
     }
 
     // repeated .messages.MResource.Tag tag = 6;
     public static final int TAG_FIELD_NUMBER = 6;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Tag> tag_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Tag> tag_;
     /**
      * <code>repeated .messages.MResource.Tag tag = 6;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Tag> getTagList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Tag> getTagList() {
       return tag_;
     }
     /**
      * <code>repeated .messages.MResource.Tag tag = 6;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder> 
         getTagOrBuilderList() {
       return tag_;
     }
@@ -7459,13 +7459,13 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource.Tag tag = 6;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResource.Tag getTag(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MResource.Tag getTag(int index) {
       return tag_.get(index);
     }
     /**
      * <code>repeated .messages.MResource.Tag tag = 6;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder getTagOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder getTagOrBuilder(
         int index) {
       return tag_.get(index);
     }
@@ -7579,53 +7579,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResource parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResource parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7634,7 +7634,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.MResource prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.MResource prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -7650,17 +7650,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.MResource.class, org.fursten.message.proto.SimulatorProtos.MResource.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.MResource.class, org.fursten.message.proto._SimulatorProtos.MResource.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.MResource.newBuilder()
@@ -7719,23 +7719,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResource_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResource_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.MResource getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.MResource.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.MResource getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.MResource.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.MResource build() {
-        org.fursten.message.proto.SimulatorProtos.MResource result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.MResource build() {
+        org.fursten.message.proto._SimulatorProtos.MResource result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.MResource buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.MResource result = new org.fursten.message.proto.SimulatorProtos.MResource(this);
+      public org.fursten.message.proto._SimulatorProtos.MResource buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.MResource result = new org.fursten.message.proto._SimulatorProtos.MResource(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -7783,16 +7783,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.MResource) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.MResource)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.MResource) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.MResource)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.MResource other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.MResource.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.MResource other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.MResource.getDefaultInstance()) return this;
         if (other.hasKey()) {
           setKey(other.getKey());
         }
@@ -7920,11 +7920,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.MResource parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.MResource parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.MResource) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.MResource) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -8076,22 +8076,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MResource.Weight weight = 4;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Weight> weight_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Weight> weight_ =
         java.util.Collections.emptyList();
       private void ensureWeightIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          weight_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource.Weight>(weight_);
+          weight_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource.Weight>(weight_);
           bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource.Weight, org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder, org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder> weightBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MResource.Weight, org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder, org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder> weightBuilder_;
 
       /**
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Weight> getWeightList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Weight> getWeightList() {
         if (weightBuilder_ == null) {
           return java.util.Collections.unmodifiableList(weight_);
         } else {
@@ -8111,7 +8111,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Weight getWeight(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MResource.Weight getWeight(int index) {
         if (weightBuilder_ == null) {
           return weight_.get(index);
         } else {
@@ -8122,7 +8122,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
       public Builder setWeight(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Weight value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Weight value) {
         if (weightBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8139,7 +8139,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
       public Builder setWeight(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder builderForValue) {
         if (weightBuilder_ == null) {
           ensureWeightIsMutable();
           weight_.set(index, builderForValue.build());
@@ -8152,7 +8152,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
-      public Builder addWeight(org.fursten.message.proto.SimulatorProtos.MResource.Weight value) {
+      public Builder addWeight(org.fursten.message.proto._SimulatorProtos.MResource.Weight value) {
         if (weightBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8169,7 +8169,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
       public Builder addWeight(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Weight value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Weight value) {
         if (weightBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8186,7 +8186,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
       public Builder addWeight(
-          org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder builderForValue) {
         if (weightBuilder_ == null) {
           ensureWeightIsMutable();
           weight_.add(builderForValue.build());
@@ -8200,7 +8200,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
       public Builder addWeight(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder builderForValue) {
         if (weightBuilder_ == null) {
           ensureWeightIsMutable();
           weight_.add(index, builderForValue.build());
@@ -8214,7 +8214,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
       public Builder addAllWeight(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MResource.Weight> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MResource.Weight> values) {
         if (weightBuilder_ == null) {
           ensureWeightIsMutable();
           super.addAll(values, weight_);
@@ -8253,14 +8253,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder getWeightBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder getWeightBuilder(
           int index) {
         return getWeightFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder getWeightOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder getWeightOrBuilder(
           int index) {
         if (weightBuilder_ == null) {
           return weight_.get(index);  } else {
@@ -8270,7 +8270,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder> 
            getWeightOrBuilderList() {
         if (weightBuilder_ != null) {
           return weightBuilder_.getMessageOrBuilderList();
@@ -8281,31 +8281,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder addWeightBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder addWeightBuilder() {
         return getWeightFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MResource.Weight.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MResource.Weight.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder addWeightBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder addWeightBuilder(
           int index) {
         return getWeightFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MResource.Weight.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MResource.Weight.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource.Weight weight = 4;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder> 
            getWeightBuilderList() {
         return getWeightFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource.Weight, org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder, org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MResource.Weight, org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder, org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder> 
           getWeightFieldBuilder() {
         if (weightBuilder_ == null) {
           weightBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MResource.Weight, org.fursten.message.proto.SimulatorProtos.MResource.Weight.Builder, org.fursten.message.proto.SimulatorProtos.MResource.WeightOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MResource.Weight, org.fursten.message.proto._SimulatorProtos.MResource.Weight.Builder, org.fursten.message.proto._SimulatorProtos.MResource.WeightOrBuilder>(
                   weight_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
@@ -8316,22 +8316,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MResource.Offspring offspring = 5;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Offspring> offspring_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Offspring> offspring_ =
         java.util.Collections.emptyList();
       private void ensureOffspringIsMutable() {
         if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-          offspring_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource.Offspring>(offspring_);
+          offspring_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource.Offspring>(offspring_);
           bitField0_ |= 0x00000010;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource.Offspring, org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder, org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder> offspringBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MResource.Offspring, org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder, org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder> offspringBuilder_;
 
       /**
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Offspring> getOffspringList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Offspring> getOffspringList() {
         if (offspringBuilder_ == null) {
           return java.util.Collections.unmodifiableList(offspring_);
         } else {
@@ -8351,7 +8351,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Offspring getOffspring(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MResource.Offspring getOffspring(int index) {
         if (offspringBuilder_ == null) {
           return offspring_.get(index);
         } else {
@@ -8362,7 +8362,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
       public Builder setOffspring(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Offspring value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Offspring value) {
         if (offspringBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8379,7 +8379,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
       public Builder setOffspring(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder builderForValue) {
         if (offspringBuilder_ == null) {
           ensureOffspringIsMutable();
           offspring_.set(index, builderForValue.build());
@@ -8392,7 +8392,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
-      public Builder addOffspring(org.fursten.message.proto.SimulatorProtos.MResource.Offspring value) {
+      public Builder addOffspring(org.fursten.message.proto._SimulatorProtos.MResource.Offspring value) {
         if (offspringBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8409,7 +8409,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
       public Builder addOffspring(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Offspring value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Offspring value) {
         if (offspringBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8426,7 +8426,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
       public Builder addOffspring(
-          org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder builderForValue) {
         if (offspringBuilder_ == null) {
           ensureOffspringIsMutable();
           offspring_.add(builderForValue.build());
@@ -8440,7 +8440,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
       public Builder addOffspring(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder builderForValue) {
         if (offspringBuilder_ == null) {
           ensureOffspringIsMutable();
           offspring_.add(index, builderForValue.build());
@@ -8454,7 +8454,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
       public Builder addAllOffspring(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MResource.Offspring> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MResource.Offspring> values) {
         if (offspringBuilder_ == null) {
           ensureOffspringIsMutable();
           super.addAll(values, offspring_);
@@ -8493,14 +8493,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder getOffspringBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder getOffspringBuilder(
           int index) {
         return getOffspringFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder getOffspringOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder getOffspringOrBuilder(
           int index) {
         if (offspringBuilder_ == null) {
           return offspring_.get(index);  } else {
@@ -8510,7 +8510,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder> 
            getOffspringOrBuilderList() {
         if (offspringBuilder_ != null) {
           return offspringBuilder_.getMessageOrBuilderList();
@@ -8521,31 +8521,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder addOffspringBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder addOffspringBuilder() {
         return getOffspringFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MResource.Offspring.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MResource.Offspring.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder addOffspringBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder addOffspringBuilder(
           int index) {
         return getOffspringFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MResource.Offspring.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MResource.Offspring.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource.Offspring offspring = 5;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder> 
            getOffspringBuilderList() {
         return getOffspringFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource.Offspring, org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder, org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MResource.Offspring, org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder, org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder> 
           getOffspringFieldBuilder() {
         if (offspringBuilder_ == null) {
           offspringBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MResource.Offspring, org.fursten.message.proto.SimulatorProtos.MResource.Offspring.Builder, org.fursten.message.proto.SimulatorProtos.MResource.OffspringOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MResource.Offspring, org.fursten.message.proto._SimulatorProtos.MResource.Offspring.Builder, org.fursten.message.proto._SimulatorProtos.MResource.OffspringOrBuilder>(
                   offspring_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
@@ -8556,22 +8556,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MResource.Tag tag = 6;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Tag> tag_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Tag> tag_ =
         java.util.Collections.emptyList();
       private void ensureTagIsMutable() {
         if (!((bitField0_ & 0x00000020) == 0x00000020)) {
-          tag_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource.Tag>(tag_);
+          tag_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource.Tag>(tag_);
           bitField0_ |= 0x00000020;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource.Tag, org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder, org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder> tagBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MResource.Tag, org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder, org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder> tagBuilder_;
 
       /**
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Tag> getTagList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Tag> getTagList() {
         if (tagBuilder_ == null) {
           return java.util.Collections.unmodifiableList(tag_);
         } else {
@@ -8591,7 +8591,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Tag getTag(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MResource.Tag getTag(int index) {
         if (tagBuilder_ == null) {
           return tag_.get(index);
         } else {
@@ -8602,7 +8602,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
       public Builder setTag(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Tag value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Tag value) {
         if (tagBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8619,7 +8619,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
       public Builder setTag(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder builderForValue) {
         if (tagBuilder_ == null) {
           ensureTagIsMutable();
           tag_.set(index, builderForValue.build());
@@ -8632,7 +8632,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
-      public Builder addTag(org.fursten.message.proto.SimulatorProtos.MResource.Tag value) {
+      public Builder addTag(org.fursten.message.proto._SimulatorProtos.MResource.Tag value) {
         if (tagBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8649,7 +8649,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
       public Builder addTag(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Tag value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Tag value) {
         if (tagBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8666,7 +8666,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
       public Builder addTag(
-          org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder builderForValue) {
         if (tagBuilder_ == null) {
           ensureTagIsMutable();
           tag_.add(builderForValue.build());
@@ -8680,7 +8680,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
       public Builder addTag(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder builderForValue) {
         if (tagBuilder_ == null) {
           ensureTagIsMutable();
           tag_.add(index, builderForValue.build());
@@ -8694,7 +8694,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
       public Builder addAllTag(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MResource.Tag> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MResource.Tag> values) {
         if (tagBuilder_ == null) {
           ensureTagIsMutable();
           super.addAll(values, tag_);
@@ -8733,14 +8733,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder getTagBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder getTagBuilder(
           int index) {
         return getTagFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder getTagOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder getTagOrBuilder(
           int index) {
         if (tagBuilder_ == null) {
           return tag_.get(index);  } else {
@@ -8750,7 +8750,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder> 
            getTagOrBuilderList() {
         if (tagBuilder_ != null) {
           return tagBuilder_.getMessageOrBuilderList();
@@ -8761,31 +8761,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder addTagBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder addTagBuilder() {
         return getTagFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MResource.Tag.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MResource.Tag.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder addTagBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder addTagBuilder(
           int index) {
         return getTagFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MResource.Tag.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MResource.Tag.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource.Tag tag = 6;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder> 
            getTagBuilderList() {
         return getTagFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource.Tag, org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder, org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MResource.Tag, org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder, org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder> 
           getTagFieldBuilder() {
         if (tagBuilder_ == null) {
           tagBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MResource.Tag, org.fursten.message.proto.SimulatorProtos.MResource.Tag.Builder, org.fursten.message.proto.SimulatorProtos.MResource.TagOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MResource.Tag, org.fursten.message.proto._SimulatorProtos.MResource.Tag.Builder, org.fursten.message.proto._SimulatorProtos.MResource.TagOrBuilder>(
                   tag_,
                   ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
@@ -8852,7 +8852,7 @@ public final class SimulatorProtos {
     /**
      * <code>optional .messages.MResourceStyle.Shape shape = 4;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape getShape();
+    org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape getShape();
 
     // repeated uint32 color = 5;
     /**
@@ -8936,7 +8936,7 @@ public final class SimulatorProtos {
             }
             case 32: {
               int rawValue = input.readEnum();
-              org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape value = org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape.valueOf(rawValue);
+              org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape value = org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(4, rawValue);
               } else {
@@ -8983,14 +8983,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResourceStyle_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResourceStyle_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResourceStyle_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResourceStyle_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.MResourceStyle.class, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.MResourceStyle.class, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder.class);
     }
 
     public static com.google.protobuf.Parser<MResourceStyle> PARSER =
@@ -9101,7 +9101,7 @@ public final class SimulatorProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.MResourceStyle.getDescriptor().getEnumTypes().get(0);
+        return org.fursten.message.proto._SimulatorProtos.MResourceStyle.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final Shape[] VALUES = values();
@@ -9204,7 +9204,7 @@ public final class SimulatorProtos {
 
     // optional .messages.MResourceStyle.Shape shape = 4;
     public static final int SHAPE_FIELD_NUMBER = 4;
-    private org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape shape_;
+    private org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape shape_;
     /**
      * <code>optional .messages.MResourceStyle.Shape shape = 4;</code>
      */
@@ -9214,7 +9214,7 @@ public final class SimulatorProtos {
     /**
      * <code>optional .messages.MResourceStyle.Shape shape = 4;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape getShape() {
+    public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape getShape() {
       return shape_;
     }
 
@@ -9245,7 +9245,7 @@ public final class SimulatorProtos {
       name_ = "";
       size_ = 0;
       depth_ = 0;
-      shape_ = org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape.BLANK;
+      shape_ = org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape.BLANK;
       color_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -9325,53 +9325,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.MResourceStyle parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.MResourceStyle parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9380,7 +9380,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.MResourceStyle prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.MResourceStyle prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -9396,17 +9396,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResourceStyle_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResourceStyle_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResourceStyle_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResourceStyle_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.MResourceStyle.class, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.MResourceStyle.class, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.MResourceStyle.newBuilder()
@@ -9435,7 +9435,7 @@ public final class SimulatorProtos {
         bitField0_ = (bitField0_ & ~0x00000002);
         depth_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        shape_ = org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape.BLANK;
+        shape_ = org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape.BLANK;
         bitField0_ = (bitField0_ & ~0x00000008);
         color_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -9448,23 +9448,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_MResourceStyle_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_MResourceStyle_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.MResourceStyle.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.MResourceStyle.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle build() {
-        org.fursten.message.proto.SimulatorProtos.MResourceStyle result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle build() {
+        org.fursten.message.proto._SimulatorProtos.MResourceStyle result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.MResourceStyle result = new org.fursten.message.proto.SimulatorProtos.MResourceStyle(this);
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.MResourceStyle result = new org.fursten.message.proto._SimulatorProtos.MResourceStyle(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -9494,16 +9494,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.MResourceStyle) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.MResourceStyle)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.MResourceStyle) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.MResourceStyle)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.MResourceStyle other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.MResourceStyle.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.MResourceStyle other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.MResourceStyle.getDefaultInstance()) return this;
         if (other.hasName()) {
           bitField0_ |= 0x00000001;
           name_ = other.name_;
@@ -9544,11 +9544,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.MResourceStyle parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.MResourceStyle parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.MResourceStyle) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.MResourceStyle) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -9700,7 +9700,7 @@ public final class SimulatorProtos {
       }
 
       // optional .messages.MResourceStyle.Shape shape = 4;
-      private org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape shape_ = org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape.BLANK;
+      private org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape shape_ = org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape.BLANK;
       /**
        * <code>optional .messages.MResourceStyle.Shape shape = 4;</code>
        */
@@ -9710,13 +9710,13 @@ public final class SimulatorProtos {
       /**
        * <code>optional .messages.MResourceStyle.Shape shape = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape getShape() {
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape getShape() {
         return shape_;
       }
       /**
        * <code>optional .messages.MResourceStyle.Shape shape = 4;</code>
        */
-      public Builder setShape(org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape value) {
+      public Builder setShape(org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -9730,7 +9730,7 @@ public final class SimulatorProtos {
        */
       public Builder clearShape() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        shape_ = org.fursten.message.proto.SimulatorProtos.MResourceStyle.Shape.BLANK;
+        shape_ = org.fursten.message.proto._SimulatorProtos.MResourceStyle.Shape.BLANK;
         onChanged();
         return this;
       }
@@ -9819,12 +9819,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource delete_resource = 1;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> 
         getDeleteResourceList();
     /**
      * <code>repeated .messages.MResource delete_resource = 1;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResource getDeleteResource(int index);
+    org.fursten.message.proto._SimulatorProtos.MResource getDeleteResource(int index);
     /**
      * <code>repeated .messages.MResource delete_resource = 1;</code>
      */
@@ -9832,24 +9832,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource delete_resource = 1;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
         getDeleteResourceOrBuilderList();
     /**
      * <code>repeated .messages.MResource delete_resource = 1;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder getDeleteResourceOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder getDeleteResourceOrBuilder(
         int index);
 
     // repeated .messages.MResource put_resource = 2;
     /**
      * <code>repeated .messages.MResource put_resource = 2;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> 
         getPutResourceList();
     /**
      * <code>repeated .messages.MResource put_resource = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResource getPutResource(int index);
+    org.fursten.message.proto._SimulatorProtos.MResource getPutResource(int index);
     /**
      * <code>repeated .messages.MResource put_resource = 2;</code>
      */
@@ -9857,12 +9857,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource put_resource = 2;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
         getPutResourceOrBuilderList();
     /**
      * <code>repeated .messages.MResource put_resource = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder getPutResourceOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder getPutResourceOrBuilder(
         int index);
 
     // repeated sint32 get_resource = 3;
@@ -9883,12 +9883,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> 
         getDeleteResourceStyleList();
     /**
      * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceStyle getDeleteResourceStyle(int index);
+    org.fursten.message.proto._SimulatorProtos.MResourceStyle getDeleteResourceStyle(int index);
     /**
      * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
      */
@@ -9896,24 +9896,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
         getDeleteResourceStyleOrBuilderList();
     /**
      * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder getDeleteResourceStyleOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder getDeleteResourceStyleOrBuilder(
         int index);
 
     // repeated .messages.MResourceStyle put_resource_style = 5;
     /**
      * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> 
         getPutResourceStyleList();
     /**
      * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceStyle getPutResourceStyle(int index);
+    org.fursten.message.proto._SimulatorProtos.MResourceStyle getPutResourceStyle(int index);
     /**
      * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
      */
@@ -9921,12 +9921,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
         getPutResourceStyleOrBuilderList();
     /**
      * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder getPutResourceStyleOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder getPutResourceStyleOrBuilder(
         int index);
 
     // repeated sint32 get_resource_style = 6;
@@ -9996,18 +9996,18 @@ public final class SimulatorProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                deleteResource_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource>();
+                deleteResource_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              deleteResource_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MResource.PARSER, extensionRegistry));
+              deleteResource_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MResource.PARSER, extensionRegistry));
               break;
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                putResource_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource>();
+                putResource_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              putResource_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MResource.PARSER, extensionRegistry));
+              putResource_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MResource.PARSER, extensionRegistry));
               break;
             }
             case 24: {
@@ -10033,18 +10033,18 @@ public final class SimulatorProtos {
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                deleteResourceStyle_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResourceStyle>();
+                deleteResourceStyle_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResourceStyle>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              deleteResourceStyle_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MResourceStyle.PARSER, extensionRegistry));
+              deleteResourceStyle_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MResourceStyle.PARSER, extensionRegistry));
               break;
             }
             case 42: {
               if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                putResourceStyle_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResourceStyle>();
+                putResourceStyle_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResourceStyle>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              putResourceStyle_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MResourceStyle.PARSER, extensionRegistry));
+              putResourceStyle_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MResourceStyle.PARSER, extensionRegistry));
               break;
             }
             case 48: {
@@ -10100,14 +10100,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceRequest_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceRequest_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.ResourceRequest.class, org.fursten.message.proto.SimulatorProtos.ResourceRequest.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.ResourceRequest.class, org.fursten.message.proto._SimulatorProtos.ResourceRequest.Builder.class);
     }
 
     public static com.google.protobuf.Parser<ResourceRequest> PARSER =
@@ -10127,17 +10127,17 @@ public final class SimulatorProtos {
 
     // repeated .messages.MResource delete_resource = 1;
     public static final int DELETE_RESOURCE_FIELD_NUMBER = 1;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> deleteResource_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> deleteResource_;
     /**
      * <code>repeated .messages.MResource delete_resource = 1;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> getDeleteResourceList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> getDeleteResourceList() {
       return deleteResource_;
     }
     /**
      * <code>repeated .messages.MResource delete_resource = 1;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
         getDeleteResourceOrBuilderList() {
       return deleteResource_;
     }
@@ -10150,30 +10150,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource delete_resource = 1;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResource getDeleteResource(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MResource getDeleteResource(int index) {
       return deleteResource_.get(index);
     }
     /**
      * <code>repeated .messages.MResource delete_resource = 1;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder getDeleteResourceOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder getDeleteResourceOrBuilder(
         int index) {
       return deleteResource_.get(index);
     }
 
     // repeated .messages.MResource put_resource = 2;
     public static final int PUT_RESOURCE_FIELD_NUMBER = 2;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> putResource_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> putResource_;
     /**
      * <code>repeated .messages.MResource put_resource = 2;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> getPutResourceList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> getPutResourceList() {
       return putResource_;
     }
     /**
      * <code>repeated .messages.MResource put_resource = 2;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
         getPutResourceOrBuilderList() {
       return putResource_;
     }
@@ -10186,13 +10186,13 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource put_resource = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResource getPutResource(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MResource getPutResource(int index) {
       return putResource_.get(index);
     }
     /**
      * <code>repeated .messages.MResource put_resource = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder getPutResourceOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder getPutResourceOrBuilder(
         int index) {
       return putResource_.get(index);
     }
@@ -10222,17 +10222,17 @@ public final class SimulatorProtos {
 
     // repeated .messages.MResourceStyle delete_resource_style = 4;
     public static final int DELETE_RESOURCE_STYLE_FIELD_NUMBER = 4;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> deleteResourceStyle_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> deleteResourceStyle_;
     /**
      * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> getDeleteResourceStyleList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> getDeleteResourceStyleList() {
       return deleteResourceStyle_;
     }
     /**
      * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
         getDeleteResourceStyleOrBuilderList() {
       return deleteResourceStyle_;
     }
@@ -10245,30 +10245,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceStyle getDeleteResourceStyle(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MResourceStyle getDeleteResourceStyle(int index) {
       return deleteResourceStyle_.get(index);
     }
     /**
      * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder getDeleteResourceStyleOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder getDeleteResourceStyleOrBuilder(
         int index) {
       return deleteResourceStyle_.get(index);
     }
 
     // repeated .messages.MResourceStyle put_resource_style = 5;
     public static final int PUT_RESOURCE_STYLE_FIELD_NUMBER = 5;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> putResourceStyle_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> putResourceStyle_;
     /**
      * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> getPutResourceStyleList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> getPutResourceStyleList() {
       return putResourceStyle_;
     }
     /**
      * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
         getPutResourceStyleOrBuilderList() {
       return putResourceStyle_;
     }
@@ -10281,13 +10281,13 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceStyle getPutResourceStyle(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MResourceStyle getPutResourceStyle(int index) {
       return putResourceStyle_.get(index);
     }
     /**
      * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder getPutResourceStyleOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder getPutResourceStyleOrBuilder(
         int index) {
       return putResourceStyle_.get(index);
     }
@@ -10432,53 +10432,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -10487,7 +10487,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.ResourceRequest prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.ResourceRequest prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -10503,17 +10503,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.ResourceRequestOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.ResourceRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceRequest_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceRequest_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceRequest_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.ResourceRequest.class, org.fursten.message.proto.SimulatorProtos.ResourceRequest.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.ResourceRequest.class, org.fursten.message.proto._SimulatorProtos.ResourceRequest.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.ResourceRequest.newBuilder()
@@ -10577,23 +10577,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceRequest_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceRequest_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ResourceRequest getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.ResourceRequest.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.ResourceRequest getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.ResourceRequest.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ResourceRequest build() {
-        org.fursten.message.proto.SimulatorProtos.ResourceRequest result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.ResourceRequest build() {
+        org.fursten.message.proto._SimulatorProtos.ResourceRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ResourceRequest buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.ResourceRequest result = new org.fursten.message.proto.SimulatorProtos.ResourceRequest(this);
+      public org.fursten.message.proto._SimulatorProtos.ResourceRequest buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.ResourceRequest result = new org.fursten.message.proto._SimulatorProtos.ResourceRequest(this);
         int from_bitField0_ = bitField0_;
         if (deleteResourceBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -10646,16 +10646,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.ResourceRequest) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.ResourceRequest)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.ResourceRequest) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.ResourceRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.ResourceRequest other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.ResourceRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.ResourceRequest other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.ResourceRequest.getDefaultInstance()) return this;
         if (deleteResourceBuilder_ == null) {
           if (!other.deleteResource_.isEmpty()) {
             if (deleteResource_.isEmpty()) {
@@ -10816,11 +10816,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.ResourceRequest parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.ResourceRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.ResourceRequest) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.ResourceRequest) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -10832,22 +10832,22 @@ public final class SimulatorProtos {
       private int bitField0_;
 
       // repeated .messages.MResource delete_resource = 1;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> deleteResource_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> deleteResource_ =
         java.util.Collections.emptyList();
       private void ensureDeleteResourceIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          deleteResource_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource>(deleteResource_);
+          deleteResource_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource>(deleteResource_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource, org.fursten.message.proto.SimulatorProtos.MResource.Builder, org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> deleteResourceBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MResource, org.fursten.message.proto._SimulatorProtos.MResource.Builder, org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> deleteResourceBuilder_;
 
       /**
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> getDeleteResourceList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> getDeleteResourceList() {
         if (deleteResourceBuilder_ == null) {
           return java.util.Collections.unmodifiableList(deleteResource_);
         } else {
@@ -10867,7 +10867,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource getDeleteResource(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MResource getDeleteResource(int index) {
         if (deleteResourceBuilder_ == null) {
           return deleteResource_.get(index);
         } else {
@@ -10878,7 +10878,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
       public Builder setDeleteResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource value) {
         if (deleteResourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10895,7 +10895,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
       public Builder setDeleteResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Builder builderForValue) {
         if (deleteResourceBuilder_ == null) {
           ensureDeleteResourceIsMutable();
           deleteResource_.set(index, builderForValue.build());
@@ -10908,7 +10908,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
-      public Builder addDeleteResource(org.fursten.message.proto.SimulatorProtos.MResource value) {
+      public Builder addDeleteResource(org.fursten.message.proto._SimulatorProtos.MResource value) {
         if (deleteResourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10925,7 +10925,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
       public Builder addDeleteResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource value) {
         if (deleteResourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10942,7 +10942,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
       public Builder addDeleteResource(
-          org.fursten.message.proto.SimulatorProtos.MResource.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MResource.Builder builderForValue) {
         if (deleteResourceBuilder_ == null) {
           ensureDeleteResourceIsMutable();
           deleteResource_.add(builderForValue.build());
@@ -10956,7 +10956,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
       public Builder addDeleteResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Builder builderForValue) {
         if (deleteResourceBuilder_ == null) {
           ensureDeleteResourceIsMutable();
           deleteResource_.add(index, builderForValue.build());
@@ -10970,7 +10970,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
       public Builder addAllDeleteResource(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MResource> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MResource> values) {
         if (deleteResourceBuilder_ == null) {
           ensureDeleteResourceIsMutable();
           super.addAll(values, deleteResource_);
@@ -11009,14 +11009,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Builder getDeleteResourceBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Builder getDeleteResourceBuilder(
           int index) {
         return getDeleteResourceFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder getDeleteResourceOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder getDeleteResourceOrBuilder(
           int index) {
         if (deleteResourceBuilder_ == null) {
           return deleteResource_.get(index);  } else {
@@ -11026,7 +11026,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
            getDeleteResourceOrBuilderList() {
         if (deleteResourceBuilder_ != null) {
           return deleteResourceBuilder_.getMessageOrBuilderList();
@@ -11037,31 +11037,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Builder addDeleteResourceBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MResource.Builder addDeleteResourceBuilder() {
         return getDeleteResourceFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MResource.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MResource.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Builder addDeleteResourceBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Builder addDeleteResourceBuilder(
           int index) {
         return getDeleteResourceFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MResource.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MResource.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource delete_resource = 1;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Builder> 
            getDeleteResourceBuilderList() {
         return getDeleteResourceFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource, org.fursten.message.proto.SimulatorProtos.MResource.Builder, org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MResource, org.fursten.message.proto._SimulatorProtos.MResource.Builder, org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
           getDeleteResourceFieldBuilder() {
         if (deleteResourceBuilder_ == null) {
           deleteResourceBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MResource, org.fursten.message.proto.SimulatorProtos.MResource.Builder, org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MResource, org.fursten.message.proto._SimulatorProtos.MResource.Builder, org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder>(
                   deleteResource_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -11072,22 +11072,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MResource put_resource = 2;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> putResource_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> putResource_ =
         java.util.Collections.emptyList();
       private void ensurePutResourceIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          putResource_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource>(putResource_);
+          putResource_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource>(putResource_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource, org.fursten.message.proto.SimulatorProtos.MResource.Builder, org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> putResourceBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MResource, org.fursten.message.proto._SimulatorProtos.MResource.Builder, org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> putResourceBuilder_;
 
       /**
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> getPutResourceList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> getPutResourceList() {
         if (putResourceBuilder_ == null) {
           return java.util.Collections.unmodifiableList(putResource_);
         } else {
@@ -11107,7 +11107,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource getPutResource(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MResource getPutResource(int index) {
         if (putResourceBuilder_ == null) {
           return putResource_.get(index);
         } else {
@@ -11118,7 +11118,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
       public Builder setPutResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource value) {
         if (putResourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11135,7 +11135,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
       public Builder setPutResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Builder builderForValue) {
         if (putResourceBuilder_ == null) {
           ensurePutResourceIsMutable();
           putResource_.set(index, builderForValue.build());
@@ -11148,7 +11148,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
-      public Builder addPutResource(org.fursten.message.proto.SimulatorProtos.MResource value) {
+      public Builder addPutResource(org.fursten.message.proto._SimulatorProtos.MResource value) {
         if (putResourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11165,7 +11165,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
       public Builder addPutResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource value) {
         if (putResourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11182,7 +11182,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
       public Builder addPutResource(
-          org.fursten.message.proto.SimulatorProtos.MResource.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MResource.Builder builderForValue) {
         if (putResourceBuilder_ == null) {
           ensurePutResourceIsMutable();
           putResource_.add(builderForValue.build());
@@ -11196,7 +11196,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
       public Builder addPutResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Builder builderForValue) {
         if (putResourceBuilder_ == null) {
           ensurePutResourceIsMutable();
           putResource_.add(index, builderForValue.build());
@@ -11210,7 +11210,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
       public Builder addAllPutResource(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MResource> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MResource> values) {
         if (putResourceBuilder_ == null) {
           ensurePutResourceIsMutable();
           super.addAll(values, putResource_);
@@ -11249,14 +11249,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Builder getPutResourceBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Builder getPutResourceBuilder(
           int index) {
         return getPutResourceFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder getPutResourceOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder getPutResourceOrBuilder(
           int index) {
         if (putResourceBuilder_ == null) {
           return putResource_.get(index);  } else {
@@ -11266,7 +11266,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
            getPutResourceOrBuilderList() {
         if (putResourceBuilder_ != null) {
           return putResourceBuilder_.getMessageOrBuilderList();
@@ -11277,31 +11277,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Builder addPutResourceBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MResource.Builder addPutResourceBuilder() {
         return getPutResourceFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MResource.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MResource.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Builder addPutResourceBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Builder addPutResourceBuilder(
           int index) {
         return getPutResourceFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MResource.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MResource.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource put_resource = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Builder> 
            getPutResourceBuilderList() {
         return getPutResourceFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource, org.fursten.message.proto.SimulatorProtos.MResource.Builder, org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MResource, org.fursten.message.proto._SimulatorProtos.MResource.Builder, org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
           getPutResourceFieldBuilder() {
         if (putResourceBuilder_ == null) {
           putResourceBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MResource, org.fursten.message.proto.SimulatorProtos.MResource.Builder, org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MResource, org.fursten.message.proto._SimulatorProtos.MResource.Builder, org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder>(
                   putResource_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -11378,22 +11378,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MResourceStyle delete_resource_style = 4;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> deleteResourceStyle_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> deleteResourceStyle_ =
         java.util.Collections.emptyList();
       private void ensureDeleteResourceStyleIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          deleteResourceStyle_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResourceStyle>(deleteResourceStyle_);
+          deleteResourceStyle_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResourceStyle>(deleteResourceStyle_);
           bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResourceStyle, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> deleteResourceStyleBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MResourceStyle, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> deleteResourceStyleBuilder_;
 
       /**
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> getDeleteResourceStyleList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> getDeleteResourceStyleList() {
         if (deleteResourceStyleBuilder_ == null) {
           return java.util.Collections.unmodifiableList(deleteResourceStyle_);
         } else {
@@ -11413,7 +11413,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle getDeleteResourceStyle(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle getDeleteResourceStyle(int index) {
         if (deleteResourceStyleBuilder_ == null) {
           return deleteResourceStyle_.get(index);
         } else {
@@ -11424,7 +11424,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
       public Builder setDeleteResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle value) {
         if (deleteResourceStyleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11441,7 +11441,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
       public Builder setDeleteResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder builderForValue) {
         if (deleteResourceStyleBuilder_ == null) {
           ensureDeleteResourceStyleIsMutable();
           deleteResourceStyle_.set(index, builderForValue.build());
@@ -11454,7 +11454,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
-      public Builder addDeleteResourceStyle(org.fursten.message.proto.SimulatorProtos.MResourceStyle value) {
+      public Builder addDeleteResourceStyle(org.fursten.message.proto._SimulatorProtos.MResourceStyle value) {
         if (deleteResourceStyleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11471,7 +11471,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
       public Builder addDeleteResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle value) {
         if (deleteResourceStyleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11488,7 +11488,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
       public Builder addDeleteResourceStyle(
-          org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder builderForValue) {
         if (deleteResourceStyleBuilder_ == null) {
           ensureDeleteResourceStyleIsMutable();
           deleteResourceStyle_.add(builderForValue.build());
@@ -11502,7 +11502,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
       public Builder addDeleteResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder builderForValue) {
         if (deleteResourceStyleBuilder_ == null) {
           ensureDeleteResourceStyleIsMutable();
           deleteResourceStyle_.add(index, builderForValue.build());
@@ -11516,7 +11516,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
       public Builder addAllDeleteResourceStyle(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyle> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyle> values) {
         if (deleteResourceStyleBuilder_ == null) {
           ensureDeleteResourceStyleIsMutable();
           super.addAll(values, deleteResourceStyle_);
@@ -11555,14 +11555,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder getDeleteResourceStyleBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder getDeleteResourceStyleBuilder(
           int index) {
         return getDeleteResourceStyleFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder getDeleteResourceStyleOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder getDeleteResourceStyleOrBuilder(
           int index) {
         if (deleteResourceStyleBuilder_ == null) {
           return deleteResourceStyle_.get(index);  } else {
@@ -11572,7 +11572,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
            getDeleteResourceStyleOrBuilderList() {
         if (deleteResourceStyleBuilder_ != null) {
           return deleteResourceStyleBuilder_.getMessageOrBuilderList();
@@ -11583,31 +11583,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder addDeleteResourceStyleBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder addDeleteResourceStyleBuilder() {
         return getDeleteResourceStyleFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MResourceStyle.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MResourceStyle.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder addDeleteResourceStyleBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder addDeleteResourceStyleBuilder(
           int index) {
         return getDeleteResourceStyleFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MResourceStyle.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MResourceStyle.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResourceStyle delete_resource_style = 4;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder> 
            getDeleteResourceStyleBuilderList() {
         return getDeleteResourceStyleFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResourceStyle, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MResourceStyle, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
           getDeleteResourceStyleFieldBuilder() {
         if (deleteResourceStyleBuilder_ == null) {
           deleteResourceStyleBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MResourceStyle, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MResourceStyle, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder>(
                   deleteResourceStyle_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
@@ -11618,22 +11618,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MResourceStyle put_resource_style = 5;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> putResourceStyle_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> putResourceStyle_ =
         java.util.Collections.emptyList();
       private void ensurePutResourceStyleIsMutable() {
         if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-          putResourceStyle_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResourceStyle>(putResourceStyle_);
+          putResourceStyle_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResourceStyle>(putResourceStyle_);
           bitField0_ |= 0x00000010;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResourceStyle, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> putResourceStyleBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MResourceStyle, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> putResourceStyleBuilder_;
 
       /**
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> getPutResourceStyleList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> getPutResourceStyleList() {
         if (putResourceStyleBuilder_ == null) {
           return java.util.Collections.unmodifiableList(putResourceStyle_);
         } else {
@@ -11653,7 +11653,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle getPutResourceStyle(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle getPutResourceStyle(int index) {
         if (putResourceStyleBuilder_ == null) {
           return putResourceStyle_.get(index);
         } else {
@@ -11664,7 +11664,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
       public Builder setPutResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle value) {
         if (putResourceStyleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11681,7 +11681,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
       public Builder setPutResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder builderForValue) {
         if (putResourceStyleBuilder_ == null) {
           ensurePutResourceStyleIsMutable();
           putResourceStyle_.set(index, builderForValue.build());
@@ -11694,7 +11694,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
-      public Builder addPutResourceStyle(org.fursten.message.proto.SimulatorProtos.MResourceStyle value) {
+      public Builder addPutResourceStyle(org.fursten.message.proto._SimulatorProtos.MResourceStyle value) {
         if (putResourceStyleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11711,7 +11711,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
       public Builder addPutResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle value) {
         if (putResourceStyleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11728,7 +11728,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
       public Builder addPutResourceStyle(
-          org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder builderForValue) {
         if (putResourceStyleBuilder_ == null) {
           ensurePutResourceStyleIsMutable();
           putResourceStyle_.add(builderForValue.build());
@@ -11742,7 +11742,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
       public Builder addPutResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder builderForValue) {
         if (putResourceStyleBuilder_ == null) {
           ensurePutResourceStyleIsMutable();
           putResourceStyle_.add(index, builderForValue.build());
@@ -11756,7 +11756,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
       public Builder addAllPutResourceStyle(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyle> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyle> values) {
         if (putResourceStyleBuilder_ == null) {
           ensurePutResourceStyleIsMutable();
           super.addAll(values, putResourceStyle_);
@@ -11795,14 +11795,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder getPutResourceStyleBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder getPutResourceStyleBuilder(
           int index) {
         return getPutResourceStyleFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder getPutResourceStyleOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder getPutResourceStyleOrBuilder(
           int index) {
         if (putResourceStyleBuilder_ == null) {
           return putResourceStyle_.get(index);  } else {
@@ -11812,7 +11812,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
            getPutResourceStyleOrBuilderList() {
         if (putResourceStyleBuilder_ != null) {
           return putResourceStyleBuilder_.getMessageOrBuilderList();
@@ -11823,31 +11823,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder addPutResourceStyleBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder addPutResourceStyleBuilder() {
         return getPutResourceStyleFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MResourceStyle.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MResourceStyle.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder addPutResourceStyleBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder addPutResourceStyleBuilder(
           int index) {
         return getPutResourceStyleFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MResourceStyle.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MResourceStyle.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResourceStyle put_resource_style = 5;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder> 
            getPutResourceStyleBuilderList() {
         return getPutResourceStyleFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResourceStyle, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MResourceStyle, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
           getPutResourceStyleFieldBuilder() {
         if (putResourceStyleBuilder_ == null) {
           putResourceStyleBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MResourceStyle, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MResourceStyle, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder>(
                   putResourceStyle_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
@@ -11951,12 +11951,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getDeleteNotificationList();
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getDeleteNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getDeleteNotification(int index);
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
@@ -11964,24 +11964,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getDeleteNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
         int index);
 
     // repeated .messages.Note put_notification = 3;
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getPutNotificationList();
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getPutNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getPutNotification(int index);
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
@@ -11989,24 +11989,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getPutNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
         int index);
 
     // repeated .messages.Note get_notification = 4;
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getGetNotificationList();
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getGetNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getGetNotification(int index);
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
@@ -12014,24 +12014,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getGetNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
         int index);
 
     // repeated .messages.MResource resource = 5;
     /**
      * <code>repeated .messages.MResource resource = 5;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> 
         getResourceList();
     /**
      * <code>repeated .messages.MResource resource = 5;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResource getResource(int index);
+    org.fursten.message.proto._SimulatorProtos.MResource getResource(int index);
     /**
      * <code>repeated .messages.MResource resource = 5;</code>
      */
@@ -12039,24 +12039,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource resource = 5;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
         getResourceOrBuilderList();
     /**
      * <code>repeated .messages.MResource resource = 5;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder getResourceOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder getResourceOrBuilder(
         int index);
 
     // repeated .messages.Note delete_resource_style_notification = 6;
     /**
      * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getDeleteResourceStyleNotificationList();
     /**
      * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getDeleteResourceStyleNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getDeleteResourceStyleNotification(int index);
     /**
      * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
      */
@@ -12064,24 +12064,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getDeleteResourceStyleNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getDeleteResourceStyleNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getDeleteResourceStyleNotificationOrBuilder(
         int index);
 
     // repeated .messages.Note put_resource_style_notification = 7;
     /**
      * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getPutResourceStyleNotificationList();
     /**
      * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getPutResourceStyleNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getPutResourceStyleNotification(int index);
     /**
      * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
      */
@@ -12089,24 +12089,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getPutResourceStyleNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getPutResourceStyleNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getPutResourceStyleNotificationOrBuilder(
         int index);
 
     // repeated .messages.Note get_resource_style_notification = 8;
     /**
      * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getGetResourceStyleNotificationList();
     /**
      * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getGetResourceStyleNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getGetResourceStyleNotification(int index);
     /**
      * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
      */
@@ -12114,24 +12114,24 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getGetResourceStyleNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getGetResourceStyleNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getGetResourceStyleNotificationOrBuilder(
         int index);
 
     // repeated .messages.MResourceStyle resource_style = 9;
     /**
      * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> 
         getResourceStyleList();
     /**
      * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceStyle getResourceStyle(int index);
+    org.fursten.message.proto._SimulatorProtos.MResourceStyle getResourceStyle(int index);
     /**
      * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
      */
@@ -12139,12 +12139,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
         getResourceStyleOrBuilderList();
     /**
      * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder getResourceStyleOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder getResourceStyleOrBuilder(
         int index);
   }
   /**
@@ -12205,66 +12205,66 @@ public final class SimulatorProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                deleteNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                deleteNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              deleteNotification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              deleteNotification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                putNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                putNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              putNotification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              putNotification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                getNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                getNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              getNotification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              getNotification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
             case 42: {
               if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                resource_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource>();
+                resource_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              resource_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MResource.PARSER, extensionRegistry));
+              resource_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MResource.PARSER, extensionRegistry));
               break;
             }
             case 50: {
               if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-                deleteResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                deleteResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000020;
               }
-              deleteResourceStyleNotification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              deleteResourceStyleNotification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
             case 58: {
               if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-                putResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                putResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000040;
               }
-              putResourceStyleNotification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              putResourceStyleNotification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
             case 66: {
               if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
-                getResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                getResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000080;
               }
-              getResourceStyleNotification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              getResourceStyleNotification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
             case 74: {
               if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
-                resourceStyle_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResourceStyle>();
+                resourceStyle_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResourceStyle>();
                 mutable_bitField0_ |= 0x00000100;
               }
-              resourceStyle_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.MResourceStyle.PARSER, extensionRegistry));
+              resourceStyle_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.MResourceStyle.PARSER, extensionRegistry));
               break;
             }
           }
@@ -12305,14 +12305,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceResponse_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceResponse_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceResponse_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.ResourceResponse.class, org.fursten.message.proto.SimulatorProtos.ResourceResponse.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.ResourceResponse.class, org.fursten.message.proto._SimulatorProtos.ResourceResponse.Builder.class);
     }
 
     public static com.google.protobuf.Parser<ResourceResponse> PARSER =
@@ -12349,17 +12349,17 @@ public final class SimulatorProtos {
 
     // repeated .messages.Note delete_notification = 2;
     public static final int DELETE_NOTIFICATION_FIELD_NUMBER = 2;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> deleteNotification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> deleteNotification_;
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getDeleteNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getDeleteNotificationList() {
       return deleteNotification_;
     }
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getDeleteNotificationOrBuilderList() {
       return deleteNotification_;
     }
@@ -12372,30 +12372,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getDeleteNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getDeleteNotification(int index) {
       return deleteNotification_.get(index);
     }
     /**
      * <code>repeated .messages.Note delete_notification = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
         int index) {
       return deleteNotification_.get(index);
     }
 
     // repeated .messages.Note put_notification = 3;
     public static final int PUT_NOTIFICATION_FIELD_NUMBER = 3;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> putNotification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> putNotification_;
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getPutNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getPutNotificationList() {
       return putNotification_;
     }
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getPutNotificationOrBuilderList() {
       return putNotification_;
     }
@@ -12408,30 +12408,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getPutNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getPutNotification(int index) {
       return putNotification_.get(index);
     }
     /**
      * <code>repeated .messages.Note put_notification = 3;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
         int index) {
       return putNotification_.get(index);
     }
 
     // repeated .messages.Note get_notification = 4;
     public static final int GET_NOTIFICATION_FIELD_NUMBER = 4;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getNotification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getNotification_;
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getGetNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getGetNotificationList() {
       return getNotification_;
     }
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getGetNotificationOrBuilderList() {
       return getNotification_;
     }
@@ -12444,30 +12444,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getGetNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getGetNotification(int index) {
       return getNotification_.get(index);
     }
     /**
      * <code>repeated .messages.Note get_notification = 4;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
         int index) {
       return getNotification_.get(index);
     }
 
     // repeated .messages.MResource resource = 5;
     public static final int RESOURCE_FIELD_NUMBER = 5;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> resource_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> resource_;
     /**
      * <code>repeated .messages.MResource resource = 5;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> getResourceList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> getResourceList() {
       return resource_;
     }
     /**
      * <code>repeated .messages.MResource resource = 5;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
         getResourceOrBuilderList() {
       return resource_;
     }
@@ -12480,30 +12480,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResource resource = 5;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResource getResource(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MResource getResource(int index) {
       return resource_.get(index);
     }
     /**
      * <code>repeated .messages.MResource resource = 5;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder getResourceOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder getResourceOrBuilder(
         int index) {
       return resource_.get(index);
     }
 
     // repeated .messages.Note delete_resource_style_notification = 6;
     public static final int DELETE_RESOURCE_STYLE_NOTIFICATION_FIELD_NUMBER = 6;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> deleteResourceStyleNotification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> deleteResourceStyleNotification_;
     /**
      * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getDeleteResourceStyleNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getDeleteResourceStyleNotificationList() {
       return deleteResourceStyleNotification_;
     }
     /**
      * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getDeleteResourceStyleNotificationOrBuilderList() {
       return deleteResourceStyleNotification_;
     }
@@ -12516,30 +12516,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getDeleteResourceStyleNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getDeleteResourceStyleNotification(int index) {
       return deleteResourceStyleNotification_.get(index);
     }
     /**
      * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getDeleteResourceStyleNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getDeleteResourceStyleNotificationOrBuilder(
         int index) {
       return deleteResourceStyleNotification_.get(index);
     }
 
     // repeated .messages.Note put_resource_style_notification = 7;
     public static final int PUT_RESOURCE_STYLE_NOTIFICATION_FIELD_NUMBER = 7;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> putResourceStyleNotification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> putResourceStyleNotification_;
     /**
      * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getPutResourceStyleNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getPutResourceStyleNotificationList() {
       return putResourceStyleNotification_;
     }
     /**
      * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getPutResourceStyleNotificationOrBuilderList() {
       return putResourceStyleNotification_;
     }
@@ -12552,30 +12552,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getPutResourceStyleNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getPutResourceStyleNotification(int index) {
       return putResourceStyleNotification_.get(index);
     }
     /**
      * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getPutResourceStyleNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getPutResourceStyleNotificationOrBuilder(
         int index) {
       return putResourceStyleNotification_.get(index);
     }
 
     // repeated .messages.Note get_resource_style_notification = 8;
     public static final int GET_RESOURCE_STYLE_NOTIFICATION_FIELD_NUMBER = 8;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getResourceStyleNotification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getResourceStyleNotification_;
     /**
      * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getGetResourceStyleNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getGetResourceStyleNotificationList() {
       return getResourceStyleNotification_;
     }
     /**
      * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getGetResourceStyleNotificationOrBuilderList() {
       return getResourceStyleNotification_;
     }
@@ -12588,30 +12588,30 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getGetResourceStyleNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getGetResourceStyleNotification(int index) {
       return getResourceStyleNotification_.get(index);
     }
     /**
      * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getGetResourceStyleNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getGetResourceStyleNotificationOrBuilder(
         int index) {
       return getResourceStyleNotification_.get(index);
     }
 
     // repeated .messages.MResourceStyle resource_style = 9;
     public static final int RESOURCE_STYLE_FIELD_NUMBER = 9;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> resourceStyle_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> resourceStyle_;
     /**
      * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> getResourceStyleList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> getResourceStyleList() {
       return resourceStyle_;
     }
     /**
      * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
         getResourceStyleOrBuilderList() {
       return resourceStyle_;
     }
@@ -12624,13 +12624,13 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceStyle getResourceStyle(int index) {
+    public org.fursten.message.proto._SimulatorProtos.MResourceStyle getResourceStyle(int index) {
       return resourceStyle_.get(index);
     }
     /**
      * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder getResourceStyleOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder getResourceStyleOrBuilder(
         int index) {
       return resourceStyle_.get(index);
     }
@@ -12794,53 +12794,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ResourceResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ResourceResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -12849,7 +12849,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.ResourceResponse prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.ResourceResponse prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -12865,17 +12865,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.ResourceResponseOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.ResourceResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceResponse_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceResponse_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceResponse_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.ResourceResponse.class, org.fursten.message.proto.SimulatorProtos.ResourceResponse.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.ResourceResponse.class, org.fursten.message.proto._SimulatorProtos.ResourceResponse.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.ResourceResponse.newBuilder()
@@ -12965,23 +12965,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ResourceResponse_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ResourceResponse_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ResourceResponse getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.ResourceResponse.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.ResourceResponse getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.ResourceResponse.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ResourceResponse build() {
-        org.fursten.message.proto.SimulatorProtos.ResourceResponse result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.ResourceResponse build() {
+        org.fursten.message.proto._SimulatorProtos.ResourceResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ResourceResponse buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.ResourceResponse result = new org.fursten.message.proto.SimulatorProtos.ResourceResponse(this);
+      public org.fursten.message.proto._SimulatorProtos.ResourceResponse buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.ResourceResponse result = new org.fursten.message.proto._SimulatorProtos.ResourceResponse(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -13066,16 +13066,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.ResourceResponse) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.ResourceResponse)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.ResourceResponse) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.ResourceResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.ResourceResponse other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.ResourceResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.ResourceResponse other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.ResourceResponse.getDefaultInstance()) return this;
         if (other.hasSuccess()) {
           setSuccess(other.getSuccess());
         }
@@ -13351,11 +13351,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.ResourceResponse parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.ResourceResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.ResourceResponse) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.ResourceResponse) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -13400,22 +13400,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note delete_notification = 2;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> deleteNotification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> deleteNotification_ =
         java.util.Collections.emptyList();
       private void ensureDeleteNotificationIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          deleteNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(deleteNotification_);
+          deleteNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(deleteNotification_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> deleteNotificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> deleteNotificationBuilder_;
 
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getDeleteNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getDeleteNotificationList() {
         if (deleteNotificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(deleteNotification_);
         } else {
@@ -13435,7 +13435,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getDeleteNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getDeleteNotification(int index) {
         if (deleteNotificationBuilder_ == null) {
           return deleteNotification_.get(index);
         } else {
@@ -13446,7 +13446,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder setDeleteNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (deleteNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13463,7 +13463,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder setDeleteNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (deleteNotificationBuilder_ == null) {
           ensureDeleteNotificationIsMutable();
           deleteNotification_.set(index, builderForValue.build());
@@ -13476,7 +13476,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public Builder addDeleteNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addDeleteNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (deleteNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13493,7 +13493,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder addDeleteNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (deleteNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13510,7 +13510,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder addDeleteNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (deleteNotificationBuilder_ == null) {
           ensureDeleteNotificationIsMutable();
           deleteNotification_.add(builderForValue.build());
@@ -13524,7 +13524,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder addDeleteNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (deleteNotificationBuilder_ == null) {
           ensureDeleteNotificationIsMutable();
           deleteNotification_.add(index, builderForValue.build());
@@ -13538,7 +13538,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
       public Builder addAllDeleteNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (deleteNotificationBuilder_ == null) {
           ensureDeleteNotificationIsMutable();
           super.addAll(values, deleteNotification_);
@@ -13577,14 +13577,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getDeleteNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getDeleteNotificationBuilder(
           int index) {
         return getDeleteNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getDeleteNotificationOrBuilder(
           int index) {
         if (deleteNotificationBuilder_ == null) {
           return deleteNotification_.get(index);  } else {
@@ -13594,7 +13594,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getDeleteNotificationOrBuilderList() {
         if (deleteNotificationBuilder_ != null) {
           return deleteNotificationBuilder_.getMessageOrBuilderList();
@@ -13605,31 +13605,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addDeleteNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addDeleteNotificationBuilder() {
         return getDeleteNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addDeleteNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addDeleteNotificationBuilder(
           int index) {
         return getDeleteNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note delete_notification = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getDeleteNotificationBuilderList() {
         return getDeleteNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getDeleteNotificationFieldBuilder() {
         if (deleteNotificationBuilder_ == null) {
           deleteNotificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   deleteNotification_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -13640,22 +13640,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note put_notification = 3;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> putNotification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> putNotification_ =
         java.util.Collections.emptyList();
       private void ensurePutNotificationIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          putNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(putNotification_);
+          putNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(putNotification_);
           bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> putNotificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> putNotificationBuilder_;
 
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getPutNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getPutNotificationList() {
         if (putNotificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(putNotification_);
         } else {
@@ -13675,7 +13675,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getPutNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getPutNotification(int index) {
         if (putNotificationBuilder_ == null) {
           return putNotification_.get(index);
         } else {
@@ -13686,7 +13686,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder setPutNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (putNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13703,7 +13703,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder setPutNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (putNotificationBuilder_ == null) {
           ensurePutNotificationIsMutable();
           putNotification_.set(index, builderForValue.build());
@@ -13716,7 +13716,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public Builder addPutNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addPutNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (putNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13733,7 +13733,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder addPutNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (putNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13750,7 +13750,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder addPutNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (putNotificationBuilder_ == null) {
           ensurePutNotificationIsMutable();
           putNotification_.add(builderForValue.build());
@@ -13764,7 +13764,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder addPutNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (putNotificationBuilder_ == null) {
           ensurePutNotificationIsMutable();
           putNotification_.add(index, builderForValue.build());
@@ -13778,7 +13778,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
       public Builder addAllPutNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (putNotificationBuilder_ == null) {
           ensurePutNotificationIsMutable();
           super.addAll(values, putNotification_);
@@ -13817,14 +13817,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getPutNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getPutNotificationBuilder(
           int index) {
         return getPutNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getPutNotificationOrBuilder(
           int index) {
         if (putNotificationBuilder_ == null) {
           return putNotification_.get(index);  } else {
@@ -13834,7 +13834,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getPutNotificationOrBuilderList() {
         if (putNotificationBuilder_ != null) {
           return putNotificationBuilder_.getMessageOrBuilderList();
@@ -13845,31 +13845,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addPutNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addPutNotificationBuilder() {
         return getPutNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addPutNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addPutNotificationBuilder(
           int index) {
         return getPutNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note put_notification = 3;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getPutNotificationBuilderList() {
         return getPutNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getPutNotificationFieldBuilder() {
         if (putNotificationBuilder_ == null) {
           putNotificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   putNotification_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
@@ -13880,22 +13880,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note get_notification = 4;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getNotification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getNotification_ =
         java.util.Collections.emptyList();
       private void ensureGetNotificationIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          getNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(getNotification_);
+          getNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(getNotification_);
           bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> getNotificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> getNotificationBuilder_;
 
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getGetNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getGetNotificationList() {
         if (getNotificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(getNotification_);
         } else {
@@ -13915,7 +13915,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getGetNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getGetNotification(int index) {
         if (getNotificationBuilder_ == null) {
           return getNotification_.get(index);
         } else {
@@ -13926,7 +13926,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder setGetNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (getNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13943,7 +13943,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder setGetNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (getNotificationBuilder_ == null) {
           ensureGetNotificationIsMutable();
           getNotification_.set(index, builderForValue.build());
@@ -13956,7 +13956,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public Builder addGetNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addGetNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (getNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13973,7 +13973,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder addGetNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (getNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13990,7 +13990,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder addGetNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (getNotificationBuilder_ == null) {
           ensureGetNotificationIsMutable();
           getNotification_.add(builderForValue.build());
@@ -14004,7 +14004,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder addGetNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (getNotificationBuilder_ == null) {
           ensureGetNotificationIsMutable();
           getNotification_.add(index, builderForValue.build());
@@ -14018,7 +14018,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
       public Builder addAllGetNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (getNotificationBuilder_ == null) {
           ensureGetNotificationIsMutable();
           super.addAll(values, getNotification_);
@@ -14057,14 +14057,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getGetNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getGetNotificationBuilder(
           int index) {
         return getGetNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getGetNotificationOrBuilder(
           int index) {
         if (getNotificationBuilder_ == null) {
           return getNotification_.get(index);  } else {
@@ -14074,7 +14074,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getGetNotificationOrBuilderList() {
         if (getNotificationBuilder_ != null) {
           return getNotificationBuilder_.getMessageOrBuilderList();
@@ -14085,31 +14085,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addGetNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addGetNotificationBuilder() {
         return getGetNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addGetNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addGetNotificationBuilder(
           int index) {
         return getGetNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note get_notification = 4;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getGetNotificationBuilderList() {
         return getGetNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getGetNotificationFieldBuilder() {
         if (getNotificationBuilder_ == null) {
           getNotificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   getNotification_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
@@ -14120,22 +14120,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MResource resource = 5;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> resource_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> resource_ =
         java.util.Collections.emptyList();
       private void ensureResourceIsMutable() {
         if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-          resource_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResource>(resource_);
+          resource_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResource>(resource_);
           bitField0_ |= 0x00000010;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource, org.fursten.message.proto.SimulatorProtos.MResource.Builder, org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> resourceBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MResource, org.fursten.message.proto._SimulatorProtos.MResource.Builder, org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> resourceBuilder_;
 
       /**
        * <code>repeated .messages.MResource resource = 5;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource> getResourceList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource> getResourceList() {
         if (resourceBuilder_ == null) {
           return java.util.Collections.unmodifiableList(resource_);
         } else {
@@ -14155,7 +14155,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource resource = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource getResource(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MResource getResource(int index) {
         if (resourceBuilder_ == null) {
           return resource_.get(index);
         } else {
@@ -14166,7 +14166,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource resource = 5;</code>
        */
       public Builder setResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource value) {
         if (resourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14183,7 +14183,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource resource = 5;</code>
        */
       public Builder setResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Builder builderForValue) {
         if (resourceBuilder_ == null) {
           ensureResourceIsMutable();
           resource_.set(index, builderForValue.build());
@@ -14196,7 +14196,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource resource = 5;</code>
        */
-      public Builder addResource(org.fursten.message.proto.SimulatorProtos.MResource value) {
+      public Builder addResource(org.fursten.message.proto._SimulatorProtos.MResource value) {
         if (resourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14213,7 +14213,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource resource = 5;</code>
        */
       public Builder addResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource value) {
         if (resourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14230,7 +14230,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource resource = 5;</code>
        */
       public Builder addResource(
-          org.fursten.message.proto.SimulatorProtos.MResource.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MResource.Builder builderForValue) {
         if (resourceBuilder_ == null) {
           ensureResourceIsMutable();
           resource_.add(builderForValue.build());
@@ -14244,7 +14244,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource resource = 5;</code>
        */
       public Builder addResource(
-          int index, org.fursten.message.proto.SimulatorProtos.MResource.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResource.Builder builderForValue) {
         if (resourceBuilder_ == null) {
           ensureResourceIsMutable();
           resource_.add(index, builderForValue.build());
@@ -14258,7 +14258,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResource resource = 5;</code>
        */
       public Builder addAllResource(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MResource> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MResource> values) {
         if (resourceBuilder_ == null) {
           ensureResourceIsMutable();
           super.addAll(values, resource_);
@@ -14297,14 +14297,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource resource = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Builder getResourceBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Builder getResourceBuilder(
           int index) {
         return getResourceFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MResource resource = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder getResourceOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder getResourceOrBuilder(
           int index) {
         if (resourceBuilder_ == null) {
           return resource_.get(index);  } else {
@@ -14314,7 +14314,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource resource = 5;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
            getResourceOrBuilderList() {
         if (resourceBuilder_ != null) {
           return resourceBuilder_.getMessageOrBuilderList();
@@ -14325,31 +14325,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResource resource = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Builder addResourceBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MResource.Builder addResourceBuilder() {
         return getResourceFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MResource.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MResource.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource resource = 5;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResource.Builder addResourceBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResource.Builder addResourceBuilder(
           int index) {
         return getResourceFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MResource.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MResource.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResource resource = 5;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResource.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResource.Builder> 
            getResourceBuilderList() {
         return getResourceFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResource, org.fursten.message.proto.SimulatorProtos.MResource.Builder, org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MResource, org.fursten.message.proto._SimulatorProtos.MResource.Builder, org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder> 
           getResourceFieldBuilder() {
         if (resourceBuilder_ == null) {
           resourceBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MResource, org.fursten.message.proto.SimulatorProtos.MResource.Builder, org.fursten.message.proto.SimulatorProtos.MResourceOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MResource, org.fursten.message.proto._SimulatorProtos.MResource.Builder, org.fursten.message.proto._SimulatorProtos.MResourceOrBuilder>(
                   resource_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
@@ -14360,22 +14360,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note delete_resource_style_notification = 6;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> deleteResourceStyleNotification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> deleteResourceStyleNotification_ =
         java.util.Collections.emptyList();
       private void ensureDeleteResourceStyleNotificationIsMutable() {
         if (!((bitField0_ & 0x00000020) == 0x00000020)) {
-          deleteResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(deleteResourceStyleNotification_);
+          deleteResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(deleteResourceStyleNotification_);
           bitField0_ |= 0x00000020;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> deleteResourceStyleNotificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> deleteResourceStyleNotificationBuilder_;
 
       /**
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getDeleteResourceStyleNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getDeleteResourceStyleNotificationList() {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(deleteResourceStyleNotification_);
         } else {
@@ -14395,7 +14395,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getDeleteResourceStyleNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getDeleteResourceStyleNotification(int index) {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           return deleteResourceStyleNotification_.get(index);
         } else {
@@ -14406,7 +14406,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
       public Builder setDeleteResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14423,7 +14423,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
       public Builder setDeleteResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           ensureDeleteResourceStyleNotificationIsMutable();
           deleteResourceStyleNotification_.set(index, builderForValue.build());
@@ -14436,7 +14436,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
-      public Builder addDeleteResourceStyleNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addDeleteResourceStyleNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14453,7 +14453,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
       public Builder addDeleteResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14470,7 +14470,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
       public Builder addDeleteResourceStyleNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           ensureDeleteResourceStyleNotificationIsMutable();
           deleteResourceStyleNotification_.add(builderForValue.build());
@@ -14484,7 +14484,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
       public Builder addDeleteResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           ensureDeleteResourceStyleNotificationIsMutable();
           deleteResourceStyleNotification_.add(index, builderForValue.build());
@@ -14498,7 +14498,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
       public Builder addAllDeleteResourceStyleNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           ensureDeleteResourceStyleNotificationIsMutable();
           super.addAll(values, deleteResourceStyleNotification_);
@@ -14537,14 +14537,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getDeleteResourceStyleNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getDeleteResourceStyleNotificationBuilder(
           int index) {
         return getDeleteResourceStyleNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getDeleteResourceStyleNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getDeleteResourceStyleNotificationOrBuilder(
           int index) {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           return deleteResourceStyleNotification_.get(index);  } else {
@@ -14554,7 +14554,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getDeleteResourceStyleNotificationOrBuilderList() {
         if (deleteResourceStyleNotificationBuilder_ != null) {
           return deleteResourceStyleNotificationBuilder_.getMessageOrBuilderList();
@@ -14565,31 +14565,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addDeleteResourceStyleNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addDeleteResourceStyleNotificationBuilder() {
         return getDeleteResourceStyleNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addDeleteResourceStyleNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addDeleteResourceStyleNotificationBuilder(
           int index) {
         return getDeleteResourceStyleNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note delete_resource_style_notification = 6;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getDeleteResourceStyleNotificationBuilderList() {
         return getDeleteResourceStyleNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getDeleteResourceStyleNotificationFieldBuilder() {
         if (deleteResourceStyleNotificationBuilder_ == null) {
           deleteResourceStyleNotificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   deleteResourceStyleNotification_,
                   ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
@@ -14600,22 +14600,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note put_resource_style_notification = 7;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> putResourceStyleNotification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> putResourceStyleNotification_ =
         java.util.Collections.emptyList();
       private void ensurePutResourceStyleNotificationIsMutable() {
         if (!((bitField0_ & 0x00000040) == 0x00000040)) {
-          putResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(putResourceStyleNotification_);
+          putResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(putResourceStyleNotification_);
           bitField0_ |= 0x00000040;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> putResourceStyleNotificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> putResourceStyleNotificationBuilder_;
 
       /**
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getPutResourceStyleNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getPutResourceStyleNotificationList() {
         if (putResourceStyleNotificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(putResourceStyleNotification_);
         } else {
@@ -14635,7 +14635,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getPutResourceStyleNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getPutResourceStyleNotification(int index) {
         if (putResourceStyleNotificationBuilder_ == null) {
           return putResourceStyleNotification_.get(index);
         } else {
@@ -14646,7 +14646,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
       public Builder setPutResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (putResourceStyleNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14663,7 +14663,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
       public Builder setPutResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (putResourceStyleNotificationBuilder_ == null) {
           ensurePutResourceStyleNotificationIsMutable();
           putResourceStyleNotification_.set(index, builderForValue.build());
@@ -14676,7 +14676,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
-      public Builder addPutResourceStyleNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addPutResourceStyleNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (putResourceStyleNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14693,7 +14693,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
       public Builder addPutResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (putResourceStyleNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14710,7 +14710,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
       public Builder addPutResourceStyleNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (putResourceStyleNotificationBuilder_ == null) {
           ensurePutResourceStyleNotificationIsMutable();
           putResourceStyleNotification_.add(builderForValue.build());
@@ -14724,7 +14724,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
       public Builder addPutResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (putResourceStyleNotificationBuilder_ == null) {
           ensurePutResourceStyleNotificationIsMutable();
           putResourceStyleNotification_.add(index, builderForValue.build());
@@ -14738,7 +14738,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
       public Builder addAllPutResourceStyleNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (putResourceStyleNotificationBuilder_ == null) {
           ensurePutResourceStyleNotificationIsMutable();
           super.addAll(values, putResourceStyleNotification_);
@@ -14777,14 +14777,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getPutResourceStyleNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getPutResourceStyleNotificationBuilder(
           int index) {
         return getPutResourceStyleNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getPutResourceStyleNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getPutResourceStyleNotificationOrBuilder(
           int index) {
         if (putResourceStyleNotificationBuilder_ == null) {
           return putResourceStyleNotification_.get(index);  } else {
@@ -14794,7 +14794,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getPutResourceStyleNotificationOrBuilderList() {
         if (putResourceStyleNotificationBuilder_ != null) {
           return putResourceStyleNotificationBuilder_.getMessageOrBuilderList();
@@ -14805,31 +14805,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addPutResourceStyleNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addPutResourceStyleNotificationBuilder() {
         return getPutResourceStyleNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addPutResourceStyleNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addPutResourceStyleNotificationBuilder(
           int index) {
         return getPutResourceStyleNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note put_resource_style_notification = 7;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getPutResourceStyleNotificationBuilderList() {
         return getPutResourceStyleNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getPutResourceStyleNotificationFieldBuilder() {
         if (putResourceStyleNotificationBuilder_ == null) {
           putResourceStyleNotificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   putResourceStyleNotification_,
                   ((bitField0_ & 0x00000040) == 0x00000040),
                   getParentForChildren(),
@@ -14840,22 +14840,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note get_resource_style_notification = 8;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getResourceStyleNotification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getResourceStyleNotification_ =
         java.util.Collections.emptyList();
       private void ensureGetResourceStyleNotificationIsMutable() {
         if (!((bitField0_ & 0x00000080) == 0x00000080)) {
-          getResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(getResourceStyleNotification_);
+          getResourceStyleNotification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(getResourceStyleNotification_);
           bitField0_ |= 0x00000080;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> getResourceStyleNotificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> getResourceStyleNotificationBuilder_;
 
       /**
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getGetResourceStyleNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getGetResourceStyleNotificationList() {
         if (getResourceStyleNotificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(getResourceStyleNotification_);
         } else {
@@ -14875,7 +14875,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getGetResourceStyleNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getGetResourceStyleNotification(int index) {
         if (getResourceStyleNotificationBuilder_ == null) {
           return getResourceStyleNotification_.get(index);
         } else {
@@ -14886,7 +14886,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
       public Builder setGetResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (getResourceStyleNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14903,7 +14903,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
       public Builder setGetResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (getResourceStyleNotificationBuilder_ == null) {
           ensureGetResourceStyleNotificationIsMutable();
           getResourceStyleNotification_.set(index, builderForValue.build());
@@ -14916,7 +14916,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
-      public Builder addGetResourceStyleNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addGetResourceStyleNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (getResourceStyleNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14933,7 +14933,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
       public Builder addGetResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (getResourceStyleNotificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14950,7 +14950,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
       public Builder addGetResourceStyleNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (getResourceStyleNotificationBuilder_ == null) {
           ensureGetResourceStyleNotificationIsMutable();
           getResourceStyleNotification_.add(builderForValue.build());
@@ -14964,7 +14964,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
       public Builder addGetResourceStyleNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (getResourceStyleNotificationBuilder_ == null) {
           ensureGetResourceStyleNotificationIsMutable();
           getResourceStyleNotification_.add(index, builderForValue.build());
@@ -14978,7 +14978,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
       public Builder addAllGetResourceStyleNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (getResourceStyleNotificationBuilder_ == null) {
           ensureGetResourceStyleNotificationIsMutable();
           super.addAll(values, getResourceStyleNotification_);
@@ -15017,14 +15017,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getGetResourceStyleNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getGetResourceStyleNotificationBuilder(
           int index) {
         return getGetResourceStyleNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getGetResourceStyleNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getGetResourceStyleNotificationOrBuilder(
           int index) {
         if (getResourceStyleNotificationBuilder_ == null) {
           return getResourceStyleNotification_.get(index);  } else {
@@ -15034,7 +15034,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getGetResourceStyleNotificationOrBuilderList() {
         if (getResourceStyleNotificationBuilder_ != null) {
           return getResourceStyleNotificationBuilder_.getMessageOrBuilderList();
@@ -15045,31 +15045,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addGetResourceStyleNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addGetResourceStyleNotificationBuilder() {
         return getGetResourceStyleNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addGetResourceStyleNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addGetResourceStyleNotificationBuilder(
           int index) {
         return getGetResourceStyleNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note get_resource_style_notification = 8;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getGetResourceStyleNotificationBuilderList() {
         return getGetResourceStyleNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getGetResourceStyleNotificationFieldBuilder() {
         if (getResourceStyleNotificationBuilder_ == null) {
           getResourceStyleNotificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   getResourceStyleNotification_,
                   ((bitField0_ & 0x00000080) == 0x00000080),
                   getParentForChildren(),
@@ -15080,22 +15080,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.MResourceStyle resource_style = 9;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> resourceStyle_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> resourceStyle_ =
         java.util.Collections.emptyList();
       private void ensureResourceStyleIsMutable() {
         if (!((bitField0_ & 0x00000100) == 0x00000100)) {
-          resourceStyle_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.MResourceStyle>(resourceStyle_);
+          resourceStyle_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.MResourceStyle>(resourceStyle_);
           bitField0_ |= 0x00000100;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResourceStyle, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> resourceStyleBuilder_;
+          org.fursten.message.proto._SimulatorProtos.MResourceStyle, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> resourceStyleBuilder_;
 
       /**
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle> getResourceStyleList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle> getResourceStyleList() {
         if (resourceStyleBuilder_ == null) {
           return java.util.Collections.unmodifiableList(resourceStyle_);
         } else {
@@ -15115,7 +15115,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle getResourceStyle(int index) {
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle getResourceStyle(int index) {
         if (resourceStyleBuilder_ == null) {
           return resourceStyle_.get(index);
         } else {
@@ -15126,7 +15126,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
       public Builder setResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle value) {
         if (resourceStyleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -15143,7 +15143,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
       public Builder setResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder builderForValue) {
         if (resourceStyleBuilder_ == null) {
           ensureResourceStyleIsMutable();
           resourceStyle_.set(index, builderForValue.build());
@@ -15156,7 +15156,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
-      public Builder addResourceStyle(org.fursten.message.proto.SimulatorProtos.MResourceStyle value) {
+      public Builder addResourceStyle(org.fursten.message.proto._SimulatorProtos.MResourceStyle value) {
         if (resourceStyleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -15173,7 +15173,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
       public Builder addResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle value) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle value) {
         if (resourceStyleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -15190,7 +15190,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
       public Builder addResourceStyle(
-          org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder builderForValue) {
         if (resourceStyleBuilder_ == null) {
           ensureResourceStyleIsMutable();
           resourceStyle_.add(builderForValue.build());
@@ -15204,7 +15204,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
       public Builder addResourceStyle(
-          int index, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder builderForValue) {
         if (resourceStyleBuilder_ == null) {
           ensureResourceStyleIsMutable();
           resourceStyle_.add(index, builderForValue.build());
@@ -15218,7 +15218,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
       public Builder addAllResourceStyle(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyle> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyle> values) {
         if (resourceStyleBuilder_ == null) {
           ensureResourceStyleIsMutable();
           super.addAll(values, resourceStyle_);
@@ -15257,14 +15257,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder getResourceStyleBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder getResourceStyleBuilder(
           int index) {
         return getResourceStyleFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder getResourceStyleOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder getResourceStyleOrBuilder(
           int index) {
         if (resourceStyleBuilder_ == null) {
           return resourceStyle_.get(index);  } else {
@@ -15274,7 +15274,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
            getResourceStyleOrBuilderList() {
         if (resourceStyleBuilder_ != null) {
           return resourceStyleBuilder_.getMessageOrBuilderList();
@@ -15285,31 +15285,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder addResourceStyleBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder addResourceStyleBuilder() {
         return getResourceStyleFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.MResourceStyle.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.MResourceStyle.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder addResourceStyleBuilder(
+      public org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder addResourceStyleBuilder(
           int index) {
         return getResourceStyleFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.MResourceStyle.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.MResourceStyle.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.MResourceStyle resource_style = 9;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder> 
            getResourceStyleBuilderList() {
         return getResourceStyleFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.MResourceStyle, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.MResourceStyle, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder> 
           getResourceStyleFieldBuilder() {
         if (resourceStyleBuilder_ == null) {
           resourceStyleBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.MResourceStyle, org.fursten.message.proto.SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto.SimulatorProtos.MResourceStyleOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.MResourceStyle, org.fursten.message.proto._SimulatorProtos.MResourceStyle.Builder, org.fursten.message.proto._SimulatorProtos.MResourceStyleOrBuilder>(
                   resourceStyle_,
                   ((bitField0_ & 0x00000100) == 0x00000100),
                   getParentForChildren(),
@@ -15341,7 +15341,7 @@ public final class SimulatorProtos {
     /**
      * <code>required .messages.ProcessRequest.Command command = 1;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command getCommand();
+    org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command getCommand();
 
     // optional string argument = 2;
     /**
@@ -15411,7 +15411,7 @@ public final class SimulatorProtos {
             }
             case 8: {
               int rawValue = input.readEnum();
-              org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command value = org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command.valueOf(rawValue);
+              org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command value = org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -15439,14 +15439,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessRequest_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessRequest_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.ProcessRequest.class, org.fursten.message.proto.SimulatorProtos.ProcessRequest.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.ProcessRequest.class, org.fursten.message.proto._SimulatorProtos.ProcessRequest.Builder.class);
     }
 
     public static com.google.protobuf.Parser<ProcessRequest> PARSER =
@@ -15548,7 +15548,7 @@ public final class SimulatorProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.ProcessRequest.getDescriptor().getEnumTypes().get(0);
+        return org.fursten.message.proto._SimulatorProtos.ProcessRequest.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final Command[] VALUES = values();
@@ -15576,7 +15576,7 @@ public final class SimulatorProtos {
     private int bitField0_;
     // required .messages.ProcessRequest.Command command = 1;
     public static final int COMMAND_FIELD_NUMBER = 1;
-    private org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command command_;
+    private org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command command_;
     /**
      * <code>required .messages.ProcessRequest.Command command = 1;</code>
      */
@@ -15586,7 +15586,7 @@ public final class SimulatorProtos {
     /**
      * <code>required .messages.ProcessRequest.Command command = 1;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command getCommand() {
+    public org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command getCommand() {
       return command_;
     }
 
@@ -15634,7 +15634,7 @@ public final class SimulatorProtos {
     }
 
     private void initFields() {
-      command_ = org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command.NEW;
+      command_ = org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command.NEW;
       argument_ = "";
     }
     private byte memoizedIsInitialized = -1;
@@ -15688,53 +15688,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessRequest parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -15743,7 +15743,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.ProcessRequest prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.ProcessRequest prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -15759,17 +15759,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.ProcessRequestOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.ProcessRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessRequest_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessRequest_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessRequest_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.ProcessRequest.class, org.fursten.message.proto.SimulatorProtos.ProcessRequest.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.ProcessRequest.class, org.fursten.message.proto._SimulatorProtos.ProcessRequest.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.ProcessRequest.newBuilder()
@@ -15792,7 +15792,7 @@ public final class SimulatorProtos {
 
       public Builder clear() {
         super.clear();
-        command_ = org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command.NEW;
+        command_ = org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command.NEW;
         bitField0_ = (bitField0_ & ~0x00000001);
         argument_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -15805,23 +15805,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessRequest_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessRequest_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ProcessRequest getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.ProcessRequest.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.ProcessRequest getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.ProcessRequest.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ProcessRequest build() {
-        org.fursten.message.proto.SimulatorProtos.ProcessRequest result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.ProcessRequest build() {
+        org.fursten.message.proto._SimulatorProtos.ProcessRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ProcessRequest buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.ProcessRequest result = new org.fursten.message.proto.SimulatorProtos.ProcessRequest(this);
+      public org.fursten.message.proto._SimulatorProtos.ProcessRequest buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.ProcessRequest result = new org.fursten.message.proto._SimulatorProtos.ProcessRequest(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -15838,16 +15838,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.ProcessRequest) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.ProcessRequest)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.ProcessRequest) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.ProcessRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.ProcessRequest other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.ProcessRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.ProcessRequest other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.ProcessRequest.getDefaultInstance()) return this;
         if (other.hasCommand()) {
           setCommand(other.getCommand());
         }
@@ -15872,11 +15872,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.ProcessRequest parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.ProcessRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.ProcessRequest) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.ProcessRequest) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -15888,7 +15888,7 @@ public final class SimulatorProtos {
       private int bitField0_;
 
       // required .messages.ProcessRequest.Command command = 1;
-      private org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command command_ = org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command.NEW;
+      private org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command command_ = org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command.NEW;
       /**
        * <code>required .messages.ProcessRequest.Command command = 1;</code>
        */
@@ -15898,13 +15898,13 @@ public final class SimulatorProtos {
       /**
        * <code>required .messages.ProcessRequest.Command command = 1;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command getCommand() {
+      public org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command getCommand() {
         return command_;
       }
       /**
        * <code>required .messages.ProcessRequest.Command command = 1;</code>
        */
-      public Builder setCommand(org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command value) {
+      public Builder setCommand(org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -15918,7 +15918,7 @@ public final class SimulatorProtos {
        */
       public Builder clearCommand() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        command_ = org.fursten.message.proto.SimulatorProtos.ProcessRequest.Command.NEW;
+        command_ = org.fursten.message.proto._SimulatorProtos.ProcessRequest.Command.NEW;
         onChanged();
         return this;
       }
@@ -16025,12 +16025,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note notification = 2;</code>
      */
-    java.util.List<org.fursten.message.proto.SimulatorProtos.Note> 
+    java.util.List<org.fursten.message.proto._SimulatorProtos.Note> 
         getNotificationList();
     /**
      * <code>repeated .messages.Note notification = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.Note getNotification(int index);
+    org.fursten.message.proto._SimulatorProtos.Note getNotification(int index);
     /**
      * <code>repeated .messages.Note notification = 2;</code>
      */
@@ -16038,12 +16038,12 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note notification = 2;</code>
      */
-    java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getNotificationOrBuilderList();
     /**
      * <code>repeated .messages.Note notification = 2;</code>
      */
-    org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getNotificationOrBuilder(
+    org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getNotificationOrBuilder(
         int index);
   }
   /**
@@ -16104,10 +16104,10 @@ public final class SimulatorProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                notification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>();
+                notification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              notification_.add(input.readMessage(org.fursten.message.proto.SimulatorProtos.Note.PARSER, extensionRegistry));
+              notification_.add(input.readMessage(org.fursten.message.proto._SimulatorProtos.Note.PARSER, extensionRegistry));
               break;
             }
           }
@@ -16127,14 +16127,14 @@ public final class SimulatorProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessResponse_descriptor;
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessResponse_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessResponse_fieldAccessorTable
+      return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.fursten.message.proto.SimulatorProtos.ProcessResponse.class, org.fursten.message.proto.SimulatorProtos.ProcessResponse.Builder.class);
+              org.fursten.message.proto._SimulatorProtos.ProcessResponse.class, org.fursten.message.proto._SimulatorProtos.ProcessResponse.Builder.class);
     }
 
     public static com.google.protobuf.Parser<ProcessResponse> PARSER =
@@ -16171,17 +16171,17 @@ public final class SimulatorProtos {
 
     // repeated .messages.Note notification = 2;
     public static final int NOTIFICATION_FIELD_NUMBER = 2;
-    private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> notification_;
+    private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> notification_;
     /**
      * <code>repeated .messages.Note notification = 2;</code>
      */
-    public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getNotificationList() {
+    public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getNotificationList() {
       return notification_;
     }
     /**
      * <code>repeated .messages.Note notification = 2;</code>
      */
-    public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+    public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
         getNotificationOrBuilderList() {
       return notification_;
     }
@@ -16194,13 +16194,13 @@ public final class SimulatorProtos {
     /**
      * <code>repeated .messages.Note notification = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.Note getNotification(int index) {
+    public org.fursten.message.proto._SimulatorProtos.Note getNotification(int index) {
       return notification_.get(index);
     }
     /**
      * <code>repeated .messages.Note notification = 2;</code>
      */
-    public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getNotificationOrBuilder(
+    public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getNotificationOrBuilder(
         int index) {
       return notification_.get(index);
     }
@@ -16266,53 +16266,53 @@ public final class SimulatorProtos {
       return super.writeReplace();
     }
 
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseFrom(byte[] data)
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseDelimitedFrom(java.io.InputStream input)
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseDelimitedFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.fursten.message.proto.SimulatorProtos.ProcessResponse parseFrom(
+    public static org.fursten.message.proto._SimulatorProtos.ProcessResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -16321,7 +16321,7 @@ public final class SimulatorProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.fursten.message.proto.SimulatorProtos.ProcessResponse prototype) {
+    public static Builder newBuilder(org.fursten.message.proto._SimulatorProtos.ProcessResponse prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -16337,17 +16337,17 @@ public final class SimulatorProtos {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.fursten.message.proto.SimulatorProtos.ProcessResponseOrBuilder {
+       implements org.fursten.message.proto._SimulatorProtos.ProcessResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessResponse_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessResponse_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessResponse_fieldAccessorTable
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.fursten.message.proto.SimulatorProtos.ProcessResponse.class, org.fursten.message.proto.SimulatorProtos.ProcessResponse.Builder.class);
+                org.fursten.message.proto._SimulatorProtos.ProcessResponse.class, org.fursten.message.proto._SimulatorProtos.ProcessResponse.Builder.class);
       }
 
       // Construct using org.fursten.message.proto.SimulatorProtos.ProcessResponse.newBuilder()
@@ -16388,23 +16388,23 @@ public final class SimulatorProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.fursten.message.proto.SimulatorProtos.internal_static_messages_ProcessResponse_descriptor;
+        return org.fursten.message.proto._SimulatorProtos.internal_static_messages_ProcessResponse_descriptor;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ProcessResponse getDefaultInstanceForType() {
-        return org.fursten.message.proto.SimulatorProtos.ProcessResponse.getDefaultInstance();
+      public org.fursten.message.proto._SimulatorProtos.ProcessResponse getDefaultInstanceForType() {
+        return org.fursten.message.proto._SimulatorProtos.ProcessResponse.getDefaultInstance();
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ProcessResponse build() {
-        org.fursten.message.proto.SimulatorProtos.ProcessResponse result = buildPartial();
+      public org.fursten.message.proto._SimulatorProtos.ProcessResponse build() {
+        org.fursten.message.proto._SimulatorProtos.ProcessResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.fursten.message.proto.SimulatorProtos.ProcessResponse buildPartial() {
-        org.fursten.message.proto.SimulatorProtos.ProcessResponse result = new org.fursten.message.proto.SimulatorProtos.ProcessResponse(this);
+      public org.fursten.message.proto._SimulatorProtos.ProcessResponse buildPartial() {
+        org.fursten.message.proto._SimulatorProtos.ProcessResponse result = new org.fursten.message.proto._SimulatorProtos.ProcessResponse(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -16426,16 +16426,16 @@ public final class SimulatorProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.fursten.message.proto.SimulatorProtos.ProcessResponse) {
-          return mergeFrom((org.fursten.message.proto.SimulatorProtos.ProcessResponse)other);
+        if (other instanceof org.fursten.message.proto._SimulatorProtos.ProcessResponse) {
+          return mergeFrom((org.fursten.message.proto._SimulatorProtos.ProcessResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.fursten.message.proto.SimulatorProtos.ProcessResponse other) {
-        if (other == org.fursten.message.proto.SimulatorProtos.ProcessResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.fursten.message.proto._SimulatorProtos.ProcessResponse other) {
+        if (other == org.fursten.message.proto._SimulatorProtos.ProcessResponse.getDefaultInstance()) return this;
         if (other.hasSuccess()) {
           setSuccess(other.getSuccess());
         }
@@ -16487,11 +16487,11 @@ public final class SimulatorProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.fursten.message.proto.SimulatorProtos.ProcessResponse parsedMessage = null;
+        org.fursten.message.proto._SimulatorProtos.ProcessResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.fursten.message.proto.SimulatorProtos.ProcessResponse) e.getUnfinishedMessage();
+          parsedMessage = (org.fursten.message.proto._SimulatorProtos.ProcessResponse) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -16536,22 +16536,22 @@ public final class SimulatorProtos {
       }
 
       // repeated .messages.Note notification = 2;
-      private java.util.List<org.fursten.message.proto.SimulatorProtos.Note> notification_ =
+      private java.util.List<org.fursten.message.proto._SimulatorProtos.Note> notification_ =
         java.util.Collections.emptyList();
       private void ensureNotificationIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          notification_ = new java.util.ArrayList<org.fursten.message.proto.SimulatorProtos.Note>(notification_);
+          notification_ = new java.util.ArrayList<org.fursten.message.proto._SimulatorProtos.Note>(notification_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> notificationBuilder_;
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> notificationBuilder_;
 
       /**
        * <code>repeated .messages.Note notification = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note> getNotificationList() {
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note> getNotificationList() {
         if (notificationBuilder_ == null) {
           return java.util.Collections.unmodifiableList(notification_);
         } else {
@@ -16571,7 +16571,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note getNotification(int index) {
+      public org.fursten.message.proto._SimulatorProtos.Note getNotification(int index) {
         if (notificationBuilder_ == null) {
           return notification_.get(index);
         } else {
@@ -16582,7 +16582,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note notification = 2;</code>
        */
       public Builder setNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (notificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -16599,7 +16599,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note notification = 2;</code>
        */
       public Builder setNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (notificationBuilder_ == null) {
           ensureNotificationIsMutable();
           notification_.set(index, builderForValue.build());
@@ -16612,7 +16612,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note notification = 2;</code>
        */
-      public Builder addNotification(org.fursten.message.proto.SimulatorProtos.Note value) {
+      public Builder addNotification(org.fursten.message.proto._SimulatorProtos.Note value) {
         if (notificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -16629,7 +16629,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note notification = 2;</code>
        */
       public Builder addNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note value) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note value) {
         if (notificationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -16646,7 +16646,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note notification = 2;</code>
        */
       public Builder addNotification(
-          org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (notificationBuilder_ == null) {
           ensureNotificationIsMutable();
           notification_.add(builderForValue.build());
@@ -16660,7 +16660,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note notification = 2;</code>
        */
       public Builder addNotification(
-          int index, org.fursten.message.proto.SimulatorProtos.Note.Builder builderForValue) {
+          int index, org.fursten.message.proto._SimulatorProtos.Note.Builder builderForValue) {
         if (notificationBuilder_ == null) {
           ensureNotificationIsMutable();
           notification_.add(index, builderForValue.build());
@@ -16674,7 +16674,7 @@ public final class SimulatorProtos {
        * <code>repeated .messages.Note notification = 2;</code>
        */
       public Builder addAllNotification(
-          java.lang.Iterable<? extends org.fursten.message.proto.SimulatorProtos.Note> values) {
+          java.lang.Iterable<? extends org.fursten.message.proto._SimulatorProtos.Note> values) {
         if (notificationBuilder_ == null) {
           ensureNotificationIsMutable();
           super.addAll(values, notification_);
@@ -16713,14 +16713,14 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder getNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder getNotificationBuilder(
           int index) {
         return getNotificationFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .messages.Note notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.NoteOrBuilder getNotificationOrBuilder(
+      public org.fursten.message.proto._SimulatorProtos.NoteOrBuilder getNotificationOrBuilder(
           int index) {
         if (notificationBuilder_ == null) {
           return notification_.get(index);  } else {
@@ -16730,7 +16730,7 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note notification = 2;</code>
        */
-      public java.util.List<? extends org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+      public java.util.List<? extends org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
            getNotificationOrBuilderList() {
         if (notificationBuilder_ != null) {
           return notificationBuilder_.getMessageOrBuilderList();
@@ -16741,31 +16741,31 @@ public final class SimulatorProtos {
       /**
        * <code>repeated .messages.Note notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addNotificationBuilder() {
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addNotificationBuilder() {
         return getNotificationFieldBuilder().addBuilder(
-            org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note notification = 2;</code>
        */
-      public org.fursten.message.proto.SimulatorProtos.Note.Builder addNotificationBuilder(
+      public org.fursten.message.proto._SimulatorProtos.Note.Builder addNotificationBuilder(
           int index) {
         return getNotificationFieldBuilder().addBuilder(
-            index, org.fursten.message.proto.SimulatorProtos.Note.getDefaultInstance());
+            index, org.fursten.message.proto._SimulatorProtos.Note.getDefaultInstance());
       }
       /**
        * <code>repeated .messages.Note notification = 2;</code>
        */
-      public java.util.List<org.fursten.message.proto.SimulatorProtos.Note.Builder> 
+      public java.util.List<org.fursten.message.proto._SimulatorProtos.Note.Builder> 
            getNotificationBuilderList() {
         return getNotificationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder> 
+          org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder> 
           getNotificationFieldBuilder() {
         if (notificationBuilder_ == null) {
           notificationBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.fursten.message.proto.SimulatorProtos.Note, org.fursten.message.proto.SimulatorProtos.Note.Builder, org.fursten.message.proto.SimulatorProtos.NoteOrBuilder>(
+              org.fursten.message.proto._SimulatorProtos.Note, org.fursten.message.proto._SimulatorProtos.Note.Builder, org.fursten.message.proto._SimulatorProtos.NoteOrBuilder>(
                   notification_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),

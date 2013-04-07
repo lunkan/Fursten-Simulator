@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
@@ -24,16 +27,20 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import fursten.rest.jaxb.ResJAXB;
-import fursten.rest.jaxb.ResourceCollection;
-import fursten.rest.jaxb.ResourceObj;
+import fursten.rest.providers.FurstenProtobufProvider;
 import fursten.simulator.Facade;
 import fursten.simulator.Status;
+import fursten.simulator.command.NodeEditCommand;
 import fursten.simulator.node.Node;
 import fursten.simulator.node.NodeCollection;
+import fursten.simulator.resource.ResourceKeyManager;
+import fursten.simulator.resource.ResourceSelectMethod;
+import fursten.simulator.resource.ResourceSelection;
 
 @Path("/nodes")
 public class NodeServlet {
+	
+	protected static final Logger logger = Logger.getLogger(NodeServlet.class.getName());
 	
 	@Context
 	UriInfo uriInfo;
@@ -41,20 +48,19 @@ public class NodeServlet {
 	Request request;
 	
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public NodeCollection getNodes(@QueryParam("x") Integer x, @QueryParam("y") Integer y, @QueryParam("w") Integer w, @QueryParam("h") Integer h ) {
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, "application/x-protobuf"})
+	public NodeCollection getNodes(
+			@QueryParam("x") Integer x,
+			@QueryParam("y") Integer y,
+			@QueryParam("w") Integer w,
+			@QueryParam("h") Integer h,
+			@QueryParam("r") List<String> resourceKeys,
+			@QueryParam("method") String method) {
 		
-		//Todo: add filter arguments
-		Set<Integer> filter = null;
+		Set<Integer> resourceFilter = getResourceKeysByParam(resourceKeys, method);
+		Rectangle rect = getRectByParam(x, y, w, h);
 		
-		Rectangle rect;
-		if(x != null && y != null && w != null && h != null)
-			rect = new Rectangle(x, y, w, h);
-		else
-			rect = new Rectangle(Integer.MIN_VALUE/2, Integer.MIN_VALUE/2, Integer.MAX_VALUE, Integer.MAX_VALUE);
-		
-		List<Node> nodes = Facade.getNodes(rect, filter);
+		List<Node> nodes = Facade.getNodes(rect, resourceFilter);
 		NodeCollection nodeCollection = new NodeCollection();
 		nodeCollection.setNodes(new ArrayList<Node>(nodes));
 		
@@ -62,8 +68,7 @@ public class NodeServlet {
 	}
 	
 	@PUT
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, "application/x-protobuf" })
 	public Response replaceNodes(NodeCollection nodes) throws IOException {
 		
 		Rectangle rect = new Rectangle(Integer.MIN_VALUE/2, Integer.MIN_VALUE/2, Integer.MAX_VALUE, Integer.MAX_VALUE);
@@ -76,23 +81,27 @@ public class NodeServlet {
 	}
 	
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addNode(Node node) throws IOException {
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, "application/x-protobuf" })
+	public Response addNodes(NodeCollection nodes) throws IOException {
 		
-		//if(Facade.editNodes(null, nodes.getNodes()))
+		if(Facade.editNodes(null, nodes.getNodes()))
 			return Response.status(Response.Status.OK).build();
-		//else
-		//	return Response.status(Response.Status.BAD_REQUEST).build();
+		else
+			return Response.status(Response.Status.BAD_REQUEST).build();
 	}
 	
 	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response deleteNodes() throws IOException {
+	public Response deleteNodes(@QueryParam("x") Integer x,
+			@QueryParam("y") Integer y,
+			@QueryParam("w") Integer w,
+			@QueryParam("h") Integer h,
+			@QueryParam("r") List<String> resourceKeys,
+			@QueryParam("method") String method) {
 		
-		Rectangle rect = new Rectangle(Integer.MIN_VALUE/2, Integer.MIN_VALUE/2, Integer.MAX_VALUE, Integer.MAX_VALUE);
-		List<Node> nodes = Facade.getNodes(rect, null);
+		Set<Integer> resourceFilter = getResourceKeysByParam(resourceKeys, method);
+		Rectangle rect = getRectByParam(x, y, w, h);
+				
+		List<Node> nodes = Facade.getNodes(rect, resourceFilter);
 		
 		if(Facade.editNodes(nodes, null))
 			return Response.status(Response.Status.OK).build();
@@ -122,5 +131,51 @@ public class NodeServlet {
 			return Response.status(Response.Status.OK).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).build();
+	}
+	
+	
+	private Rectangle getRectByParam(Integer x, Integer y, Integer w, Integer h) {
+	
+		Rectangle rect;
+		if(x != null && y != null && w != null && h != null)
+			rect = new Rectangle(x, y, w, h);
+		else
+			rect = new Rectangle(Integer.MIN_VALUE/2, Integer.MIN_VALUE/2, Integer.MAX_VALUE, Integer.MAX_VALUE);
+		
+		return rect;
+	}
+	
+	private Set<Integer> getResourceKeysByParam(List<String> resourceKeys, String method) {
+		
+		Set<Integer> keys = null;
+		
+		if(resourceKeys == null)
+			return keys;
+		
+		if(resourceKeys.size() == 0)
+			return keys;
+		
+		keys = new TreeSet<Integer>();
+		for(String key : resourceKeys) {
+			try {
+				keys.add(Integer.parseInt(key));
+			}
+			catch(Exception e) {
+				logger.log(Level.WARNING, "Resource key string could not be parsed to resource int");
+			}
+		}
+		
+		if(method != null && keys != null) {
+			
+			Set<Integer> allKeys = Facade.getResourceIndex().getKeySet();
+			ResourceKeyManager keyManager = new ResourceKeyManager(allKeys);
+			
+			if(ResourceSelectMethod.CHILDREN.value.equals(method.toLowerCase()))
+				keys = keyManager.getKeysByMethod(keys, ResourceSelectMethod.CHILDREN);
+			else if(ResourceSelectMethod.PARENTS.value.equals(method.toLowerCase()))
+				keys = keyManager.getKeysByMethod(keys, ResourceSelectMethod.PARENTS);
+		}
+		
+		return keys;
 	}
 }

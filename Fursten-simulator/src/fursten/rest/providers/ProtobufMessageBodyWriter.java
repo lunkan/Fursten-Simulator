@@ -18,7 +18,7 @@ import javax.ws.rs.ext.Provider;
 import com.google.protobuf.Message;
 
 @Provider
-@Produces("application/x-protobuf")
+@Produces("application/x-protobuff")
 public class ProtobufMessageBodyWriter implements MessageBodyWriter<Message> {
 
 	private Map<Object, byte[]> buffer = new WeakHashMap<Object, byte[]>();

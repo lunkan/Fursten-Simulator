@@ -17,6 +17,7 @@
         <param-value>
             fursten.rest.providers.ProtobufMessageBodyWriter
        		fursten.rest.providers.ProtobufMessageBodyReader
+       		fursten.rest.providers.FurstenProtobufProvider
         </param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
