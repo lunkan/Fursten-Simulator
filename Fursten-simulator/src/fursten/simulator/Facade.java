@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,8 +22,7 @@ import fursten.simulator.persistent.SessionManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.ResourceKeyManager;
-import fursten.simulator.resource.ResourceIndex;
-import fursten.simulator.resource.ResourceIndex.ResourceItem;
+import fursten.simulator.resource.ResourceCollection;
 import fursten.simulator.resource.ResourceSelection;
 import fursten.simulator.sample.Sample;
 
@@ -121,8 +121,6 @@ public class Facade {
 	
 	public static boolean addResource(int parentKey, Resource resource) {
 		
-		System.out.println(resource);
-		
 		ResourceManager RM = DAOFactory.get().getResourceManager();
 		ResourceKeyManager keyManager = new ResourceKeyManager(RM.getKeys());
 		
@@ -153,16 +151,15 @@ public class Facade {
 		}
 	}
 	
-	public static ResourceIndex getResourceIndex()  {
+	public static Set<Integer> getResourceKeys() {
 		
-		ResourceIndex resourceIndex = new ResourceIndex();
+		TreeSet<Integer> keySet = new TreeSet<Integer>();
 		List<Resource> resources = getResources(new ResourceSelection());
 		for(Resource resource : resources) {
-			resourceIndex.add(resource.getKey(), resource.getName());
+			keySet.add(resource.getKey());
 		}
 		
-		return resourceIndex;
-		
+		return keySet;
 	}
 	
 	@SuppressWarnings("unchecked")

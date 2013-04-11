@@ -35,13 +35,39 @@ public class FurstenProtobufProvider implements MessageBodyReader<Object>, Messa
 	 * Todo: Add factory classes to store and reuse classes and methods
 	 */
 	public FurstenProtobufProvider() {
+		
+		//Nodes
 		pojoToProtoMapper.put(fursten.simulator.node.NodeCollection.class, org.fursten.message.proto.NodeProto.NodeCollection.class);
 		pojoToProtoMapper.put(fursten.simulator.node.Node.class, org.fursten.message.proto.NodeProto.Node.class);
 		
-		protoToPojoMapper.put(org.fursten.message.proto.NodeProto.NodeCollection.class, fursten.simulator.node.NodeCollection.class);
-		protoToPojoMapper.put(org.fursten.message.proto.NodeProto.Node.class, fursten.simulator.node.Node.class);
+		//Resources
+		pojoToProtoMapper.put(fursten.simulator.resource.ResourceCollection.class, org.fursten.message.proto.ResourceProto.ResourceCollection.class);
+		pojoToProtoMapper.put(fursten.simulator.resource.Resource.class, org.fursten.message.proto.ResourceProto.Resource.class);
+		pojoToProtoMapper.put(fursten.simulator.resource.Resource.Offspring.class, org.fursten.message.proto.ResourceProto.Resource.Offspring.class);
+		pojoToProtoMapper.put(fursten.simulator.resource.Resource.Weight.class, org.fursten.message.proto.ResourceProto.Resource.Weight.class);
+		pojoToProtoMapper.put(fursten.simulator.resource.Resource.WeightGroup.class, org.fursten.message.proto.ResourceProto.Resource.WeightGroup.class);
+		
+		//Reverse mapping
+		Iterator<Class> it = pojoToProtoMapper.keySet().iterator();
+		while(it.hasNext()) {
+			Class pojoClass = it.next();
+			Class protoClass = pojoToProtoMapper.get(pojoClass);
+			protoToPojoMapper.put(protoClass, pojoClass);
+		}
+		
 	}
     
+	private String protoVarNameToJava(String protoVarName) {
+		
+		String javaVarName = "";
+		String[] nameSections = protoVarName.split("_");
+		for(String nameSection : nameSections) {
+			javaVarName += Character.toUpperCase(nameSection.charAt(0)) + nameSection.substring(1);
+		}
+		
+		return javaVarName;
+	}
+	
     private Object parseMessage(Message m) {
     	
     	Class c = protoToPojoMapper.get(m.getClass());
@@ -55,7 +81,7 @@ public class FurstenProtobufProvider implements MessageBodyReader<Object>, Messa
     		while(it.hasNext()) {
     			
     			FieldDescriptor field = it.next();
-    			String setMethodName = "set" + Character.toUpperCase(field.getName().charAt(0)) + field.getName().substring(1);
+    			String setMethodName = "set" + protoVarNameToJava(field.getName());
     			Method setMethod = null;
     			Object param = null;
     			
@@ -155,6 +181,9 @@ public class FurstenProtobufProvider implements MessageBodyReader<Object>, Messa
 	
 	private Message mapObject(Object o) {
 		
+		System.out.println("#"+o.getClass().getSimpleName());
+		
+		
 		//Init new builder
 		Builder b = getBuilder(o.getClass());
 		
@@ -166,10 +195,11 @@ public class FurstenProtobufProvider implements MessageBodyReader<Object>, Messa
 				
 				if(f.getType().isAssignableFrom(ArrayList.class)) {
     				
-    				String methodGetName = "get" + Character.toUpperCase(f.getName().charAt(0)) + f.getName().substring(1);
-    				String methodAddName = "add" + Character.toUpperCase(f.getName().charAt(0)) + f.getName().substring(1);
+    				String methodGetName = "get" + protoVarNameToJava(f.getName());
+    				String methodAddName = "add" + protoVarNameToJava(f.getName());
     				
     				Method getMethod = o.getClass().getDeclaredMethod(methodGetName, null);
+    				System.out.println("*"+methodGetName);
     				for(Object childObj : (List<Object>)getMethod.invoke(o, null)) {
     				
     					Message childMsg = mapObject(childObj);
@@ -178,7 +208,7 @@ public class FurstenProtobufProvider implements MessageBodyReader<Object>, Messa
     				}
     			}
 				else {
-					String methodName = "set" + Character.toUpperCase(f.getName().charAt(0)) + f.getName().substring(1);
+					String methodName = "set" + protoVarNameToJava(f.getName());
 					Method addMethod = null;
 					
 					if(f.getType().isAssignableFrom(Integer.TYPE)) 
@@ -200,6 +230,12 @@ public class FurstenProtobufProvider implements MessageBodyReader<Object>, Messa
 	    		f.setAccessible(false);
     		}
     		catch(Exception e) {
+    			if(e.getMessage() != null) {
+	    			if(e.getMessage().equals("fursten.simulator.resource.Resource$WeightGroup.getWeights()")) {
+	    				System.out.println("!"+e.getMessage());
+	    				e.printStackTrace();
+	    			}
+    			}
     			//It's okey - some fields is not writable
     		}
 		}

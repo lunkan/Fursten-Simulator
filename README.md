@@ -20,48 +20,42 @@ API
 !: Funktionaliteten är inte implementerad ännu  
 (-): Funktionaliteten kan komma att tas bort  
 
-### Resources
+### Resources  
 
 **GET:** "/rest/resources"  
-**Params:** !details (true/false), !mask (32-bit resource-key-mask)  
-**Produce:** "application/json", "application/x-protobuf"  
-Returnerar alla resurser som en lista. I nuläget består listan bara av id och namn, men jag tänker att en parameter "details=true" resulterar i att en fulständig lista skickas tillbaka  
+**Params:** details (true|false) *Set true to return all data for resources, or set fales or leave blank for trimed list*  
+**Params:** r (resourcekey) *Filter query by repeateateble number of resourcekeys params (r=reskey1&r=reskey2&r=...)*  
+**Params:** method ("children"|"parents") *Filter query to provided resources "children"|"parents" or leave blank for normal match. Ignored if "r" params is not provided*  
+**Produce:** ResourceCollection (application/json | application/xml | application/x-protobuf)  
+Returns a list of all resources, or a resource list filtered by arguments. Returned resources may be of detailed or simple type.  
 
-**GET:** "/rest/resources/{id}"  
-**Produce:** "application/json", !"application/x-protobuf"    
-Hämtar all data för en enskild resurs  
-
-**!GET:** "/rest/resources/{id}/children"  
-**Produce:** "application/json", "application/x-protobuf"    
-Hämtar alla barn-resurser för en enskild resurs  
-
-**!GET:** "/rest/resources/{id}/parents"  
-**Produce:** "application/json", "application/x-protobuf"    
-Hämtar alla föräldrar till en enskild resurs
+**GET:** "/rest/resources/{key}"  
+**Produce:** Resource (application/json | application/xml | application/x-protobuf)  
+Returns a single resource matching the provided resource-key.  
 
 **POST:** "/rest/resources"  
-**Consume:** "application/json", !"application/x-protobuf"  
-**!Produce:** "application/json", "application/x-protobuf"  
-Lägger till en ny root-resurs och returnerar den nya resursen med ett id genererat av servern  
+**Consume:** Resource (application/json | application/xml | application/x-protobuf)  
+Adds a new resource to the root of the resource tree  
 
-**POST:** "rest/resources/{id}  
-**Consume:** "application/json" , !"application/x-protobuf"  
-**!Produce:** "application/json", "application/x-protobuf"   
-lägger till en ny resurs som barn till resursen med id = {id}  
+**POST:** "rest/resources/{key}  
+**Consume:** Resource (application/json | application/xml | application/x-protobuf)  
+Adds a new resource as a child to the resource with key = {key}  
 
-**!PUT:** "/rest/resources"  
-**Consume:** "application/json", "application/x-protobuf"  
-Ersätter den befintliga listan av resurser med en helt ny lista  
+**PUT:** "/rest/resources"  
+**Consume:** ResourceCollection (application/json | application/xml | application/x-protobuf)  
+Replace the current resource list (all resources) with a new list. This will also delete all nodes.  
 
-**PUT:** "/rest/resources/{id}"  
-**Consume:** "application/json", !"application/x-protobuf"  
-Ersätter resursen med id = {id} med ny data  
+**PUT:** "/rest/resources/{key}"  
+**Consume:** Resource (application/json | application/xml | application/x-protobuf)  
+Replace the resource with key = {key}  
 
 **DELETE:** "/rest/resources"  
-Tar bort samtliga resurser  
+**Params:** r (resourcekey) *Filter query by repeateateble number of resourcekeys params (r=reskey1&r=reskey2&r=...)*  
+**Params:** method ("children"|"parents") *Filter query to provided resources "children"|"parents" or leave blank for normal match. Ignored if "r" params is not provided*  
+Removes all resources, or removes resources filtered by arguments. Related nodes to removed resources will be deleted as well.  
 
-**DELETE:** "/rest/resources/{id}"  
-Tar bort resursen med id = {id}, samt alla resursens barn.   
+**DELETE:** "/rest/resources/{key}"  
+Removes resource with key = {key}. Nodes related to the resource will be removed as well.  
 
 ### Nodes  
 

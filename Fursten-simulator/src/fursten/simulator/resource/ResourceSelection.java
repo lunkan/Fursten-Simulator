@@ -21,8 +21,15 @@ public class ResourceSelection {
 	}
 
 	public ResourceSelection(Set<Integer> keys) {
-		this.keys = keys;
-		method = ResourceSelectMethod.MATCH;
+		
+		if(keys != null) {
+			this.keys = keys;
+			method = ResourceSelectMethod.MATCH;
+		}
+		else {
+			new HashSet<Integer>();
+			method = ResourceSelectMethod.ALL;
+		}
 	}
 
 	public ResourceSelection(int key, ResourceSelectMethod method) {

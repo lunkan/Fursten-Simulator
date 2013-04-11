@@ -5,6 +5,7 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- <param-value>fursten.rest;org.codehaus.jackson.jaxrs</param-value> -->
   <servlet>
    <servlet-name>Jersey REST Service</servlet-name>
     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>

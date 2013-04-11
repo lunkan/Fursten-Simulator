@@ -101,7 +101,8 @@ public class Resource implements Serializable {
 		String offspringStr = "[";
 		if(offsprings != null) {
 			for(Offspring offspring : offsprings) {
-				offspringStr += offspring.toString() + ",";
+				if(offspring != null)
+					offspringStr += offspring.toString() + ",";
 			}
 		}
 		offspringStr += "]";
@@ -113,8 +114,24 @@ public class Resource implements Serializable {
 
 		static final long serialVersionUID = 10275539472837495L;
 		
-		public int resource;
-		public float value;
+		private int resource;
+		private float value;
+		
+		public int getResource() {
+			return resource;
+		}
+		
+		public void setResource(int resource) {
+			this.resource = resource;
+		}
+		
+		public float getValue() {
+			return value;
+		}
+		
+		public void setValue(float value) {
+			this.value = value;
+		}
 		
 		public String toString() {
 			return "{resource:"+ resource +", value:"+ value +"}";
@@ -125,13 +142,23 @@ public class Resource implements Serializable {
 
 		static final long serialVersionUID = 10275539472837495L;
 		
-		public ArrayList<Weight> weights;
+		private ArrayList<Weight> weights;
+		
+		public ArrayList<Weight> getWeights() {
+			return weights;
+		}
+		
+		public void setWeights(ArrayList<Weight> weights) {
+			this.weights = weights;
+		}
 		
 		public String toString() {
 			
 			String weightGroupStr = "[";
-			for(Weight weight : weights) {
-				weightGroupStr += weight.toString() + ",";
+			if(weights != null) {
+				for(Weight weight : weights) {
+					weightGroupStr += weight.toString() + ",";
+				}
 			}
 			weightGroupStr += "]";
 			
@@ -143,8 +170,24 @@ public class Resource implements Serializable {
 
 		static final long serialVersionUID = 10275539472837495L;
 		
-		public int resource;
-		public float value;
+		private int resource;
+		private float value;
+		
+		public int getResource() {
+			return resource;
+		}
+		
+		public void setResource(int resource) {
+			this.resource = resource;
+		}
+		
+		public float getValue() {
+			return value;
+		}
+		
+		public void setValue(float value) {
+			this.value = value;
+		}
 		
 		public String toString() {
 			return "{resource:"+ resource +", value:"+ value +"}";

@@ -167,7 +167,7 @@ public class NodeServlet {
 		
 		if(method != null && keys != null) {
 			
-			Set<Integer> allKeys = Facade.getResourceIndex().getKeySet();
+			Set<Integer> allKeys = Facade.getResourceKeys();
 			ResourceKeyManager keyManager = new ResourceKeyManager(allKeys);
 			
 			if(ResourceSelectMethod.CHILDREN.value.equals(method.toLowerCase()))
