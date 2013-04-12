@@ -1,16 +1,16 @@
 package fursten.simulator.command;
 
-import fursten.simulator.instance.Instance;
-import fursten.simulator.persistent.SessionManager;
+import fursten.simulator.world.World;
+import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 
 public class SimulatorInitializeCommand implements SimulatorCommand {
 
 	public static final String NAME = "Initialize";
-	private Instance session;
+	private World world;
 
-	public SimulatorInitializeCommand(Instance session) {
-		this.session = session;
+	public SimulatorInitializeCommand(World world) {
+		this.world = world;
 	}
 	
 	public String getName() {
@@ -23,8 +23,8 @@ public class SimulatorInitializeCommand implements SimulatorCommand {
 		DAOFactory.get().getResourceManager().deleteAll();
 		DAOFactory.get().getNodeManager().deleteAll();
 		
-		SessionManager SM = DAOFactory.get().getSessionManager();
-		SM.setActive(session);
+		WorldManager SM = DAOFactory.get().getWorldManager();
+		SM.setActive(world);
 		return null;
 	}
 }

@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import fursten.simulator.Facade;
@@ -18,11 +19,16 @@ import fursten.simulator.sample.SampleCollection;
 public class SampleServlet {
 
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public SampleCollection getSamples(SampleCollection samples) throws IOException {
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, "application/x-protobuf"})
+	public SampleCollection getSamples(SampleCollection samples, @QueryParam("prospecting") Boolean prospecting) throws IOException {
 		
-		List<Sample> sampleList = Facade.getSamples(samples.getSamples());
+		System.out.println("getSamples");
+		
+		//Prospecting default is null
+		if(prospecting == null)
+			prospecting = new Boolean(false);
+		
+		List<Sample> sampleList = Facade.getSamples(samples.getSamples(), prospecting);
 		
 		if(sampleList != null) {
 			SampleCollection sampleCollection = new SampleCollection();

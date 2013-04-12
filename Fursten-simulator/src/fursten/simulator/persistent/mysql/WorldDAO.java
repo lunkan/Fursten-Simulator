@@ -10,20 +10,19 @@ import java.util.logging.Logger;
 
 import javax.sql.rowset.serial.SerialBlob;
 
-import fursten.simulator.instance.Instance;
-import fursten.simulator.node.Node;
-import fursten.simulator.persistent.SessionManager;
+import fursten.simulator.world.World;
+import fursten.simulator.persistent.WorldManager;
 import fursten.util.BinaryTranslator;
 
-class SessionDAO implements SessionManager {
+class WorldDAO implements WorldManager {
 
-	private static final Logger logger = Logger.getLogger(SessionDAO.class.getName());
+	private static final Logger logger = Logger.getLogger(WorldDAO.class.getName());
 	private static final int CURRENT_SESSION_ID = 1;
-	private static Instance cachedSession;
+	private static World world;
 	
-	private static SessionDAO instance = new SessionDAO();
+	private static WorldDAO worldDAO = new WorldDAO();
 	
-	private SessionDAO() {
+	private WorldDAO() {
 		
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
@@ -35,8 +34,8 @@ class SessionDAO implements SessionManager {
 			ResultSet resultSet = statement.executeQuery();
 			
 			if(resultSet.first()) {
-				Blob sessionBin = resultSet.getBlob("session_object");
-				cachedSession = (Instance)BinaryTranslator.binaryToObject(sessionBin.getBinaryStream());
+				Blob worldBin = resultSet.getBlob("session_object");
+				world = (World)BinaryTranslator.binaryToObject(worldBin.getBinaryStream());
 			}
 			
 			statement.close();
@@ -49,23 +48,23 @@ class SessionDAO implements SessionManager {
 		}
 	}
 	
-	public static SessionDAO getInstance() {
-        return instance;
+	public static WorldDAO getInstance() {
+        return worldDAO;
     }
 	
 	@Override
 	public boolean clear() {
 		
-		Instance session = new Instance();
-		setActive(session);
+		World world = new World();
+		setActive(world);
 		return false;
 	}
 
 	@Override
-	public Instance getActive() {
+	public World getActive() {
 		
-		if(cachedSession != null) {
-			return cachedSession;
+		if(world != null) {
+			return world;
 		}
 		else {
 			logger.log(Level.SEVERE, "Session is null but null is an invalid value");
@@ -74,7 +73,7 @@ class SessionDAO implements SessionManager {
 	}
 
 	@Override
-	public int setActive(Instance session) {
+	public int setActive(World world) {
 		
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
@@ -89,20 +88,20 @@ class SessionDAO implements SessionManager {
 			if(result.first())
 				isNew = false;
 				
-			cachedSession = session;
-			Blob sessionBin = new SerialBlob(BinaryTranslator.objectToBinary(session));
+			this.world = world;
+			Blob worldBin = new SerialBlob(BinaryTranslator.objectToBinary(world));
 			statement.close();
 			
 			if(isNew) {
 				statement = con.prepareStatement("insert into sessions(id, session_object) values (?, ?)");
 				statement.setInt(1, CURRENT_SESSION_ID);
-				statement.setBlob(2, sessionBin);
+				statement.setBlob(2, worldBin);
 				statement.executeUpdate();
 				statement.close();
 			}
 			else {
 				statement = con.prepareStatement("update sessions set session_object = ? where id = ?");
-				statement.setBlob(1, sessionBin);
+				statement.setBlob(1, worldBin);
 				statement.setInt(2, CURRENT_SESSION_ID);
 				statement.executeUpdate();
 				statement.close();
@@ -120,7 +119,7 @@ class SessionDAO implements SessionManager {
 	}
 	
 	@Override
-	public List<Instance> getHistory() {
+	public List<World> getHistory() {
 		// TODO Auto-generated method stub
 		return null;
 	}

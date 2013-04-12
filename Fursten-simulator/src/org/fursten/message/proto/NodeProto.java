@@ -1276,6 +1276,1066 @@ public final class NodeProto {
     // @@protoc_insertion_point(class_scope:messages.NodeCollection)
   }
 
+  public interface NodeTransactionOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .messages.Node delete_nodes = 1;
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    java.util.List<org.fursten.message.proto.NodeProto.Node> 
+        getDeleteNodesList();
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    org.fursten.message.proto.NodeProto.Node getDeleteNodes(int index);
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    int getDeleteNodesCount();
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    java.util.List<? extends org.fursten.message.proto.NodeProto.NodeOrBuilder> 
+        getDeleteNodesOrBuilderList();
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    org.fursten.message.proto.NodeProto.NodeOrBuilder getDeleteNodesOrBuilder(
+        int index);
+
+    // repeated .messages.Node inject_nodes = 2;
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    java.util.List<org.fursten.message.proto.NodeProto.Node> 
+        getInjectNodesList();
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    org.fursten.message.proto.NodeProto.Node getInjectNodes(int index);
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    int getInjectNodesCount();
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    java.util.List<? extends org.fursten.message.proto.NodeProto.NodeOrBuilder> 
+        getInjectNodesOrBuilderList();
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    org.fursten.message.proto.NodeProto.NodeOrBuilder getInjectNodesOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code messages.NodeTransaction}
+   */
+  public static final class NodeTransaction extends
+      com.google.protobuf.GeneratedMessage
+      implements NodeTransactionOrBuilder {
+    // Use NodeTransaction.newBuilder() to construct.
+    private NodeTransaction(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private NodeTransaction(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final NodeTransaction defaultInstance;
+    public static NodeTransaction getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public NodeTransaction getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NodeTransaction(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                deleteNodes_ = new java.util.ArrayList<org.fursten.message.proto.NodeProto.Node>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              deleteNodes_.add(input.readMessage(org.fursten.message.proto.NodeProto.Node.PARSER, extensionRegistry));
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                injectNodes_ = new java.util.ArrayList<org.fursten.message.proto.NodeProto.Node>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              injectNodes_.add(input.readMessage(org.fursten.message.proto.NodeProto.Node.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          deleteNodes_ = java.util.Collections.unmodifiableList(deleteNodes_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          injectNodes_ = java.util.Collections.unmodifiableList(injectNodes_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.fursten.message.proto.NodeProto.internal_static_messages_NodeTransaction_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.fursten.message.proto.NodeProto.internal_static_messages_NodeTransaction_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.fursten.message.proto.NodeProto.NodeTransaction.class, org.fursten.message.proto.NodeProto.NodeTransaction.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<NodeTransaction> PARSER =
+        new com.google.protobuf.AbstractParser<NodeTransaction>() {
+      public NodeTransaction parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NodeTransaction(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NodeTransaction> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .messages.Node delete_nodes = 1;
+    public static final int DELETE_NODES_FIELD_NUMBER = 1;
+    private java.util.List<org.fursten.message.proto.NodeProto.Node> deleteNodes_;
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    public java.util.List<org.fursten.message.proto.NodeProto.Node> getDeleteNodesList() {
+      return deleteNodes_;
+    }
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    public java.util.List<? extends org.fursten.message.proto.NodeProto.NodeOrBuilder> 
+        getDeleteNodesOrBuilderList() {
+      return deleteNodes_;
+    }
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    public int getDeleteNodesCount() {
+      return deleteNodes_.size();
+    }
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    public org.fursten.message.proto.NodeProto.Node getDeleteNodes(int index) {
+      return deleteNodes_.get(index);
+    }
+    /**
+     * <code>repeated .messages.Node delete_nodes = 1;</code>
+     */
+    public org.fursten.message.proto.NodeProto.NodeOrBuilder getDeleteNodesOrBuilder(
+        int index) {
+      return deleteNodes_.get(index);
+    }
+
+    // repeated .messages.Node inject_nodes = 2;
+    public static final int INJECT_NODES_FIELD_NUMBER = 2;
+    private java.util.List<org.fursten.message.proto.NodeProto.Node> injectNodes_;
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    public java.util.List<org.fursten.message.proto.NodeProto.Node> getInjectNodesList() {
+      return injectNodes_;
+    }
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    public java.util.List<? extends org.fursten.message.proto.NodeProto.NodeOrBuilder> 
+        getInjectNodesOrBuilderList() {
+      return injectNodes_;
+    }
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    public int getInjectNodesCount() {
+      return injectNodes_.size();
+    }
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    public org.fursten.message.proto.NodeProto.Node getInjectNodes(int index) {
+      return injectNodes_.get(index);
+    }
+    /**
+     * <code>repeated .messages.Node inject_nodes = 2;</code>
+     */
+    public org.fursten.message.proto.NodeProto.NodeOrBuilder getInjectNodesOrBuilder(
+        int index) {
+      return injectNodes_.get(index);
+    }
+
+    private void initFields() {
+      deleteNodes_ = java.util.Collections.emptyList();
+      injectNodes_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getDeleteNodesCount(); i++) {
+        if (!getDeleteNodes(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getInjectNodesCount(); i++) {
+        if (!getInjectNodes(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < deleteNodes_.size(); i++) {
+        output.writeMessage(1, deleteNodes_.get(i));
+      }
+      for (int i = 0; i < injectNodes_.size(); i++) {
+        output.writeMessage(2, injectNodes_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < deleteNodes_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, deleteNodes_.get(i));
+      }
+      for (int i = 0; i < injectNodes_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, injectNodes_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.fursten.message.proto.NodeProto.NodeTransaction parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.fursten.message.proto.NodeProto.NodeTransaction prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code messages.NodeTransaction}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.fursten.message.proto.NodeProto.NodeTransactionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.fursten.message.proto.NodeProto.internal_static_messages_NodeTransaction_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.fursten.message.proto.NodeProto.internal_static_messages_NodeTransaction_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.fursten.message.proto.NodeProto.NodeTransaction.class, org.fursten.message.proto.NodeProto.NodeTransaction.Builder.class);
+      }
+
+      // Construct using org.fursten.message.proto.NodeProto.NodeTransaction.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDeleteNodesFieldBuilder();
+          getInjectNodesFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (deleteNodesBuilder_ == null) {
+          deleteNodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          deleteNodesBuilder_.clear();
+        }
+        if (injectNodesBuilder_ == null) {
+          injectNodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          injectNodesBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.fursten.message.proto.NodeProto.internal_static_messages_NodeTransaction_descriptor;
+      }
+
+      public org.fursten.message.proto.NodeProto.NodeTransaction getDefaultInstanceForType() {
+        return org.fursten.message.proto.NodeProto.NodeTransaction.getDefaultInstance();
+      }
+
+      public org.fursten.message.proto.NodeProto.NodeTransaction build() {
+        org.fursten.message.proto.NodeProto.NodeTransaction result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.fursten.message.proto.NodeProto.NodeTransaction buildPartial() {
+        org.fursten.message.proto.NodeProto.NodeTransaction result = new org.fursten.message.proto.NodeProto.NodeTransaction(this);
+        int from_bitField0_ = bitField0_;
+        if (deleteNodesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            deleteNodes_ = java.util.Collections.unmodifiableList(deleteNodes_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.deleteNodes_ = deleteNodes_;
+        } else {
+          result.deleteNodes_ = deleteNodesBuilder_.build();
+        }
+        if (injectNodesBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            injectNodes_ = java.util.Collections.unmodifiableList(injectNodes_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.injectNodes_ = injectNodes_;
+        } else {
+          result.injectNodes_ = injectNodesBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.fursten.message.proto.NodeProto.NodeTransaction) {
+          return mergeFrom((org.fursten.message.proto.NodeProto.NodeTransaction)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.fursten.message.proto.NodeProto.NodeTransaction other) {
+        if (other == org.fursten.message.proto.NodeProto.NodeTransaction.getDefaultInstance()) return this;
+        if (deleteNodesBuilder_ == null) {
+          if (!other.deleteNodes_.isEmpty()) {
+            if (deleteNodes_.isEmpty()) {
+              deleteNodes_ = other.deleteNodes_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDeleteNodesIsMutable();
+              deleteNodes_.addAll(other.deleteNodes_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.deleteNodes_.isEmpty()) {
+            if (deleteNodesBuilder_.isEmpty()) {
+              deleteNodesBuilder_.dispose();
+              deleteNodesBuilder_ = null;
+              deleteNodes_ = other.deleteNodes_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              deleteNodesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDeleteNodesFieldBuilder() : null;
+            } else {
+              deleteNodesBuilder_.addAllMessages(other.deleteNodes_);
+            }
+          }
+        }
+        if (injectNodesBuilder_ == null) {
+          if (!other.injectNodes_.isEmpty()) {
+            if (injectNodes_.isEmpty()) {
+              injectNodes_ = other.injectNodes_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureInjectNodesIsMutable();
+              injectNodes_.addAll(other.injectNodes_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.injectNodes_.isEmpty()) {
+            if (injectNodesBuilder_.isEmpty()) {
+              injectNodesBuilder_.dispose();
+              injectNodesBuilder_ = null;
+              injectNodes_ = other.injectNodes_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              injectNodesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getInjectNodesFieldBuilder() : null;
+            } else {
+              injectNodesBuilder_.addAllMessages(other.injectNodes_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getDeleteNodesCount(); i++) {
+          if (!getDeleteNodes(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getInjectNodesCount(); i++) {
+          if (!getInjectNodes(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.fursten.message.proto.NodeProto.NodeTransaction parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.fursten.message.proto.NodeProto.NodeTransaction) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .messages.Node delete_nodes = 1;
+      private java.util.List<org.fursten.message.proto.NodeProto.Node> deleteNodes_ =
+        java.util.Collections.emptyList();
+      private void ensureDeleteNodesIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          deleteNodes_ = new java.util.ArrayList<org.fursten.message.proto.NodeProto.Node>(deleteNodes_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.fursten.message.proto.NodeProto.Node, org.fursten.message.proto.NodeProto.Node.Builder, org.fursten.message.proto.NodeProto.NodeOrBuilder> deleteNodesBuilder_;
+
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public java.util.List<org.fursten.message.proto.NodeProto.Node> getDeleteNodesList() {
+        if (deleteNodesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(deleteNodes_);
+        } else {
+          return deleteNodesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public int getDeleteNodesCount() {
+        if (deleteNodesBuilder_ == null) {
+          return deleteNodes_.size();
+        } else {
+          return deleteNodesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public org.fursten.message.proto.NodeProto.Node getDeleteNodes(int index) {
+        if (deleteNodesBuilder_ == null) {
+          return deleteNodes_.get(index);
+        } else {
+          return deleteNodesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public Builder setDeleteNodes(
+          int index, org.fursten.message.proto.NodeProto.Node value) {
+        if (deleteNodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDeleteNodesIsMutable();
+          deleteNodes_.set(index, value);
+          onChanged();
+        } else {
+          deleteNodesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public Builder setDeleteNodes(
+          int index, org.fursten.message.proto.NodeProto.Node.Builder builderForValue) {
+        if (deleteNodesBuilder_ == null) {
+          ensureDeleteNodesIsMutable();
+          deleteNodes_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          deleteNodesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public Builder addDeleteNodes(org.fursten.message.proto.NodeProto.Node value) {
+        if (deleteNodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDeleteNodesIsMutable();
+          deleteNodes_.add(value);
+          onChanged();
+        } else {
+          deleteNodesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public Builder addDeleteNodes(
+          int index, org.fursten.message.proto.NodeProto.Node value) {
+        if (deleteNodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDeleteNodesIsMutable();
+          deleteNodes_.add(index, value);
+          onChanged();
+        } else {
+          deleteNodesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public Builder addDeleteNodes(
+          org.fursten.message.proto.NodeProto.Node.Builder builderForValue) {
+        if (deleteNodesBuilder_ == null) {
+          ensureDeleteNodesIsMutable();
+          deleteNodes_.add(builderForValue.build());
+          onChanged();
+        } else {
+          deleteNodesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public Builder addDeleteNodes(
+          int index, org.fursten.message.proto.NodeProto.Node.Builder builderForValue) {
+        if (deleteNodesBuilder_ == null) {
+          ensureDeleteNodesIsMutable();
+          deleteNodes_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          deleteNodesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public Builder addAllDeleteNodes(
+          java.lang.Iterable<? extends org.fursten.message.proto.NodeProto.Node> values) {
+        if (deleteNodesBuilder_ == null) {
+          ensureDeleteNodesIsMutable();
+          super.addAll(values, deleteNodes_);
+          onChanged();
+        } else {
+          deleteNodesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public Builder clearDeleteNodes() {
+        if (deleteNodesBuilder_ == null) {
+          deleteNodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          deleteNodesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public Builder removeDeleteNodes(int index) {
+        if (deleteNodesBuilder_ == null) {
+          ensureDeleteNodesIsMutable();
+          deleteNodes_.remove(index);
+          onChanged();
+        } else {
+          deleteNodesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public org.fursten.message.proto.NodeProto.Node.Builder getDeleteNodesBuilder(
+          int index) {
+        return getDeleteNodesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public org.fursten.message.proto.NodeProto.NodeOrBuilder getDeleteNodesOrBuilder(
+          int index) {
+        if (deleteNodesBuilder_ == null) {
+          return deleteNodes_.get(index);  } else {
+          return deleteNodesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public java.util.List<? extends org.fursten.message.proto.NodeProto.NodeOrBuilder> 
+           getDeleteNodesOrBuilderList() {
+        if (deleteNodesBuilder_ != null) {
+          return deleteNodesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(deleteNodes_);
+        }
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public org.fursten.message.proto.NodeProto.Node.Builder addDeleteNodesBuilder() {
+        return getDeleteNodesFieldBuilder().addBuilder(
+            org.fursten.message.proto.NodeProto.Node.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public org.fursten.message.proto.NodeProto.Node.Builder addDeleteNodesBuilder(
+          int index) {
+        return getDeleteNodesFieldBuilder().addBuilder(
+            index, org.fursten.message.proto.NodeProto.Node.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .messages.Node delete_nodes = 1;</code>
+       */
+      public java.util.List<org.fursten.message.proto.NodeProto.Node.Builder> 
+           getDeleteNodesBuilderList() {
+        return getDeleteNodesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.fursten.message.proto.NodeProto.Node, org.fursten.message.proto.NodeProto.Node.Builder, org.fursten.message.proto.NodeProto.NodeOrBuilder> 
+          getDeleteNodesFieldBuilder() {
+        if (deleteNodesBuilder_ == null) {
+          deleteNodesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.fursten.message.proto.NodeProto.Node, org.fursten.message.proto.NodeProto.Node.Builder, org.fursten.message.proto.NodeProto.NodeOrBuilder>(
+                  deleteNodes_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          deleteNodes_ = null;
+        }
+        return deleteNodesBuilder_;
+      }
+
+      // repeated .messages.Node inject_nodes = 2;
+      private java.util.List<org.fursten.message.proto.NodeProto.Node> injectNodes_ =
+        java.util.Collections.emptyList();
+      private void ensureInjectNodesIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          injectNodes_ = new java.util.ArrayList<org.fursten.message.proto.NodeProto.Node>(injectNodes_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.fursten.message.proto.NodeProto.Node, org.fursten.message.proto.NodeProto.Node.Builder, org.fursten.message.proto.NodeProto.NodeOrBuilder> injectNodesBuilder_;
+
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public java.util.List<org.fursten.message.proto.NodeProto.Node> getInjectNodesList() {
+        if (injectNodesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(injectNodes_);
+        } else {
+          return injectNodesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public int getInjectNodesCount() {
+        if (injectNodesBuilder_ == null) {
+          return injectNodes_.size();
+        } else {
+          return injectNodesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public org.fursten.message.proto.NodeProto.Node getInjectNodes(int index) {
+        if (injectNodesBuilder_ == null) {
+          return injectNodes_.get(index);
+        } else {
+          return injectNodesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public Builder setInjectNodes(
+          int index, org.fursten.message.proto.NodeProto.Node value) {
+        if (injectNodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInjectNodesIsMutable();
+          injectNodes_.set(index, value);
+          onChanged();
+        } else {
+          injectNodesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public Builder setInjectNodes(
+          int index, org.fursten.message.proto.NodeProto.Node.Builder builderForValue) {
+        if (injectNodesBuilder_ == null) {
+          ensureInjectNodesIsMutable();
+          injectNodes_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          injectNodesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public Builder addInjectNodes(org.fursten.message.proto.NodeProto.Node value) {
+        if (injectNodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInjectNodesIsMutable();
+          injectNodes_.add(value);
+          onChanged();
+        } else {
+          injectNodesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public Builder addInjectNodes(
+          int index, org.fursten.message.proto.NodeProto.Node value) {
+        if (injectNodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInjectNodesIsMutable();
+          injectNodes_.add(index, value);
+          onChanged();
+        } else {
+          injectNodesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public Builder addInjectNodes(
+          org.fursten.message.proto.NodeProto.Node.Builder builderForValue) {
+        if (injectNodesBuilder_ == null) {
+          ensureInjectNodesIsMutable();
+          injectNodes_.add(builderForValue.build());
+          onChanged();
+        } else {
+          injectNodesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public Builder addInjectNodes(
+          int index, org.fursten.message.proto.NodeProto.Node.Builder builderForValue) {
+        if (injectNodesBuilder_ == null) {
+          ensureInjectNodesIsMutable();
+          injectNodes_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          injectNodesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public Builder addAllInjectNodes(
+          java.lang.Iterable<? extends org.fursten.message.proto.NodeProto.Node> values) {
+        if (injectNodesBuilder_ == null) {
+          ensureInjectNodesIsMutable();
+          super.addAll(values, injectNodes_);
+          onChanged();
+        } else {
+          injectNodesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public Builder clearInjectNodes() {
+        if (injectNodesBuilder_ == null) {
+          injectNodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          injectNodesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public Builder removeInjectNodes(int index) {
+        if (injectNodesBuilder_ == null) {
+          ensureInjectNodesIsMutable();
+          injectNodes_.remove(index);
+          onChanged();
+        } else {
+          injectNodesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public org.fursten.message.proto.NodeProto.Node.Builder getInjectNodesBuilder(
+          int index) {
+        return getInjectNodesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public org.fursten.message.proto.NodeProto.NodeOrBuilder getInjectNodesOrBuilder(
+          int index) {
+        if (injectNodesBuilder_ == null) {
+          return injectNodes_.get(index);  } else {
+          return injectNodesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public java.util.List<? extends org.fursten.message.proto.NodeProto.NodeOrBuilder> 
+           getInjectNodesOrBuilderList() {
+        if (injectNodesBuilder_ != null) {
+          return injectNodesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(injectNodes_);
+        }
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public org.fursten.message.proto.NodeProto.Node.Builder addInjectNodesBuilder() {
+        return getInjectNodesFieldBuilder().addBuilder(
+            org.fursten.message.proto.NodeProto.Node.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public org.fursten.message.proto.NodeProto.Node.Builder addInjectNodesBuilder(
+          int index) {
+        return getInjectNodesFieldBuilder().addBuilder(
+            index, org.fursten.message.proto.NodeProto.Node.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .messages.Node inject_nodes = 2;</code>
+       */
+      public java.util.List<org.fursten.message.proto.NodeProto.Node.Builder> 
+           getInjectNodesBuilderList() {
+        return getInjectNodesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.fursten.message.proto.NodeProto.Node, org.fursten.message.proto.NodeProto.Node.Builder, org.fursten.message.proto.NodeProto.NodeOrBuilder> 
+          getInjectNodesFieldBuilder() {
+        if (injectNodesBuilder_ == null) {
+          injectNodesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.fursten.message.proto.NodeProto.Node, org.fursten.message.proto.NodeProto.Node.Builder, org.fursten.message.proto.NodeProto.NodeOrBuilder>(
+                  injectNodes_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          injectNodes_ = null;
+        }
+        return injectNodesBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:messages.NodeTransaction)
+    }
+
+    static {
+      defaultInstance = new NodeTransaction(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:messages.NodeTransaction)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_messages_Node_descriptor;
   private static
@@ -1286,6 +2346,11 @@ public final class NodeProto {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_messages_NodeCollection_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_messages_NodeTransaction_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_messages_NodeTransaction_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1297,8 +2362,11 @@ public final class NodeProto {
     java.lang.String[] descriptorData = {
       "\n\nnode.proto\022\010messages\"\'\n\004Node\022\t\n\001x\030\001 \002(" +
       "\021\022\t\n\001y\030\002 \002(\021\022\t\n\001r\030\003 \002(\021\"/\n\016NodeCollectio" +
-      "n\022\035\n\005nodes\030\001 \003(\0132\016.messages.NodeB&\n\031org." +
-      "fursten.message.protoB\tNodeProto"
+      "n\022\035\n\005nodes\030\001 \003(\0132\016.messages.Node\"]\n\017Node" +
+      "Transaction\022$\n\014delete_nodes\030\001 \003(\0132\016.mess" +
+      "ages.Node\022$\n\014inject_nodes\030\002 \003(\0132\016.messag" +
+      "es.NodeB&\n\031org.fursten.message.protoB\tNo" +
+      "deProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1317,6 +2385,12 @@ public final class NodeProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_messages_NodeCollection_descriptor,
               new java.lang.String[] { "Nodes", });
+          internal_static_messages_NodeTransaction_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_messages_NodeTransaction_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_messages_NodeTransaction_descriptor,
+              new java.lang.String[] { "DeleteNodes", "InjectNodes", });
           return null;
         }
       };

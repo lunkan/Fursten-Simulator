@@ -10,14 +10,13 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import fursten.simulator.instance.Instance;
+import fursten.simulator.world.World;
 import fursten.simulator.node.Node;
 import fursten.simulator.node.NodeStabilityCalculator;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
-import fursten.simulator.persistent.SessionManager;
+import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
-import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.ResourceWrapper;
 
 public class SimulatorRunCommand implements SimulatorCommand {
@@ -29,7 +28,7 @@ public class SimulatorRunCommand implements SimulatorCommand {
 	private Rectangle rect;
 	private NodeStabilityCalculator nodeMath;
 	private ResourceManager RM;
-	private Instance activeSession;
+	private World activeSession;
 	
 	public SimulatorRunCommand(Rectangle rect){
 		this.rect = rect;
@@ -44,8 +43,8 @@ public class SimulatorRunCommand implements SimulatorCommand {
 		long timeStampStart = System.currentTimeMillis();
 		rand = new Random();
 		
-		SessionManager SM = DAOFactory.get().getSessionManager();
-		Instance session = SM.getActive();
+		WorldManager SM = DAOFactory.get().getWorldManager();
+		World session = SM.getActive();
 		int tick = session.getTick() + 1;
 		session.setTick(tick);
 		SM.setActive(session);
@@ -66,7 +65,7 @@ public class SimulatorRunCommand implements SimulatorCommand {
 				
 				for(Node node : NM.get(rect, resourceKey)) {
 					
-					float stability = nodeMath.calculateStability(node.getX(), node.getY(), resource);
+					float stability = nodeMath.calculateStability(node.getX(), node.getY(), resource, false);
 					if(stability < 1.0f)  {
 						removedNodes.add(node);
 			    	}
@@ -125,7 +124,7 @@ public class SimulatorRunCommand implements SimulatorCommand {
 		if(!activeSession.getRect().contains(spore.getX(), spore.getY()))
 			return null;
 		
-		float stability = nodeMath.calculateStability(spore.getX(), spore.getY(), resource);
+		float stability = nodeMath.calculateStability(spore.getX(), spore.getY(), resource, false);
 		stability = nodeMath.normalizeStability(stability, resource.getThreshold());
 		
 		if(stability > rand.nextFloat())

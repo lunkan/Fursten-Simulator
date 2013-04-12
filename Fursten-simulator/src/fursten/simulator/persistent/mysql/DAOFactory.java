@@ -10,7 +10,7 @@ import fursten.simulator.Settings.DatabaseSettings;
 import fursten.simulator.persistent.DAOManager;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
-import fursten.simulator.persistent.SessionManager;
+import fursten.simulator.persistent.WorldManager;
 import fursten.util.persistent.ConnectionPool;
 
 public class DAOFactory extends DAOManager {
@@ -65,7 +65,7 @@ public class DAOFactory extends DAOManager {
 		return ResourceDAO.getInstance();
 	}
 	
-	public SessionManager getSessionManager() {
-		return SessionDAO.getInstance();
+	public WorldManager getWorldManager() {
+		return WorldDAO.getInstance();
 	}
 }

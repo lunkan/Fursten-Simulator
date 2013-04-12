@@ -39,6 +39,7 @@ public class FurstenProtobufProvider implements MessageBodyReader<Object>, Messa
 		//Nodes
 		pojoToProtoMapper.put(fursten.simulator.node.NodeCollection.class, org.fursten.message.proto.NodeProto.NodeCollection.class);
 		pojoToProtoMapper.put(fursten.simulator.node.Node.class, org.fursten.message.proto.NodeProto.Node.class);
+		pojoToProtoMapper.put(fursten.simulator.node.NodeTransaction.class, org.fursten.message.proto.NodeProto.NodeTransaction.class);
 		
 		//Resources
 		pojoToProtoMapper.put(fursten.simulator.resource.ResourceCollection.class, org.fursten.message.proto.ResourceProto.ResourceCollection.class);
@@ -181,9 +182,6 @@ public class FurstenProtobufProvider implements MessageBodyReader<Object>, Messa
 	
 	private Message mapObject(Object o) {
 		
-		System.out.println("#"+o.getClass().getSimpleName());
-		
-		
 		//Init new builder
 		Builder b = getBuilder(o.getClass());
 		
@@ -199,7 +197,6 @@ public class FurstenProtobufProvider implements MessageBodyReader<Object>, Messa
     				String methodAddName = "add" + protoVarNameToJava(f.getName());
     				
     				Method getMethod = o.getClass().getDeclaredMethod(methodGetName, null);
-    				System.out.println("*"+methodGetName);
     				for(Object childObj : (List<Object>)getMethod.invoke(o, null)) {
     				
     					Message childMsg = mapObject(childObj);

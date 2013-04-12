@@ -15,32 +15,26 @@ import fursten.simulator.command.ResourceEditCommand;
 import fursten.simulator.command.SampleCommand;
 import fursten.simulator.command.SimulatorInitializeCommand;
 import fursten.simulator.command.SimulatorRunCommand;
-import fursten.simulator.instance.Instance;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.ResourceManager;
-import fursten.simulator.persistent.SessionManager;
+import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.ResourceKeyManager;
-import fursten.simulator.resource.ResourceCollection;
 import fursten.simulator.resource.ResourceSelection;
 import fursten.simulator.sample.Sample;
+import fursten.simulator.world.World;
 
 public class Facade {
 
 	private static final Logger logger = Logger.getLogger(Facade.class.getName());
 	
-	public static boolean init(String name, int width, int height) {
+	public static boolean init(World world) {
 		
-		logger.log(Level.INFO, "Calling Facade.init(name:"+name+", width:"+width+", height:"+height+")");
-		
-		Instance session = new Instance()
-			.setName(name)
-			.setWidth(width)
-			.setHeight(height);
+		logger.log(Level.INFO, "Calling Facade.init("+world.toString()+")");
 		
 		try {
-			new SimulatorInitializeCommand(session).execute();
+			new SimulatorInitializeCommand(world).execute();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,29 +46,19 @@ public class Facade {
 		return true;
 	}
 	
-	public static Status getStatus() {
+	public static World getWorld() {
 		
 		logger.log(Level.INFO, "Calling Facade.getStatus");
 		
-		SessionManager SM = DAOFactory.get().getSessionManager();
-		Instance instance = SM.getActive();
-		
-		if(instance == null)
-			return null;
-		
-		Status status = new Status()
-			.setName(instance.getName())
-			.setWidth(instance.getWidth())
-			.setHeight(instance.getHeight())
-			.setTick(instance.getTick());
-		
-		return status;
+		WorldManager SM = DAOFactory.get().getWorldManager();
+		World instance = SM.getActive();
+		return instance;
 	}
-	
+
 	public static boolean run() {
 		
-		SessionManager SM = DAOFactory.get().getSessionManager();
-		Instance session = SM.getActive();
+		WorldManager SM = DAOFactory.get().getWorldManager();
+		World session = SM.getActive();
 		
 		try {
 			new SimulatorRunCommand(session.getRect()).execute();
@@ -86,10 +70,10 @@ public class Facade {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static List<Sample> getSamples(List<Sample> samples) {
+	public static List<Sample> getSamples(List<Sample> samples, boolean prospecting) {
 		
 		try {
-			return (List<Sample>) new SampleCommand(samples).execute();
+			return (List<Sample>) new SampleCommand(samples, prospecting).execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

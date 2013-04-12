@@ -71,7 +71,7 @@ public class NodeStabilityCalculator {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public float calculateStability(int x, int y, ResourceWrapper resource) {
+	public float calculateStability(int x, int y, ResourceWrapper resource, boolean ignoreSelf) {
 		
 		//set bounds
 		rect.setBounds(x - NODE_RADIUS, y - NODE_RADIUS, NODE_RADIUS*2, NODE_RADIUS*2);
@@ -121,14 +121,19 @@ public class NodeStabilityCalculator {
 			stability = Math.min(stability, groupStability);
 		}
 		
-		//Negative impact from neighbor of same type
+		//Negative impact from neighbors of same type
+		//Impact from self is always = -1
 		for(Node neighbor : NM.get(rect, resource.getKey())) {
 			
 			int distance = (int) (Math.sqrt(Math.pow(x-neighbor.getX(),2) + Math.pow(y-neighbor.getY(),2)));
-			float impact = (NODE_RADIUS - (float)distance) / (float)NODE_RADIUS;
-			
-			if(impact > 0 && distance != 0) {	
-				stability -= impact;
+			System.out.println("d: " + distance + " i: " + ignoreSelf);
+			if(distance == 0) {
+				if(ignoreSelf) {
+					stability -= 1;
+				}
+			}
+			else if(distance < NODE_RADIUS) {
+				stability -= (NODE_RADIUS - (float)distance) / (float)NODE_RADIUS;
 			}
 		}
 		

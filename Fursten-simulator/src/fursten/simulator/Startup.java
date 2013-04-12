@@ -8,7 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import fursten.simulator.persistent.mysql.DAOFactory;
+import fursten.simulator.world.World;
 
 public class Startup  implements ServletContextListener {
 
@@ -23,12 +23,16 @@ public class Startup  implements ServletContextListener {
 		//context.setAttribute("TEST", "TEST_VALUE");
 		String settingsUrl = context.getRealPath(File.separator) + "WEB-INF" + File.separator + "settings.xml";
 		Settings.getInstance().init(settingsUrl, "default", context);
-		Status status = Facade.getStatus();
+		World world = Facade.getWorld();
 		
 		//If simulator is empty -> init blank world
-		if(status == null) {
+		if(world == null) {
 			logger.log(Level.SEVERE, "No world initiated - init default world.");
-			boolean success = Facade.init("no name", 10000, 10000);
+			World newWorld = new World();
+			newWorld.setName("No name");
+			newWorld.setWidth(10000);
+			newWorld.setHeight(10000);
+			boolean success = Facade.init(newWorld);
 			if(!success) {
 				logger.log(Level.SEVERE, "Fursten simulator could not init default world.");
 				return;
@@ -38,7 +42,7 @@ public class Startup  implements ServletContextListener {
 			}
 		}
 		else {
-			logger.log(Level.INFO, "Fursten simulator started: " + status.toString());
+			logger.log(Level.INFO, "Fursten simulator started: " + world.toString());
 		}
 	}
 	

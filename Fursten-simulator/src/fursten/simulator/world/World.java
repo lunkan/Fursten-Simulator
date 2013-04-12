@@ -1,11 +1,11 @@
-package fursten.simulator.instance;
+package fursten.simulator.world;
 
 import java.awt.Rectangle;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Instance implements Serializable {
+public class World implements Serializable {
 
 	static final long serialVersionUID = 10275539472837495L;
 	
@@ -21,7 +21,7 @@ public class Instance implements Serializable {
 		return name;
 	}
 	
-	public Instance setName(String name) {
+	public World setName(String name) {
 		this.name = name;
 		return this;
 	}
@@ -30,7 +30,7 @@ public class Instance implements Serializable {
 		return tick;
 	}
 	
-	public Instance setTick(int tick) {
+	public World setTick(int tick) {
 		this.tick = tick;
 		return this;
 	}
@@ -39,12 +39,12 @@ public class Instance implements Serializable {
 		return width;
 	}
 	
-	public Instance setWidth(int width) {
+	public World setWidth(int width) {
 		this.width = width;
 		return this;
 	}
 	
-	public Instance setHeight(int height) {
+	public World setHeight(int height) {
 		this.height = height;
 		return this;
 	}

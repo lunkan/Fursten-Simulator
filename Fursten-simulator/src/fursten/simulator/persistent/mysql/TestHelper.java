@@ -1,6 +1,5 @@
 package fursten.simulator.persistent.mysql;
 
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -8,8 +7,7 @@ import javax.servlet.ServletContext;
 
 import fursten.simulator.Facade;
 import fursten.simulator.Settings;
-import fursten.simulator.Startup;
-import fursten.simulator.Status;
+import fursten.simulator.world.World;
 import fursten.simulator.persistent.DAOManager;
 import fursten.util.persistent.DAOTestHelper;
 
@@ -24,16 +22,20 @@ public class TestHelper implements DAOTestHelper {
 		
 		String settingsUrl = "WebContent/WEB-INF/settings.xml";
 		Settings.getInstance().init(settingsUrl, "test", context);
-		Status status = Facade.getStatus();
+		World instance = Facade.getWorld();
 		
 		DAOManager.get().getNodeManager().deleteAll();
 		DAOManager.get().getResourceManager().deleteAll();
-		DAOManager.get().getSessionManager().deleteAll();
+		DAOManager.get().getWorldManager().deleteAll();
 		
 		//If simulator is empty -> init blank world
-		if(status == null) {
+		if(instance == null) {
 			logger.log(Level.SEVERE, "No world initiated - init default world.");
-			boolean success = Facade.init("no name", 10000, 10000);
+			World newInstance = new World();
+			newInstance.setName("No name");
+			newInstance.setWidth(10000);
+			newInstance.setHeight(10000);
+			boolean success = Facade.init(newInstance);
 			if(!success) {
 				logger.log(Level.SEVERE, "Fursten simulator could not init default world.");
 				return false;
@@ -43,7 +45,7 @@ public class TestHelper implements DAOTestHelper {
 			}
 		}
 		else {
-			logger.log(Level.INFO, "Fursten simulator started: " + status.toString());
+			logger.log(Level.INFO, "Fursten simulator started: " + instance.toString());
 		}
 		
 		return true;

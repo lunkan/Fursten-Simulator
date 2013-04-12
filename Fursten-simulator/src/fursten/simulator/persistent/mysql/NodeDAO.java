@@ -307,6 +307,26 @@ class NodeDAO implements NodeManager {
 		return result;
 	}
 	
+	
+	public boolean containsAll(List<Node> nodes) {
+		
+		for(Node node : nodes) {
+			if(!contains(node))
+				return false;
+		}
+			
+		return true;
+	}
+	
+	public boolean contains(Node node) {
+		
+		List<Node> nodes = get(new Rectangle(node.getX(), node.getY(), 1, 1), node.getR());
+		if(nodes.size() != 0)
+			return true;
+			
+		return false;
+	}
+	
 	/**
 	 * Group nodes into resource classes - Convenient for insert.
 	 * @param nodes

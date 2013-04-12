@@ -17,9 +17,6 @@ Install
 API
 ------------
 
-!: Funktionaliteten är inte implementerad ännu  
-(-): Funktionaliteten kan komma att tas bort  
-
 ### Resources  
 
 **GET:** "/rest/resources"  
@@ -60,66 +57,53 @@ Removes resource with key = {key}. Nodes related to the resource will be removed
 ### Nodes  
 
 **GET:** "/rest/nodes"  
-**Params:** x, y, w (width), h (height), !resources (id, id, id...)  
-**Produce:** "application/json", !"application/x-protobuf"  
-Returnerar en lista med noder  
+**Params:** x, y, w (width), h (height) *Bounds of query.*  
+**Params:** r (resourcekey) *Filter query by repeateateble number of resourcekeys params (r=reskey1&r=reskey2&r=...)*  
+**Params:** method ("children"|"parents") *Filter query to provided resources "children"|"parents" or leave blank for normal match. Ignored if "r" params is not provided*  
+**Produce:** NodeCollection (application/json | application/xml | application/x-protobuf)  
+Returns a collection of nodes.  
 
-**!POST**	/rest/nodes (?)    
-**Consume:** "application/json", "application/x-protobuf"  
-Adderar en lista med noder  
+**POST**	/rest/nodes  
+**Consume:** NodeCollection (application/json | application/xml | application/x-protobuf)  
+Adds a collection of nodes  
 
-**!PUT:** "/rest/nodes"  
-**Consume:** "application/json", "application/x-protobuf"  
-Ersätter samtliga noder med en ny lista av noder.  
+**PUT:** "/rest/nodes"  
+**Params:** x, y, w (width), h (height) *Bounds of query*  
+**Params:** r (resourcekey) *Filter query by repeateateble number of resourcekeys params (r=reskey1&r=reskey2&r=...)*  
+**Params:** method ("children"|"parents") *Filter query to provided resources "children"|"parents" or leave blank for normal match. Ignored if "r" params is not provided*  
+**Consume:** NodeCollection (application/json | application/xml | application/x-protobuf)  
+Replaces all nodes with provided NodeCollection if no parameters is provided, or delete all nodes matching the provided parameters and add the NodeCollection.  
 
 **DELETE:**	"/rest/nodes"  
-**!Params:** x, y, w (width), h (height), resources (id, id, id...)    
-Tar bort samtliga noder.
+**Params:** x, y, w (width), h (height) *Bounds of query*  
+**Params:** r (resourcekey) *Filter query by repeateateble number of resourcekeys params (r=reskey1&r=reskey2&r=...)*  
+**Params:** method ("children"|"parents") *Filter query to provided resources "children"|"parents" or leave blank for normal match. Ignored if "r" params is not provided*   
+Deletes node matched by the provided parameters, or all if no parameters where provided.
 
-### Node transactions
+**POST:** "/rest/nodes/transaction"  
+**Consume:** NodeTransaction (application/json | application/xml | application/x-protobuf)  
+Removes and injects nodes in a single transaction. You may leave "injectedNodes" or "deletedNodes" blank.
 
-**!POST:** "/rest/node-transaction"  
-**Consume:** "application/json", "application/x-protobuf"  
-Adderar och tar bort noder i en transaktion. Om något går fel rullas hela transaktionen tillbaka.  
+**POST:** "/rest/nodes/inject" (Obsolite!)  
+**POST:** "/rest/nodes/remove" (Obsolite!)  
 
-**POST:** "/rest/nodes/inject" (-)  
-**Consume:** "application/json"    
-Adderar en lista med noder  
-
-**POST:** "/rest/nodes/remove" (-)  
-**Consume:** "application/json"    
-Tar bort en lista med noder
-
-### Node samples
+### Node samples  
 
 **POST:** "/rest/samples"  
-**Consume:** "application/json", !"application/x-protobuf"  
-**Produce:** "application/json", !"application/x-protobuf"  
-Tar emot en lista med samples (motsvarar en nodelista med stability som en extra variabel utöver x,y,r). En lista med alla samples returneras, där varje sample-koordinats stabilitetsvärde har räknas ut efter samma principer som för motsvarande node. Observera att ett "sample" inte behöver motsvaras av en verklig node utan kan var fiktiv.
+**Params:** prospecting (true|false) *Defines whether (false) we want to calculate real node values, or (false) if we would like to calculate fiktive values. If (false) samples without corresponding node will be ignored.  
+**Consume:** SampleCollection (application/json | application/xml)  
+**Produce:** SampleCollection (application/json | application/xml)  
+Returns a sample collection where each samples stability-value has been calculated by the server. A sample shares the same variables as a node with an additional variable "stability". High stability-value indicate a benificial location for the node.  
 
-### Simulation instance
+### World
 
-**GET:** "/rest/instance"  
-**Produce:** "application/json", !"application/x-protobuf"  
-Returnerar värdena för den activa världen - name, width, height etc
+**GET:** "/rest/world"  
+**Produce:** World (application/json | application/xml | application/x-protobuf)  
+Returns the current world - name, size, tick etc.  
 
-**!GET:** "/rest/instance/{id}"  
-**Produce:** "application/json", !"application/x-protobuf"  
-Returnerar värdena för den världen med id = {id} - name, width, height etc. Om detta anrop implementeras bör anropet ovan returnera en lista med tillgängliga "instances".
-
-**POST:**  "/rest/instance"  
-**Consume:** "application/json", !"application/x-protobuf"  
-Initierar en ny värld baserad på inkommande värden. En ny värld nollställer alla resurser och noder mm. En ny värld/instance blir automatiskt aktiv.
-
-**!PUT:**  "/rest/instance/{id}"  
-**Consume:** "application/json", !"application/x-protobuf"  
-Updaterar en värld där id = {id} baserat på inkommande värden.
-
-**!DELETE:**  "/rest/instance/"  
-Tar bort samtliga instancer.
-
-**!DELETE:**  "/rest/instance/{id}"  
-Tar bort instansen med id = {id}.
+**PUT:**  "/rest/world"  
+**Consume:** World (application/json | application/xml | application/x-protobuf)   
+Init a new world based on put data.  
 
 ### Server process
 

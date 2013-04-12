@@ -5,19 +5,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.sql.rowset.serial.SerialBlob;
 
-import fursten.simulator.instance.Instance;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.resource.Resource;
 import fursten.util.BinaryTranslator;

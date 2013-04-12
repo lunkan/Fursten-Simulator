@@ -5,11 +5,11 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import fursten.simulator.instance.Instance;
+import fursten.simulator.world.World;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
-import fursten.simulator.persistent.SessionManager;
+import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 
 public class NodeEditCommand implements SimulatorCommand {
@@ -47,8 +47,8 @@ public class NodeEditCommand implements SimulatorCommand {
 		//Insert nodes
 		if(insertNodes != null) {
 			
-			SessionManager SM = DAOFactory.get().getSessionManager();
-			Instance activeSession = SM.getActive();
+			WorldManager SM = DAOFactory.get().getWorldManager();
+			World activeSession = SM.getActive();
 			
 			ResourceManager RM = DAOFactory.get().getResourceManager();
 			Set<Integer> validResourceKeys = RM.getKeys();

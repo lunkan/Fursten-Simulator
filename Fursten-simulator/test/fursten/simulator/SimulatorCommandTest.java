@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
@@ -20,15 +19,13 @@ import fursten.simulator.command.ResourceGetCommand;
 import fursten.simulator.command.ResourceEditCommand;
 import fursten.simulator.command.SimulatorInitializeCommand;
 import fursten.simulator.command.SimulatorRunCommand;
-import fursten.simulator.instance.Instance;
+import fursten.simulator.world.World;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.DAOManager;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
-import fursten.simulator.persistent.SessionManager;
-import fursten.simulator.persistent.mysql.DAOFactory;
+import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.resource.Resource;
-import fursten.simulator.resource.Resource.Offspring;
 import fursten.simulator.resource.ResourceKeyManager;
 import fursten.simulator.resource.ResourceSelection;
 import fursten.simulator.resource.ResourceWrapper;
@@ -77,12 +74,12 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     		
     		ResourceManager RM = DAOManager.get().getResourceManager();
     		NodeManager NM = DAOManager.get().getNodeManager();
-    		SessionManager SM = DAOManager.get().getSessionManager();
+    		WorldManager SM = DAOManager.get().getWorldManager();
     		
     		RM.insert(resource.getResource());
     		NM.insert(new ArrayList<Node>(Arrays.asList(node)));
     		
-    		Instance session = new Instance()
+    		World session = new World()
     			.setName(TEST_NAME)
     			.setWidth(Integer.MAX_VALUE)
     			.setHeight(Integer.MAX_VALUE);
@@ -95,7 +92,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     		//Log result
     		exeLog.add("Initialize Tot exe time =  " + (System.currentTimeMillis() - startTime) + "ms");
     		
-    		Instance activeSession = SM.getActive();
+    		World activeSession = SM.getActive();
     		assertEquals(session.getRect(), activeSession.getRect());
     		assertEquals(session.getName(), activeSession.getName());
     		
@@ -218,7 +215,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	Random rand = new Random();
     	
     	//Generate Session
-    	Instance session = new Instance()
+    	World session = new World()
     		.setName("Testing run command")
     		.setWidth(WORLD_W)
     		.setHeight(WORLD_H);

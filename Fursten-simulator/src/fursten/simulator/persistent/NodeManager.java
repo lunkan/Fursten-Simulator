@@ -17,4 +17,6 @@ public interface NodeManager {
 	public List<Node> get(Rectangle bounds, Set<Integer> resourceKeys);
 	public List<Node> get(Rectangle bounds, Integer resourceKey);
 	public List<Node> get(Rectangle bounds);
+	public boolean containsAll(List<Node> nodes);
+	public boolean contains(Node node);
 }

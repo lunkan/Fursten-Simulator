@@ -14,12 +14,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import fursten.simulator.instance.Instance;
+import fursten.simulator.world.World;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.DAOManager;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
-import fursten.simulator.persistent.SessionManager;
+import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.ResourceWrapper;
@@ -52,12 +52,12 @@ public class DAOFactoryTest extends TestCase {
     	ArrayList<String> exeLog = new ArrayList<String>();
     	for(int i = 0; i < NUM_ITERATIONS; i++) {
     		
-    		SessionManager SM = DAOManager.get().getSessionManager();
+    		WorldManager SM = DAOManager.get().getWorldManager();
     		
     		// Perform test and measure time
     		long startTime = System.currentTimeMillis();
     		
-    		Instance session = SM.getActive();
+    		World session = SM.getActive();
     		assertEquals(session.getName(), "Untitled");
     		assertEquals(session.getTick(), 0);
     		long initTime = System.currentTimeMillis() - startTime;
@@ -67,7 +67,7 @@ public class DAOFactoryTest extends TestCase {
     		SM.setActive(session);
     		long insertTime = System.currentTimeMillis() - initTime;
     		
-    		Instance fetchedSession = SM.getActive();
+    		World fetchedSession = SM.getActive();
     		assertEquals(fetchedSession.getName(), TEST_NAME);
     		assertEquals(fetchedSession.getTick(), i);
     		long readTime = System.currentTimeMillis() - insertTime;
@@ -76,7 +76,7 @@ public class DAOFactoryTest extends TestCase {
     		long clearTime = System.currentTimeMillis() - readTime;
     		long exeTime = System.currentTimeMillis() - startTime;
     		
-    		Instance clearedSession = SM.getActive();
+    		World clearedSession = SM.getActive();
     		assertEquals(clearedSession.getName(), "Untitled");
     		assertEquals(clearedSession.getTick(), 0);
     		
