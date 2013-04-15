@@ -107,11 +107,5 @@ Init a new world based on put data.
 
 ### Server process
 
-**POST:** "/rest/process"  
-**!Consume:** "application/json", "application/x-protobuf"  
-**!Produce:** "application/json", "application/x-protobuf"  
-Kör simulatorn 1 tick. Anropet kan i framtiden ta emot argument som styr processen (vilka resurser som ska köras, antal tick etc). Som respons kan ett status object skickas tillbaka.
-
-**GET:** "/rest/status"  
-**Produce:** "application/json", !"application/x-protobuf"  
-Returnerar simulatorns status - name, tick, num-resources, num-nodes etc.
+**POST:** "/rest/process" 
+Runs the simulator 1 tick.

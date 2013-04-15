@@ -4,6 +4,8 @@ import java.awt.Rectangle;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @XmlRootElement
 public class World implements Serializable {
 
@@ -53,6 +55,7 @@ public class World implements Serializable {
 		return height;
 	}
 	
+	@JsonIgnore
 	public Rectangle getRect() {
 		return new Rectangle(-getWidth()/2, -getHeight()/2, getWidth(), getHeight());
 	}

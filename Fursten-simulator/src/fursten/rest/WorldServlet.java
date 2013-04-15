@@ -29,6 +29,8 @@ public class WorldServlet {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public World getWorld() {
 		
-		return Facade.getWorld();
+		World world = Facade.getWorld();
+		System.out.println(world.toString());
+		return world;
 	}
 }

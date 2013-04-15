@@ -82,11 +82,14 @@ public class ResourceWrapper {
 			return weightMap;
 		
 		weightMap = new ArrayList<HashMap<Integer, Float>>();
-		for(int i=0; i < this.resource.getWeightGroups().size(); i++) {
-			
-			weightMap.add(new HashMap<Integer, Float>());
-			for(Weight weight : this.resource.getWeightGroups().get(i).getWeights()) {
-				weightMap.get(i).put(weight.getResource(), weight.getValue());
+		
+		if(this.resource.getWeightGroups() != null) {
+			for(int i=0; i < this.resource.getWeightGroups().size(); i++) {
+				
+				weightMap.add(new HashMap<Integer, Float>());
+				for(Weight weight : this.resource.getWeightGroups().get(i).getWeights()) {
+					weightMap.get(i).put(weight.getResource(), weight.getValue());
+				}
 			}
 		}
 		
