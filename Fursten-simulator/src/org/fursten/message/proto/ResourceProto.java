@@ -36,64 +36,109 @@ public final class ResourceProto {
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // optional float threshold = 3;
+    // optional bool is_locked = 3;
     /**
-     * <code>optional float threshold = 3;</code>
+     * <code>optional bool is_locked = 3;</code>
+     */
+    boolean hasIsLocked();
+    /**
+     * <code>optional bool is_locked = 3;</code>
+     */
+    boolean getIsLocked();
+
+    // optional float mortality = 4;
+    /**
+     * <code>optional float mortality = 4;</code>
+     */
+    boolean hasMortality();
+    /**
+     * <code>optional float mortality = 4;</code>
+     */
+    float getMortality();
+
+    // optional float threshold = 5;
+    /**
+     * <code>optional float threshold = 5;</code>
      */
     boolean hasThreshold();
     /**
-     * <code>optional float threshold = 3;</code>
+     * <code>optional float threshold = 5;</code>
      */
     float getThreshold();
 
-    // repeated .messages.Resource.WeightGroup weight_groups = 4;
+    // repeated .messages.Resource.WeightGroup weight_groups = 6;
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     java.util.List<org.fursten.message.proto.ResourceProto.Resource.WeightGroup> 
         getWeightGroupsList();
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     org.fursten.message.proto.ResourceProto.Resource.WeightGroup getWeightGroups(int index);
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     int getWeightGroupsCount();
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     java.util.List<? extends org.fursten.message.proto.ResourceProto.Resource.WeightGroupOrBuilder> 
         getWeightGroupsOrBuilderList();
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     org.fursten.message.proto.ResourceProto.Resource.WeightGroupOrBuilder getWeightGroupsOrBuilder(
         int index);
 
-    // repeated .messages.Resource.Offspring offsprings = 5;
+    // repeated .messages.Resource.Offspring offsprings = 7;
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> 
         getOffspringsList();
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     org.fursten.message.proto.ResourceProto.Resource.Offspring getOffsprings(int index);
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     int getOffspringsCount();
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     java.util.List<? extends org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder> 
         getOffspringsOrBuilderList();
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder getOffspringsOrBuilder(
+        int index);
+
+    // repeated .messages.Resource.Offspring mutations = 8;
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> 
+        getMutationsList();
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    org.fursten.message.proto.ResourceProto.Resource.Offspring getMutations(int index);
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    int getMutationsCount();
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    java.util.List<? extends org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder> 
+        getMutationsOrBuilderList();
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder getMutationsOrBuilder(
         int index);
   }
   /**
@@ -157,25 +202,43 @@ public final class ResourceProto {
               name_ = input.readBytes();
               break;
             }
-            case 29: {
+            case 24: {
               bitField0_ |= 0x00000004;
+              isLocked_ = input.readBool();
+              break;
+            }
+            case 37: {
+              bitField0_ |= 0x00000008;
+              mortality_ = input.readFloat();
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000010;
               threshold_ = input.readFloat();
               break;
             }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 weightGroups_ = new java.util.ArrayList<org.fursten.message.proto.ResourceProto.Resource.WeightGroup>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000020;
               }
               weightGroups_.add(input.readMessage(org.fursten.message.proto.ResourceProto.Resource.WeightGroup.PARSER, extensionRegistry));
               break;
             }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
                 offsprings_ = new java.util.ArrayList<org.fursten.message.proto.ResourceProto.Resource.Offspring>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000040;
               }
               offsprings_.add(input.readMessage(org.fursten.message.proto.ResourceProto.Resource.Offspring.PARSER, extensionRegistry));
+              break;
+            }
+            case 66: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                mutations_ = new java.util.ArrayList<org.fursten.message.proto.ResourceProto.Resource.Offspring>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              mutations_.add(input.readMessage(org.fursten.message.proto.ResourceProto.Resource.Offspring.PARSER, extensionRegistry));
               break;
             }
           }
@@ -186,11 +249,14 @@ public final class ResourceProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           weightGroups_ = java.util.Collections.unmodifiableList(weightGroups_);
         }
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
           offsprings_ = java.util.Collections.unmodifiableList(offsprings_);
+        }
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          mutations_ = java.util.Collections.unmodifiableList(mutations_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1415,15 +1481,45 @@ public final class ResourceProto {
        */
       int getResource();
 
-      // required float value = 2;
+      // required float ratio = 2;
       /**
-       * <code>required float value = 2;</code>
+       * <code>required float ratio = 2;</code>
        */
-      boolean hasValue();
+      boolean hasRatio();
       /**
-       * <code>required float value = 2;</code>
+       * <code>required float ratio = 2;</code>
        */
-      float getValue();
+      float getRatio();
+
+      // required float cost = 3;
+      /**
+       * <code>required float cost = 3;</code>
+       */
+      boolean hasCost();
+      /**
+       * <code>required float cost = 3;</code>
+       */
+      float getCost();
+
+      // required float multiplier = 4;
+      /**
+       * <code>required float multiplier = 4;</code>
+       */
+      boolean hasMultiplier();
+      /**
+       * <code>required float multiplier = 4;</code>
+       */
+      float getMultiplier();
+
+      // required bool is_linked = 5;
+      /**
+       * <code>required bool is_linked = 5;</code>
+       */
+      boolean hasIsLinked();
+      /**
+       * <code>required bool is_linked = 5;</code>
+       */
+      boolean getIsLinked();
     }
     /**
      * Protobuf type {@code messages.Resource.Offspring}
@@ -1483,7 +1579,22 @@ public final class ResourceProto {
               }
               case 21: {
                 bitField0_ |= 0x00000002;
-                value_ = input.readFloat();
+                ratio_ = input.readFloat();
+                break;
+              }
+              case 29: {
+                bitField0_ |= 0x00000004;
+                cost_ = input.readFloat();
+                break;
+              }
+              case 37: {
+                bitField0_ |= 0x00000008;
+                multiplier_ = input.readFloat();
+                break;
+              }
+              case 40: {
+                bitField0_ |= 0x00000010;
+                isLinked_ = input.readBool();
                 break;
               }
             }
@@ -1542,25 +1653,76 @@ public final class ResourceProto {
         return resource_;
       }
 
-      // required float value = 2;
-      public static final int VALUE_FIELD_NUMBER = 2;
-      private float value_;
+      // required float ratio = 2;
+      public static final int RATIO_FIELD_NUMBER = 2;
+      private float ratio_;
       /**
-       * <code>required float value = 2;</code>
+       * <code>required float ratio = 2;</code>
        */
-      public boolean hasValue() {
+      public boolean hasRatio() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required float value = 2;</code>
+       * <code>required float ratio = 2;</code>
        */
-      public float getValue() {
-        return value_;
+      public float getRatio() {
+        return ratio_;
+      }
+
+      // required float cost = 3;
+      public static final int COST_FIELD_NUMBER = 3;
+      private float cost_;
+      /**
+       * <code>required float cost = 3;</code>
+       */
+      public boolean hasCost() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required float cost = 3;</code>
+       */
+      public float getCost() {
+        return cost_;
+      }
+
+      // required float multiplier = 4;
+      public static final int MULTIPLIER_FIELD_NUMBER = 4;
+      private float multiplier_;
+      /**
+       * <code>required float multiplier = 4;</code>
+       */
+      public boolean hasMultiplier() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required float multiplier = 4;</code>
+       */
+      public float getMultiplier() {
+        return multiplier_;
+      }
+
+      // required bool is_linked = 5;
+      public static final int IS_LINKED_FIELD_NUMBER = 5;
+      private boolean isLinked_;
+      /**
+       * <code>required bool is_linked = 5;</code>
+       */
+      public boolean hasIsLinked() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required bool is_linked = 5;</code>
+       */
+      public boolean getIsLinked() {
+        return isLinked_;
       }
 
       private void initFields() {
         resource_ = 0;
-        value_ = 0F;
+        ratio_ = 0F;
+        cost_ = 0F;
+        multiplier_ = 0F;
+        isLinked_ = false;
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
@@ -1571,7 +1733,19 @@ public final class ResourceProto {
           memoizedIsInitialized = 0;
           return false;
         }
-        if (!hasValue()) {
+        if (!hasRatio()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasCost()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasMultiplier()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasIsLinked()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -1586,7 +1760,16 @@ public final class ResourceProto {
           output.writeSInt32(1, resource_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeFloat(2, value_);
+          output.writeFloat(2, ratio_);
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          output.writeFloat(3, cost_);
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          output.writeFloat(4, multiplier_);
+        }
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          output.writeBool(5, isLinked_);
         }
         getUnknownFields().writeTo(output);
       }
@@ -1603,7 +1786,19 @@ public final class ResourceProto {
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeFloatSize(2, value_);
+            .computeFloatSize(2, ratio_);
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(3, cost_);
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(4, multiplier_);
+        }
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(5, isLinked_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
@@ -1723,8 +1918,14 @@ public final class ResourceProto {
           super.clear();
           resource_ = 0;
           bitField0_ = (bitField0_ & ~0x00000001);
-          value_ = 0F;
+          ratio_ = 0F;
           bitField0_ = (bitField0_ & ~0x00000002);
+          cost_ = 0F;
+          bitField0_ = (bitField0_ & ~0x00000004);
+          multiplier_ = 0F;
+          bitField0_ = (bitField0_ & ~0x00000008);
+          isLinked_ = false;
+          bitField0_ = (bitField0_ & ~0x00000010);
           return this;
         }
 
@@ -1760,7 +1961,19 @@ public final class ResourceProto {
           if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
             to_bitField0_ |= 0x00000002;
           }
-          result.value_ = value_;
+          result.ratio_ = ratio_;
+          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+            to_bitField0_ |= 0x00000004;
+          }
+          result.cost_ = cost_;
+          if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+            to_bitField0_ |= 0x00000008;
+          }
+          result.multiplier_ = multiplier_;
+          if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+            to_bitField0_ |= 0x00000010;
+          }
+          result.isLinked_ = isLinked_;
           result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
@@ -1780,8 +1993,17 @@ public final class ResourceProto {
           if (other.hasResource()) {
             setResource(other.getResource());
           }
-          if (other.hasValue()) {
-            setValue(other.getValue());
+          if (other.hasRatio()) {
+            setRatio(other.getRatio());
+          }
+          if (other.hasCost()) {
+            setCost(other.getCost());
+          }
+          if (other.hasMultiplier()) {
+            setMultiplier(other.getMultiplier());
+          }
+          if (other.hasIsLinked()) {
+            setIsLinked(other.getIsLinked());
           }
           this.mergeUnknownFields(other.getUnknownFields());
           return this;
@@ -1792,7 +2014,19 @@ public final class ResourceProto {
             
             return false;
           }
-          if (!hasValue()) {
+          if (!hasRatio()) {
+            
+            return false;
+          }
+          if (!hasCost()) {
+            
+            return false;
+          }
+          if (!hasMultiplier()) {
+            
+            return false;
+          }
+          if (!hasIsLinked()) {
             
             return false;
           }
@@ -1851,35 +2085,134 @@ public final class ResourceProto {
           return this;
         }
 
-        // required float value = 2;
-        private float value_ ;
+        // required float ratio = 2;
+        private float ratio_ ;
         /**
-         * <code>required float value = 2;</code>
+         * <code>required float ratio = 2;</code>
          */
-        public boolean hasValue() {
+        public boolean hasRatio() {
           return ((bitField0_ & 0x00000002) == 0x00000002);
         }
         /**
-         * <code>required float value = 2;</code>
+         * <code>required float ratio = 2;</code>
          */
-        public float getValue() {
-          return value_;
+        public float getRatio() {
+          return ratio_;
         }
         /**
-         * <code>required float value = 2;</code>
+         * <code>required float ratio = 2;</code>
          */
-        public Builder setValue(float value) {
+        public Builder setRatio(float value) {
           bitField0_ |= 0x00000002;
-          value_ = value;
+          ratio_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>required float value = 2;</code>
+         * <code>required float ratio = 2;</code>
          */
-        public Builder clearValue() {
+        public Builder clearRatio() {
           bitField0_ = (bitField0_ & ~0x00000002);
-          value_ = 0F;
+          ratio_ = 0F;
+          onChanged();
+          return this;
+        }
+
+        // required float cost = 3;
+        private float cost_ ;
+        /**
+         * <code>required float cost = 3;</code>
+         */
+        public boolean hasCost() {
+          return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+        /**
+         * <code>required float cost = 3;</code>
+         */
+        public float getCost() {
+          return cost_;
+        }
+        /**
+         * <code>required float cost = 3;</code>
+         */
+        public Builder setCost(float value) {
+          bitField0_ |= 0x00000004;
+          cost_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required float cost = 3;</code>
+         */
+        public Builder clearCost() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          cost_ = 0F;
+          onChanged();
+          return this;
+        }
+
+        // required float multiplier = 4;
+        private float multiplier_ ;
+        /**
+         * <code>required float multiplier = 4;</code>
+         */
+        public boolean hasMultiplier() {
+          return ((bitField0_ & 0x00000008) == 0x00000008);
+        }
+        /**
+         * <code>required float multiplier = 4;</code>
+         */
+        public float getMultiplier() {
+          return multiplier_;
+        }
+        /**
+         * <code>required float multiplier = 4;</code>
+         */
+        public Builder setMultiplier(float value) {
+          bitField0_ |= 0x00000008;
+          multiplier_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required float multiplier = 4;</code>
+         */
+        public Builder clearMultiplier() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          multiplier_ = 0F;
+          onChanged();
+          return this;
+        }
+
+        // required bool is_linked = 5;
+        private boolean isLinked_ ;
+        /**
+         * <code>required bool is_linked = 5;</code>
+         */
+        public boolean hasIsLinked() {
+          return ((bitField0_ & 0x00000010) == 0x00000010);
+        }
+        /**
+         * <code>required bool is_linked = 5;</code>
+         */
+        public boolean getIsLinked() {
+          return isLinked_;
+        }
+        /**
+         * <code>required bool is_linked = 5;</code>
+         */
+        public Builder setIsLinked(boolean value) {
+          bitField0_ |= 0x00000010;
+          isLinked_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required bool is_linked = 5;</code>
+         */
+        public Builder clearIsLinked() {
+          bitField0_ = (bitField0_ & ~0x00000010);
+          isLinked_ = false;
           onChanged();
           return this;
         }
@@ -1955,100 +2288,171 @@ public final class ResourceProto {
       }
     }
 
-    // optional float threshold = 3;
-    public static final int THRESHOLD_FIELD_NUMBER = 3;
-    private float threshold_;
+    // optional bool is_locked = 3;
+    public static final int IS_LOCKED_FIELD_NUMBER = 3;
+    private boolean isLocked_;
     /**
-     * <code>optional float threshold = 3;</code>
+     * <code>optional bool is_locked = 3;</code>
      */
-    public boolean hasThreshold() {
+    public boolean hasIsLocked() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional float threshold = 3;</code>
+     * <code>optional bool is_locked = 3;</code>
+     */
+    public boolean getIsLocked() {
+      return isLocked_;
+    }
+
+    // optional float mortality = 4;
+    public static final int MORTALITY_FIELD_NUMBER = 4;
+    private float mortality_;
+    /**
+     * <code>optional float mortality = 4;</code>
+     */
+    public boolean hasMortality() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional float mortality = 4;</code>
+     */
+    public float getMortality() {
+      return mortality_;
+    }
+
+    // optional float threshold = 5;
+    public static final int THRESHOLD_FIELD_NUMBER = 5;
+    private float threshold_;
+    /**
+     * <code>optional float threshold = 5;</code>
+     */
+    public boolean hasThreshold() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional float threshold = 5;</code>
      */
     public float getThreshold() {
       return threshold_;
     }
 
-    // repeated .messages.Resource.WeightGroup weight_groups = 4;
-    public static final int WEIGHT_GROUPS_FIELD_NUMBER = 4;
+    // repeated .messages.Resource.WeightGroup weight_groups = 6;
+    public static final int WEIGHT_GROUPS_FIELD_NUMBER = 6;
     private java.util.List<org.fursten.message.proto.ResourceProto.Resource.WeightGroup> weightGroups_;
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     public java.util.List<org.fursten.message.proto.ResourceProto.Resource.WeightGroup> getWeightGroupsList() {
       return weightGroups_;
     }
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     public java.util.List<? extends org.fursten.message.proto.ResourceProto.Resource.WeightGroupOrBuilder> 
         getWeightGroupsOrBuilderList() {
       return weightGroups_;
     }
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     public int getWeightGroupsCount() {
       return weightGroups_.size();
     }
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     public org.fursten.message.proto.ResourceProto.Resource.WeightGroup getWeightGroups(int index) {
       return weightGroups_.get(index);
     }
     /**
-     * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+     * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
      */
     public org.fursten.message.proto.ResourceProto.Resource.WeightGroupOrBuilder getWeightGroupsOrBuilder(
         int index) {
       return weightGroups_.get(index);
     }
 
-    // repeated .messages.Resource.Offspring offsprings = 5;
-    public static final int OFFSPRINGS_FIELD_NUMBER = 5;
+    // repeated .messages.Resource.Offspring offsprings = 7;
+    public static final int OFFSPRINGS_FIELD_NUMBER = 7;
     private java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> offsprings_;
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     public java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> getOffspringsList() {
       return offsprings_;
     }
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     public java.util.List<? extends org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder> 
         getOffspringsOrBuilderList() {
       return offsprings_;
     }
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     public int getOffspringsCount() {
       return offsprings_.size();
     }
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     public org.fursten.message.proto.ResourceProto.Resource.Offspring getOffsprings(int index) {
       return offsprings_.get(index);
     }
     /**
-     * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+     * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
      */
     public org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder getOffspringsOrBuilder(
         int index) {
       return offsprings_.get(index);
     }
 
+    // repeated .messages.Resource.Offspring mutations = 8;
+    public static final int MUTATIONS_FIELD_NUMBER = 8;
+    private java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> mutations_;
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    public java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> getMutationsList() {
+      return mutations_;
+    }
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    public java.util.List<? extends org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder> 
+        getMutationsOrBuilderList() {
+      return mutations_;
+    }
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    public int getMutationsCount() {
+      return mutations_.size();
+    }
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    public org.fursten.message.proto.ResourceProto.Resource.Offspring getMutations(int index) {
+      return mutations_.get(index);
+    }
+    /**
+     * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+     */
+    public org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder getMutationsOrBuilder(
+        int index) {
+      return mutations_.get(index);
+    }
+
     private void initFields() {
       key_ = 0;
       name_ = "";
+      isLocked_ = false;
+      mortality_ = 0F;
       threshold_ = 0F;
       weightGroups_ = java.util.Collections.emptyList();
       offsprings_ = java.util.Collections.emptyList();
+      mutations_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2075,6 +2479,12 @@ public final class ResourceProto {
           return false;
         }
       }
+      for (int i = 0; i < getMutationsCount(); i++) {
+        if (!getMutations(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2089,13 +2499,22 @@ public final class ResourceProto {
         output.writeBytes(2, getNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeFloat(3, threshold_);
+        output.writeBool(3, isLocked_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeFloat(4, mortality_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeFloat(5, threshold_);
       }
       for (int i = 0; i < weightGroups_.size(); i++) {
-        output.writeMessage(4, weightGroups_.get(i));
+        output.writeMessage(6, weightGroups_.get(i));
       }
       for (int i = 0; i < offsprings_.size(); i++) {
-        output.writeMessage(5, offsprings_.get(i));
+        output.writeMessage(7, offsprings_.get(i));
+      }
+      for (int i = 0; i < mutations_.size(); i++) {
+        output.writeMessage(8, mutations_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -2116,15 +2535,27 @@ public final class ResourceProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, threshold_);
+          .computeBoolSize(3, isLocked_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(4, mortality_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(5, threshold_);
       }
       for (int i = 0; i < weightGroups_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, weightGroups_.get(i));
+          .computeMessageSize(6, weightGroups_.get(i));
       }
       for (int i = 0; i < offsprings_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, offsprings_.get(i));
+          .computeMessageSize(7, offsprings_.get(i));
+      }
+      for (int i = 0; i < mutations_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, mutations_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2236,6 +2667,7 @@ public final class ResourceProto {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getWeightGroupsFieldBuilder();
           getOffspringsFieldBuilder();
+          getMutationsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2248,19 +2680,29 @@ public final class ResourceProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        threshold_ = 0F;
+        isLocked_ = false;
         bitField0_ = (bitField0_ & ~0x00000004);
+        mortality_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        threshold_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
         if (weightGroupsBuilder_ == null) {
           weightGroups_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000020);
         } else {
           weightGroupsBuilder_.clear();
         }
         if (offspringsBuilder_ == null) {
           offsprings_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000040);
         } else {
           offspringsBuilder_.clear();
+        }
+        if (mutationsBuilder_ == null) {
+          mutations_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          mutationsBuilder_.clear();
         }
         return this;
       }
@@ -2301,24 +2743,41 @@ public final class ResourceProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
+        result.isLocked_ = isLocked_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.mortality_ = mortality_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.threshold_ = threshold_;
         if (weightGroupsBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
             weightGroups_ = java.util.Collections.unmodifiableList(weightGroups_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000020);
           }
           result.weightGroups_ = weightGroups_;
         } else {
           result.weightGroups_ = weightGroupsBuilder_.build();
         }
         if (offspringsBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
             offsprings_ = java.util.Collections.unmodifiableList(offsprings_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000040);
           }
           result.offsprings_ = offsprings_;
         } else {
           result.offsprings_ = offspringsBuilder_.build();
+        }
+        if (mutationsBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            mutations_ = java.util.Collections.unmodifiableList(mutations_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.mutations_ = mutations_;
+        } else {
+          result.mutations_ = mutationsBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -2344,6 +2803,12 @@ public final class ResourceProto {
           name_ = other.name_;
           onChanged();
         }
+        if (other.hasIsLocked()) {
+          setIsLocked(other.getIsLocked());
+        }
+        if (other.hasMortality()) {
+          setMortality(other.getMortality());
+        }
         if (other.hasThreshold()) {
           setThreshold(other.getThreshold());
         }
@@ -2351,7 +2816,7 @@ public final class ResourceProto {
           if (!other.weightGroups_.isEmpty()) {
             if (weightGroups_.isEmpty()) {
               weightGroups_ = other.weightGroups_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000020);
             } else {
               ensureWeightGroupsIsMutable();
               weightGroups_.addAll(other.weightGroups_);
@@ -2364,7 +2829,7 @@ public final class ResourceProto {
               weightGroupsBuilder_.dispose();
               weightGroupsBuilder_ = null;
               weightGroups_ = other.weightGroups_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000020);
               weightGroupsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getWeightGroupsFieldBuilder() : null;
@@ -2377,7 +2842,7 @@ public final class ResourceProto {
           if (!other.offsprings_.isEmpty()) {
             if (offsprings_.isEmpty()) {
               offsprings_ = other.offsprings_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000040);
             } else {
               ensureOffspringsIsMutable();
               offsprings_.addAll(other.offsprings_);
@@ -2390,12 +2855,38 @@ public final class ResourceProto {
               offspringsBuilder_.dispose();
               offspringsBuilder_ = null;
               offsprings_ = other.offsprings_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000040);
               offspringsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getOffspringsFieldBuilder() : null;
             } else {
               offspringsBuilder_.addAllMessages(other.offsprings_);
+            }
+          }
+        }
+        if (mutationsBuilder_ == null) {
+          if (!other.mutations_.isEmpty()) {
+            if (mutations_.isEmpty()) {
+              mutations_ = other.mutations_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureMutationsIsMutable();
+              mutations_.addAll(other.mutations_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.mutations_.isEmpty()) {
+            if (mutationsBuilder_.isEmpty()) {
+              mutationsBuilder_.dispose();
+              mutationsBuilder_ = null;
+              mutations_ = other.mutations_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              mutationsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMutationsFieldBuilder() : null;
+            } else {
+              mutationsBuilder_.addAllMessages(other.mutations_);
             }
           }
         }
@@ -2420,6 +2911,12 @@ public final class ResourceProto {
         }
         for (int i = 0; i < getOffspringsCount(); i++) {
           if (!getOffsprings(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getMutationsCount(); i++) {
+          if (!getMutations(i).isInitialized()) {
             
             return false;
           }
@@ -2553,46 +3050,112 @@ public final class ResourceProto {
         return this;
       }
 
-      // optional float threshold = 3;
-      private float threshold_ ;
+      // optional bool is_locked = 3;
+      private boolean isLocked_ ;
       /**
-       * <code>optional float threshold = 3;</code>
+       * <code>optional bool is_locked = 3;</code>
        */
-      public boolean hasThreshold() {
+      public boolean hasIsLocked() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional float threshold = 3;</code>
+       * <code>optional bool is_locked = 3;</code>
+       */
+      public boolean getIsLocked() {
+        return isLocked_;
+      }
+      /**
+       * <code>optional bool is_locked = 3;</code>
+       */
+      public Builder setIsLocked(boolean value) {
+        bitField0_ |= 0x00000004;
+        isLocked_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool is_locked = 3;</code>
+       */
+      public Builder clearIsLocked() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        isLocked_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional float mortality = 4;
+      private float mortality_ ;
+      /**
+       * <code>optional float mortality = 4;</code>
+       */
+      public boolean hasMortality() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional float mortality = 4;</code>
+       */
+      public float getMortality() {
+        return mortality_;
+      }
+      /**
+       * <code>optional float mortality = 4;</code>
+       */
+      public Builder setMortality(float value) {
+        bitField0_ |= 0x00000008;
+        mortality_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float mortality = 4;</code>
+       */
+      public Builder clearMortality() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        mortality_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float threshold = 5;
+      private float threshold_ ;
+      /**
+       * <code>optional float threshold = 5;</code>
+       */
+      public boolean hasThreshold() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional float threshold = 5;</code>
        */
       public float getThreshold() {
         return threshold_;
       }
       /**
-       * <code>optional float threshold = 3;</code>
+       * <code>optional float threshold = 5;</code>
        */
       public Builder setThreshold(float value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000010;
         threshold_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional float threshold = 3;</code>
+       * <code>optional float threshold = 5;</code>
        */
       public Builder clearThreshold() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000010);
         threshold_ = 0F;
         onChanged();
         return this;
       }
 
-      // repeated .messages.Resource.WeightGroup weight_groups = 4;
+      // repeated .messages.Resource.WeightGroup weight_groups = 6;
       private java.util.List<org.fursten.message.proto.ResourceProto.Resource.WeightGroup> weightGroups_ =
         java.util.Collections.emptyList();
       private void ensureWeightGroupsIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
           weightGroups_ = new java.util.ArrayList<org.fursten.message.proto.ResourceProto.Resource.WeightGroup>(weightGroups_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000020;
          }
       }
 
@@ -2600,7 +3163,7 @@ public final class ResourceProto {
           org.fursten.message.proto.ResourceProto.Resource.WeightGroup, org.fursten.message.proto.ResourceProto.Resource.WeightGroup.Builder, org.fursten.message.proto.ResourceProto.Resource.WeightGroupOrBuilder> weightGroupsBuilder_;
 
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public java.util.List<org.fursten.message.proto.ResourceProto.Resource.WeightGroup> getWeightGroupsList() {
         if (weightGroupsBuilder_ == null) {
@@ -2610,7 +3173,7 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public int getWeightGroupsCount() {
         if (weightGroupsBuilder_ == null) {
@@ -2620,7 +3183,7 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.WeightGroup getWeightGroups(int index) {
         if (weightGroupsBuilder_ == null) {
@@ -2630,7 +3193,7 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public Builder setWeightGroups(
           int index, org.fursten.message.proto.ResourceProto.Resource.WeightGroup value) {
@@ -2647,7 +3210,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public Builder setWeightGroups(
           int index, org.fursten.message.proto.ResourceProto.Resource.WeightGroup.Builder builderForValue) {
@@ -2661,7 +3224,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public Builder addWeightGroups(org.fursten.message.proto.ResourceProto.Resource.WeightGroup value) {
         if (weightGroupsBuilder_ == null) {
@@ -2677,7 +3240,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public Builder addWeightGroups(
           int index, org.fursten.message.proto.ResourceProto.Resource.WeightGroup value) {
@@ -2694,7 +3257,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public Builder addWeightGroups(
           org.fursten.message.proto.ResourceProto.Resource.WeightGroup.Builder builderForValue) {
@@ -2708,7 +3271,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public Builder addWeightGroups(
           int index, org.fursten.message.proto.ResourceProto.Resource.WeightGroup.Builder builderForValue) {
@@ -2722,7 +3285,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public Builder addAllWeightGroups(
           java.lang.Iterable<? extends org.fursten.message.proto.ResourceProto.Resource.WeightGroup> values) {
@@ -2736,12 +3299,12 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public Builder clearWeightGroups() {
         if (weightGroupsBuilder_ == null) {
           weightGroups_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000020);
           onChanged();
         } else {
           weightGroupsBuilder_.clear();
@@ -2749,7 +3312,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public Builder removeWeightGroups(int index) {
         if (weightGroupsBuilder_ == null) {
@@ -2762,14 +3325,14 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.WeightGroup.Builder getWeightGroupsBuilder(
           int index) {
         return getWeightGroupsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.WeightGroupOrBuilder getWeightGroupsOrBuilder(
           int index) {
@@ -2779,7 +3342,7 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public java.util.List<? extends org.fursten.message.proto.ResourceProto.Resource.WeightGroupOrBuilder> 
            getWeightGroupsOrBuilderList() {
@@ -2790,14 +3353,14 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.WeightGroup.Builder addWeightGroupsBuilder() {
         return getWeightGroupsFieldBuilder().addBuilder(
             org.fursten.message.proto.ResourceProto.Resource.WeightGroup.getDefaultInstance());
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.WeightGroup.Builder addWeightGroupsBuilder(
           int index) {
@@ -2805,7 +3368,7 @@ public final class ResourceProto {
             index, org.fursten.message.proto.ResourceProto.Resource.WeightGroup.getDefaultInstance());
       }
       /**
-       * <code>repeated .messages.Resource.WeightGroup weight_groups = 4;</code>
+       * <code>repeated .messages.Resource.WeightGroup weight_groups = 6;</code>
        */
       public java.util.List<org.fursten.message.proto.ResourceProto.Resource.WeightGroup.Builder> 
            getWeightGroupsBuilderList() {
@@ -2818,7 +3381,7 @@ public final class ResourceProto {
           weightGroupsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.fursten.message.proto.ResourceProto.Resource.WeightGroup, org.fursten.message.proto.ResourceProto.Resource.WeightGroup.Builder, org.fursten.message.proto.ResourceProto.Resource.WeightGroupOrBuilder>(
                   weightGroups_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
                   isClean());
           weightGroups_ = null;
@@ -2826,13 +3389,13 @@ public final class ResourceProto {
         return weightGroupsBuilder_;
       }
 
-      // repeated .messages.Resource.Offspring offsprings = 5;
+      // repeated .messages.Resource.Offspring offsprings = 7;
       private java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> offsprings_ =
         java.util.Collections.emptyList();
       private void ensureOffspringsIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
           offsprings_ = new java.util.ArrayList<org.fursten.message.proto.ResourceProto.Resource.Offspring>(offsprings_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000040;
          }
       }
 
@@ -2840,7 +3403,7 @@ public final class ResourceProto {
           org.fursten.message.proto.ResourceProto.Resource.Offspring, org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder, org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder> offspringsBuilder_;
 
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> getOffspringsList() {
         if (offspringsBuilder_ == null) {
@@ -2850,7 +3413,7 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public int getOffspringsCount() {
         if (offspringsBuilder_ == null) {
@@ -2860,7 +3423,7 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.Offspring getOffsprings(int index) {
         if (offspringsBuilder_ == null) {
@@ -2870,7 +3433,7 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public Builder setOffsprings(
           int index, org.fursten.message.proto.ResourceProto.Resource.Offspring value) {
@@ -2887,7 +3450,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public Builder setOffsprings(
           int index, org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder builderForValue) {
@@ -2901,7 +3464,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public Builder addOffsprings(org.fursten.message.proto.ResourceProto.Resource.Offspring value) {
         if (offspringsBuilder_ == null) {
@@ -2917,7 +3480,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public Builder addOffsprings(
           int index, org.fursten.message.proto.ResourceProto.Resource.Offspring value) {
@@ -2934,7 +3497,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public Builder addOffsprings(
           org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder builderForValue) {
@@ -2948,7 +3511,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public Builder addOffsprings(
           int index, org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder builderForValue) {
@@ -2962,7 +3525,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public Builder addAllOffsprings(
           java.lang.Iterable<? extends org.fursten.message.proto.ResourceProto.Resource.Offspring> values) {
@@ -2976,12 +3539,12 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public Builder clearOffsprings() {
         if (offspringsBuilder_ == null) {
           offsprings_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000040);
           onChanged();
         } else {
           offspringsBuilder_.clear();
@@ -2989,7 +3552,7 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public Builder removeOffsprings(int index) {
         if (offspringsBuilder_ == null) {
@@ -3002,14 +3565,14 @@ public final class ResourceProto {
         return this;
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder getOffspringsBuilder(
           int index) {
         return getOffspringsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder getOffspringsOrBuilder(
           int index) {
@@ -3019,7 +3582,7 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public java.util.List<? extends org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder> 
            getOffspringsOrBuilderList() {
@@ -3030,14 +3593,14 @@ public final class ResourceProto {
         }
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder addOffspringsBuilder() {
         return getOffspringsFieldBuilder().addBuilder(
             org.fursten.message.proto.ResourceProto.Resource.Offspring.getDefaultInstance());
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder addOffspringsBuilder(
           int index) {
@@ -3045,7 +3608,7 @@ public final class ResourceProto {
             index, org.fursten.message.proto.ResourceProto.Resource.Offspring.getDefaultInstance());
       }
       /**
-       * <code>repeated .messages.Resource.Offspring offsprings = 5;</code>
+       * <code>repeated .messages.Resource.Offspring offsprings = 7;</code>
        */
       public java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder> 
            getOffspringsBuilderList() {
@@ -3058,12 +3621,252 @@ public final class ResourceProto {
           offspringsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.fursten.message.proto.ResourceProto.Resource.Offspring, org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder, org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder>(
                   offsprings_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000040) == 0x00000040),
                   getParentForChildren(),
                   isClean());
           offsprings_ = null;
         }
         return offspringsBuilder_;
+      }
+
+      // repeated .messages.Resource.Offspring mutations = 8;
+      private java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> mutations_ =
+        java.util.Collections.emptyList();
+      private void ensureMutationsIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          mutations_ = new java.util.ArrayList<org.fursten.message.proto.ResourceProto.Resource.Offspring>(mutations_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.fursten.message.proto.ResourceProto.Resource.Offspring, org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder, org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder> mutationsBuilder_;
+
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring> getMutationsList() {
+        if (mutationsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(mutations_);
+        } else {
+          return mutationsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public int getMutationsCount() {
+        if (mutationsBuilder_ == null) {
+          return mutations_.size();
+        } else {
+          return mutationsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public org.fursten.message.proto.ResourceProto.Resource.Offspring getMutations(int index) {
+        if (mutationsBuilder_ == null) {
+          return mutations_.get(index);
+        } else {
+          return mutationsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public Builder setMutations(
+          int index, org.fursten.message.proto.ResourceProto.Resource.Offspring value) {
+        if (mutationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMutationsIsMutable();
+          mutations_.set(index, value);
+          onChanged();
+        } else {
+          mutationsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public Builder setMutations(
+          int index, org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder builderForValue) {
+        if (mutationsBuilder_ == null) {
+          ensureMutationsIsMutable();
+          mutations_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          mutationsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public Builder addMutations(org.fursten.message.proto.ResourceProto.Resource.Offspring value) {
+        if (mutationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMutationsIsMutable();
+          mutations_.add(value);
+          onChanged();
+        } else {
+          mutationsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public Builder addMutations(
+          int index, org.fursten.message.proto.ResourceProto.Resource.Offspring value) {
+        if (mutationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMutationsIsMutable();
+          mutations_.add(index, value);
+          onChanged();
+        } else {
+          mutationsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public Builder addMutations(
+          org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder builderForValue) {
+        if (mutationsBuilder_ == null) {
+          ensureMutationsIsMutable();
+          mutations_.add(builderForValue.build());
+          onChanged();
+        } else {
+          mutationsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public Builder addMutations(
+          int index, org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder builderForValue) {
+        if (mutationsBuilder_ == null) {
+          ensureMutationsIsMutable();
+          mutations_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          mutationsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public Builder addAllMutations(
+          java.lang.Iterable<? extends org.fursten.message.proto.ResourceProto.Resource.Offspring> values) {
+        if (mutationsBuilder_ == null) {
+          ensureMutationsIsMutable();
+          super.addAll(values, mutations_);
+          onChanged();
+        } else {
+          mutationsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public Builder clearMutations() {
+        if (mutationsBuilder_ == null) {
+          mutations_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          mutationsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public Builder removeMutations(int index) {
+        if (mutationsBuilder_ == null) {
+          ensureMutationsIsMutable();
+          mutations_.remove(index);
+          onChanged();
+        } else {
+          mutationsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder getMutationsBuilder(
+          int index) {
+        return getMutationsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder getMutationsOrBuilder(
+          int index) {
+        if (mutationsBuilder_ == null) {
+          return mutations_.get(index);  } else {
+          return mutationsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public java.util.List<? extends org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder> 
+           getMutationsOrBuilderList() {
+        if (mutationsBuilder_ != null) {
+          return mutationsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(mutations_);
+        }
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder addMutationsBuilder() {
+        return getMutationsFieldBuilder().addBuilder(
+            org.fursten.message.proto.ResourceProto.Resource.Offspring.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder addMutationsBuilder(
+          int index) {
+        return getMutationsFieldBuilder().addBuilder(
+            index, org.fursten.message.proto.ResourceProto.Resource.Offspring.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .messages.Resource.Offspring mutations = 8;</code>
+       */
+      public java.util.List<org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder> 
+           getMutationsBuilderList() {
+        return getMutationsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.fursten.message.proto.ResourceProto.Resource.Offspring, org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder, org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder> 
+          getMutationsFieldBuilder() {
+        if (mutationsBuilder_ == null) {
+          mutationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.fursten.message.proto.ResourceProto.Resource.Offspring, org.fursten.message.proto.ResourceProto.Resource.Offspring.Builder, org.fursten.message.proto.ResourceProto.Resource.OffspringOrBuilder>(
+                  mutations_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  getParentForChildren(),
+                  isClean());
+          mutations_ = null;
+        }
+        return mutationsBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:messages.Resource)
@@ -3797,18 +4600,21 @@ public final class ResourceProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016resource.proto\022\010messages\"\265\002\n\010Resource\022" +
-      "\013\n\003key\030\001 \002(\021\022\014\n\004name\030\002 \002(\t\022\021\n\tthreshold\030" +
-      "\003 \001(\002\0225\n\rweight_groups\030\004 \003(\0132\036.messages." +
-      "Resource.WeightGroup\0220\n\noffsprings\030\005 \003(\013" +
-      "2\034.messages.Resource.Offspring\0329\n\013Weight" +
-      "Group\022*\n\007weights\030\001 \003(\0132\031.messages.Resour" +
-      "ce.Weight\032)\n\006Weight\022\020\n\010resource\030\001 \002(\021\022\r\n" +
-      "\005value\030\002 \002(\002\032,\n\tOffspring\022\020\n\010resource\030\001 " +
-      "\002(\021\022\r\n\005value\030\002 \002(\002\";\n\022ResourceCollection" +
-      "\022%\n\tresources\030\001 \003(\0132\022.messages.ResourceB",
-      "*\n\031org.fursten.message.protoB\rResourcePr" +
-      "oto"
+      "\n\016resource.proto\022\010messages\"\301\003\n\010Resource\022" +
+      "\013\n\003key\030\001 \002(\021\022\014\n\004name\030\002 \002(\t\022\021\n\tis_locked\030" +
+      "\003 \001(\010\022\021\n\tmortality\030\004 \001(\002\022\021\n\tthreshold\030\005 " +
+      "\001(\002\0225\n\rweight_groups\030\006 \003(\0132\036.messages.Re" +
+      "source.WeightGroup\0220\n\noffsprings\030\007 \003(\0132\034" +
+      ".messages.Resource.Offspring\022/\n\tmutation" +
+      "s\030\010 \003(\0132\034.messages.Resource.Offspring\0329\n" +
+      "\013WeightGroup\022*\n\007weights\030\001 \003(\0132\031.messages" +
+      ".Resource.Weight\032)\n\006Weight\022\020\n\010resource\030\001" +
+      " \002(\021\022\r\n\005value\030\002 \002(\002\032a\n\tOffspring\022\020\n\010reso",
+      "urce\030\001 \002(\021\022\r\n\005ratio\030\002 \002(\002\022\014\n\004cost\030\003 \002(\002\022" +
+      "\022\n\nmultiplier\030\004 \002(\002\022\021\n\tis_linked\030\005 \002(\010\";" +
+      "\n\022ResourceCollection\022%\n\tresources\030\001 \003(\0132" +
+      "\022.messages.ResourceB*\n\031org.fursten.messa" +
+      "ge.protoB\rResourceProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3820,7 +4626,7 @@ public final class ResourceProto {
           internal_static_messages_Resource_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_messages_Resource_descriptor,
-              new java.lang.String[] { "Key", "Name", "Threshold", "WeightGroups", "Offsprings", });
+              new java.lang.String[] { "Key", "Name", "IsLocked", "Mortality", "Threshold", "WeightGroups", "Offsprings", "Mutations", });
           internal_static_messages_Resource_WeightGroup_descriptor =
             internal_static_messages_Resource_descriptor.getNestedTypes().get(0);
           internal_static_messages_Resource_WeightGroup_fieldAccessorTable = new
@@ -3838,7 +4644,7 @@ public final class ResourceProto {
           internal_static_messages_Resource_Offspring_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_messages_Resource_Offspring_descriptor,
-              new java.lang.String[] { "Resource", "Value", });
+              new java.lang.String[] { "Resource", "Ratio", "Cost", "Multiplier", "IsLinked", });
           internal_static_messages_ResourceCollection_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_messages_ResourceCollection_fieldAccessorTable = new

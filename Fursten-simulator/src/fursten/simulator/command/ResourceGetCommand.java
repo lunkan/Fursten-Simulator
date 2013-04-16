@@ -90,7 +90,9 @@ public class ResourceGetCommand implements SimulatorCommand {
 				
 				resources = new ArrayList<Resource>();
 				for(Integer nextKey : nextKeys) {
-					resources.add(new ResourceWrapper(nextKey).getResource());
+					Resource newResource = new Resource();
+					newResource.setKey(nextKey);
+					resources.add(newResource);
 				}
 				
 				break;

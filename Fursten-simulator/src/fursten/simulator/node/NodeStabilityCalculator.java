@@ -126,7 +126,6 @@ public class NodeStabilityCalculator {
 		for(Node neighbor : NM.get(rect, resource.getKey())) {
 			
 			int distance = (int) (Math.sqrt(Math.pow(x-neighbor.getX(),2) + Math.pow(y-neighbor.getY(),2)));
-			System.out.println("d: " + distance + " i: " + ignoreSelf);
 			if(distance == 0) {
 				if(ignoreSelf) {
 					stability -= 1;

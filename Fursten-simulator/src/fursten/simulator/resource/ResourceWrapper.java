@@ -5,28 +5,44 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import fursten.simulator.Settings;
 import fursten.simulator.resource.Resource.Offspring;
 import fursten.simulator.resource.Resource.Weight;
 import fursten.simulator.resource.Resource.WeightGroup;
 
 public class ResourceWrapper {
 	
-	private HashMap<Integer, Float> offspringMap;
+	private static final HashMap<Resource, ResourceWrapper> wrapperPool = new HashMap<Resource, ResourceWrapper>();
+	private static long cacheTimer = 0;
+	private static final long CACHE_EXPIRE = 10000;
+	
+	private int updateRatio = -1;
+	private ArrayList<Offspring> offsprings;
 	private ArrayList<HashMap<Integer, Float>> weightMap;
 	private Resource resource;
 	
-	public ResourceWrapper() {
+	public static ResourceWrapper getWrapper(Resource resource) throws Exception{
+		
+		//Clear cache every 100 sec
+		if((cacheTimer + CACHE_EXPIRE) < System.currentTimeMillis()) {
+			wrapperPool.clear();
+			cacheTimer = System.currentTimeMillis();
+		}
+		
+		ResourceWrapper wrapper = wrapperPool.get(resource);
+		if(wrapper == null) {
+			wrapper = new ResourceWrapper(resource);
+			wrapperPool.put(resource, wrapper);
+		}
+			
+		return wrapper;
 	}
 	
-	public ResourceWrapper(Integer key) {
-		this.resource = new Resource();
-		this.resource.setKey(key);
-		this.resource.setName("untitled");
-		this.resource.setOffsprings(new ArrayList<Offspring>());
-		this.resource.setWeightGroups(new ArrayList<WeightGroup>());
-	}
-	
-	public ResourceWrapper(Resource resource) {
+	private ResourceWrapper(Resource resource) throws Exception {
+		
+		if(resource == null)
+			throw new Exception("Resource must not be null");
+		
 		this.resource = resource;
 	}
 	
@@ -34,9 +50,13 @@ public class ResourceWrapper {
 		return this.resource;
 	}
 	
-	public ResourceWrapper setResource(Resource resource) {
+	public ResourceWrapper setResource(Resource resource) throws Exception {
+		
+		if(resource == null)
+			throw new Exception("Resource must not be null");
+			
 		this.resource = resource;
-		offspringMap = null;
+		offsprings = null;
 		weightMap = null;
 		return this;
 	}
@@ -53,27 +73,29 @@ public class ResourceWrapper {
 		return this.resource.getThreshold();
 	}
 	
-	public HashMap<Integer, Float> getOffspringMap() {
-		
-		if(offspringMap != null)
-			return offspringMap;
-			
-		offspringMap = new HashMap<Integer, Float>(); 
-		for(Offspring offspring : this.resource.getOffsprings()) {
-			offspringMap.put(offspring.getResource(), offspring.getValue());
-		}
-		
-		return offspringMap;
+	public boolean getIsLocked() {
+		return this.resource.getIsLocked();
 	}
 	
-	public void putOffspring(int resource, float value) {
-
-		Offspring offspring = new Offspring();
-		offspring.setResource(resource);
-		offspring.setValue(value);
-		this.resource.getOffsprings().add(offspring);
+	public float getMortality() {
+		return this.resource.getMortality();
+	}
+	
+	public ArrayList<Offspring> getOffsprings() {
+	
+		if(offsprings != null)
+			return offsprings;
+			
+		offsprings = new ArrayList<Offspring>(); 
+		for(Offspring offspring : this.resource.getOffsprings()) {
+			offspring.setResource(this.resource.getKey());
+			offsprings.add(offspring);
+		}
+		for(Offspring mutaion : this.resource.getMutations()) {
+			offsprings.add(mutaion);
+		}
 		
-		offspringMap = null;
+		return offsprings;
 	}
 	
 	public ArrayList<HashMap<Integer, Float>> getWeightMap() {
@@ -82,7 +104,6 @@ public class ResourceWrapper {
 			return weightMap;
 		
 		weightMap = new ArrayList<HashMap<Integer, Float>>();
-		
 		if(this.resource.getWeightGroups() != null) {
 			for(int i=0; i < this.resource.getWeightGroups().size(); i++) {
 				
@@ -100,28 +121,72 @@ public class ResourceWrapper {
 		return getWeightMap().get(group).get(key);
 	}
 	
-	public void putWeight(int group, int resource, float value) {
-
-		while(this.resource.getWeightGroups().size() <= group) {
-			WeightGroup weightGroup = new WeightGroup();
-			weightGroup.setWeights(new ArrayList<Weight>());
-			this.resource.getWeightGroups().add(weightGroup);
-		}
-		
-		Weight weight = new Weight();
-		weight.setResource(resource);
-		weight.setValue(value);
-		this.resource.getWeightGroups().get(group).getWeights().add(weight);
-		
-		weightMap = null;
-	}
-	
 	public int numGroups() {
 		return getWeightMap().size();
 	}
 	
+	/**
+	 * If there is a point of calculate the resource as run
+	 * If it may have offsprings, is not locked and imoortal 
+	 * @return
+	 */
 	public boolean isStatic() {
-		return (getWeightMap().size() == 0);
+		if(resource.getIsLocked())
+			return true;
+		else if(!isBreedable() && resource.getMortality() == 0)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean isDependent() {
+		return (getWeightMap().size() > 0);
+	}
+	
+	public boolean isBreedable() {
+		return (getOffsprings().size() > 0);
+	}
+	
+	/**
+	 * Calculate the updateRate of the resource by measuring the lowest acceptable interval between updates.
+	 * Lowest acceptable interval = most frequent update (mortality or any offspring) divided by Simulator precision.
+	 * @return
+	 */
+	public int getUpdateintervall() {
+		
+		if(updateRatio == -1){
+			
+			if(isStatic()) {
+				updateRatio = 0;
+			}
+			else {
+				float mostFrequent = resource.getMortality();
+				for(Offspring offspring : getOffsprings()) {
+					mostFrequent = Math.max(mostFrequent, offspring.getRatio());
+				}
+				
+				if(mostFrequent == 0) {
+					updateRatio = 0;
+				}
+				else {
+					mostFrequent *= Settings.getInstance().getSimulatorSettings().getUpdatePrecision();
+					updateRatio = Math.round(1/mostFrequent);
+					
+				}
+			}
+		}
+		
+		return updateRatio;
+	}
+	
+	/**
+	 * Adjusted probabilty as a function of updateInterval.
+	 * The outcome of a updateInterval-adjusted random-event is base-probability * ratioBase
+	 * Remember - this is not 100% equal calculate every event for every tick - we do shortcuts here
+	 * @return
+	 */
+	public float adjustByInterval(float value) {
+		return (float)(1 - Math.pow((1-value), getUpdateintervall()));
 	}
 	
 	public Set<Integer> getDependencies() {

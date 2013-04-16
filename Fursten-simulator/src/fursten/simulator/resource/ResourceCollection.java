@@ -38,6 +38,9 @@ public class ResourceCollection {
 		simpleResource.setKey(resource.getKey());
 		simpleResource.setName(resource.getName());
 		simpleResource.setThreshold(resource.getThreshold());
+		simpleResource.setIsLocked(resource.getIsLocked());
+		simpleResource.setMortality(resource.getMortality());
+		
 		resources.add(simpleResource);
 	}
 	

@@ -5,6 +5,7 @@
         <death-rate>1.0F</death-rate>;
 		<restlessness>10</restlessness>
 		 -->
+		 <update-precision>4</update-precision>
     </simulator>
     <databases>
         <database>

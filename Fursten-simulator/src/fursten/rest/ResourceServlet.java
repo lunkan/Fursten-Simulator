@@ -68,9 +68,7 @@ public class ResourceServlet {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, "application/x-protobuf"})
 	public Resource getResource(@PathParam("id") String id) throws IOException {
 		
-		System.out.println("GET resource " + id);
 		int key = Integer.parseInt(id);
-		System.out.println("GET resource " + key);
 		ResourceSelection selection = new ResourceSelection(key);
 		
 		List<Resource> resources = Facade.getResources(selection);

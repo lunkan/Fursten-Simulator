@@ -17,6 +17,8 @@ public class Settings {
 	private ServletContext context;
 	private String profile;
 	
+	private SimulationSettings simulationSettings;
+	
 	private static Settings instance = new Settings(); 
 	
 	private Settings() {}
@@ -44,6 +46,17 @@ public class Settings {
 		return config;
 	}
 	
+	public SimulationSettings getSimulatorSettings() {
+		
+		if(simulationSettings == null) {
+			simulationSettings = new SimulationSettings();
+			int updatePrecision = config.getInt("simulator/update-precision");
+			simulationSettings.setUpdatePrecision(updatePrecision);
+		}
+		
+		return simulationSettings;
+	}
+	
 	public DatabaseSettings getDatabaseSettings() {
 		
 		String driver = config.getString("databases/database[name = '" + profile + "']/driver");
@@ -58,6 +71,19 @@ public class Settings {
 		dbSettings.setPassword(password);
 		
 		return dbSettings;
+	}
+	
+	public class SimulationSettings {
+	
+		private int updatePrecision;
+		
+		public int getUpdatePrecision() {
+			return updatePrecision;
+		}
+		
+		public void setUpdatePrecision(int value) {
+			this.updatePrecision = value;
+		}
 	}
 	
 	public class DatabaseSettings {

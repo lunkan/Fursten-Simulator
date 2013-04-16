@@ -108,7 +108,7 @@ public class DAOFactoryTest extends TestCase {
     	
 	}
     
-   @Test
+   //@Test
     public void testResourceManager()
 	{
     	int NUM_ITERATIONS = 10;
@@ -123,11 +123,11 @@ public class DAOFactoryTest extends TestCase {
     	
     	List<Integer> resourceKeys = getRandomResources(NUM_RESOURCES);
     	HashMap<Integer, Resource> resources = new HashMap<Integer, Resource>();
-    	for(Integer resourceKey : resourceKeys) {
+    	/*for(Integer resourceKey : resourceKeys) {
     		Resource resource = new ResourceWrapper(resourceKey).getResource();
     		resources.put(resourceKey, resource);
-    	}
-    	
+    	}*/
+    	    	
     	for(int i = 0; i < NUM_ITERATIONS; i++) {
     		
     		//clear recourses

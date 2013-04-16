@@ -62,9 +62,9 @@ public class ResourceEditCommand implements SimulatorCommand {
 		if(insertResources != null) {
 			
 			//Validate resources
-			ResourceWrapper resourceWrapper = new ResourceWrapper();
+			//ResourceWrapper resourceWrapper = new ResourceWrapper();
 			for(Resource resource : insertResources) {
-				if(!resourceWrapper.setResource(resource).isValid()) {
+				if(!ResourceWrapper.getWrapper(resource).isValid()) {
 					logger.log(Level.WARNING, "Resources is invalid: " + resource);
 					throw new Exception("Resources is invalid.");
 				}

@@ -115,17 +115,6 @@ public class NodeServlet {
 	@Path("/transaction")
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, "application/x-protobuf" })
 	public Response injectDeleteNodes(NodeTransaction nodeTransaction) throws IOException {
-		System.out.println("transaction");
-		System.out.println(nodeTransaction);
-		if(nodeTransaction.getDeleteNodes() != null) {
-		for(Node node : nodeTransaction.getDeleteNodes())
-			System.out.println("D:" + node.toString());
-		}
-		
-		if(nodeTransaction.getInjectNodes() != null) {
-		for(Node node : nodeTransaction.getInjectNodes())
-			System.out.println("I:" + node.toString());
-		}
 	
 		if(Facade.editNodes(nodeTransaction.getDeleteNodes(), nodeTransaction.getInjectNodes()))
 			return Response.status(Response.Status.OK).build();

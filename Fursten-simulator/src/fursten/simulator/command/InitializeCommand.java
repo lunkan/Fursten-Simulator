@@ -4,12 +4,12 @@ import fursten.simulator.world.World;
 import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 
-public class SimulatorInitializeCommand implements SimulatorCommand {
+public class InitializeCommand implements SimulatorCommand {
 
 	public static final String NAME = "Initialize";
 	private World world;
 
-	public SimulatorInitializeCommand(World world) {
+	public InitializeCommand(World world) {
 		this.world = world;
 	}
 	

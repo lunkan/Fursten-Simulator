@@ -13,8 +13,9 @@ import fursten.simulator.command.NodeEditCommand;
 import fursten.simulator.command.ResourceGetCommand;
 import fursten.simulator.command.ResourceEditCommand;
 import fursten.simulator.command.SampleCommand;
-import fursten.simulator.command.SimulatorInitializeCommand;
-import fursten.simulator.command.SimulatorRunCommand;
+import fursten.simulator.command.InitializeCommand;
+import fursten.simulator.command.RunCommand;
+import fursten.simulator.command.UpdateCommand;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.WorldManager;
@@ -34,7 +35,7 @@ public class Facade {
 		logger.log(Level.INFO, "Calling Facade.init("+world.toString()+")");
 		
 		try {
-			new SimulatorInitializeCommand(world).execute();
+			new InitializeCommand(world).execute();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,7 +62,8 @@ public class Facade {
 		World session = SM.getActive();
 		
 		try {
-			new SimulatorRunCommand(session.getRect()).execute();
+			new UpdateCommand(session.getRect()).execute();
+			new RunCommand(session.getRect()).execute();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
