@@ -185,13 +185,17 @@ public class ResourceServlet {
 		
 		if(method != null && keys != null) {
 			
-			Set<Integer> allKeys = Facade.getResourceKeys();
-			ResourceKeyManager keyManager = new ResourceKeyManager(allKeys);
+			Set<Integer> relatedKeys = new HashSet<Integer>();
+			if(ResourceSelectMethod.CHILDREN.value.equals(method.toLowerCase())) {
+				for(Integer key : keys)
+					relatedKeys.addAll(ResourceKeyManager.getChildren(key));
+			}
+			else if(ResourceSelectMethod.PARENTS.value.equals(method.toLowerCase())) {
+				for(Integer key : keys)
+					relatedKeys.addAll(ResourceKeyManager.getParents(key));
+			}
 			
-			if(ResourceSelectMethod.CHILDREN.value.equals(method.toLowerCase()))
-				keys = keyManager.getKeysByMethod(keys, ResourceSelectMethod.CHILDREN);
-			else if(ResourceSelectMethod.PARENTS.value.equals(method.toLowerCase()))
-				keys = keyManager.getKeysByMethod(keys, ResourceSelectMethod.PARENTS);
+			keys = relatedKeys;
 		}
 		
 		return keys;

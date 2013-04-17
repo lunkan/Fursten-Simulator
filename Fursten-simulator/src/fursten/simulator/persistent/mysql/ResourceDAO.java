@@ -228,7 +228,7 @@ public class ResourceDAO implements ResourceManager {
 			}
 		}
 		
-		//Add nodes
+		//Add resources
 		for(Integer resourceKey : keys) {
 			if(cachedResourcesMap.containsKey(resourceKey)) {
 				result.add(cachedResourcesMap.get(resourceKey));

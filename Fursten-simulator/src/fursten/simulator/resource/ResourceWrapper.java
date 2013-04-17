@@ -8,26 +8,18 @@ import java.util.Set;
 import fursten.simulator.Settings;
 import fursten.simulator.resource.Resource.Offspring;
 import fursten.simulator.resource.Resource.Weight;
-import fursten.simulator.resource.Resource.WeightGroup;
 
 public class ResourceWrapper {
 	
 	private static final HashMap<Resource, ResourceWrapper> wrapperPool = new HashMap<Resource, ResourceWrapper>();
-	private static long cacheTimer = 0;
-	private static final long CACHE_EXPIRE = 10000;
 	
 	private int updateRatio = -1;
+	private Set<Integer> dependencyKeys;
 	private ArrayList<Offspring> offsprings;
 	private ArrayList<HashMap<Integer, Float>> weightMap;
 	private Resource resource;
 	
 	public static ResourceWrapper getWrapper(Resource resource) throws Exception{
-		
-		//Clear cache every 100 sec
-		if((cacheTimer + CACHE_EXPIRE) < System.currentTimeMillis()) {
-			wrapperPool.clear();
-			cacheTimer = System.currentTimeMillis();
-		}
 		
 		ResourceWrapper wrapper = wrapperPool.get(resource);
 		if(wrapper == null) {
@@ -36,6 +28,10 @@ public class ResourceWrapper {
 		}
 			
 		return wrapper;
+	}
+	
+	public static void clear() {
+		wrapperPool.clear();
 	}
 	
 	private ResourceWrapper(Resource resource) throws Exception {
@@ -140,6 +136,9 @@ public class ResourceWrapper {
 	}
 	
 	public boolean isDependent() {
+		if(resource.getIsLocked())
+			return false;
+		
 		return (getWeightMap().size() > 0);
 	}
 	
@@ -191,12 +190,21 @@ public class ResourceWrapper {
 	
 	public Set<Integer> getDependencies() {
 		
-		HashSet<Integer> DependencyKeys = new HashSet<Integer>();
-		for(int i = 0; i < getWeightMap().size(); i++) {
-			DependencyKeys.addAll(getDependencies(i));
+		if(dependencyKeys == null) {
+			
+			dependencyKeys = new HashSet<Integer>();
+			
+			if(isDependent()) {
+				for(int i = 0; i < getWeightMap().size(); i++) {
+					dependencyKeys.addAll(getDependencies(i));
+				}
+				
+				//Add self (always dependent)
+				dependencyKeys.add(resource.getKey());
+			}
 		}
 		
-		return DependencyKeys;
+		return dependencyKeys;
 	}
 	
 	public Set<Integer> getDependencies(int group) {

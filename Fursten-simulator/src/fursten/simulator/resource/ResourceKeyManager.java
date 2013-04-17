@@ -1,62 +1,46 @@
 package fursten.simulator.resource;
 
 import java.math.BigInteger;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+import fursten.simulator.persistent.ResourceManager;
+import fursten.simulator.persistent.mysql.DAOFactory;
+
 public class ResourceKeyManager {
 	
+	private static ResourceKeyManager instance;
 	private Set<Integer> resourceKeys;
 	
-	public ResourceKeyManager() {
-		this.resourceKeys = new HashSet<Integer>();
+	private ResourceKeyManager() {
+		ResourceManager RM = DAOFactory.get().getResourceManager();
+		resourceKeys = RM.getKeys();
 	}
 	
-	public ResourceKeyManager(Set<Integer> resourceKeys) {
-		this.resourceKeys = resourceKeys;
+	private static ResourceKeyManager getInstance() {
+		
+		if(instance == null)
+			instance = new ResourceKeyManager();
+			
+		return instance;
+    }
+	
+	public static boolean containsKey(int key) {
+		return getInstance()._containsKey(key);
 	}
 	
-	public boolean containsKey(int key) {
+	public boolean _containsKey(int key) {
 		return resourceKeys.contains(key);
 	}
 	
-	public Set<Integer> getKeysByMethod(int key, ResourceSelectMethod method) {
-		
-		switch(method) {
-			case CHILDREN:
-				return getChildren(key);
-			case PARENTS:
-				return getParents(key);
-			default:
-				return null;
-		}
+	public static Set<Integer> getChildren(int key) {
+		return getInstance()._getChildren(key);
 	}
 	
-	public Set<Integer> getKeysByMethod(Set<Integer> keys, ResourceSelectMethod method) {
+	public TreeSet<Integer> _getChildren(int key) {
 		
 		TreeSet<Integer> results = new TreeSet<Integer>();
-		switch(method) {
-			case CHILDREN:
-				for(Integer key : keys) {
-					results.addAll(getChildren(key));
-				}
-				return results;
-			case PARENTS:
-				for(Integer key : keys) {
-					results.addAll(getParents(key));
-				}
-				return results;
-			default:
-				return null;
-		}
-	}
-	
-	public TreeSet<Integer> getChildren(int key) {
-		
-		TreeSet<Integer> results = new TreeSet<Integer>();
-		BigInteger selectBigKey = BigInteger.valueOf((long)key);
-		int shift = selectBigKey.getLowestSetBit();
+		int shift = Integer.numberOfTrailingZeros(key);
 		
 		for(Integer resourceKey : resourceKeys) {
 			if(((resourceKey ^ key) >>> shift) == 0 && resourceKey != key) {
@@ -67,15 +51,17 @@ public class ResourceKeyManager {
 		return results;
 	}
 	
-	public TreeSet<Integer> getParents(int key) {
+	public static Set<Integer> getParents(int key) {
+		return getInstance()._getParents(key);
+	}
+	
+	public TreeSet<Integer> _getParents(int key) {
 		
 		TreeSet<Integer> results = new TreeSet<Integer>();
 		
 		for(Integer resourceKey : resourceKeys) {
 			
-			BigInteger resBigKey = BigInteger.valueOf((long)resourceKey);
-			int shift = resBigKey.getLowestSetBit();
-			
+			int shift = Integer.numberOfTrailingZeros(resourceKey);
 			if(((resourceKey ^ key) >>> shift) == 0 && resourceKey != key) {
 				results.add(resourceKey);
 			}
@@ -84,11 +70,15 @@ public class ResourceKeyManager {
 		return results;
 	}
 	
-	public int getNext() {
-		return getNext(0);
+	public static int getNext() {
+		return getInstance()._getNext(0);
 	}
 
-	public int getNext(int key) {
+	public static int getNext(int key) {
+		return getInstance()._getNext(key);
+	}
+	
+	public int _getNext(int key) {
 		
 		//if root key is '0' and lowest bit will return -1
 		BigInteger resSelectKey = BigInteger.valueOf((long)key);
@@ -102,7 +92,7 @@ public class ResourceKeyManager {
 			testKey = testKey.setBit(i);
 			
 			if(!resourceKeys.contains(testKey.intValue())) {
-				resourceKeys.add(10);//new Integer(testKey.intValue()));//Must be added if multiple get next is called.
+				resourceKeys.add(new Integer(testKey.intValue()));//Must be added if multiple get next is called.
 				return testKey.intValue();
 			}
 		}
@@ -110,8 +100,33 @@ public class ResourceKeyManager {
 		return -1;
 	}
 	
-	public static String keyToString(int key) {
+	public static void clear() {
+		instance = new ResourceKeyManager();
+	}
+	
+	public static boolean isRelatives(int resourceKeyA, int resourceKeyB) {
 		
+		int shiftA = Integer.numberOfTrailingZeros(resourceKeyA);
+		int shiftB = Integer.numberOfTrailingZeros(resourceKeyB);
+		int shift = Math.max(shiftA, shiftB);
+		
+		if((resourceKeyA ^ resourceKeyB) >>> shift == 0)
+			return true;
+		else
+			return false;
+	}
+	
+	public static boolean isDescendant(int descendantKey, int parentKey) {
+		
+		int shift = Integer.numberOfTrailingZeros(parentKey);
+		if((parentKey ^ descendantKey) >>> shift == 0)
+			return true;
+		else
+			return false;
+	}
+	
+	public static String keyToString(int key) {
+
 		BigInteger cBig = BigInteger.valueOf((long)key);
 		String keyString = "";
 		for(int i=0; i < 32; i++) {
@@ -120,7 +135,7 @@ public class ResourceKeyManager {
 			else
 				keyString = keyString + "-";
 		}
-		
+
 		return keyString;
 	}
 }

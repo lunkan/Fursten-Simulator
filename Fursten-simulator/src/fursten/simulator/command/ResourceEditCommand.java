@@ -5,11 +5,13 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fursten.simulator.node.NodeActivityManager;
 import fursten.simulator.node.NodeStabilityCalculator;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
+import fursten.simulator.resource.ResourceDependencyManager;
 import fursten.simulator.resource.ResourceKeyManager;
 import fursten.simulator.resource.ResourceWrapper;
 
@@ -74,7 +76,14 @@ public class ResourceEditCommand implements SimulatorCommand {
 			if(numInserted != insertResources.size())
 				throw new Exception("Database may be corrupt! Resources could not be inserted.");
 		}
+		
+		//Important! Clear resource manager cache
+		if(numDeleted != 0 || numInserted != 0) {
+			//Lazy clean - clean all
+			new CleanCommand().execute();
+		}
 			
+		
 		logger.log(Level.INFO, "Deleted " + numDeleted + " resources, Inserted " + numInserted + " resources. Time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return null;
 	}

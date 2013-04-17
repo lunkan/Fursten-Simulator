@@ -13,10 +13,22 @@ import fursten.simulator.Facade;
 public class ProcessServlet {
 	
 	@POST
+	@Path("/run")
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response run() {
 		
 		if(Facade.run()) 
+			return Response.status(Response.Status.OK).build();
+		else 
+			return Response.status(Response.Status.BAD_REQUEST).build();
+	}
+	
+	@POST
+	@Path("/clean")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public Response clean() {
+		
+		if(Facade.clean())
 			return Response.status(Response.Status.OK).build();
 		else 
 			return Response.status(Response.Status.BAD_REQUEST).build();

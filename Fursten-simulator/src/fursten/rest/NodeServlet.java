@@ -3,6 +3,7 @@ package fursten.rest;
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -198,13 +199,17 @@ public class NodeServlet {
 		
 		if(method != null && keys != null) {
 			
-			Set<Integer> allKeys = Facade.getResourceKeys();
-			ResourceKeyManager keyManager = new ResourceKeyManager(allKeys);
+			Set<Integer> relatedKeys = new HashSet<Integer>();
+			if(ResourceSelectMethod.CHILDREN.value.equals(method.toLowerCase())) {
+				for(Integer key : keys)
+					relatedKeys.addAll(ResourceKeyManager.getChildren(key));
+			}
+			else if(ResourceSelectMethod.PARENTS.value.equals(method.toLowerCase())) {
+				for(Integer key : keys)
+					relatedKeys.addAll(ResourceKeyManager.getParents(key));
+			}
 			
-			if(ResourceSelectMethod.CHILDREN.value.equals(method.toLowerCase()))
-				keys = keyManager.getKeysByMethod(keys, ResourceSelectMethod.CHILDREN);
-			else if(ResourceSelectMethod.PARENTS.value.equals(method.toLowerCase()))
-				keys = keyManager.getKeysByMethod(keys, ResourceSelectMethod.PARENTS);
+			keys = relatedKeys;
 		}
 		
 		return keys;

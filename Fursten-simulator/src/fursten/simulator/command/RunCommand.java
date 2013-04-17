@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import fursten.simulator.world.World;
 import fursten.simulator.node.Node;
+import fursten.simulator.node.NodeActivityManager;
 import fursten.simulator.node.NodeStabilityCalculator;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
@@ -98,11 +99,15 @@ public class RunCommand implements SimulatorCommand {
 			}
 		}
 		
-		if(removedNodes.size() > 0)
+		if(removedNodes.size() > 0) {
+			NodeActivityManager.invalidate(removedNodes);
 			NM.delete(removedNodes);
+		}
 		
-		if(addedNodes.size() > 0)
+		if(addedNodes.size() > 0) {
+			NodeActivityManager.invalidate(addedNodes);
 			NM.insert(addedNodes);
+		}
 		
 		logger.log(Level.INFO, "Run: Deleted " + removedNodes.size() + " & Added " + addedNodes.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return null;
@@ -125,9 +130,10 @@ public class RunCommand implements SimulatorCommand {
 			return null;
 		
 		float stability = nodeMath.calculateStability(spore.getX(), spore.getY(), resourceWrapper, false);
-		stability = nodeMath.normalizeStability(stability, resourceWrapper.getThreshold());
+		//stability *= resourceWrapper.getThreshold();//nodeMath.normalizeStability(stability, resourceWrapper.getThreshold());
 		
-		if(stability > rand.nextFloat())
+		//if(stability > rand.nextFloat())
+		if((stability * resourceWrapper.getThreshold()) > 1)
     		return spore;
     	else
     		return null;

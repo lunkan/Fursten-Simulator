@@ -129,7 +129,6 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	System.out.println("*** Execute testResourceCommands begin ***");
     	
     	ResourceManager RM = DAOManager.get().getResourceManager();
-    	ResourceKeyManager RKM = new ResourceKeyManager(new HashSet<Integer>());
     	
     	//Create test resources
     	ArrayList<Resource> resources = new ArrayList<Resource>();
@@ -211,7 +210,6 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     	System.out.println("");
     	System.out.println("*** Execute testRunCommand begin ***");
     	
-    	ResourceKeyManager RMK = new ResourceKeyManager();
     	Rectangle rect = new Rectangle(WORLD_X, WORLD_Y, WORLD_W, WORLD_H);
     	Random rand = new Random();
     	
@@ -225,10 +223,10 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
 		new InitializeCommand(session).execute();
 		
     	//Generate Resources
-    	int grassKey = RMK.getNext();
-    	int animalKey = RMK.getNext();
-    	int sheepKey = RMK.getNext(animalKey);
-    	int wolfKey = RMK.getNext(animalKey);
+    	int grassKey = ResourceKeyManager.getNext();
+    	int animalKey = ResourceKeyManager.getNext();
+    	int sheepKey = ResourceKeyManager.getNext(animalKey);
+    	int wolfKey = ResourceKeyManager.getNext(animalKey);
     	
     	/*ResourceWrapper grassResource = new ResourceWrapper(grassKey);
     	ResourceWrapper sheepResource = new ResourceWrapper(sheepKey);

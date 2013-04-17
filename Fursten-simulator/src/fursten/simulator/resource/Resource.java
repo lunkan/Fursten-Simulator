@@ -1,18 +1,9 @@
 package fursten.simulator.resource;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 import javax.xml.bind.annotation.XmlRootElement;
-
-//import fursten.rest.jaxb.ResourceObj.ResourceWeight;
 
 @XmlRootElement
 public class Resource implements Serializable {

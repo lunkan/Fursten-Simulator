@@ -1,8 +1,12 @@
 package fursten.simulator.command;
 
 import fursten.simulator.world.World;
+import fursten.simulator.node.NodeActivityManager;
 import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
+import fursten.simulator.resource.ResourceDependencyManager;
+import fursten.simulator.resource.ResourceKeyManager;
+import fursten.simulator.resource.ResourceWrapper;
 
 public class InitializeCommand implements SimulatorCommand {
 
@@ -25,6 +29,10 @@ public class InitializeCommand implements SimulatorCommand {
 		
 		WorldManager SM = DAOFactory.get().getWorldManager();
 		SM.setActive(world);
+		
+		//Important! Clear resource manager cache
+		new CleanCommand().execute();
+		
 		return null;
 	}
 }

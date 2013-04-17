@@ -32,7 +32,6 @@ public class ResourceGetCommand implements SimulatorCommand {
 		long timeStampStart = System.currentTimeMillis();
 		
 		ResourceManager RM = DAOFactory.get().getResourceManager();
-		ResourceKeyManager RKM = new ResourceKeyManager(RM.getKeys());
 		List<Resource> resources;
 		
 		switch(selection.getMethod()) {
@@ -50,7 +49,7 @@ public class ResourceGetCommand implements SimulatorCommand {
 				HashSet<Integer> childKeys = new HashSet<Integer>();
 				for(Integer selectedKey : selection.getResourceKeys()) {
 					
-					for(Integer childKey : RKM.getChildren(selectedKey)) {
+					for(Integer childKey : ResourceKeyManager.getChildren(selectedKey)) {
 						
 						if(!childKeys.contains(childKey)) {
 							childKeys.add(childKey);
@@ -66,7 +65,7 @@ public class ResourceGetCommand implements SimulatorCommand {
 				HashSet<Integer> parentKeys = new HashSet<Integer>();
 				for(Integer selectedKey : selection.getResourceKeys()) {
 					
-					for(Integer parentKey : RKM.getParents(selectedKey)) {
+					for(Integer parentKey : ResourceKeyManager.getParents(selectedKey)) {
 						
 						if(!parentKeys.contains(parentKey)) {
 							parentKeys.add(parentKey);
@@ -82,7 +81,7 @@ public class ResourceGetCommand implements SimulatorCommand {
 				HashSet<Integer> nextKeys = new HashSet<Integer>();
 				for(Integer selectedKey : selection.getResourceKeys()) {
 					
-					Integer nextKey = RKM.getNext(selectedKey);
+					Integer nextKey = ResourceKeyManager.getNext(selectedKey);
 					if(!nextKeys.contains(nextKey)) {
 						nextKeys.add(nextKey);
 					}

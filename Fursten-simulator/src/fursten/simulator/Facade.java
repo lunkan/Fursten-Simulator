@@ -8,6 +8,7 @@ import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fursten.simulator.command.CleanCommand;
 import fursten.simulator.command.NodeGetCommand;
 import fursten.simulator.command.NodeEditCommand;
 import fursten.simulator.command.ResourceGetCommand;
@@ -43,8 +44,17 @@ public class Facade {
 		}
 	}
 	
-	public static boolean clear() {
-		return true;
+	public static boolean clean() {
+		
+		logger.log(Level.INFO, "Calling Facade.clean");
+		
+		try {
+			new CleanCommand().execute();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	public static World getWorld() {
@@ -107,11 +117,8 @@ public class Facade {
 	
 	public static boolean addResource(int parentKey, Resource resource) {
 		
-		ResourceManager RM = DAOFactory.get().getResourceManager();
-		ResourceKeyManager keyManager = new ResourceKeyManager(RM.getKeys());
-		
 		//Create new key by extending parent key
-		int newKey = keyManager.getNext(parentKey);
+		int newKey = ResourceKeyManager.getNext(parentKey);
 		resource.setKey(newKey);
 		
 		List<Resource> resources = new ArrayList<Resource>();
