@@ -38,6 +38,8 @@ public class UpdateCommand implements SimulatorCommand {
 	public Object execute() throws Exception {
 
 		long timeStampStart = System.currentTimeMillis();
+		int numCalNode = 0;
+		int numRect = 0;
 		
 		WorldManager SM = DAOFactory.get().getWorldManager();
 		World world = SM.getActive();
@@ -49,28 +51,29 @@ public class UpdateCommand implements SimulatorCommand {
 		List<Node> removedNodes = new ArrayList<Node>();
 		Rectangle updateRect = new Rectangle();
 		
-		System.out.println("*");
+		//System.out.println("*");
 		
 		//Loop all resources that have been updated
 		Set<Integer> invalidResources = NodeActivityManager.getInvalidResources(world.getTick());
 		for(Integer invalidResource : invalidResources) {
 			
-			System.out.println("invalidResource: " + invalidResource);
 			ResourceWrapper resource = ResourceWrapper.getWrapper(RM.get(invalidResource));
 			if(resource.isDependent()){
 				
 				//Find and loop all regions where an update has occurred
 				for(Rectangle rect : NodeActivityManager.getInvalidRectByResourceKey(invalidResource, world.getTick())) {
 				
+					numRect++;
+					
 					//Adjust rect to cover possible node-radius-impact
 					updateRect.x = rect.x - NodeStabilityCalculator.NODE_RADIUS;
 					updateRect.y = rect.y - NodeStabilityCalculator.NODE_RADIUS;
 					updateRect.width = rect.width + (NodeStabilityCalculator.NODE_RADIUS * 2);
 					updateRect.height = rect.height + (NodeStabilityCalculator.NODE_RADIUS * 2);
 					
-					System.out.println("rect: " + rect + " #updateRect " + updateRect);
 					//Fetch all nodes in the region to be revalidated
 					for(Node node : NM.get(updateRect, invalidResource)) {
+						numCalNode++;
 						float stability = nodeMath.calculateStability(node.getX(), node.getY(), resource, false);
 						if(stability < 1.0f)  {
 							removedNodes.add(node);
@@ -81,9 +84,13 @@ public class UpdateCommand implements SimulatorCommand {
 		}
 		
 		NodeActivityManager.clear();
-		NM.delete(removedNodes);
 		
-		logger.log(Level.INFO, "Update: Deleted " + removedNodes.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
+		if(removedNodes.size() > 0) {
+			NM.delete(removedNodes);
+			NodeActivityManager.invalidate(removedNodes);
+		}
+		
+		logger.log(Level.INFO, "Update: NumCal " + numCalNode + " Rects " + numRect + " Deleted " + removedNodes.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return null;
 	}
 }

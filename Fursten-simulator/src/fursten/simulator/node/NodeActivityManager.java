@@ -4,9 +4,11 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import fursten.simulator.Settings;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
@@ -15,15 +17,25 @@ import fursten.simulator.world.World;
 
 public class NodeActivityManager {
 
+	private static final int MAX_SIZE = (int)Math.pow(2, 30);
+	
 	private static NodeActivityManager instance; 
-	private static final int GEOCELL_DIV = 4;//65536
-	private HashMap<Integer, Set<Integer>> activityMap;
+	
+	private int GEOCELL_DIV;
+	private int CELL_SIZE;
+	
+	private HashMap<Integer, Set<Long>> activityMap;
 	private int startTick;
 	
 	private NodeActivityManager() {
-		activityMap = new HashMap<Integer, Set<Integer>>();
+		
+		int geocellBase = Settings.getInstance().getSimulatorSettings().getGeocellBase();
+		CELL_SIZE = (int)Math.pow(2, geocellBase);
+		GEOCELL_DIV = MAX_SIZE / CELL_SIZE;
+		
+		activityMap = new HashMap<Integer, Set<Long>>();
 		WorldManager SM = DAOFactory.get().getWorldManager();
-		World world = SM.getActive();
+		World world = SM.getActive(); 
 		startTick = world.getTick();
 	}
 	
@@ -42,20 +54,17 @@ public class NodeActivityManager {
 		
 		for(Node node : nodes){
 			
-			int geoHash = toGeoHash(node.getX(), node.getY());
+			long geoHash = toGeoHash(node.getX(), node.getY());
 			
 			//Find and add all resources that has a dependency of the updated resource
 			Set<Integer> dependentResources = ResourceDependencyManager.getDependents(node.getR());
 			for(Integer dependentResource : dependentResources) {
 				
 				if(!activityMap.containsKey(dependentResource))
-					activityMap.put(dependentResource, new HashSet<Integer>());
+					activityMap.put(dependentResource, new HashSet<Long>());
 				
 				activityMap.get(dependentResource).add(geoHash);
 			}
-			
-			//activityMap.get(node.getR()).add(geoHash);
-			System.out.println("Invalidate Node: " + node.toString() + " #" + geoHash);
 		}
 	}
 	
@@ -90,10 +99,10 @@ public class NodeActivityManager {
 			return invalidRegions;
 		}
 			
-		Set<Integer> geoHashSet = activityMap.get(resourceKey);
+		Set<Long> geoHashSet = activityMap.get(resourceKey);
 		if(geoHashSet != null) {
 		
-			for(Integer geoHash : geoHashSet) {
+			for(Long geoHash : geoHashSet) {
 				Rectangle rect = geoHashToRect(geoHash);
 				invalidRegions.add(rect);
 			}
@@ -120,7 +129,7 @@ public class NodeActivityManager {
 		instance = new NodeActivityManager();
 	}
 	
-	private int toGeoHash(int x, int y) {
+	private long toGeoHash(int x, int y) {
 		
 		/*
 		 * Hash to geo-point-cell
@@ -129,20 +138,24 @@ public class NodeActivityManager {
 		 * |6|7|8|
 		 * etc
 		 */
-		int nX = x + Integer.MAX_VALUE/2;//Normalize so upper left is (0,0)
-		int nY = y + Integer.MAX_VALUE/2;//Normalize so upper left is (0,0)
-		nX /= (Integer.MAX_VALUE / GEOCELL_DIV);
-		nY /= (Integer.MAX_VALUE / GEOCELL_DIV);
-		int geoHash = (nY * GEOCELL_DIV) + nX;
-		
+		long nX = x + MAX_SIZE/2;//Normalize so upper left is (0,0)
+		long nY = y + MAX_SIZE/2;//Normalize so upper left is (0,0)
+		nX = (long)Math.floor(nX / CELL_SIZE);
+		nY = (long)Math.floor(nY / CELL_SIZE);
+		long geoHash = (nY * GEOCELL_DIV) + nX;
 		return geoHash;
 	}
 	
-	private Rectangle geoHashToRect(int geoHash) {
+	private Rectangle geoHashToRect(long geoHash) {
 		
-		int nX = geoHash % GEOCELL_DIV;
-		int nY = (geoHash - nX) / GEOCELL_DIV;
-		int cellSize = (Integer.MAX_VALUE / GEOCELL_DIV);
-		return new Rectangle(nX*cellSize, nY*cellSize, cellSize, cellSize);
+		long nX = geoHash % GEOCELL_DIV;
+		long nY = (geoHash - nX) / GEOCELL_DIV;
+		nX = (nX * CELL_SIZE) - (MAX_SIZE/2); 
+		nY = (nY * CELL_SIZE) - (MAX_SIZE/2);
+		return new Rectangle((int)nX, (int)nY, CELL_SIZE, CELL_SIZE);
 	}
+	
+	//Todo: init activeIterator 
+	//public static class ActiveRectIterator implements Iterator<Rectangle> {
+	//}
 }

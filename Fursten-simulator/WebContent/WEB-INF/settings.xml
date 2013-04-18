@@ -5,6 +5,9 @@
         <death-rate>1.0F</death-rate>;
 		<restlessness>10</restlessness>
 		 -->
+		 
+		 <!-- Geocell base = Math.pow(2, {geocell-base}) = geocell size-->
+		 <geocell-base>10</geocell-base>
 		 <update-precision>4</update-precision>
     </simulator>
     <databases>

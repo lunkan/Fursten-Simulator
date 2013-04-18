@@ -51,7 +51,10 @@ public class Settings {
 		if(simulationSettings == null) {
 			simulationSettings = new SimulationSettings();
 			int updatePrecision = config.getInt("simulator/update-precision");
+			int geocellBase = config.getInt("simulator/geocell-base");
+			
 			simulationSettings.setUpdatePrecision(updatePrecision);
+			simulationSettings.setGeocellBase(geocellBase);
 		}
 		
 		return simulationSettings;
@@ -76,6 +79,7 @@ public class Settings {
 	public class SimulationSettings {
 	
 		private int updatePrecision;
+		private int geocellBase;
 		
 		public int getUpdatePrecision() {
 			return updatePrecision;
@@ -84,6 +88,16 @@ public class Settings {
 		public void setUpdatePrecision(int value) {
 			this.updatePrecision = value;
 		}
+		
+		public int getGeocellBase() {
+			return geocellBase;
+		}
+		
+		public void setGeocellBase(int value) {
+			this.geocellBase = value;
+		}
+		
+		
 	}
 	
 	public class DatabaseSettings {
