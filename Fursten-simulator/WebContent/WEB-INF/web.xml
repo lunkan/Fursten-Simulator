@@ -45,4 +45,7 @@
   <listener>
       <listener-class>fursten.simulator.Startup</listener-class>
   </listener>
+  <listener>
+      <listener-class>fursten.simulator.ShutDown</listener-class>
+  </listener>
 </web-app>

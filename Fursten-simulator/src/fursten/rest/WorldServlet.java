@@ -30,7 +30,6 @@ public class WorldServlet {
 	public World getWorld() {
 		
 		World world = Facade.getWorld();
-		System.out.println(world.toString());
 		return world;
 	}
 }

@@ -195,17 +195,16 @@ public class Resource implements Serializable {
 		public void setIsLinked(boolean isLinked) {
 			this.isLinked = isLinked;
 		}
-		/*public float getValue() {
-			return value;
-		}
 		
-		public void setValue(float value) {
-			this.value = value;
+		public Offspring clone() {
+			Offspring clone = new Offspring();
+			clone.setCost(this.cost);
+			clone.setIsLinked(this.isLinked);
+			clone.setMultiplier(this.multiplier);
+			clone.setRatio(this.ratio);
+			clone.setResource(this.resource);
+			return clone;
 		}
-		
-		public String toString() {
-			return "{resource:"+ resource +", value:"+ value +"}";
-		}*/
 	}
 	
 	public static class WeightGroup implements Serializable {

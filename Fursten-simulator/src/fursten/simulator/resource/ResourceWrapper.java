@@ -14,10 +14,12 @@ public class ResourceWrapper {
 	private static final HashMap<Resource, ResourceWrapper> wrapperPool = new HashMap<Resource, ResourceWrapper>();
 	
 	private int updateRatio = -1;
+	private float adjustedMortality = -1;
 	private Set<Integer> dependencyKeys;
 	private ArrayList<Offspring> offsprings;
 	private ArrayList<HashMap<Integer, Float>> weightMap;
 	private Resource resource;
+	private int isCloning;
 	
 	public static ResourceWrapper getWrapper(Resource resource) throws Exception{
 		
@@ -74,21 +76,31 @@ public class ResourceWrapper {
 	}
 	
 	public float getMortality() {
-		return this.resource.getMortality();
+		if(adjustedMortality >= 0)
+			return adjustedMortality;
+		
+		adjustedMortality = adjustByInterval(this.resource.getMortality());
+		return adjustedMortality;
 	}
 	
 	public ArrayList<Offspring> getOffsprings() {
 	
 		if(offsprings != null)
 			return offsprings;
-			
-		offsprings = new ArrayList<Offspring>(); 
-		for(Offspring offspring : this.resource.getOffsprings()) {
-			offspring.setResource(this.resource.getKey());
-			offsprings.add(offspring);
+		
+		offsprings = new ArrayList<Offspring>();
+		for(Offspring mutation : this.resource.getMutations()) {
+			Offspring mutationClone = mutation.clone();
+			float adjustedRation = adjustByInterval(mutationClone.getRatio());
+			mutationClone.setRatio(adjustedRation);
+			offsprings.add(mutationClone);
 		}
-		for(Offspring mutaion : this.resource.getMutations()) {
-			offsprings.add(mutaion);
+		for(Offspring offspring : this.resource.getOffsprings()) {
+			Offspring offspringClone = offspring.clone();
+			offspringClone.setResource(this.resource.getKey());
+			float adjustedRation = adjustByInterval(offspringClone.getRatio());
+			offspringClone.setRatio(adjustedRation);
+			offsprings.add(offspringClone);
 		}
 		
 		return offsprings;
@@ -123,7 +135,7 @@ public class ResourceWrapper {
 	
 	/**
 	 * If there is a point of calculate the resource as run
-	 * If it may have offsprings, is not locked and imoortal 
+	 * Resource is static If - has no offsprings and is immortal, is locked. 
 	 * @return
 	 */
 	public boolean isStatic() {
@@ -135,6 +147,10 @@ public class ResourceWrapper {
 			return false;
 	}
 	
+	/**
+	 * Resource is dependent if it has dependencies
+	 * @return
+	 */
 	public boolean isDependent() {
 		if(resource.getIsLocked())
 			return false;
@@ -142,8 +158,33 @@ public class ResourceWrapper {
 		return (getWeightMap().size() > 0);
 	}
 	
+	/**
+	 * Resource is breedable if it produce offsprings
+	 * @return
+	 */
 	public boolean isBreedable() {
 		return (getOffsprings().size() > 0);
+	}
+	
+	/**
+	 * Resource is cloning if it has self as on of it's offsprings
+	 * @return
+	 */
+	public boolean isCloning() {
+		if(isCloning > 0)
+			return true;
+		else if(isCloning < 0)
+			return false;
+		
+		for(Offspring offspring : getOffsprings()) {
+			if(offspring.getResource() == resource.getKey()) {
+				isCloning = 1;
+				return true;
+			}
+		}
+		
+		isCloning = 0;
+		return false;
 	}
 	
 	/**
@@ -159,8 +200,11 @@ public class ResourceWrapper {
 				updateRatio = 0;
 			}
 			else {
-				float mostFrequent = resource.getMortality();
-				for(Offspring offspring : getOffsprings()) {
+				float mostFrequent = this.resource.getMortality();
+				for(Offspring mutation : this.resource.getMutations()) {
+					mostFrequent = Math.max(mostFrequent, mutation.getRatio());
+				}
+				for(Offspring offspring : this.resource.getOffsprings()) {
 					mostFrequent = Math.max(mostFrequent, offspring.getRatio());
 				}
 				
@@ -169,8 +213,7 @@ public class ResourceWrapper {
 				}
 				else {
 					mostFrequent *= Settings.getInstance().getSimulatorSettings().getUpdatePrecision();
-					updateRatio = Math.round(1/mostFrequent);
-					
+					updateRatio = (int)Math.ceil(1/mostFrequent);//updateRatio may not be 0 (fixed issue) changed from round
 				}
 			}
 		}
@@ -184,7 +227,7 @@ public class ResourceWrapper {
 	 * Remember - this is not 100% equal calculate every event for every tick - we do shortcuts here
 	 * @return
 	 */
-	public float adjustByInterval(float value) {
+	private float adjustByInterval(float value) {
 		return (float)(1 - Math.pow((1-value), getUpdateintervall()));
 	}
 	

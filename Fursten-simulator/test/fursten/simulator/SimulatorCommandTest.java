@@ -253,6 +253,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     			Node node = new Node(grassKey);
     			node.setX(WORLD_X + rand.nextInt(WORLD_W));
     			node.setY(WORLD_Y + rand.nextInt(WORLD_H));
+    			node.setV(1.0f);
     			nodes.add(node);
     		}
     		
@@ -261,6 +262,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     			Node node = new Node(sheepKey);
     			node.setX(WORLD_X + rand.nextInt(WORLD_W));
     			node.setY(WORLD_Y + rand.nextInt(WORLD_H));
+    			node.setV(1.0f);
     			nodes.add(node);
     		}
     	}

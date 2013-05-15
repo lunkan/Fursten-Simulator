@@ -52,7 +52,7 @@ public class SampleCommand implements SimulatorCommand {
 			Sample sample = it.next();
 			
 			if(!prospecting) {
-				if(!NM.contains(new Node(sample.getR(), sample.getX(), sample.getY()))) {
+				if(!NM.contains(new Node(sample.getR(), sample.getX(), sample.getY(), 1.0f))) {
 					
 					//Sample node does not exist and we are not prospecting!
 					it.remove();

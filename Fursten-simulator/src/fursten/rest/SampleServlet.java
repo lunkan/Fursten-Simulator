@@ -25,7 +25,9 @@ public class SampleServlet {
 		System.out.println("getSamples");
 		
 		//Prospecting default is null
-		if(prospecting == null)
+		if(samples.getProspecting())
+			prospecting = new Boolean(true);
+		else if(prospecting == null)
 			prospecting = new Boolean(false);
 		
 		List<Sample> sampleList = Facade.getSamples(samples.getSamples(), prospecting);

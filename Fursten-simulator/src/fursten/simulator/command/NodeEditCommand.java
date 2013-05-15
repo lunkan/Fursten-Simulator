@@ -59,6 +59,8 @@ public class NodeEditCommand implements SimulatorCommand {
 					throw new Exception("Failed adding node becouse resourceId: " + node.getR() + " does not have a resource attached to it. No nodes where added.");
 				else if(!activeSession.getRect().contains(node.getX(), node.getY()))
 					throw new Exception("Failed adding node becouse node: " + node.toString() + " is out of bounds. World bounds: " + activeSession.getRect().toString());
+				else if(node.getV() <= 0)
+					throw new Exception("Failed adding node becouse node: " + node.toString() + " has no value.");
 			}
 			
 			insertedNum = NM.insert(insertNodes);

@@ -12,6 +12,7 @@ public class Node implements Serializable {
 	private int r;
 	private int x;
 	private int y;
+	private float v;
 	
 	
 	public Node(){
@@ -21,10 +22,15 @@ public class Node implements Serializable {
 		this.r = resource;
 	}
 	
-	public Node(int resource, int x, int y){
+	public Node(int resource, int x, int y, float v){
 		this.r = resource;
 		this.x = x;
 		this.y = y;
+		this.v = v;
+	}
+	
+	public float getV() {
+		return v;
 	}
 	
 	public int getR() {
@@ -51,39 +57,15 @@ public class Node implements Serializable {
 		this.y = y;
 	}
 	
-	public boolean equals(Node node) {
-		
-		if(node == null)
-			return false;
-		if(node.getX() != x)
-			return false;
-		if(node.getY() != y)
-			return false;
-		if(node.getR() != r)
-			return false;
-		
-		return true;
-	}
-	
-	public boolean equals(Object object) {
-		Node node = (Node)object;
-		return equals(node);
-	}
-	
-	public boolean intersect(int[][] area) {
-
-		if(area[0][0] > x || area[1][0] > y)
-			return false;
-		else if(area[0][0] + area[0][1] < x || area[1][0] + area[1][1] < y)
-			return false;
-		else
-			return true;
+	public void setV(float v) {
+		this.v = v;
 	}
 	
 	public Node clone() {
 		Node newNode = new Node(r);
 		newNode.setX(x);
 		newNode.setY(y);
+		newNode.setV(v);
 		return newNode;
 	}
 	
@@ -91,10 +73,11 @@ public class Node implements Serializable {
 		Node newNode = new Node(resource);
 		newNode.setX(x);
 		newNode.setY(y);
+		newNode.setV(v);
 		return newNode;
 	}
 	
 	public String toString() {
-		return "Node [x:"+x+" y:"+y+" r:"+r+"]";
+		return "Node [x:"+x+" y:"+y+" r:"+r+" v:"+v+"]";
 	}
 }

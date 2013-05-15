@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fursten.simulator.node.Node;
+import fursten.simulator.node.Nodes;
 
 public class NodeTree implements Serializable  {
 	
@@ -88,12 +89,18 @@ public class NodeTree implements Serializable  {
 
     private QNode insert(QNode h, Node node) {
         
+    	//Add to cell
     	if (h.node == null) {
     		h.node = node;
     		return h;
     	}
+    	else if(Nodes.intersect(h.node, node)) {
+    		h.node = Nodes.add(h.node, node);
+    		return h;
+    	}
     	
-        else if (node.getX() < h.x && node.getY() < h.y) {
+    	//Add to subcell
+        if (node.getX() < h.x && node.getY() < h.y) {
         	
         	if(h.SW == null) {
         		h.SW = new QNode(h.x - h.d/2, h.y - h.d/2, h.d/2, node);
@@ -151,10 +158,25 @@ public class NodeTree implements Serializable  {
     	 if(h == null){
     		 return false;
     	 }
-    	 else if(node.equals(h.node)) {
+    	 else if(h.node != null) {
+    		 
+    		//Substract the deleted amount
+    		if(Nodes.intersect(h.node, node)) {
+    	    	h.node = Nodes.substract(h.node, node);
+    	    	if(h.node.getV() > 0) {
+    	    		return true;
+    	    	}
+    	    	else {
+    	    		h.node = null;
+    	    		return true;
+    	    	}
+    	    }
+    	 }
+    	 
+    	 /*else if(node.equals(h.node)) {
     		 h.node = null;
     		 return true;
-    	 }
+    	 }*/
      
     	 QNode subCell = h.getSubCell(node.getX(), node.getY());
     	 return delete(subCell, node);

@@ -47,7 +47,7 @@ public class Startup  implements ServletContextListener {
 	}
 	
 	public void contextDestroyed(ServletContextEvent contextEvent) {
-		context = contextEvent.getServletContext();
-		System.out.println("Context Destroyed");
+		//context = contextEvent.getServletContext();
+		//System.out.println("Context Destroyed - Startup");
 	}
 }

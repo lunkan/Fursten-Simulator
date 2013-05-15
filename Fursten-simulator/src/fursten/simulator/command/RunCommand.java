@@ -65,36 +65,33 @@ public class RunCommand implements SimulatorCommand {
 			ResourceWrapper resource = ResourceWrapper.getWrapper(RM.get(resourceKey));
 			
 			//Check if it's the resource time to get updated
-			if(resource.getUpdateintervall() != 0 && tick % resource.getUpdateintervall() == resource.getUpdateintervall()-1) {
+			if(resource.getUpdateintervall() != 0) {
 				
-				for(Node node : NM.get(rect, resourceKey)) {
-					
-					Float randVal = rand.nextFloat();
-					float mortality = resource.getMortality();
-					float adjMortality = resource.adjustByInterval(mortality);
-					
-					if(adjMortality > randVal){
-						removedNodes.add(node);
-					}
-					
-					//Even if node is dead it has a chance to breed
-					// - or interval calculations will be inaccurate
-					if(resource.isBreedable()) {
+				if(tick % resource.getUpdateintervall() == resource.getUpdateintervall()-1) {
+				
+					for(Node node : NM.get(rect, resourceKey)) {
 						
-						for(Offspring offspring : resource.getOffsprings()) {
-							
-							randVal = rand.nextFloat();
-							float breedRatio = offspring.getRatio();
-							float adjBreedRato = resource.adjustByInterval(breedRatio);
-							
-							if(adjBreedRato > randVal) {
-								
-								Node spore = runSpore(node.getX(), node.getY(), offspring.getResource());
-								if(spore != null)
-									addedNodes.add(spore);
-							}
+						Float randVal = rand.nextFloat();
+						if(resource.getMortality() > randVal){
+							removedNodes.add(node);
 						}
-			    	}
+						
+						//Even if node is dead it has a chance to breed
+						// - or interval calculations will be inaccurate
+						if(resource.isBreedable()) {
+							
+							for(Offspring offspring : resource.getOffsprings()) {
+								
+								randVal = rand.nextFloat();
+								if(offspring.getRatio() > randVal) {
+									
+									Node spore = runSpore(node.getX(), node.getY(), offspring.getResource());
+									if(spore != null)
+										addedNodes.add(spore);
+								}
+							}
+				    	}
+					}
 				}
 			}
 		}
@@ -124,6 +121,7 @@ public class RunCommand implements SimulatorCommand {
 		Node spore = new Node(r);
 		spore.setX(x + seedX);
 		spore.setY(y + seedY);
+		spore.setV(1.0f);
 		
 		//Check that no node is out of world bounds
 		if(!world.getRect().contains(spore.getX(), spore.getY()))

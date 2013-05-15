@@ -346,7 +346,7 @@ public class DAOFactoryTest extends TestCase {
     		int nx =  rand.nextInt((int)rect.getWidth()) + (int)rect.getX();
     		int ny = rand.nextInt((int)rect.getHeight()) + (int)rect.getY();
     		
-    		Node node = new Node(resourceKey, nx, ny);
+    		Node node = new Node(resourceKey, nx, ny, 1.0f);
     		nodes.add(node);
     	}
     	
