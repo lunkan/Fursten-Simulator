@@ -532,16 +532,16 @@ class NodeDAO implements NodeManager {
 					
 					//create new or update
 					if(resultSet.first()) {
-						statement = con.prepareStatement("insert into nodes(resource_key, node_tree) values (?, ?)");
-						statement.setInt(1, resourceKey);
-						statement.setBlob(2, nodesBin);
+						statement = con.prepareStatement("update nodes set node_tree = ? where resource_key = ?");
+						statement.setBlob(1, nodesBin);
+						statement.setInt(2, resourceKey);
 						statement.executeUpdate();
 						statement.close();
 					}
 					else {
-						statement = con.prepareStatement("update nodes set node_tree = ? where resource_key = ?");
-						statement.setBlob(1, nodesBin);
-						statement.setInt(2, resourceKey);
+						statement = con.prepareStatement("insert into nodes(resource_key, node_tree) values (?, ?)");
+						statement.setInt(1, resourceKey);
+						statement.setBlob(2, nodesBin);
 						statement.executeUpdate();
 						statement.close();
 					}

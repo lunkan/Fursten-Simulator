@@ -66,7 +66,10 @@ public class SampleCommand implements SimulatorCommand {
 				resource = ResourceWrapper.getWrapper(RM.get(sample.getR()));
 			
 			if(!resource.isStatic()) {
-				float stability = nodeMath.calculateStability(sample.getX(), sample.getY(), resource, prospecting);
+				float stability = nodeMath.calculateStability(sample.getX(), sample.getY(), resource);
+				if(prospecting)
+					stability -= 1;
+				
 				sample.setStability(stability);
 			}
 		}

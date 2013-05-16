@@ -40,6 +40,16 @@ public final class NodeProto {
      * <code>required sint32 r = 3;</code>
      */
     int getR();
+
+    // required float v = 4;
+    /**
+     * <code>required float v = 4;</code>
+     */
+    boolean hasV();
+    /**
+     * <code>required float v = 4;</code>
+     */
+    float getV();
   }
   /**
    * Protobuf type {@code messages.Node}
@@ -105,6 +115,11 @@ public final class NodeProto {
             case 24: {
               bitField0_ |= 0x00000004;
               r_ = input.readSInt32();
+              break;
+            }
+            case 37: {
+              bitField0_ |= 0x00000008;
+              v_ = input.readFloat();
               break;
             }
           }
@@ -195,10 +210,27 @@ public final class NodeProto {
       return r_;
     }
 
+    // required float v = 4;
+    public static final int V_FIELD_NUMBER = 4;
+    private float v_;
+    /**
+     * <code>required float v = 4;</code>
+     */
+    public boolean hasV() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required float v = 4;</code>
+     */
+    public float getV() {
+      return v_;
+    }
+
     private void initFields() {
       x_ = 0;
       y_ = 0;
       r_ = 0;
+      v_ = 0F;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -217,6 +249,10 @@ public final class NodeProto {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasV()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -232,6 +268,9 @@ public final class NodeProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeSInt32(3, r_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeFloat(4, v_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -253,6 +292,10 @@ public final class NodeProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeSInt32Size(3, r_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(4, v_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -376,6 +419,8 @@ public final class NodeProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         r_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        v_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -416,6 +461,10 @@ public final class NodeProto {
           to_bitField0_ |= 0x00000004;
         }
         result.r_ = r_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.v_ = v_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -441,6 +490,9 @@ public final class NodeProto {
         if (other.hasR()) {
           setR(other.getR());
         }
+        if (other.hasV()) {
+          setV(other.getV());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -455,6 +507,10 @@ public final class NodeProto {
           return false;
         }
         if (!hasR()) {
+          
+          return false;
+        }
+        if (!hasV()) {
           
           return false;
         }
@@ -575,6 +631,39 @@ public final class NodeProto {
       public Builder clearR() {
         bitField0_ = (bitField0_ & ~0x00000004);
         r_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required float v = 4;
+      private float v_ ;
+      /**
+       * <code>required float v = 4;</code>
+       */
+      public boolean hasV() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required float v = 4;</code>
+       */
+      public float getV() {
+        return v_;
+      }
+      /**
+       * <code>required float v = 4;</code>
+       */
+      public Builder setV(float value) {
+        bitField0_ |= 0x00000008;
+        v_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float v = 4;</code>
+       */
+      public Builder clearV() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        v_ = 0F;
         onChanged();
         return this;
       }
@@ -2360,13 +2449,13 @@ public final class NodeProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nnode.proto\022\010messages\"\'\n\004Node\022\t\n\001x\030\001 \002(" +
-      "\021\022\t\n\001y\030\002 \002(\021\022\t\n\001r\030\003 \002(\021\"/\n\016NodeCollectio" +
-      "n\022\035\n\005nodes\030\001 \003(\0132\016.messages.Node\"]\n\017Node" +
-      "Transaction\022$\n\014delete_nodes\030\001 \003(\0132\016.mess" +
-      "ages.Node\022$\n\014inject_nodes\030\002 \003(\0132\016.messag" +
-      "es.NodeB&\n\031org.fursten.message.protoB\tNo" +
-      "deProto"
+      "\n\nnode.proto\022\010messages\"2\n\004Node\022\t\n\001x\030\001 \002(" +
+      "\021\022\t\n\001y\030\002 \002(\021\022\t\n\001r\030\003 \002(\021\022\t\n\001v\030\004 \002(\002\"/\n\016No" +
+      "deCollection\022\035\n\005nodes\030\001 \003(\0132\016.messages.N" +
+      "ode\"]\n\017NodeTransaction\022$\n\014delete_nodes\030\001" +
+      " \003(\0132\016.messages.Node\022$\n\014inject_nodes\030\002 \003" +
+      "(\0132\016.messages.NodeB&\n\031org.fursten.messag" +
+      "e.protoB\tNodeProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2378,7 +2467,7 @@ public final class NodeProto {
           internal_static_messages_Node_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_messages_Node_descriptor,
-              new java.lang.String[] { "X", "Y", "R", });
+              new java.lang.String[] { "X", "Y", "R", "V", });
           internal_static_messages_NodeCollection_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_messages_NodeCollection_fieldAccessorTable = new

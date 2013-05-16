@@ -13,13 +13,13 @@ public class ResourceWrapper {
 	
 	private static final HashMap<Resource, ResourceWrapper> wrapperPool = new HashMap<Resource, ResourceWrapper>();
 	
-	private int updateRatio = -1;
-	private float adjustedMortality = -1;
+	private int updateRatio;
+	private float adjustedMortality;
 	private Set<Integer> dependencyKeys;
 	private ArrayList<Offspring> offsprings;
 	private ArrayList<HashMap<Integer, Float>> weightMap;
 	private Resource resource;
-	private int isCloning;
+	//private int isCloning;
 	
 	public static ResourceWrapper getWrapper(Resource resource) throws Exception{
 		
@@ -42,6 +42,23 @@ public class ResourceWrapper {
 			throw new Exception("Resource must not be null");
 		
 		this.resource = resource;
+		
+		//UpdateRatio
+		float mostFrequent = this.resource.getMortality();
+		for(Offspring mutation : this.resource.getMutations()) {
+			mostFrequent = Math.max(mostFrequent, mutation.getRatio());
+		}
+		for(Offspring offspring : this.resource.getOffsprings()) {
+			mostFrequent = Math.max(mostFrequent, offspring.getRatio());
+		}
+		
+		if(mostFrequent > 0) {
+			mostFrequent *= Settings.getInstance().getSimulatorSettings().getUpdatePrecision();
+			updateRatio = (int)Math.ceil(1/mostFrequent);//updateRatio may not be 0 (fixed issue) changed from round
+		}
+		
+		//Mortality
+		adjustedMortality = adjustByInterval(this.resource.getMortality());
 	}
 	
 	public Resource getResource() {
@@ -76,10 +93,6 @@ public class ResourceWrapper {
 	}
 	
 	public float getMortality() {
-		if(adjustedMortality >= 0)
-			return adjustedMortality;
-		
-		adjustedMortality = adjustByInterval(this.resource.getMortality());
 		return adjustedMortality;
 	}
 	
@@ -141,7 +154,7 @@ public class ResourceWrapper {
 	public boolean isStatic() {
 		if(resource.getIsLocked())
 			return true;
-		else if(!isBreedable() && resource.getMortality() == 0)
+		else if(!(getOffsprings().size() > 0) && resource.getMortality() == 0)
 			return true;
 		else
 			return false;
@@ -162,15 +175,15 @@ public class ResourceWrapper {
 	 * Resource is breedable if it produce offsprings
 	 * @return
 	 */
-	public boolean isBreedable() {
+	/*public boolean isBreedable() {
 		return (getOffsprings().size() > 0);
-	}
+	}*/
 	
 	/**
 	 * Resource is cloning if it has self as on of it's offsprings
 	 * @return
 	 */
-	public boolean isCloning() {
+	/*public boolean isCloning() {
 		if(isCloning > 0)
 			return true;
 		else if(isCloning < 0)
@@ -185,7 +198,7 @@ public class ResourceWrapper {
 		
 		isCloning = 0;
 		return false;
-	}
+	}*/
 	
 	/**
 	 * Calculate the updateRate of the resource by measuring the lowest acceptable interval between updates.
@@ -193,31 +206,6 @@ public class ResourceWrapper {
 	 * @return
 	 */
 	public int getUpdateintervall() {
-		
-		if(updateRatio == -1){
-			
-			if(isStatic()) {
-				updateRatio = 0;
-			}
-			else {
-				float mostFrequent = this.resource.getMortality();
-				for(Offspring mutation : this.resource.getMutations()) {
-					mostFrequent = Math.max(mostFrequent, mutation.getRatio());
-				}
-				for(Offspring offspring : this.resource.getOffsprings()) {
-					mostFrequent = Math.max(mostFrequent, offspring.getRatio());
-				}
-				
-				if(mostFrequent == 0) {
-					updateRatio = 0;
-				}
-				else {
-					mostFrequent *= Settings.getInstance().getSimulatorSettings().getUpdatePrecision();
-					updateRatio = (int)Math.ceil(1/mostFrequent);//updateRatio may not be 0 (fixed issue) changed from round
-				}
-			}
-		}
-		
 		return updateRatio;
 	}
 	
@@ -258,14 +246,18 @@ public class ResourceWrapper {
 		
 		if(resource.getKey() == 0)
 			return false;
-		else if (resource.getName() == null || resource.getName().equals("")) {
+		if (resource.getName() == null || resource.getName().equals(""))
 			return false;
+		
+		for(Offspring offspring : getOffsprings()) {
+			if(offspring.getRatio() <= 0)
+				return false;
+			if(offspring.getCost() < 0)
+				return false;
+			if(offspring.getMultiplier() <= 0)
+				return false;
 		}
-		else if (resource.getThreshold() >= 1 || resource.getThreshold() < 0.1) {
-			return false;
-		}
-		else {
-			return true;
-		}
+		
+		return true;
 	}
 }

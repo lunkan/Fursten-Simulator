@@ -74,8 +74,8 @@ public class UpdateCommand implements SimulatorCommand {
 					//Fetch all nodes in the region to be revalidated
 					for(Node node : NM.get(updateRect, invalidResource)) {
 						numCalNode++;
-						float stability = nodeMath.calculateStability(node.getX(), node.getY(), resource, false);
-						if(stability < 1.0f)  {
+						float stability = nodeMath.calculateStability(node.getX(), node.getY(), resource);
+						if(stability < 0)  {
 							removedNodes.add(node);
 				    	}
 					}

@@ -1,5 +1,6 @@
 package fursten.simulator.command;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,6 +66,7 @@ public class RunCommand implements SimulatorCommand {
 			ResourceWrapper resource = ResourceWrapper.getWrapper(RM.get(resourceKey));
 			
 			//Check if it's the resource time to get updated
+			//0 = static -> never updated
 			if(resource.getUpdateintervall() != 0) {
 				
 				if(tick % resource.getUpdateintervall() == resource.getUpdateintervall()-1) {
@@ -78,19 +80,39 @@ public class RunCommand implements SimulatorCommand {
 						
 						//Even if node is dead it has a chance to breed
 						// - or interval calculations will be inaccurate
-						if(resource.isBreedable()) {
+						//--if(resource.isBreedable()) {
+						for(Offspring offspring : resource.getOffsprings()) {
 							
-							for(Offspring offspring : resource.getOffsprings()) {
+							randVal = rand.nextFloat();
+							if(offspring.getRatio() > randVal) {
 								
-								randVal = rand.nextFloat();
-								if(offspring.getRatio() > randVal) {
+								//No spores lower than 1 - to infinity protection
+								float value = offspring.getMultiplier() * node.getV();
+								if(value < 1)
+									continue;
+								
+								//Leave no parent with value less than 1
+								float cost = node.getV() * offspring.getCost();
+								if(node.getV() - cost < 1)
+									continue;
+								
+								Node spore = runSpore(node.getX(), node.getY(), value, offspring.getResource());
+								
+								if(spore != null) {
+									addedNodes.add(spore);
 									
-									Node spore = runSpore(node.getX(), node.getY(), offspring.getResource());
-									if(spore != null)
-										addedNodes.add(spore);
+									//Reduce cost from parent
+									if(cost > 0) {
+										Node reducedNode = node.clone();
+										reducedNode.setV(cost);
+										removedNodes.add(reducedNode);
+									}
+									
+									System.out.println("#New " + spore + " " + cost + " - " + value + " # " + node.getV());
+									
 								}
 							}
-				    	}
+						}
 					}
 				}
 			}
@@ -110,28 +132,38 @@ public class RunCommand implements SimulatorCommand {
 		return null;
 	}
 
-	private Node runSpore(int x, int y, int r) throws Exception {
+	private Node runSpore(int x, int y, float v, int r) throws Exception {
 
 		Resource resource = RM.get(r);
 		ResourceWrapper resourceWrapper = ResourceWrapper.getWrapper(resource);
 		
-		int seedX = rand.nextInt(NodeStabilityCalculator.NODE_RADIUS*8)-(NodeStabilityCalculator.NODE_RADIUS*4);
-		int seedY = rand.nextInt(NodeStabilityCalculator.NODE_RADIUS*8)-(NodeStabilityCalculator.NODE_RADIUS*4);
-		
 		Node spore = new Node(r);
-		spore.setX(x + seedX);
-		spore.setY(y + seedY);
-		spore.setV(1.0f);
+		spore.setV(v);
+		float stability = 0;
+		
+		//Best of 3
+		for(int i = 0; i < 3; i++) {
+			int seedX = rand.nextInt(NodeStabilityCalculator.NODE_RADIUS*8)-(NodeStabilityCalculator.NODE_RADIUS*4);
+			int seedY = rand.nextInt(NodeStabilityCalculator.NODE_RADIUS*8)-(NodeStabilityCalculator.NODE_RADIUS*4);
+			float nextStability = nodeMath.calculateStability(seedX, seedY, resourceWrapper);
+			
+			if(nextStability > stability) {
+				spore.setX(x + seedX);
+				spore.setY(y + seedY);
+				stability = nextStability;
+			}
+		}
 		
 		//Check that no node is out of world bounds
 		if(!world.getRect().contains(spore.getX(), spore.getY()))
 			return null;
 		
-		float stability = nodeMath.calculateStability(spore.getX(), spore.getY(), resourceWrapper, false);
+		//float stability = nodeMath.calculateStability(spore.getX(), spore.getY(), resourceWrapper);
 		//stability *= resourceWrapper.getThreshold();//nodeMath.normalizeStability(stability, resourceWrapper.getThreshold());
 		
 		//if(stability > rand.nextFloat())
-		if((stability * resourceWrapper.getThreshold()) > 1)
+		float threshold = spore.getV() * resourceWrapper.getThreshold();
+		if(stability - threshold > 0)
     		return spore;
     	else
     		return null;

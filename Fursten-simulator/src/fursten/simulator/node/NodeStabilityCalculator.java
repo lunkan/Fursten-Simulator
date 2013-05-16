@@ -38,7 +38,9 @@ public class NodeStabilityCalculator {
 		clean = true;
     }
 	
-	public float calculateStability(int x, int y, ResourceWrapper resource, boolean ignoreSelf) {
+	public float calculateStability(int x, int y, ResourceWrapper resource) {
+			
+		//, boolean ignoreSelf) {
 		
 		//set bounds
 		rect.setBounds(x - NODE_RADIUS, y - NODE_RADIUS, NODE_RADIUS*2, NODE_RADIUS*2);
@@ -75,7 +77,8 @@ public class NodeStabilityCalculator {
 		//Impact from same kind of recourse is always = -1
 		//Prevent impact from self is represented by a "-1" -> bonus can not be greater than 1.
 		//Only cloning resources have pinalty
-		if(resource.isCloning()) {
+		//OBS! Remove size for selfPenelty
+		/*if(resource.isCloning()) {
 			
 			for(Node neighbor : NM.get(rect, resource.getKey())) {
 				
@@ -91,6 +94,17 @@ public class NodeStabilityCalculator {
 				else if(distance < NODE_RADIUS) {
 					stability -= ((NODE_RADIUS - (float)distance) / (float)NODE_RADIUS) * neighbor.getV();
 				}
+			}
+		}*/
+		
+		//Self penelty is always self * -1. Acts as a base value
+		//Nodes must compensate with impact to be in balance -> impact = 0
+		for(Node selfNode : NM.get(rect, resource.getKey())) {
+			
+			int distance = (int) (Math.sqrt(Math.pow(x-selfNode.getX(),2) + Math.pow(y-selfNode.getY(),2)));
+			if(distance < NODE_RADIUS) {
+				float impact = (NODE_RADIUS - (float)distance) / (float)NODE_RADIUS;
+				stability -= impact * selfNode.getV();
 			}
 		}
 		
