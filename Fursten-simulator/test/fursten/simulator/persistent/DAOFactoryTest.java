@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fursten.simulator.world.World;
+import fursten.simulator.command.NodeTransactionCommand;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.DAOManager;
 import fursten.simulator.persistent.NodeManager;
@@ -213,6 +214,7 @@ public class DAOFactoryTest extends TestCase {
     	Random rand = new Random();
     	ArrayList<String> exeLog = new ArrayList<String>();
     	
+    	WorldManager WM = DAOFactory.get().getWorldManager();
     	NodeManager NM = DAOFactory.get().getNodeManager();
     	List<Integer> resourceKeys = getRandomResources(10);
     	Rectangle rect = new Rectangle(-(Integer.MAX_VALUE/2), -(Integer.MAX_VALUE/2), Integer.MAX_VALUE, Integer.MAX_VALUE);
@@ -220,9 +222,14 @@ public class DAOFactoryTest extends TestCase {
     	for(int i = 0; i < NUM_ITERATIONS; i++) {
     	
     		//clear node-tree
-    		for(Integer resourceKey : resourceKeys) {
+    		//Delete all nodes in of the resource type
+			Rectangle worldBounds = WM.getActive().getRect();
+			List<Node> clearNodes = NM.get(worldBounds);
+			new NodeTransactionCommand(clearNodes);
+			
+    		/*for(Integer resourceKey : resourceKeys) {
     			NM.deleteByResourceKey(resourceKey);
-    		}
+    		}*/
     		
     		List<Node> nodes = getRandomNodes(NUM_NODES, resourceKeys, rect);
     		List<Node> deletedNodes = getNodeSample((rand.nextInt(NUM_NODES)), nodes);
@@ -259,7 +266,7 @@ public class DAOFactoryTest extends TestCase {
     		NM.insert(nodes);
     		long insertTime = System.currentTimeMillis() - startTime;
     			
-    		NM.delete(deletedNodes);
+    		NM.substract(deletedNodes);
     		long deleteTime = System.currentTimeMillis() - (startTime + insertTime);
     		
     		List<Node> fetchedNodes = NM.get(sampleRect, resources);

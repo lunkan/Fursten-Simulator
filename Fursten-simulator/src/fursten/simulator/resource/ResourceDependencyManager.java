@@ -44,22 +44,15 @@ public class ResourceDependencyManager {
 		for(Resource resource : resources) {
 			
 			ResourceWrapper wrapper;
-			
-			try {
 				
-				//Loop and add dependencies - also descendants are dependent
-				wrapper = ResourceWrapper.getWrapper(resource);
-				for(Integer dependency : wrapper.getDependencies()){
-					
-					if(ResourceKeyManager.isDescendant(resourceKey, dependency)) {
-						dependentResources.add(resource.getKey());
-						break;
-					}
+			//Loop and add dependencies - also descendants are dependent
+			wrapper = ResourceWrapper.getWrapper(resource);
+			for(Integer dependency : wrapper.getDependencies()){
+				
+				if(ResourceKeyManager.isDescendant(resourceKey, dependency)) {
+					dependentResources.add(resource.getKey());
+					break;
 				}
-				
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 		

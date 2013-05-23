@@ -1,5 +1,7 @@
 package fursten.simulator.node;
 
+import java.math.BigInteger;
+
 public class Nodes {
 
 	public static boolean intersect(Node nodeA, Node nodeB) {
@@ -24,32 +26,21 @@ public class Nodes {
 		return nodeA;
 	}
 	
-	/*public static boolean equals(Node node) {
-	
-		if(node == null)
-			return false;
-		if(node.getX() != x)
-			return false;
-		if(node.getY() != y)
-			return false;
-		if(node.getR() != r)
-			return false;
+	public static String toHashString(Node node) {
 		
-		return true;
+		String x = Integer.toHexString(node.getX());
+		String y = Integer.toHexString(node.getY());
+		String r = Integer.toHexString(node.getR());
+		return x + "." + y + "." + r;
 	}
 	
-	public static boolean equals(Object object) {
-		Node node = (Node)object;
-		return equals(node);
+	public static Node toNode(String hashString) {
+		
+		String[] stringArgs = hashString.split("\\.",-1);
+		Node node = new Node();
+		node.setX(Integer.parseInt(stringArgs[0], 16));
+		node.setY(Integer.parseInt(stringArgs[1], 16));
+		node.setR(Integer.parseInt(stringArgs[2], 16));
+		return node;
 	}
-	
-	public static boolean intersect(int[][] area) {
-	
-		if(area[0][0] > x || area[1][0] > y)
-			return false;
-		else if(area[0][0] + area[0][1] < x || area[1][0] + area[1][1] < y)
-			return false;
-		else
-			return true;
-	}*/
 }

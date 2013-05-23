@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fursten.simulator.world.World;
+import fursten.simulator.link.Link;
 import fursten.simulator.node.Node;
 import fursten.simulator.node.NodeActivityManager;
 import fursten.simulator.node.NodeStabilityCalculator;
@@ -60,6 +61,7 @@ public class RunCommand implements SimulatorCommand {
 		
 		List<Node> removedNodes = new ArrayList<Node>();
 		List<Node> addedNodes = new ArrayList<Node>();
+		List<Link> addedLinks = new ArrayList<Link>();
 		
 		for(Integer resourceKey : resourceKeys) {
 			
@@ -101,6 +103,14 @@ public class RunCommand implements SimulatorCommand {
 								if(spore != null) {
 									addedNodes.add(spore);
 									
+									//Add a link if of link type
+									if(offspring.getIsLinked()) {
+										Link newLink = new Link();
+										newLink.setChildNode(spore);
+										newLink.setParentNode(node);
+										addedLinks.add(newLink);
+									}
+										
 									//Reduce cost from parent
 									if(cost > 0) {
 										Node reducedNode = node.clone();
@@ -108,7 +118,7 @@ public class RunCommand implements SimulatorCommand {
 										removedNodes.add(reducedNode);
 									}
 									
-									System.out.println("#New " + spore + " " + cost + " - " + value + " # " + node.getV());
+									//System.out.println("#New " + spore + " " + cost + " - " + value + " # " + node.getV());
 									
 								}
 							}
@@ -118,7 +128,7 @@ public class RunCommand implements SimulatorCommand {
 			}
 		}
 		
-		if(removedNodes.size() > 0) {
+		/*if(removedNodes.size() > 0) {
 			NodeActivityManager.invalidate(removedNodes);
 			NM.delete(removedNodes);
 		}
@@ -126,7 +136,9 @@ public class RunCommand implements SimulatorCommand {
 		if(addedNodes.size() > 0) {
 			NodeActivityManager.invalidate(addedNodes);
 			NM.insert(addedNodes);
-		}
+		}*/
+		
+		new NodeTransactionCommand(removedNodes, addedNodes);
 		
 		logger.log(Level.INFO, "Run: Deleted " + removedNodes.size() + " & Added " + addedNodes.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return null;

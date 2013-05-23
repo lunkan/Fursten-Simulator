@@ -72,11 +72,9 @@ public class NodeServlet {
 			@QueryParam("r") List<String> resourceKeys,
 			@QueryParam("method") String method) throws IOException {
 		
-		System.out.println("replaceNodes");
 		Set<Integer> resourceFilter = getResourceKeysByParam(resourceKeys, method);
 		Rectangle rect = getRectByParam(x, y, w, h);
 		List<Node> deleteNodes = Facade.getNodes(rect, resourceFilter);
-		System.out.println("deleteNodes " + deleteNodes.size());
 		if(Facade.editNodes(deleteNodes, nodes.getNodes()))
 			return Response.status(Response.Status.OK).build();
 		else

@@ -147,9 +147,44 @@ public class NodeTree implements Serializable  {
     }
 
     /***********************************************************************
+     *  Substract node
+     ***********************************************************************/
+     public boolean substract(Node node) {
+    	 return substract(root, node);
+     }
+
+     private boolean substract(QNode h, Node node) {
+    	 
+    	 if(h == null){
+    		 return false;
+    	 }
+    	 else if(h.node != null) {
+    		 
+    		if(Nodes.intersect(h.node, node)) {
+    	    	h.node = Nodes.substract(h.node, node);
+    	    	if(h.node.getV() > 0) {
+    	    		return false;
+    	    	}
+    	    	else {
+    	    		h.node = null;
+    	    		return true;
+    	    	}
+    	    }
+    	 }
+    	 
+    	 /*else if(node.equals(h.node)) {
+    		 h.node = null;
+    		 return true;
+    	 }*/
+     
+    	 QNode subCell = h.getSubCell(node.getX(), node.getY());
+    	 return substract(subCell, node);
+     }
+     
+    /***********************************************************************
      *  Delete node
      ***********************************************************************/
-     public boolean delete(Node node) {
+     /*public boolean delete(Node node) {
          return delete(root, node);
      }
 
@@ -172,15 +207,10 @@ public class NodeTree implements Serializable  {
     	    	}
     	    }
     	 }
-    	 
-    	 /*else if(node.equals(h.node)) {
-    		 h.node = null;
-    		 return true;
-    	 }*/
      
     	 QNode subCell = h.getSubCell(node.getX(), node.getY());
     	 return delete(subCell, node);
-     }
+     }*/
 
   /***********************************************************************
     *  Range search.

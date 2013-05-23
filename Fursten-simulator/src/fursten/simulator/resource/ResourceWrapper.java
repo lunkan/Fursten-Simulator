@@ -18,10 +18,11 @@ public class ResourceWrapper {
 	private Set<Integer> dependencyKeys;
 	private ArrayList<Offspring> offsprings;
 	private ArrayList<HashMap<Integer, Float>> weightMap;
+	private Boolean hasLinks;
 	private Resource resource;
 	//private int isCloning;
 	
-	public static ResourceWrapper getWrapper(Resource resource) throws Exception{
+	public static ResourceWrapper getWrapper(Resource resource) {
 		
 		ResourceWrapper wrapper = wrapperPool.get(resource);
 		if(wrapper == null) {
@@ -36,10 +37,7 @@ public class ResourceWrapper {
 		wrapperPool.clear();
 	}
 	
-	private ResourceWrapper(Resource resource) throws Exception {
-		
-		if(resource == null)
-			throw new Exception("Resource must not be null");
+	private ResourceWrapper(Resource resource) {
 		
 		this.resource = resource;
 		
@@ -240,6 +238,23 @@ public class ResourceWrapper {
 	
 	public Set<Integer> getDependencies(int group) {
 		return getWeightMap().get(group).keySet();
+	}
+	
+	public boolean hasLinks() {
+		
+		if(hasLinks == null) {
+		
+			for(Offspring offspring : getOffsprings()) {
+				if(offspring.getIsLinked()) {
+					hasLinks = new Boolean(true);
+					break;
+				}
+			}
+			
+			hasLinks = new Boolean(false);
+		}
+		
+		return hasLinks;
 	}
 	
 	public boolean isValid() {

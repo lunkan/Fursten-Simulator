@@ -9,14 +9,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fursten.simulator.command.CleanCommand;
+import fursten.simulator.command.LinkEditCommand;
+import fursten.simulator.command.LinkGetCommand;
 import fursten.simulator.command.NodeGetCommand;
-import fursten.simulator.command.NodeEditCommand;
+import fursten.simulator.command.NodeTransactionCommand;
 import fursten.simulator.command.ResourceGetCommand;
 import fursten.simulator.command.ResourceEditCommand;
 import fursten.simulator.command.SampleCommand;
 import fursten.simulator.command.InitializeCommand;
 import fursten.simulator.command.RunCommand;
 import fursten.simulator.command.UpdateCommand;
+import fursten.simulator.link.Link;
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.WorldManager;
@@ -96,7 +99,7 @@ public class Facade {
 	public static boolean editNodes(List<Node> delete, List<Node> put) {
 		
 		try {
-			new NodeEditCommand(delete, put).execute();
+			new NodeTransactionCommand(delete, put).execute();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -160,9 +163,32 @@ public class Facade {
 		
 		try {
 			return (List<Resource>) new ResourceGetCommand(selection).execute();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<Link> getLinks(List<Node> linkNodes, boolean recursive) {
+		
+		try {
+			return (List<Link>) new LinkGetCommand(linkNodes, recursive).execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	public static boolean editLinks(List<Link> delete, List<Link> put) {
+		
+		try {
+			new LinkEditCommand(delete, put).execute();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 }

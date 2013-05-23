@@ -139,8 +139,4 @@ public class ResourceTest {
     	assertEquals(dependentResources.size(), 1);
     	assertTrue(dependentResources.contains(rootKey2));
     }
-    
-    /*@Test
-    public void testResourceWrapper() throws Exception {
-    }*/
 }

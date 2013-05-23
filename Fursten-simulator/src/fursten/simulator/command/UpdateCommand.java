@@ -86,8 +86,10 @@ public class UpdateCommand implements SimulatorCommand {
 		NodeActivityManager.clear();
 		
 		if(removedNodes.size() > 0) {
-			NM.delete(removedNodes);
-			NodeActivityManager.invalidate(removedNodes);
+			new NodeTransactionCommand(removedNodes);
+			
+			/*NM.delete(removedNodes);
+			NodeActivityManager.invalidate(removedNodes);*/
 		}
 		
 		logger.log(Level.INFO, "Update: NumCal " + numCalNode + " Rects " + numRect + " Deleted " + removedNodes.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");

@@ -28,7 +28,7 @@ public class Node implements Serializable {
 		this.y = y;
 		this.v = v;
 	}
-	
+
 	public float getV() {
 		return v;
 	}
@@ -61,6 +61,34 @@ public class Node implements Serializable {
 		this.v = v;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + r;
+		result = prime * result + x;
+		result = prime * result + y;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Node other = (Node) obj;
+		if (r != other.r)
+			return false;
+		if (x != other.x)
+			return false;
+		if (y != other.y)
+			return false;
+		return true;
+	}
+
 	public Node clone() {
 		Node newNode = new Node(r);
 		newNode.setX(x);

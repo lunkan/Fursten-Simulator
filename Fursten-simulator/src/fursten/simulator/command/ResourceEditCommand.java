@@ -1,14 +1,18 @@
 package fursten.simulator.command;
 
+import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fursten.simulator.node.Node;
 import fursten.simulator.node.NodeActivityManager;
 import fursten.simulator.node.NodeStabilityCalculator;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
+import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.ResourceDependencyManager;
@@ -42,6 +46,7 @@ public class ResourceEditCommand implements SimulatorCommand {
 		int numDeleted = 0;
 		int numInserted = 0;
 		
+		WorldManager WM = DAOFactory.get().getWorldManager();
 		NodeManager NM = DAOFactory.get().getNodeManager();
 		ResourceManager RM = DAOFactory.get().getResourceManager();
 		Set<Integer> validResourceKeys = RM.getKeys();
@@ -52,8 +57,13 @@ public class ResourceEditCommand implements SimulatorCommand {
 		if(deleteResources != null) {
 			
 			//Delete all nodes in of the resource type
-			for(Integer resourceKey : validResourceKeys)
+			Rectangle worldBounds = WM.getActive().getRect();
+			List<Node> deletedNodes = NM.get(worldBounds, deleteResources);
+			new NodeTransactionCommand(deletedNodes);
+			
+			/*for(Integer resourceKey : validResourceKeys) {
 				NM.deleteByResourceKey(resourceKey);
+			}*/
 			
 			//Delete all resources
 			numDeleted = RM.delete(deleteResources);

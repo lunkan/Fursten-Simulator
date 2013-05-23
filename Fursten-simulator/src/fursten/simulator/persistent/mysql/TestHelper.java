@@ -27,6 +27,7 @@ public class TestHelper implements DAOTestHelper {
 		DAOManager.get().getNodeManager().deleteAll();
 		DAOManager.get().getResourceManager().deleteAll();
 		DAOManager.get().getWorldManager().deleteAll();
+		DAOManager.get().getLinkManager().deleteAll();
 		
 		//If simulator is empty -> init blank world
 		if(instance == null) {

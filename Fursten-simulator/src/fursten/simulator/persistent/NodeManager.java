@@ -8,11 +8,11 @@ import fursten.simulator.node.Node;
 
 public interface NodeManager {
 
-	public int deleteByResourceKey(int resourceKey);
+	//public int deleteByResourceKey(int resourceKey);
 	public void clean();
 	public void close();
 	public int insert(List<Node> nodes);
-	public int delete(List<Node> nodes);
+	public List<Node> substract(List<Node> nodes);
 	public boolean deleteAll();
 	public List<Node> get(Rectangle bounds, Set<Integer> resourceKeys);
 	public List<Node> get(Rectangle bounds, Integer resourceKey);

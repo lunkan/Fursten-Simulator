@@ -1,11 +1,6 @@
 package fursten.simulator.persistent.mysql;
 
 import java.awt.Rectangle;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,17 +15,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
 
 import javax.sql.rowset.serial.SerialBlob;
 
 import fursten.simulator.node.Node;
 import fursten.simulator.persistent.NodeManager;
-import fursten.simulator.resource.Resource;
 import fursten.util.BinaryTranslator;
 
-class NodeDAO implements NodeManager {
+class NodeDAO implements NodeManager, Synchronisable {
 
 	private static final Logger logger = Logger.getLogger(NodeDAO.class.getName());
 	private static HashMap<Integer, NodeTree> cachedNodeTreeMap = null;
@@ -44,7 +36,7 @@ class NodeDAO implements NodeManager {
 		changedNodeTrees = new HashSet<Integer>();
 		
 		pullPersistent();
-		persistantSynchroniser = new Thread(new PersistantSynchroniser(this));
+		persistantSynchroniser = new Thread(new PersistantSynchroniser(this));//new Thread(new PersistantSynchroniser(this));
 		persistantSynchroniser.start();
 	}
 	
@@ -89,12 +81,12 @@ class NodeDAO implements NodeManager {
 		cachedNodeTreeMap = new HashMap<Integer, NodeTree>();
 	}*/
 	
-	public synchronized int deleteByResourceKey(int resourceKey) {
+	/*public synchronized int deleteByResourceKey(int resourceKey) {
 		lastUpdate = System.currentTimeMillis();
 		cachedNodeTreeMap.remove(resourceKey);
 		changedNodeTrees.add(resourceKey);
 		return 1;
-	}
+	}*/
 	
 	/*public int deleteByResourceKey(int resourceKey) {
 			
@@ -221,8 +213,34 @@ class NodeDAO implements NodeManager {
 		return nodes.size();
 	}*/
 	
-	public synchronized int delete(List<Node> nodes) {
+	public synchronized List<Node> substract(List<Node> nodes) {
 	
+		lastUpdate = System.currentTimeMillis();
+		int resourceKey = 0;
+		NodeTree nodeTree = null;
+		List<Node> deletedNodes = new ArrayList<Node>();
+		
+		Collections.sort(nodes, new NodeSort());
+		for(Node node : nodes) {
+			
+			if(node.getR() != resourceKey) {
+				nodeTree = cachedNodeTreeMap.get(node.getR());
+				if(nodeTree == null) 
+					continue;
+				
+				resourceKey = node.getR();
+				changedNodeTrees.add(resourceKey);
+			}
+			
+			if(cachedNodeTreeMap.get(resourceKey).substract(node))
+				deletedNodes.add(node);
+		}
+		
+		return deletedNodes;
+	}
+	
+	/*public synchronized int delete(List<Node> nodes) {
+		
 		lastUpdate = System.currentTimeMillis();
 		int resourceKey = 0;
 		NodeTree nodeTree = null;
@@ -239,11 +257,11 @@ class NodeDAO implements NodeManager {
 				changedNodeTrees.add(resourceKey);
 			}
 			
-			cachedNodeTreeMap.get(resourceKey).delete(node);
+			cachedNodeTreeMap.get(resourceKey).substract(node);
 		}
 		
 		return nodes.size();
-	}
+	}*/
 	
 	/*public int delete(List<Node> nodes) {
 		
@@ -301,6 +319,7 @@ class NodeDAO implements NodeManager {
 		lastUpdate = System.currentTimeMillis();
 		changedNodeTrees.addAll(cachedNodeTreeMap.keySet());
 		cachedNodeTreeMap.clear();
+		clean();
 		return true;
 	}
 	
@@ -588,7 +607,7 @@ class NodeDAO implements NodeManager {
 		
 	}*/
 	
-	private static class PersistantSynchroniser implements Runnable {
+	/*private static class PersistantSynchroniser implements Runnable {
 		
 		private NodeDAO parent;
 		
@@ -615,5 +634,5 @@ class NodeDAO implements NodeManager {
 	            //("I wasn't done!");
 	        }
 		}
-	}
+	}*/
 }

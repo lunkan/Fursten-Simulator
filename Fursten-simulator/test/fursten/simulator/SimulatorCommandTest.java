@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fursten.simulator.command.NodeGetCommand;
-import fursten.simulator.command.NodeEditCommand;
+import fursten.simulator.command.NodeTransactionCommand;
 import fursten.simulator.command.ResourceGetCommand;
 import fursten.simulator.command.ResourceEditCommand;
 import fursten.simulator.command.InitializeCommand;
@@ -267,7 +267,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     		}
     	}
     	
-    	new NodeEditCommand(null, nodes).execute();
+    	new NodeTransactionCommand(null, nodes).execute();
 		
 		//Perform test and measure time
 		long startTime = System.currentTimeMillis();
