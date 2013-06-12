@@ -23,12 +23,15 @@ public class DAOFactory extends DAOManager {
 		
 		DatabaseSettings dbSettings = Settings.getInstance().getDatabaseSettings();
 		
-		try {
-			connectionPool = new ConnectionPool(dbSettings.getDriver(), dbSettings.getUrl(), dbSettings.getUser(), dbSettings.getPassword(), 2, 10, false);
-		}
-		catch (SQLException e) {
-			logger.log(Level.SEVERE, "Could not create connection from pool " + e.getMessage());
-			e.printStackTrace();
+		if(dbSettings != null) {
+		
+			try {
+				connectionPool = new ConnectionPool(dbSettings.getDriver(), dbSettings.getUrl(), dbSettings.getUser(), dbSettings.getPassword(), 2, 10, false);
+			}
+			catch (SQLException e) {
+				logger.log(Level.SEVERE, "Could not create connection from pool " + e.getMessage());
+				e.printStackTrace();
+			}
 		}
 	}
 	

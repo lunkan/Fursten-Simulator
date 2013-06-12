@@ -22,7 +22,8 @@ public class Startup  implements ServletContextListener {
 		
 		//context.setAttribute("TEST", "TEST_VALUE");
 		String settingsUrl = context.getRealPath(File.separator) + "WEB-INF" + File.separator + "settings.xml";
-		Settings.getInstance().init(settingsUrl, "default", context);
+		//Settings.getInstance().init(settingsUrl, "default", context);
+		Settings.getInstance().init(settingsUrl, Settings.SettingsMode.DEFAULT);
 		World world = Facade.getWorld();
 		
 		//If simulator is empty -> init blank world

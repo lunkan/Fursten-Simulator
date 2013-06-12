@@ -65,6 +65,7 @@ public class LinkDAO implements LinkManager, Synchronisable {
 			pushPersistent();
 		
 		pullPersistent();
+		persistantSynchroniser = new Thread(new PersistantSynchroniser(this));
 		persistantSynchroniser.start();
 	}
 	

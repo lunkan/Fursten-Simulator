@@ -63,6 +63,7 @@ class NodeDAO implements NodeManager, Synchronisable {
 			pushPersistent();
 		
 		pullPersistent();
+		persistantSynchroniser = new Thread(new PersistantSynchroniser(this));
 		persistantSynchroniser.start();
 	}
 	

@@ -41,9 +41,6 @@ public class UpdateCommand implements SimulatorCommand {
 		int numCalNode = 0;
 		int numRect = 0;
 		
-		WorldManager SM = DAOFactory.get().getWorldManager();
-		World world = SM.getActive();
-		
 		NodeManager NM = DAOFactory.get().getNodeManager();
 		RM = DAOFactory.get().getResourceManager();
 		nodeMath = NodeStabilityCalculator.getInstance();
@@ -54,14 +51,14 @@ public class UpdateCommand implements SimulatorCommand {
 		//System.out.println("*");
 		
 		//Loop all resources that have been updated
-		Set<Integer> invalidResources = NodeActivityManager.getInvalidResources(world.getTick());
+		Set<Integer> invalidResources = NodeActivityManager.getInvalidResources();
 		for(Integer invalidResource : invalidResources) {
 			
 			ResourceWrapper resource = ResourceWrapper.getWrapper(RM.get(invalidResource));
 			if(resource.isDependent()){
 				
 				//Find and loop all regions where an update has occurred
-				for(Rectangle rect : NodeActivityManager.getInvalidRectByResourceKey(invalidResource, world.getTick())) {
+				for(Rectangle rect : NodeActivityManager.getInvalidRectByResourceKey(invalidResource)) {
 				
 					numRect++;
 					
@@ -83,7 +80,7 @@ public class UpdateCommand implements SimulatorCommand {
 			}
 		}
 		
-		NodeActivityManager.clear();
+		NodeActivityManager.clean();
 		
 		if(removedNodes.size() > 0) {
 			new NodeTransactionCommand(removedNodes);

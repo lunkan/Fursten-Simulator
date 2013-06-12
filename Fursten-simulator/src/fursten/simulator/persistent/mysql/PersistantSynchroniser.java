@@ -3,6 +3,7 @@ package fursten.simulator.persistent.mysql;
 public class PersistantSynchroniser implements Runnable {
 	
 	private Synchronisable synchronisable;
+	private volatile boolean execute;
 	
 	public PersistantSynchroniser(Synchronisable parent) {
 		this.synchronisable = parent;
@@ -10,9 +11,12 @@ public class PersistantSynchroniser implements Runnable {
 	
 	public void run() {
 		
+		this.execute = true;
+		
 		try {
 			
-			while(!Thread.interrupted()) {
+			while(this.execute) {
+				//!Thread.interrupted()) {
 				
 				//Check every 20 seconds for changed nodeTRees to push to database
 				Thread.sleep(20000);
@@ -25,6 +29,7 @@ public class PersistantSynchroniser implements Runnable {
         }
 		catch (InterruptedException e) {
             //("I wasn't done!");
+			this.execute = false;
         }
 	}
 }

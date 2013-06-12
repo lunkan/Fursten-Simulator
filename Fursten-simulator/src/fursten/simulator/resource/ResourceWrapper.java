@@ -43,11 +43,17 @@ public class ResourceWrapper {
 		
 		//UpdateRatio
 		float mostFrequent = this.resource.getMortality();
-		for(Offspring mutation : this.resource.getMutations()) {
-			mostFrequent = Math.max(mostFrequent, mutation.getRatio());
+		
+		if(this.resource.getMutations() != null) {
+			for(Offspring mutation : this.resource.getMutations()) {
+				mostFrequent = Math.max(mostFrequent, mutation.getRatio());
+			}
 		}
-		for(Offspring offspring : this.resource.getOffsprings()) {
-			mostFrequent = Math.max(mostFrequent, offspring.getRatio());
+		
+		if(this.resource.getOffsprings() != null) {
+			for(Offspring offspring : this.resource.getOffsprings()) {
+				mostFrequent = Math.max(mostFrequent, offspring.getRatio());
+			}
 		}
 		
 		if(mostFrequent > 0) {

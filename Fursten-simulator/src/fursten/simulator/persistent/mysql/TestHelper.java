@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 
 import fursten.simulator.Facade;
 import fursten.simulator.Settings;
+import fursten.simulator.Settings.SettingsMode;
 import fursten.simulator.world.World;
 import fursten.simulator.persistent.DAOManager;
 import fursten.util.persistent.DAOTestHelper;
@@ -21,7 +22,7 @@ public class TestHelper implements DAOTestHelper {
 		logger.log(Level.INFO, "Startup Test Fursten simulator.");
 		
 		String settingsUrl = "WebContent/WEB-INF/settings.xml";
-		Settings.getInstance().init(settingsUrl, "test", context);
+		Settings.getInstance().init(settingsUrl, Settings.SettingsMode.JUNIT);//"test");//, context);
 		World instance = Facade.getWorld();
 		
 		DAOManager.get().getNodeManager().deleteAll();

@@ -20,7 +20,7 @@ public class CleanCommand implements SimulatorCommand {
 		
 		ResourceWrapper.clear();
 		ResourceDependencyManager.clear();
-		NodeActivityManager.clear();
+		NodeActivityManager.invalidateAll();
 		ResourceKeyManager.clear();
 		
 		return null;

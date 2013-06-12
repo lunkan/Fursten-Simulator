@@ -63,7 +63,6 @@ public class Facade {
 	public static World getWorld() {
 		
 		logger.log(Level.INFO, "Calling Facade.getStatus");
-		
 		WorldManager SM = DAOFactory.get().getWorldManager();
 		World instance = SM.getActive();
 		return instance;

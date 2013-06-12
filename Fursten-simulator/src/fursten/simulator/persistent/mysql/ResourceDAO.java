@@ -24,13 +24,17 @@ public class ResourceDAO implements ResourceManager {
 	private static final int RESOURCE_TREE_ID = 1;
 	private static HashMap<Integer, Resource> cachedResourcesMap = null;
 	
-	private static ResourceDAO instance = new ResourceDAO();
+	private static ResourceDAO instance = null;
 	
 	private ResourceDAO() {
 		//...
 	}
 	
 	public static ResourceDAO getInstance() {
+		
+		if(instance == null)
+			instance = new ResourceDAO();
+		
         return instance;
     }
 	
@@ -176,20 +180,28 @@ public class ResourceDAO implements ResourceManager {
 		
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
+		
+		if(con != null) {
 			
-		try {
-			statement = con.prepareStatement("truncate resources");
-			statement.executeUpdate();
-			statement.close();
+			try {
+				statement = con.prepareStatement("truncate resources");
+				statement.executeUpdate();
+				statement.close();
+				clearCache();
+				return true;
+			}
+			catch(Exception e) {
+				logger.log(Level.SEVERE, e.toString());
+				return false;
+			}
+			finally {
+				DAOFactory.freeConnection(con);
+			}
+		
+		}
+		else {
 			clearCache();
-			return true;
-		}
-		catch(Exception e) {
-			logger.log(Level.SEVERE, e.toString());
 			return false;
-		}
-		finally {
-			DAOFactory.freeConnection(con);
 		}
 	}
 	

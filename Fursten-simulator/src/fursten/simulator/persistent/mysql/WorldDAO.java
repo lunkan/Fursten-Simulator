@@ -20,12 +20,16 @@ class WorldDAO implements WorldManager {
 	private static final int CURRENT_SESSION_ID = 1;
 	private static World world;
 	
-	private static WorldDAO worldDAO = new WorldDAO();
+	private static WorldDAO worldDAO = null;// = new WorldDAO();
 	
 	private WorldDAO() {
 		
+		/*
+		
+		
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
+		
 		
 		try {
 			statement = con.prepareStatement("select session_object from sessions where id = ?");
@@ -45,10 +49,16 @@ class WorldDAO implements WorldManager {
 		}
 		finally {
 			DAOFactory.freeConnection(con);
-		}
+		}*/
+		
+		
 	}
 	
 	public static WorldDAO getInstance() {
+		
+		if(worldDAO == null)
+			worldDAO = new WorldDAO();
+		
         return worldDAO;
     }
 	
@@ -63,19 +73,24 @@ class WorldDAO implements WorldManager {
 	@Override
 	public World getActive() {
 		
-		if(world != null) {
+		return world;
+		
+		/*if(world != null) {
 			return world;
 		}
 		else {
 			logger.log(Level.SEVERE, "Session is null but null is an invalid value");
 			return null;
-		}
+		}*/
 	}
 
 	@Override
 	public int setActive(World world) {
 		
-		Connection con = DAOFactory.getConnection();
+		this.world = world;
+		return 1;
+		
+		/*Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
 		
 		try {
@@ -115,7 +130,7 @@ class WorldDAO implements WorldManager {
 		}
 		finally {
 			DAOFactory.freeConnection(con);
-		}
+		}*/
 	}
 	
 	@Override
@@ -126,7 +141,7 @@ class WorldDAO implements WorldManager {
 	
 	public boolean deleteAll() {
 		
-		Connection con = DAOFactory.getConnection();
+		/*Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
 		
 		try {
@@ -142,6 +157,9 @@ class WorldDAO implements WorldManager {
 		}
 		finally {
 			DAOFactory.freeConnection(con);
-		}
+		}*/
+		
+		world = null;
+		return true;
 	}
 }

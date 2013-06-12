@@ -13,9 +13,17 @@ import org.apache.commons.configuration.tree.xpath.XPathExpressionEngine;
 public class Settings {
 
 	private static final Logger logger = Logger.getLogger(Settings.class.getName());
+	
+	public enum SettingsMode {
+		DEFAULT, DEBUG, JUNIT
+	}
+	
 	private XMLConfiguration config;
-	private ServletContext context;
-	private String profile;
+	
+	private SettingsMode settingsMode;
+	
+	//private ServletContext context;
+	//private String profile;
 	
 	private SimulationSettings simulationSettings;
 	
@@ -27,18 +35,21 @@ public class Settings {
 		return instance;
     }
 	
-	public void init(String settingsUrl, String profile, ServletContext context) {
+	public void init(String settingsUrl, SettingsMode settingsMode) {
+		//String profile, ServletContext context) {
 		
-		this.context = context;
-		this.profile = profile;
+		//this.context = context;
+		//this.profile = profile;
 		
-		if(config == null) {
-			try {
-				config = new XMLConfiguration(settingsUrl);
-				config.setExpressionEngine(new XPathExpressionEngine());
-			} catch (ConfigurationException e) {
-				e.printStackTrace();
-			}
+		this.settingsMode = settingsMode;
+		
+		try {
+			config = new XMLConfiguration(settingsUrl);
+			config.setExpressionEngine(new XPathExpressionEngine());
+		} catch (ConfigurationException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 	
@@ -60,20 +71,34 @@ public class Settings {
 		return simulationSettings;
 	}
 	
+	public SettingsMode settingsMode() {
+		return settingsMode;
+	}
+	
 	public DatabaseSettings getDatabaseSettings() {
 		
-		String driver = config.getString("databases/database[name = '" + profile + "']/driver");
-		String url = config.getString("databases/database[name = '" + profile + "']/url");
-		String user = config.getString("databases/database[name = '" + profile + "']/user");
-		String password = config.getString("databases/database[name = '" + profile + "']/password");
-				
-		DatabaseSettings dbSettings = new DatabaseSettings();
-		dbSettings.setDriver(driver);
-		dbSettings.setUrl(url);
-		dbSettings.setUser(user);
-		dbSettings.setPassword(password);
-		
-		return dbSettings;
+		if(settingsMode != SettingsMode.JUNIT) {
+			/*String driver = config.getString("databases/database[name = '" + profile + "']/driver");
+			String url = config.getString("databases/database[name = '" + profile + "']/url");
+			String user = config.getString("databases/database[name = '" + profile + "']/user");
+			String password = config.getString("databases/database[name = '" + profile + "']/password");*/
+			
+			String driver = config.getString("databases/database[name = 'default']/driver");
+			String url = config.getString("databases/database[name = 'default']/url");
+			String user = config.getString("databases/database[name = 'default']/user");
+			String password = config.getString("databases/database[name = 'default']/password");
+			
+			DatabaseSettings dbSettings = new DatabaseSettings();
+			dbSettings.setDriver(driver);
+			dbSettings.setUrl(url);
+			dbSettings.setUser(user);
+			dbSettings.setPassword(password);
+			
+			return dbSettings;
+		}
+		else {
+			return null;
+		}
 	}
 	
 	public class SimulationSettings {

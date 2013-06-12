@@ -25,7 +25,9 @@ public class NodeActivityManager {
 	private int CELL_SIZE;
 	
 	private HashMap<Integer, Set<Long>> activityMap;
-	private int startTick;
+	private boolean invalidateAll;
+	
+	//private int startTick;
 	
 	private NodeActivityManager() {
 		
@@ -34,9 +36,9 @@ public class NodeActivityManager {
 		GEOCELL_DIV = MAX_SIZE / CELL_SIZE;
 		
 		activityMap = new HashMap<Integer, Set<Long>>();
-		WorldManager SM = DAOFactory.get().getWorldManager();
+		/*WorldManager SM = DAOFactory.get().getWorldManager();
 		World world = SM.getActive(); 
-		startTick = world.getTick();
+		startTick = world.getTick();*/
 	}
 	
 	private static NodeActivityManager getInstance() {
@@ -68,30 +70,43 @@ public class NodeActivityManager {
 		}
 	}
 	
-	public static Set<Integer> getInvalidResources(int tick) {
-		return getInstance()._getInvalidResources(tick);
+	public static Set<Integer> getInvalidResources() {
+		return getInstance()._getInvalidResources();
 	}
 	
-	public Set<Integer> _getInvalidResources(int tick) {
+	public Set<Integer> _getInvalidResources() {
 		
-		if(tick > startTick)
+		//if(tick > startTick)
+		
+		if(!invalidateAll)
 			return activityMap.keySet();
 		
-		//First tick after clear all resources are invalid
 		ResourceManager RM = DAOFactory.get().getResourceManager();
 		return RM.getKeys();
+		
+		//First tick after clear all resources are invalid
+		/*ResourceManager RM = DAOFactory.get().getResourceManager();
+		return RM.getKeys();*/
 	}
 	
-	public static List<Rectangle> getInvalidRectByResourceKey(int resourceKey, int tick) {
-		return getInstance()._getInvalidRectByResourceKey(resourceKey, tick);
+	public static List<Rectangle> getInvalidRectByResourceKey(int resourceKey) {
+		return getInstance()._getInvalidRectByResourceKey(resourceKey);
 	}
 	
-	public List<Rectangle> _getInvalidRectByResourceKey(int resourceKey, int tick) {
+	public List<Rectangle> _getInvalidRectByResourceKey(int resourceKey) {
 		
 		List<Rectangle> invalidRegions = new ArrayList<Rectangle>();
 		
 		//First tick after clear all regions are invalid
-		if(tick <= startTick) {
+		/*if(tick <= startTick) {
+			WorldManager SM = DAOFactory.get().getWorldManager();
+			World world = SM.getActive();
+			Rectangle worldRect = world.getRect();
+			invalidRegions.add(worldRect);
+			return invalidRegions;
+		}*/
+		
+		if(invalidateAll) {
 			WorldManager SM = DAOFactory.get().getWorldManager();
 			World world = SM.getActive();
 			Rectangle worldRect = world.getRect();
@@ -120,13 +135,18 @@ public class NodeActivityManager {
 	
 	public void _clean() {
 		activityMap.clear();
+		invalidateAll = false;
 	}
 	
 	/**
 	 * Resets to start state - first round all is invalid
 	 */
-	public static void clear() {
-		instance = new NodeActivityManager();
+	public static void invalidateAll() {
+		getInstance()._invalidateAll();
+	}
+	
+	public void _invalidateAll() {
+		invalidateAll = true;
 	}
 	
 	private long toGeoHash(int x, int y) {
@@ -154,8 +174,4 @@ public class NodeActivityManager {
 		nY = (nY * CELL_SIZE) - (MAX_SIZE/2);
 		return new Rectangle((int)nX, (int)nY, CELL_SIZE, CELL_SIZE);
 	}
-	
-	//Todo: init activeIterator 
-	//public static class ActiveRectIterator implements Iterator<Rectangle> {
-	//}
 }

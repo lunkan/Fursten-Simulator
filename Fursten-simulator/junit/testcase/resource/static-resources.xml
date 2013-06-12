@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resourceCollection>
+    <resources>
+        <key>12</key>
+        <name>first resource</name>
+    </resources>
+    <resources>
+        <key>13</key>
+        <name>second resource</name>
+    </resources>
+</resourceCollection>
