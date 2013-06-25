@@ -33,16 +33,18 @@ import fursten.util.persistent.DAOTestHelper;
 
 public class SimulatorCommandTest {
 
-private final DAOTestHelper helper = DAOManager.getTestHelper();
+	//private final DAOTestHelper helper = DAOManager.getTestHelper();
 	
     @Before
     public void setUp() {
-        helper.setUp();
+        //helper.setUp();
+        TestStartup.init();
     }
 
     @After
     public void tearDown() {
-        helper.tearDown();
+        //helper.tearDown();
+        TestShutDown.destroy();
     }
     
     @Test
@@ -76,8 +78,8 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     		NodeManager NM = DAOManager.get().getNodeManager();
     		WorldManager SM = DAOManager.get().getWorldManager();
     		
-    		RM.insert(resource.getResource());
-    		NM.insert(new ArrayList<Node>(Arrays.asList(node)));
+    		RM.put(resource.getResource());
+    		NM.addAll(new ArrayList<Node>(Arrays.asList(node)));
     		
     		World session = new World()
     			.setName(TEST_NAME)
@@ -92,7 +94,7 @@ private final DAOTestHelper helper = DAOManager.getTestHelper();
     		//Log result
     		exeLog.add("Initialize Tot exe time =  " + (System.currentTimeMillis() - startTime) + "ms");
     		
-    		World activeSession = SM.getActive();
+    		World activeSession = SM.get();
     		assertEquals(session.getRect(), activeSession.getRect());
     		assertEquals(session.getName(), activeSession.getName());
     		

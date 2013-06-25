@@ -108,7 +108,7 @@ public class NodeActivityManager {
 		
 		if(invalidateAll) {
 			WorldManager SM = DAOFactory.get().getWorldManager();
-			World world = SM.getActive();
+			World world = SM.get();
 			Rectangle worldRect = world.getRect();
 			invalidRegions.add(worldRect);
 			return invalidRegions;

@@ -78,14 +78,14 @@ public class NodeTransactionCommand implements SimulatorCommand {
 			
 			if(jointNodes.size() > 0) {
 				substractNodes.addAll(jointNodes);
-				List<Node> deletedJoints = NM.substract(jointNodes);
+				List<Node> deletedJoints = NM.substractAll(jointNodes);
 				List<Link> deletedNodeLinks = LM.get(deletedJoints);
 				LM.delete(new ArrayList<Link>(deletedNodeLinks));
 				deleteLinks += deletedNodeLinks.size();
 				deletedNum += deletedJoints.size();
 			}
 			
-			deletedNum += NM.substract(substractNodes).size();
+			deletedNum += NM.substractAll(substractNodes).size();
 			substractedNum += substractNodes.size();
 			NodeActivityManager.invalidate(substractNodes);
 		}
@@ -94,7 +94,7 @@ public class NodeTransactionCommand implements SimulatorCommand {
 		if(insertNodes != null) {
 			
 			WorldManager SM = DAOFactory.get().getWorldManager();
-			World activeSession = SM.getActive();
+			World activeSession = SM.get();
 			
 			Set<Integer> validResourceKeys = RM.getKeys();
 			
@@ -108,7 +108,7 @@ public class NodeTransactionCommand implements SimulatorCommand {
 					throw new Exception("Failed adding node becouse node: " + node.toString() + " has no value.");
 			}
 			
-			insertedNum = NM.insert(insertNodes);
+			insertedNum = NM.addAll(insertNodes);
 			NodeActivityManager.invalidate(insertNodes);
 			
 			if(insertNodes.size() != insertedNum) {

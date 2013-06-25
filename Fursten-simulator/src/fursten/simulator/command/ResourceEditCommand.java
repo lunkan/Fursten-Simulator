@@ -57,7 +57,7 @@ public class ResourceEditCommand implements SimulatorCommand {
 		if(deleteResources != null) {
 			
 			//Delete all nodes in of the resource type
-			Rectangle worldBounds = WM.getActive().getRect();
+			Rectangle worldBounds = WM.get().getRect();
 			List<Node> deletedNodes = NM.get(worldBounds, deleteResources);
 			new NodeTransactionCommand(deletedNodes);
 			
@@ -66,7 +66,7 @@ public class ResourceEditCommand implements SimulatorCommand {
 			}*/
 			
 			//Delete all resources
-			numDeleted = RM.delete(deleteResources);
+			numDeleted = RM.removeAll(deleteResources);
 			if(numDeleted != deleteResources.size())
 				throw new Exception("Database may be corrupt! Resources could not be deleted.");
 		}
@@ -82,7 +82,7 @@ public class ResourceEditCommand implements SimulatorCommand {
 				}
 			}
 			
-			numInserted = RM.insert(insertResources);
+			numInserted = RM.putAll(insertResources);
 			if(numInserted != insertResources.size())
 				throw new Exception("Database may be corrupt! Resources could not be inserted.");
 		}

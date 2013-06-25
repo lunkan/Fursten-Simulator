@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resourceCollection>
+    <resources>
+        <key>1</key>
+        <name>resourceA</name>
+    </resources>
+    <resources>
+        <key>2</key>
+        <name>resourceB</name>
+    </resources>
+    <resources>
+        <key>3</key>
+        <name>resourceC</name>
+    </resources>
+    <resources>
+        <key>4</key>
+        <name>resourceD</name>
+    </resources>
+</resourceCollection>

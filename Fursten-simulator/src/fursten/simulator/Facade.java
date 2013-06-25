@@ -64,14 +64,14 @@ public class Facade {
 		
 		logger.log(Level.INFO, "Calling Facade.getStatus");
 		WorldManager SM = DAOFactory.get().getWorldManager();
-		World instance = SM.getActive();
+		World instance = SM.get();
 		return instance;
 	}
 
 	public static boolean run() {
 		
 		WorldManager SM = DAOFactory.get().getWorldManager();
-		World session = SM.getActive();
+		World session = SM.get();
 		
 		try {
 			new UpdateCommand(session.getRect()).execute();

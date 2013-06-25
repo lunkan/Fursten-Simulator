@@ -87,23 +87,33 @@ public class Resource implements Serializable {
 		return this.weightGroups;
 	}
 	
-	/*public boolean hasWeights() {
-		if (this.weightGroups == null)
-			return false;
-		else if(this.weightGroups.size() == 0)
-			return false;
-		else
-			return true;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + key;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
 	}
-	
-	public boolean hasOffsprings() {
-		if (this.offsprings == null)
-			return false;
-		else if(this.offsprings.size() == 0)
-			return false;
-		else
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-	}*/
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Resource other = (Resource) obj;
+		if (key != other.key)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
 	
 	public String toString() {
 		

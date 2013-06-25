@@ -11,25 +11,91 @@ import java.util.logging.Logger;
 import javax.sql.rowset.serial.SerialBlob;
 
 import fursten.simulator.world.World;
+import fursten.simulator.persistent.AutoSaveManager;
+import fursten.simulator.persistent.Persistable;
 import fursten.simulator.persistent.WorldManager;
 import fursten.util.BinaryTranslator;
 
-class WorldDAO implements WorldManager {
+class WorldDAO implements WorldManager, Persistable {
 
 	private static final Logger logger = Logger.getLogger(WorldDAO.class.getName());
 	private static final int CURRENT_SESSION_ID = 1;
 	private static World world;
 	
-	private static WorldDAO worldDAO = null;// = new WorldDAO();
+	private static WorldDAO instance = null;// = new WorldDAO();
+	private static boolean changed;
 	
 	private WorldDAO() {
 		
-		/*
+		//Add default world
+		world = new World();
+		world.setName("Untitled");
+		world.setWidth(10000);
+		world.setHeight(10000);
+	}
+	
+	public static WorldDAO getInstance() {
 		
+		if(instance == null)
+			instance = new WorldDAO();
 		
+        return instance;
+    }
+	
+	@Override
+	public synchronized boolean clear() {
+		
+		changed = true;
+		World world = new World();
+		set(world);
+		return false;
+	}
+
+	@Override
+	public synchronized boolean reset() {
+		instance = null;
+		return true;
+	}
+	
+	@Override
+	public World get() {
+		return world;
+	}
+
+	@Override
+	public synchronized int set(World world) {
+		
+		changed = true;
+		this.world = world;
+		return 1;
+	}
+	
+	public synchronized boolean deleteAll() {
+		changed = true;
+		world = null;
+		return true;
+	}
+
+	@Override
+	public boolean hasChanged() {
+		return changed;
+	}
+
+	@Override
+	public synchronized void clean() {
+		
+		if(changed)
+			pushPersistent();
+		
+		pullPersistent();
+		
+	}
+
+	@Override
+	public synchronized void pullPersistent() {
+
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
-		
 		
 		try {
 			statement = con.prepareStatement("select session_object from sessions where id = ?");
@@ -42,6 +108,7 @@ class WorldDAO implements WorldManager {
 				world = (World)BinaryTranslator.binaryToObject(worldBin.getBinaryStream());
 			}
 			
+			changed = false;
 			statement.close();
 		}
 		catch(Exception e) {
@@ -49,48 +116,13 @@ class WorldDAO implements WorldManager {
 		}
 		finally {
 			DAOFactory.freeConnection(con);
-		}*/
-		
-		
-	}
-	
-	public static WorldDAO getInstance() {
-		
-		if(worldDAO == null)
-			worldDAO = new WorldDAO();
-		
-        return worldDAO;
-    }
-	
-	@Override
-	public boolean clear() {
-		
-		World world = new World();
-		setActive(world);
-		return false;
-	}
-
-	@Override
-	public World getActive() {
-		
-		return world;
-		
-		/*if(world != null) {
-			return world;
 		}
-		else {
-			logger.log(Level.SEVERE, "Session is null but null is an invalid value");
-			return null;
-		}*/
 	}
 
 	@Override
-	public int setActive(World world) {
+	public synchronized void pushPersistent() {
 		
-		this.world = world;
-		return 1;
-		
-		/*Connection con = DAOFactory.getConnection();
+		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
 		
 		try {
@@ -103,7 +135,6 @@ class WorldDAO implements WorldManager {
 			if(result.first())
 				isNew = false;
 				
-			this.world = world;
 			Blob worldBin = new SerialBlob(BinaryTranslator.objectToBinary(world));
 			statement.close();
 			
@@ -122,44 +153,13 @@ class WorldDAO implements WorldManager {
 				statement.close();
 			}
 			
-		    return 1;
+			changed = false;
 		}
 		catch(Exception e) {
 			logger.log(Level.SEVERE, "Retry no: " + e.toString());
-			return 0;
 		}
 		finally {
 			DAOFactory.freeConnection(con);
-		}*/
-	}
-	
-	@Override
-	public List<World> getHistory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public boolean deleteAll() {
-		
-		/*Connection con = DAOFactory.getConnection();
-		PreparedStatement statement = null;
-		
-		try {
-			statement = con.prepareStatement("truncate sessions");
-			statement.executeUpdate();
-			statement.close();
-			clear();
-			return true;
 		}
-		catch(Exception e) {
-			logger.log(Level.SEVERE, "Retry no: " + e.toString());
-			return false;
-		}
-		finally {
-			DAOFactory.freeConnection(con);
-		}*/
-		
-		world = null;
-		return true;
 	}
 }

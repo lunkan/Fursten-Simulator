@@ -4,11 +4,8 @@ import java.util.List;
 
 import fursten.simulator.world.World;
 
-public interface WorldManager {
+public interface WorldManager extends Persistable, PersistantManager {
 
-	public int setActive(World world);
-	public World getActive();
-	public boolean clear();
-	public boolean deleteAll();
-	public List<World> getHistory();
+	public int set(World world);
+	public World get();
 }

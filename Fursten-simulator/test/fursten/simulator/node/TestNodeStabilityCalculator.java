@@ -1,6 +1,6 @@
 package fursten.simulator.node;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +10,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fursten.simulator.TestShutDown;
+import fursten.simulator.TestStartup;
 import fursten.simulator.persistent.DAOManager;
 import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.Resource.WeightGroup;
@@ -19,16 +21,18 @@ import fursten.util.persistent.DAOTestHelper;
 
 public class TestNodeStabilityCalculator {
 
-	private final DAOTestHelper helper = DAOManager.getTestHelper();
+	//private final DAOTestHelper helper = DAOManager.getTestHelper();
 	
     @Before
     public void setUp() {
-        helper.setUp();
+        //helper.setUp();
+        TestStartup.init();
     }
 
     @After
     public void tearDown() {
-        helper.tearDown();
+        //helper.tearDown();
+        TestShutDown.destroy();
     }
 
     @Test

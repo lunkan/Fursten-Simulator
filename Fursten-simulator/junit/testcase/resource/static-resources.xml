@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resourceCollection>
     <resources>
-        <key>12</key>
-        <name>first resource</name>
+        <key>-2147483648</key>
+        <name>static_1</name>
     </resources>
     <resources>
-        <key>13</key>
-        <name>second resource</name>
+        <key>-1073741824</key>
+        <name>static_11</name>
+    </resources>
+    <resources>
+        <key>-1610612736</key>
+        <name>static_12</name>
+    </resources>
+    <resources>
+        <key>1073741824</key>
+        <name>static_2</name>
+    </resources>
+    <resources>
+        <key>1610612736</key>
+        <name>static_21</name>
+    </resources>
+    <resources>
+        <key>1342177280</key>
+        <name>static_22</name>
     </resources>
 </resourceCollection>

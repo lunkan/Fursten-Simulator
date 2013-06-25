@@ -20,9 +20,11 @@ import fursten.simulator.link.Link;
 import fursten.simulator.node.Node;
 import fursten.simulator.node.Nodes;
 import fursten.simulator.persistent.LinkManager;
+import fursten.simulator.persistent.AutoSaveManager;
+import fursten.simulator.persistent.Persistable;
 import fursten.util.BinaryTranslator;
 
-public class LinkDAO implements LinkManager, Synchronisable {
+public class LinkDAO implements LinkManager {
 
 	private static final Logger logger = Logger.getLogger(LinkDAO.class.getName());
 	private static LinkDAO instance = null;
@@ -30,16 +32,9 @@ public class LinkDAO implements LinkManager, Synchronisable {
 	private static HashMap<Node, List<Link>> cachedLinkMap = null;
 	private static Set<Node> changedLinks = null;
 	
-	private static Thread persistantSynchroniser = null;
-	private static long lastUpdate = 0;
-	
 	private LinkDAO() {
 		cachedLinkMap = new HashMap<Node, List<Link>>();
 		changedLinks = new HashSet<Node>();
-		
-		pullPersistent();
-		persistantSynchroniser = new Thread(new PersistantSynchroniser(this));//new Thread(new PersistantSynchroniser(this));
-		persistantSynchroniser.start();
 	}
 	 
 	public static LinkDAO getInstance() {
@@ -54,32 +49,28 @@ public class LinkDAO implements LinkManager, Synchronisable {
 		return (changedLinks.size() > 0);
 	}
 	
-	public long getLastUpdate() {
-		return lastUpdate;
-	}
-	
 	public synchronized void clean() {
 		
-		persistantSynchroniser.interrupt();
-		if(cachedLinkMap.size() > 0)
+		if(hasChanged())
 			pushPersistent();
 		
 		pullPersistent();
-		persistantSynchroniser = new Thread(new PersistantSynchroniser(this));
-		persistantSynchroniser.start();
-	}
-	
-	public void close() {
-		
-		persistantSynchroniser.interrupt();
-		if(cachedLinkMap.size() > 0)
-			pushPersistent();
 	}
 
+	public synchronized boolean clear() {
+		
+		changedLinks.addAll(cachedLinkMap.keySet());
+		cachedLinkMap.clear();
+		return true;
+	}
+	
+	public synchronized boolean reset() {
+		instance = null;
+		return true;
+	}
+	
 	@Override
 	public int insert(List<Link> links) {
-		
-		lastUpdate = System.currentTimeMillis();
 		
 		for(Link link : links) {
 			
@@ -97,8 +88,6 @@ public class LinkDAO implements LinkManager, Synchronisable {
 	@Override
 	public int delete(List<Link> links) {
 		
-		lastUpdate = System.currentTimeMillis();
-		
 		for(Link link : links) {
 			List<Link> sourceLinks = cachedLinkMap.get(link.getParentNode());
 			if(sourceLinks.remove(link))
@@ -106,15 +95,6 @@ public class LinkDAO implements LinkManager, Synchronisable {
 		}
 		
 		return 0;
-	}
-
-	@Override
-	public boolean deleteAll() {
-		lastUpdate = System.currentTimeMillis();
-		changedLinks.addAll(cachedLinkMap.keySet());
-		cachedLinkMap.clear();
-		clean();
-		return true;
 	}
 
 	@Override
@@ -150,7 +130,6 @@ public class LinkDAO implements LinkManager, Synchronisable {
 	@SuppressWarnings("unchecked")
 	public synchronized void pullPersistent() {
 		
-		lastUpdate = System.currentTimeMillis();
 		Connection con = DAOFactory.getConnection();
 		
 		try {

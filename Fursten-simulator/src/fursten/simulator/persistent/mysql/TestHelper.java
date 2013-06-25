@@ -12,7 +12,7 @@ import fursten.simulator.world.World;
 import fursten.simulator.persistent.DAOManager;
 import fursten.util.persistent.DAOTestHelper;
 
-public class TestHelper implements DAOTestHelper {
+/*public class TestHelper implements DAOTestHelper {
 
 	private static final Logger logger = Logger.getLogger(TestHelper.class.getName());
 	private ServletContext context;
@@ -57,4 +57,4 @@ public class TestHelper implements DAOTestHelper {
 		logger.log(Level.INFO, "End Test Fursten simulator.");
 		return true;
 	}
-}
+}*/

@@ -27,7 +27,7 @@ public class TestNodeHelper {
 		}
 		
 		NodeManager NM = DAOFactory.get().getNodeManager();
-		NM.insert(nodes);
+		NM.addAll(nodes);
 		
 		return nodes;
 	}
@@ -49,7 +49,7 @@ public class TestNodeHelper {
 		}
 		
 		NodeManager NM = DAOFactory.get().getNodeManager();
-		NM.insert(nodes);
+		NM.addAll(nodes);
 		
 		return nodes;
 	}

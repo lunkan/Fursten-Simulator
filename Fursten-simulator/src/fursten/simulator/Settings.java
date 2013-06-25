@@ -22,9 +22,6 @@ public class Settings {
 	
 	private SettingsMode settingsMode;
 	
-	//private ServletContext context;
-	//private String profile;
-	
 	private SimulationSettings simulationSettings;
 	
 	private static Settings instance = new Settings(); 
@@ -36,10 +33,6 @@ public class Settings {
     }
 	
 	public void init(String settingsUrl, SettingsMode settingsMode) {
-		//String profile, ServletContext context) {
-		
-		//this.context = context;
-		//this.profile = profile;
 		
 		this.settingsMode = settingsMode;
 		
@@ -63,9 +56,11 @@ public class Settings {
 			simulationSettings = new SimulationSettings();
 			int updatePrecision = config.getInt("simulator/update-precision");
 			int geocellBase = config.getInt("simulator/geocell-base");
+			int autoSaveUpdateRate = config.getInt("simulator/autosave-rate");
 			
 			simulationSettings.setUpdatePrecision(updatePrecision);
 			simulationSettings.setGeocellBase(geocellBase);
+			simulationSettings.setAutoSaveUpdateRate(autoSaveUpdateRate);
 		}
 		
 		return simulationSettings;
@@ -78,11 +73,6 @@ public class Settings {
 	public DatabaseSettings getDatabaseSettings() {
 		
 		if(settingsMode != SettingsMode.JUNIT) {
-			/*String driver = config.getString("databases/database[name = '" + profile + "']/driver");
-			String url = config.getString("databases/database[name = '" + profile + "']/url");
-			String user = config.getString("databases/database[name = '" + profile + "']/user");
-			String password = config.getString("databases/database[name = '" + profile + "']/password");*/
-			
 			String driver = config.getString("databases/database[name = 'default']/driver");
 			String url = config.getString("databases/database[name = 'default']/url");
 			String user = config.getString("databases/database[name = 'default']/user");
@@ -105,6 +95,7 @@ public class Settings {
 	
 		private int updatePrecision;
 		private int geocellBase;
+		private int autoSaveUpdateRate;
 		
 		public int getUpdatePrecision() {
 			return updatePrecision;
@@ -122,7 +113,13 @@ public class Settings {
 			this.geocellBase = value;
 		}
 		
+		public int getAutoSaveUpdateRate() {
+			return autoSaveUpdateRate;
+		}
 		
+		public void setAutoSaveUpdateRate(int value) {
+			this.autoSaveUpdateRate = value;
+		}
 	}
 	
 	public class DatabaseSettings {

@@ -48,7 +48,7 @@ public class TestResourceHelper {
     	resources.addAll(staticResources.values());
     	
     	ResourceManager RM = DAOManager.get().getResourceManager();
-    	RM.insert(resources);
+    	RM.putAll(resources);
 		
     	return staticResources;
 	}
@@ -87,7 +87,7 @@ public class TestResourceHelper {
 		resources.putAll(dependentResources);
     	
     	ResourceManager RM = DAOManager.get().getResourceManager();
-    	RM.insert(new ArrayList<Resource>(resources.values()));
+    	RM.putAll(new ArrayList<Resource>(resources.values()));
 		
     	return resources;
 	}
@@ -127,7 +127,7 @@ public class TestResourceHelper {
 		resources.putAll(dependentResources);
     	
     	ResourceManager RM = DAOManager.get().getResourceManager();
-    	RM.insert(new ArrayList<Resource>(resources.values()));
+    	RM.putAll(new ArrayList<Resource>(resources.values()));
 		
     	return resources;
 	}
@@ -167,7 +167,7 @@ public class TestResourceHelper {
 		resources.putAll(dependentResources);
     	
     	ResourceManager RM = DAOManager.get().getResourceManager();
-    	RM.insert(new ArrayList<Resource>(resources.values()));
+    	RM.putAll(new ArrayList<Resource>(resources.values()));
 		
     	return resources;
 	}
@@ -213,7 +213,7 @@ public class TestResourceHelper {
 		resources.putAll(dependentResources);
     	
     	ResourceManager RM = DAOManager.get().getResourceManager();
-    	RM.insert(new ArrayList<Resource>(resources.values()));
+    	RM.putAll(new ArrayList<Resource>(resources.values()));
 		
     	return resources;
 	}
@@ -263,7 +263,7 @@ public class TestResourceHelper {
 		resources.putAll(dependentResources);
     	
     	ResourceManager RM = DAOManager.get().getResourceManager();
-    	RM.insert(new ArrayList<Resource>(resources.values()));
+    	RM.putAll(new ArrayList<Resource>(resources.values()));
 		
     	return resources;
 	}

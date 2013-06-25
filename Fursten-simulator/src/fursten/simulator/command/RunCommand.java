@@ -49,10 +49,10 @@ public class RunCommand implements SimulatorCommand {
 		rand = new Random();
 		
 		WorldManager SM = DAOFactory.get().getWorldManager();
-		world = SM.getActive();
+		world = SM.get();
 		int tick = world.getTick() + 1;
 		world.setTick(tick);
-		SM.setActive(world);
+		SM.set(world);
 		
 		NodeManager NM = DAOFactory.get().getNodeManager();
 		RM = DAOFactory.get().getResourceManager();

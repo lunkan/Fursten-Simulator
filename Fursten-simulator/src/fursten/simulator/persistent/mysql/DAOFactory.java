@@ -76,4 +76,11 @@ public class DAOFactory extends DAOManager {
 	public LinkManager getLinkManager() {
 		return LinkDAO.getInstance();
 	}
+	
+	public void reset() {
+		getNodeManager().reset();
+		getResourceManager().reset();
+		getWorldManager().reset();
+		getLinkManager().reset();
+	}
 }

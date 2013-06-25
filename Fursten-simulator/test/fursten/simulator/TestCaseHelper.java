@@ -18,34 +18,6 @@ public class TestCaseHelper {
 
 	private static final Logger logger = Logger.getLogger(TestCaseHelper.class.getName());
 	
-	/*    try {
-		//FileInputStream fis = (FileInputStream)getClass().getResourceAsStream("static-resources.xml");
-		  
-		//WebContent/WEB-INF/settings.xml
-		
-		//File testWsdl = new File("WebContent/index.jsp");
-		File testWsdl = new File("testcase/resource/static-resources.xml");
-		System.out.println("# " + testWsdl.exists());
-		
-		String settingsUrl = "testcase/resource/static-resources.xml";//context.getRealPath(File.separator) + "WEB-INF" + File.separator + "settings.xml";
-		
-		//URL url = this.getClass().getResource("/junit-settings.xml");
-		//File testWsdl = new File(url.getFile());
-		
-		//System.out.println("# " + testWsdl.exists());
-		
-		// loading properties in XML format        
-		//Properties pXML = new Properties();
-		//pXML.loadFromXML(new FileInputStream( new File("junit-settings.xml")));
-		
-		//System.out.println(pXML.size());
-		
-	}
-	catch(Exception e) {
-		System.out.println("no work " + e.getMessage());
-	}
-	}*/
-	
 	public static HashMap<String, Resource> load(String testCase) {
 		
 		try {
@@ -53,15 +25,9 @@ public class TestCaseHelper {
 			Unmarshaller unMarshaller = context.createUnmarshaller();
 			ResourceCollection resourceCollection = (ResourceCollection) unMarshaller.unmarshal(new FileInputStream(testCase));
 			
-			/*System.out.println("size " + resources.getResources().size());
-			
-			for(Resource resource : resources.getResources()) {
-				System.out.println(resource.getName());
-			}*/
-			
 			ArrayList<Resource> resourceList = resourceCollection.getResources();
 			ResourceManager RM = DAOManager.get().getResourceManager();
-	    	RM.insert(resourceList);
+	    	RM.putAll(resourceList);
 	    	
 			HashMap<String, Resource> resourceMap = new HashMap<String, Resource>();
 			for(Resource resource : resourceList) {

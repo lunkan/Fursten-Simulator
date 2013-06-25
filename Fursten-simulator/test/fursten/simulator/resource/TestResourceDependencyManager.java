@@ -11,6 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import fursten.simulator.TestShutDown;
+import fursten.simulator.TestStartup;
 import fursten.simulator.persistent.DAOManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource.Weight;
@@ -19,16 +21,18 @@ import fursten.util.persistent.DAOTestHelper;
 
 public class TestResourceDependencyManager {
 
-	private final DAOTestHelper helper = DAOManager.getTestHelper();
+	//private final DAOTestHelper helper = DAOManager.getTestHelper();
 	
     @Before
     public void setUp() {
-        helper.setUp();
+        //helper.setUp();
+        TestStartup.init();
     }
 
     @After
     public void tearDown() {
-        helper.tearDown();
+        //helper.tearDown();
+        TestShutDown.destroy();
     }
     
     @Test
@@ -76,7 +80,7 @@ public class TestResourceDependencyManager {
     	childRes2.setKey(childKey2);
     	
     	//Add resources to DB
-    	DAOFactory.get().getResourceManager().insert(resources);
+    	DAOFactory.get().getResourceManager().putAll(resources);
 		
     	//Check that Root 2 is dependent of childKey1 + childKey2 and self
     	Set<Integer> dependentResources = ResourceDependencyManager.getDependents(childKey1);

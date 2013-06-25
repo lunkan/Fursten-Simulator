@@ -6,14 +6,14 @@ import java.util.Set;
 
 import fursten.simulator.node.Node;
 
-public interface NodeManager {
+public interface NodeManager extends Persistable, PersistantManager {
 
-	//public int deleteByResourceKey(int resourceKey);
-	public void clean();
-	public void close();
-	public int insert(List<Node> nodes);
-	public List<Node> substract(List<Node> nodes);
-	public boolean deleteAll();
+	public int add(Node... nodes);
+	public int addAll(List<Node> nodes);
+	
+	public List<Node> substract(Node... nodes);
+	public List<Node> substractAll(List<Node> nodes);
+	
 	public List<Node> get(Rectangle bounds, Set<Integer> resourceKeys);
 	public List<Node> get(Rectangle bounds, Integer resourceKey);
 	public List<Node> get(Rectangle bounds);

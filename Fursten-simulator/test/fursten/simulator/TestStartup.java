@@ -19,21 +19,14 @@ public class TestStartup {
 		Settings.getInstance().init(settingsUrl, Settings.SettingsMode.JUNIT);
 		
 		WorldManager SM = DAOFactory.get().getWorldManager();
-		World world = SM.getActive();
 		
 		//Simulator must be empty -> init blank world
-		if(world == null) {
-			logger.log(Level.INFO, "init test world.");
-			World newWorld = new World();
-			newWorld.setName("Test World");
-			newWorld.setWidth(10000);
-			newWorld.setHeight(10000);
-			SM.setActive(world);
-		}
-		else {
-			logger.log(Level.WARNING, "Simulator is not empty - JUnit test can only run on an empty world");
-			//System.exit(0);
-		}
+		logger.log(Level.INFO, "init test world.");
+		World world = new World();
+		world.setName("Test World");
+		world.setWidth(10000);
+		world.setHeight(10000);
+		SM.set(world);
 	}
 }
 
