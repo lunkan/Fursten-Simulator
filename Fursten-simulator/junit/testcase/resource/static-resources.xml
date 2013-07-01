@@ -1,27 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resourceCollection>
+	<!-- Root 1 -->
     <resources>
         <key>-2147483648</key>
         <name>static_1</name>
     </resources>
-    <resources>
-        <key>-1073741824</key>
-        <name>static_11</name>
-    </resources>
-    <resources>
-        <key>-1610612736</key>
-        <name>static_12</name>
-    </resources>
+	    <resources>
+        	<key>-1073741824</key>
+        	<name>static_11</name>
+    	</resources>
+    		<resources>
+        		<key>-536870912</key>
+        		<name>static_111</name>
+    		</resources>
+    		<resources>
+        		<key>-805306368</key>
+        		<name>static_112</name>
+    		</resources>
+    	<resources>
+        	<key>-1610612736</key>
+        	<name>static_12</name>
+    	</resources>
+    		<resources>
+        		<key>-1342177280</key>
+        		<name>static_121</name>
+    		</resources>
+    		<resources>
+        		<key>-1476395008</key>
+        		<name>static_122</name>
+    		</resources>
+    <!-- Root 2 -->
     <resources>
         <key>1073741824</key>
         <name>static_2</name>
     </resources>
-    <resources>
-        <key>1610612736</key>
-        <name>static_21</name>
-    </resources>
-    <resources>
-        <key>1342177280</key>
-        <name>static_22</name>
-    </resources>
+    	<resources>
+        	<key>1610612736</key>
+        	<name>static_21</name>
+    	</resources>
+    		<resources>
+        		<key>1879048192</key>
+        		<name>static_211</name>
+    		</resources>
+    		<resources>
+        		<key>1744830464</key>
+        		<name>static_212</name>
+    		</resources>
+    	<resources>
+        	<key>1342177280</key>
+        	<name>static_22</name>
+    	</resources>
+    		<resources>
+        		<key>1476395008</key>
+        		<name>static_221</name>
+    		</resources>
+    		<resources>
+        		<key>1409286144</key>
+        		<name>static_222</name>
+    		</resources>
+    
 </resourceCollection>

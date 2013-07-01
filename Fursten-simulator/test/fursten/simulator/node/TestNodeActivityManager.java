@@ -30,7 +30,6 @@ import fursten.simulator.resource.Resource;
 import fursten.simulator.resource.ResourceCollection;
 import fursten.simulator.resource.ResourceKeyManager;
 import fursten.simulator.resource.ResourceWrapper;
-import fursten.simulator.resource.TestResourceHelper;
 import fursten.simulator.world.World;
 import fursten.util.persistent.DAOTestHelper;
 

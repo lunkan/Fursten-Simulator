@@ -40,7 +40,6 @@ public class TestResourceManager extends TestCase {
     
     @Test
     public void testInsert() {
-    	logger.log(Level.INFO, "Test testInsert");
     	
     	//Put single
     	RM.put(resourceSamples.get("resourceA"));
@@ -63,8 +62,6 @@ public class TestResourceManager extends TestCase {
     
     @Test
     public void testRemove() {
-    	logger.log(Level.INFO, "Test testRemove");
-    	
     	
     	//Init
     	RM.putAll(new ArrayList<Resource>(resourceSamples.values()));
@@ -83,7 +80,6 @@ public class TestResourceManager extends TestCase {
     
     @Test
     public void testGetKeys() {
-    	logger.log(Level.INFO, "Test testGetKeys");
     	
     	//Init
     	RM.putAll(new ArrayList<Resource>(resourceSamples.values()));

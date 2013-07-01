@@ -49,7 +49,6 @@ public class TestNodeManager extends TestCase {
     
     @Test
     public void testInsert() {
-    	logger.log(Level.INFO, "Test testInsert");
     	
     	NM.addAll(new ArrayList<Node>(nodeSamples.values()));
     	List<Node> nodes = NM.get(worldRect);
@@ -59,7 +58,6 @@ public class TestNodeManager extends TestCase {
     
     @Test
     public void testGet() {
-    	logger.log(Level.INFO, "Test testGet");
     	
     	NM.addAll(new ArrayList<Node>(nodeSamples.values()));
     	
@@ -76,7 +74,6 @@ public class TestNodeManager extends TestCase {
     
     @Test
     public void testSubstract() {
-    	logger.log(Level.INFO, "Test testSubstract");
     	
     	NM.addAll(new ArrayList<Node>(nodeSamples.values()));
     	NM.substractAll(Arrays.asList(new Node[]{ nodeSamples.get("nodeA"), new Node(2, -10, 0, 0.3f) }));
@@ -88,7 +85,6 @@ public class TestNodeManager extends TestCase {
     
     @Test
     public void testContains() {
-    	logger.log(Level.INFO, "Test testContains");
     	
     	NM.addAll(new ArrayList<Node>(nodeSamples.values()));
     	

@@ -104,22 +104,12 @@ public class ResourceKeyManager {
 		instance = new ResourceKeyManager();
 	}
 	
-	public static boolean isRelatives(int resourceKeyA, int resourceKeyB) {
-		
-		int shiftA = Integer.numberOfTrailingZeros(resourceKeyA);
-		int shiftB = Integer.numberOfTrailingZeros(resourceKeyB);
-		int shift = Math.max(shiftA, shiftB);
-		
-		if((resourceKeyA ^ resourceKeyB) >>> shift == 0)
-			return true;
-		else
-			return false;
-	}
-	
 	public static boolean isDescendant(int descendantKey, int parentKey) {
 		
 		int shift = Integer.numberOfTrailingZeros(parentKey);
-		if((parentKey ^ descendantKey) >>> shift == 0)
+		if(descendantKey == parentKey)
+			return false;
+		else if((parentKey ^ descendantKey) >>> shift == 0)
 			return true;
 		else
 			return false;

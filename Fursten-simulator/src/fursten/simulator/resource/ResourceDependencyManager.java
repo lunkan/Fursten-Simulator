@@ -43,16 +43,24 @@ public class ResourceDependencyManager {
 		Set<Integer> dependentResources = new HashSet<Integer>();
 		for(Resource resource : resources) {
 			
-			ResourceWrapper wrapper;
-				
 			//Loop and add dependencies - also descendants are dependent
-			wrapper = ResourceWrapper.getWrapper(resource);
-			for(Integer dependency : wrapper.getDependencies()){
+			ResourceWrapper wrapper = ResourceWrapper.getWrapper(resource);
+			
+			if(wrapper.isDependent()) {
 				
-				if(ResourceKeyManager.isDescendant(resourceKey, dependency)) {
-					dependentResources.add(resource.getKey());
-					break;
+				for(int i = 0; i < wrapper.numGroups(); i++) {
+					for(Integer dependency : wrapper.getDependencies(i)) {
+						
+						if(ResourceKeyManager.isDescendant(resourceKey, dependency) || resourceKey == dependency.intValue()) {
+							dependentResources.add(resource.getKey());
+							break;
+						}
+					}
 				}
+				
+				//Add self (always dependent)
+				if(resourceKey == resource.getKey())
+					dependentResources.add(resource.getKey());
 			}
 		}
 		

@@ -15,12 +15,10 @@ public class ResourceWrapper {
 	
 	private int updateRatio;
 	private float adjustedMortality;
-	private Set<Integer> dependencyKeys;
 	private ArrayList<Offspring> offsprings;
 	private ArrayList<HashMap<Integer, Float>> weightMap;
 	private Boolean hasLinks;
 	private Resource resource;
-	//private int isCloning;
 	
 	public static ResourceWrapper getWrapper(Resource resource) {
 		
@@ -65,19 +63,27 @@ public class ResourceWrapper {
 		adjustedMortality = adjustByInterval(this.resource.getMortality());
 	}
 	
-	public Resource getResource() {
-		return this.resource;
+	/**
+	 * Calculate the updateRate of the resource by measuring the lowest acceptable interval between updates.
+	 * Lowest acceptable interval = most frequent update (mortality or any offspring) divided by Simulator precision.
+	 * @return
+	 */
+	public int getUpdateintervall() {
+		return updateRatio;
 	}
 	
-	public ResourceWrapper setResource(Resource resource) throws Exception {
-		
-		if(resource == null)
-			throw new Exception("Resource must not be null");
-			
-		this.resource = resource;
-		offsprings = null;
-		weightMap = null;
-		return this;
+	/**
+	 * Adjusted probabilty as a function of updateInterval.
+	 * The outcome of a updateInterval-adjusted random-event is base-probability * ratioBase
+	 * Remember - this is not 100% equal calculate every event for every tick - we do shortcuts here
+	 * @return
+	 */
+	private float adjustByInterval(float value) {
+		return (float)(1 - Math.pow((1-value), updateRatio));
+	}
+	
+	public Resource getResource() {
+		return this.resource;
 	}
 	
 	public int getKey() {
@@ -100,29 +106,41 @@ public class ResourceWrapper {
 		return adjustedMortality;
 	}
 	
+	/**
+	 * Adjusted by update ratio
+	 * @return
+	 */
 	public ArrayList<Offspring> getOffsprings() {
 	
 		if(offsprings != null)
 			return offsprings;
 		
 		offsprings = new ArrayList<Offspring>();
-		for(Offspring mutation : this.resource.getMutations()) {
-			Offspring mutationClone = mutation.clone();
-			float adjustedRation = adjustByInterval(mutationClone.getRatio());
-			mutationClone.setRatio(adjustedRation);
-			offsprings.add(mutationClone);
+		if(this.resource.getMutations() != null) {
+			for(Offspring mutation : this.resource.getMutations()) {
+				Offspring mutationClone = mutation.clone();
+				float adjustedRation = adjustByInterval(mutationClone.getRatio());
+				mutationClone.setRatio(adjustedRation);
+				offsprings.add(mutationClone);
+			}
 		}
-		for(Offspring offspring : this.resource.getOffsprings()) {
-			Offspring offspringClone = offspring.clone();
-			offspringClone.setResource(this.resource.getKey());
-			float adjustedRation = adjustByInterval(offspringClone.getRatio());
-			offspringClone.setRatio(adjustedRation);
-			offsprings.add(offspringClone);
+		if(this.resource.getOffsprings() != null) {
+			for(Offspring offspring : this.resource.getOffsprings()) {
+				Offspring offspringClone = offspring.clone();
+				offspringClone.setResource(this.resource.getKey());
+				float adjustedRation = adjustByInterval(offspringClone.getRatio());
+				offspringClone.setRatio(adjustedRation);
+				offsprings.add(offspringClone);
+			}
 		}
 		
 		return offsprings;
 	}
 	
+	/**
+	 * Adjusted by update ratio
+	 * @return
+	 */
 	public ArrayList<HashMap<Integer, Float>> getWeightMap() {
 		
 		if(weightMap != null)
@@ -150,6 +168,10 @@ public class ResourceWrapper {
 		return getWeightMap().size();
 	}
 	
+	public Set<Integer> getDependencies(int group) {
+		return getWeightMap().get(group).keySet();
+	}
+	
 	/**
 	 * If there is a point of calculate the resource as run
 	 * Resource is static If - has no offsprings and is immortal, is locked. 
@@ -173,77 +195,6 @@ public class ResourceWrapper {
 			return false;
 		
 		return (getWeightMap().size() > 0);
-	}
-	
-	/**
-	 * Resource is breedable if it produce offsprings
-	 * @return
-	 */
-	/*public boolean isBreedable() {
-		return (getOffsprings().size() > 0);
-	}*/
-	
-	/**
-	 * Resource is cloning if it has self as on of it's offsprings
-	 * @return
-	 */
-	/*public boolean isCloning() {
-		if(isCloning > 0)
-			return true;
-		else if(isCloning < 0)
-			return false;
-		
-		for(Offspring offspring : getOffsprings()) {
-			if(offspring.getResource() == resource.getKey()) {
-				isCloning = 1;
-				return true;
-			}
-		}
-		
-		isCloning = 0;
-		return false;
-	}*/
-	
-	/**
-	 * Calculate the updateRate of the resource by measuring the lowest acceptable interval between updates.
-	 * Lowest acceptable interval = most frequent update (mortality or any offspring) divided by Simulator precision.
-	 * @return
-	 */
-	public int getUpdateintervall() {
-		return updateRatio;
-	}
-	
-	/**
-	 * Adjusted probabilty as a function of updateInterval.
-	 * The outcome of a updateInterval-adjusted random-event is base-probability * ratioBase
-	 * Remember - this is not 100% equal calculate every event for every tick - we do shortcuts here
-	 * @return
-	 */
-	private float adjustByInterval(float value) {
-		return (float)(1 - Math.pow((1-value), getUpdateintervall()));
-	}
-	
-	public Set<Integer> getDependencies() {
-		
-		if(dependencyKeys == null) {
-			
-			dependencyKeys = new HashSet<Integer>();
-			
-			if(isDependent()) {
-				for(int i = 0; i < getWeightMap().size(); i++) {
-					dependencyKeys.addAll(getDependencies(i));
-				}
-				
-				//Add self (always dependent)
-				dependencyKeys.add(resource.getKey());
-			}
-		}
-		
-		return dependencyKeys;
-	}
-	
-	public Set<Integer> getDependencies(int group) {
-		return getWeightMap().get(group).keySet();
 	}
 	
 	public boolean hasLinks() {

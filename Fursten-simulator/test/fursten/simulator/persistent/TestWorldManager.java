@@ -33,7 +33,6 @@ public class TestWorldManager extends TestCase {
 	
     @Test
     public void testSetGet() {
-    	logger.log(Level.INFO, "Test testSetGet");
     	
     	World newWorld = new World();
     	newWorld.setName("testSetGetWorld");
