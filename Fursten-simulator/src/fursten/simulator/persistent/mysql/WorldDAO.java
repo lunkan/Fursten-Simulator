@@ -20,10 +20,11 @@ class WorldDAO implements WorldManager, Persistable {
 
 	private static final Logger logger = Logger.getLogger(WorldDAO.class.getName());
 	private static final int CURRENT_SESSION_ID = 1;
-	private static World world;
 	
 	private static WorldDAO instance = null;// = new WorldDAO();
-	private static boolean changed;
+	
+	private World world;
+	private boolean changed;
 	
 	private WorldDAO() {
 		
@@ -44,10 +45,9 @@ class WorldDAO implements WorldManager, Persistable {
 	
 	@Override
 	public synchronized boolean clear() {
-		
-		changed = true;
 		World world = new World();
 		set(world);
+		changed = true;
 		return false;
 	}
 
@@ -64,9 +64,8 @@ class WorldDAO implements WorldManager, Persistable {
 
 	@Override
 	public synchronized int set(World world) {
-		
-		changed = true;
 		this.world = world;
+		changed = true;
 		return 1;
 	}
 	

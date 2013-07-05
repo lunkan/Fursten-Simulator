@@ -28,15 +28,13 @@ import fursten.util.BinaryTranslator;
 class NodeDAO implements NodeManager {
 
 	private static final Logger logger = Logger.getLogger(NodeDAO.class.getName());
-	private static HashMap<Integer, NodeTree> cachedNodeTreeMap = null;
-	private static Set<Integer> changedNodeTrees = null;
-	private static boolean changed;
-	
 	private static NodeDAO instance = null;
 	
+	private HashMap<Integer, NodeTree> nodeTreeMap = null;
+	private boolean changed;
+	
 	private NodeDAO() {
-		cachedNodeTreeMap = new HashMap<Integer, NodeTree>();
-		changedNodeTrees = new HashSet<Integer>();
+		nodeTreeMap = new HashMap<Integer, NodeTree>();
 	}
 	
 	public static NodeDAO getInstance() {
@@ -48,7 +46,7 @@ class NodeDAO implements NodeManager {
     }
 	
 	public boolean hasChanged() {
-		return changed;//(changedNodeTrees.size() > 0);
+		return changed;
 	}
 	
 	public synchronized void clean() {
@@ -79,19 +77,17 @@ class NodeDAO implements NodeManager {
 			
 			if(node.getR() != resourceKey) {
 				resourceKey = node.getR();
-				nodeTree = cachedNodeTreeMap.get(resourceKey);
+				nodeTree = nodeTreeMap.get(resourceKey);
 				if(nodeTree == null) {
 					nodeTree = new NodeTree(31);
-					cachedNodeTreeMap.put(resourceKey, nodeTree);
+					nodeTreeMap.put(resourceKey, nodeTree);
 				}
-				
-				changed = true;
-				changedNodeTrees.add(resourceKey);
 			}
 			
-			cachedNodeTreeMap.get(resourceKey).insert(node);
+			nodeTreeMap.get(resourceKey).insert(node);
 		}
 		
+		changed = true;
 		return nodes.size();
 	}
 	
@@ -109,31 +105,29 @@ class NodeDAO implements NodeManager {
 		for(Node node : nodes) {
 			
 			if(node.getR() != resourceKey) {
-				nodeTree = cachedNodeTreeMap.get(node.getR());
+				nodeTree = nodeTreeMap.get(node.getR());
 				if(nodeTree == null) 
 					continue;
 				
 				resourceKey = node.getR();
-				changed = true;
-				changedNodeTrees.add(resourceKey);
 			}
 			
-			if(cachedNodeTreeMap.get(resourceKey).substract(node))
+			if(nodeTreeMap.get(resourceKey).substract(node))
 				deletedNodes.add(node);
 		}
 		
+		changed = true;
 		return deletedNodes;
 	}
 	
 	public synchronized boolean clear() {
-		changedNodeTrees.addAll(cachedNodeTreeMap.keySet());
-		cachedNodeTreeMap.clear();
+		nodeTreeMap.clear();
 		changed = true;
 		return true;
 	}
 	
 	public List<Node> get(Rectangle bounds) {
-		return get(bounds, cachedNodeTreeMap.keySet());
+		return get(bounds, nodeTreeMap.keySet());
 	}
 
 	public List<Node> get(Rectangle bounds, Integer resource) {
@@ -147,8 +141,8 @@ class NodeDAO implements NodeManager {
 		ArrayList<Node> result = new ArrayList<Node>();
 		for(Integer resourceKey : resources) {
 			
-			if(cachedNodeTreeMap.containsKey(resourceKey)) {
-				List<Node> nodes = cachedNodeTreeMap.get(resourceKey).get(bounds);
+			if(nodeTreeMap.containsKey(resourceKey)) {
+				List<Node> nodes = nodeTreeMap.get(resourceKey).get(bounds);
 				result.addAll(nodes);
 			}
 		}
@@ -181,10 +175,7 @@ class NodeDAO implements NodeManager {
 		
 		try {
 			
-			cachedNodeTreeMap.clear();
-			changedNodeTrees.clear();
-			changed = false;
-			
+			nodeTreeMap.clear();
 			PreparedStatement statement = con.prepareStatement("select * from nodes");
 			ResultSet resultSet = statement.executeQuery();
 			
@@ -193,11 +184,12 @@ class NodeDAO implements NodeManager {
 				int resourceKey =  resultSet.getInt("resource_key");
 				Blob nodeBin = resultSet.getBlob("node_tree");
 				NodeTree nodeTree = (NodeTree)BinaryTranslator.binaryToObject(nodeBin.getBinaryStream());
-				cachedNodeTreeMap.put(resourceKey, nodeTree);
+				nodeTreeMap.put(resourceKey, nodeTree);
 				pullTreeCount ++;
 			}
 			
 			resultSet.close();
+			changed = false;
 			logger.log(Level.INFO, "Pulled " + pullTreeCount + " node trees from database.");
 		}
 		catch(Exception e) {
@@ -210,20 +202,16 @@ class NodeDAO implements NodeManager {
 	
 	public synchronized void pushPersistent() {
 		
-		//changedNodeTrees.size() == 0)
-		if(!changed)
-			return;
-		
 		Connection con = DAOFactory.getConnection();
 		PreparedStatement statement = null;
 		
 		try {
 			
-			Iterator<Integer> it = changedNodeTrees.iterator();
+			Iterator<Integer> it = nodeTreeMap.keySet().iterator();
 			while(it.hasNext()) {
 			
 				Integer resourceKey = it.next();
-				NodeTree updatedTree = cachedNodeTreeMap.get(resourceKey);
+				NodeTree updatedTree = nodeTreeMap.get(resourceKey);
 				
 				//Delete if tree is removed or new/update
 				if(updatedTree == null) {
@@ -257,10 +245,6 @@ class NodeDAO implements NodeManager {
 						statement.close();
 					}
 				}
-				
-				//remove changed flag
-				it.remove();
-				
 			}
 			
 			changed = false;

@@ -220,14 +220,14 @@ public class ResourceWrapper {
 		if (resource.getName() == null || resource.getName().equals(""))
 			return false;
 		
-		for(Offspring offspring : getOffsprings()) {
+		/*for(Offspring offspring : getOffsprings()) {
 			if(offspring.getRatio() <= 0)
 				return false;
 			if(offspring.getCost() < 0)
 				return false;
 			if(offspring.getMultiplier() <= 0)
 				return false;
-		}
+		}*/
 		
 		return true;
 	}

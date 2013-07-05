@@ -1,15 +1,19 @@
 package fursten.simulator.persistent;
 
 import java.util.ArrayDeque;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class AutoSaveManager implements Runnable {
 	
+	private static final Logger logger = Logger.getLogger(AutoSaveManager.class.getName());
+	
 	private int updateRate;
 	private ArrayDeque<Persistable> persistables;
-	private volatile boolean execute;
 	
 	public AutoSaveManager(int updateRate) {
+		
 		persistables = new ArrayDeque<Persistable>();
 		this.updateRate = updateRate;
 	}
@@ -24,25 +28,41 @@ public class AutoSaveManager implements Runnable {
 	
 	public void run() {
 		
-		this.execute = true;
+		if(!Thread.interrupted())
+			logger.log(Level.INFO, "AutoSave process started");
+		else
+			logger.log(Level.INFO, "AutoSave process could not start becouse thread is interrupted");
 		
-		try {
+		while(!Thread.interrupted()) {
 			
-			while(this.execute) {
+			int timeCounter = 0;
+			while(timeCounter < updateRate) {
 				
-				//Check every x seconds for changes to push to database
-				Thread.sleep(updateRate);
-				
-				for (Persistable persistable : persistables) {
-					if(persistable.hasChanged()) {
-						persistable.pushPersistent();
-					}
+				try {
+					Thread.sleep(2000);
+					timeCounter += 2000;
+			    } catch (InterruptedException e) {
+			    	logger.log(Level.INFO, "AutoSaveManager interrupted");
+			        return;
+			    }
+			}
+		
+			//Check every x seconds for changes to push to database
+			boolean isUpdated = false;
+			for (Persistable persistable : persistables) {
+				if(persistable.hasChanged()) {
+					persistable.pushPersistent();
+					isUpdated = true;
 				}
 			}
-        }
-		catch (InterruptedException e) {
-            //("I wasn't done!");
-			this.execute = false;
-        }
+			
+			if(isUpdated)
+				logger.log(Level.INFO, "Persistables uptaded. Database is in sync");
+			//else
+			//	logger.log(Level.INFO, "Persistables already up to date. Database is in sync");
+		}
+		
+		logger.log(Level.INFO, "AutoSaveManager interrupted");
+        return;
 	}
 }

@@ -20,6 +20,14 @@ public class ShutDown implements ServletContextListener {
 		
 		//Close autosave and push last changes to database
 		Startup.autoSaveProcess.interrupt();
+		
+		try {
+			Startup.autoSaveProcess.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		
 		DAOManager.get().getWorldManager().pushPersistent();
 		DAOManager.get().getResourceManager().pushPersistent();
 		DAOManager.get().getNodeManager().pushPersistent();

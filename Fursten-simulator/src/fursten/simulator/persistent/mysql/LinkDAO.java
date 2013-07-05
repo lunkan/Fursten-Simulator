@@ -30,12 +30,11 @@ public class LinkDAO implements LinkManager {
 	private static final Logger logger = Logger.getLogger(LinkDAO.class.getName());
 	private static LinkDAO instance = null;
 	
-	private static HashMap<Node, List<Link>> cachedLinkMap = null;
-	private static Set<Node> changedLinks = null;
+	private HashMap<Node, List<Link>> linkMap = null;
+	private boolean changed;
 	
 	private LinkDAO() {
-		cachedLinkMap = new HashMap<Node, List<Link>>();
-		changedLinks = new HashSet<Node>();
+		linkMap = new HashMap<Node, List<Link>>();
 	}
 	 
 	public static LinkDAO getInstance() {
@@ -47,7 +46,7 @@ public class LinkDAO implements LinkManager {
     }
 	
 	public boolean hasChanged() {
-		return (changedLinks.size() > 0);
+		return changed;
 	}
 	
 	public synchronized void clean() {
@@ -59,41 +58,41 @@ public class LinkDAO implements LinkManager {
 	}
 
 	public synchronized boolean clear() {
-		
-		changedLinks.addAll(cachedLinkMap.keySet());
-		cachedLinkMap.clear();
+		linkMap.clear();
+		changed = true;
 		return true;
 	}
 	
 	public synchronized boolean reset() {
+		changed = true;
 		instance = null;
 		return true;
 	}
 	
-	public int add(Link... links) {
+	public synchronized int add(Link... links) {
 		return addAll(Arrays.asList(links));
 	}
 	
-	public int addAll(List<Link> links) {
+	public synchronized int addAll(List<Link> links) {
 		
 		for(Link link : links) {
 			
 			Node parentNode = link.getParentNode();
-			if(!cachedLinkMap.containsKey(parentNode))
-				cachedLinkMap.put(parentNode, new ArrayList<Link>());
+			if(!linkMap.containsKey(parentNode))
+				linkMap.put(parentNode, new ArrayList<Link>());
 			
-			cachedLinkMap.get(parentNode).add(link);
-			changedLinks.add(parentNode);
+			linkMap.get(parentNode).add(link);
 		}
 		
+		changed = true;
 		return links.size();
 	}
 
-	public List<Link> remove(Link... links) {
+	public synchronized List<Link> remove(Link... links) {
 		return removeAll(Arrays.asList(links));
 	}
 	
-	public List<Link> removeAll(List<Link> links) {
+	public synchronized List<Link> removeAll(List<Link> links) {
 		
 		ArrayList<Link> removedLinks = new ArrayList<Link>();
 		
@@ -102,22 +101,17 @@ public class LinkDAO implements LinkManager {
 			
 			Link removeLink = it.next();
 			
-			List<Link> sourceLinks = cachedLinkMap.get(removeLink.getParentNode());
+			List<Link> sourceLinks = linkMap.get(removeLink.getParentNode());
 			if(sourceLinks != null) {
 				
 				for(Link sourceLink : sourceLinks) {
 					
-					/*System.out.println("#" + removeLink.getParentNode() + " - " + removeLink.getChildNode());
-					System.out.println("*" + sourceLink.getParentNode() + " - " + sourceLink.getChildNode());
-					System.out.println(sourceLink.equals(removeLink));*/
-					
 					if(sourceLink.equals(removeLink)) {
 						removedLinks.add(removeLink);
-						cachedLinkMap.get(removeLink.getParentNode()).remove(removeLink);
-						changedLinks.add(removeLink.getParentNode());
+						linkMap.get(removeLink.getParentNode()).remove(removeLink);
 						
-						if(cachedLinkMap.get(removeLink.getParentNode()).size() == 0)
-							cachedLinkMap.remove(removeLink.getParentNode());
+						if(linkMap.get(removeLink.getParentNode()).size() == 0)
+							linkMap.remove(removeLink.getParentNode());
 						
 						break;
 					}
@@ -125,6 +119,7 @@ public class LinkDAO implements LinkManager {
 			}	
 		}
 		
+		changed = true;
 		return removedLinks;
 	}
 
@@ -135,9 +130,9 @@ public class LinkDAO implements LinkManager {
 	public List<Link> getAll(List<Node> nodes) {
 		List<Link> links = new ArrayList<Link>();
 		for(Node node : nodes) {
-			List<Link> nodeLink = cachedLinkMap.get(node);
+			List<Link> nodeLink = linkMap.get(node);
 			if(nodeLink != null)
-				links.addAll(cachedLinkMap.get(node));
+				links.addAll(linkMap.get(node));
 		}
 		
 		return links;
@@ -150,8 +145,7 @@ public class LinkDAO implements LinkManager {
 		
 		try {
 			
-			cachedLinkMap.clear();
-			changedLinks.clear();
+			linkMap.clear();
 			
 			PreparedStatement statement = con.prepareStatement("select * from links");
 			ResultSet resultSet = statement.executeQuery();
@@ -161,10 +155,11 @@ public class LinkDAO implements LinkManager {
 				Node node = Nodes.toNode(hashString);
 				Blob linksBin = resultSet.getBlob("links");
 				List<Link> links = (List<Link>)BinaryTranslator.binaryToObject(linksBin.getBinaryStream());
-				cachedLinkMap.put(node, links);
+				linkMap.put(node, links);
 			}
 			
 			resultSet.close();
+			changed = false;
 		}
 		catch(Exception e) {
 			logger.log(Level.SEVERE, "Could not syncLocal", e);
@@ -181,12 +176,12 @@ public class LinkDAO implements LinkManager {
 		
 		try {
 			
-			Iterator<Node> it = changedLinks.iterator();
+			Iterator<Node> it = linkMap.keySet().iterator();
 			while(it.hasNext()) {
 			
 				Node node = it.next();
 				String nodeHash = Nodes.toHashString(node);
-				List<Link> links = cachedLinkMap.get(node);
+				List<Link> links = linkMap.get(node);
 				
 				//Delete if tree is removed or new/update
 				if(links == null) {
@@ -220,11 +215,9 @@ public class LinkDAO implements LinkManager {
 						statement.close();
 					}
 				}
-				
-				//remove changed flag
-				it.remove();
-				
 			}
+			
+			changed = false;
 		}
 		catch(Exception e) {
 			logger.log(Level.SEVERE, "Retry no: " + e.toString());

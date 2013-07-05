@@ -34,12 +34,23 @@ public class NodeTransactionCommand implements SimulatorCommand {
 	private LinkManager LM;
 	
 	public NodeTransactionCommand(List<Node> substractNodes) {
-		this.substractNodes = substractNodes;
+		if(substractNodes != null)
+			this.substractNodes = substractNodes;
+		else
+			this.substractNodes = new ArrayList<Node>();
 	}
 
 	public NodeTransactionCommand(List<Node> substractNodes, List<Node> insertNodes) {
-		this.substractNodes = substractNodes;
-		this.insertNodes = insertNodes;
+		
+		if(substractNodes != null)
+			this.substractNodes = substractNodes;
+		else
+			this.substractNodes = new ArrayList<Node>();
+		
+		if(insertNodes != null)
+			this.insertNodes = insertNodes;
+		else
+			this.insertNodes = new ArrayList<Node>();
 	}
 
 	public String getName() {
@@ -113,12 +124,18 @@ public class NodeTransactionCommand implements SimulatorCommand {
 			
 			//Validate inserted nodes
 			for(Node node : insertNodes) {
-				if(!validResourceKeys.contains(node.getR()))
-					throw new Exception("Failed adding node becouse resourceId: " + node.getR() + " does not have a resource attached to it. No nodes where added.");
-				else if(!activeSession.getRect().contains(node.getX(), node.getY()))
-					throw new Exception("Failed adding node becouse node: " + node.toString() + " is out of bounds. World bounds: " + activeSession.getRect().toString());
-				else if(node.getV() <= 0)
-					throw new Exception("Failed adding node becouse node: " + node.toString() + " has no value.");
+				if(!validResourceKeys.contains(node.getR())) {
+					logger.log(Level.WARNING, "Failed adding node becouse resourceId: " + node.getR() + " does not have a resource attached to it. No nodes where added.");
+					return null;
+				}
+				else if(!activeSession.getRect().contains(node.getX(), node.getY())) {
+					logger.log(Level.WARNING, "Failed adding node becouse node: " + node.toString() + " is out of bounds. World bounds: " + activeSession.getRect().toString());
+					return null;
+				}
+				else if(node.getV() <= 0) {
+					logger.log(Level.WARNING, "Failed adding node becouse node: " + node.toString() + " has no value.");
+					return null;
+				}
 			}
 			
 			insertedNum = NM.addAll(insertNodes);

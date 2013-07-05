@@ -27,11 +27,11 @@ public class ResourceDAO implements ResourceManager, Persistable {
 
 	private static final Logger logger = Logger.getLogger(ResourceDAO.class.getName());
 	private static final int RESOURCE_TREE_ID = 1;
-	private static HashMap<Integer, Resource> resourcesMap;
-	
-	private static boolean changed;
 	
 	private static ResourceDAO instance = null;
+	
+	private HashMap<Integer, Resource> resourcesMap;
+	private boolean changed;
 	
 	private ResourceDAO() {
 		resourcesMap = new HashMap<Integer, Resource>();
@@ -90,7 +90,7 @@ public class ResourceDAO implements ResourceManager, Persistable {
 	public synchronized boolean reset() {
 		instance = null;
 		changed = true;
-		return false;
+		return true;
 	}
 	
 	public Resource get(int key) {
@@ -113,39 +113,7 @@ public class ResourceDAO implements ResourceManager, Persistable {
 		return result;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public Set<Integer> getKeys() {
-		
-		if(resourcesMap == null) {
-				
-			Connection con = DAOFactory.getConnection();
-			PreparedStatement statement = null;
-			
-			try {
-				statement = con.prepareStatement("select resource_object from resources where id = ?");
-				statement.setInt(1, RESOURCE_TREE_ID);
-				statement.setMaxRows(1);
-				ResultSet resultSet = statement.executeQuery();
-				
-				if(resultSet.first()) {
-					Blob resourcesBin = resultSet.getBlob("resource_object");
-					resourcesMap = (HashMap<Integer, Resource>)BinaryTranslator.binaryToObject(resourcesBin.getBinaryStream());
-				}
-				else {
-					return new HashSet<Integer>();
-				}
-				
-				statement.close();
-			}
-			catch(Exception e) {
-				logger.log(Level.SEVERE, "Retry no: " + e.toString());
-				return new HashSet<Integer>();
-			}
-			finally {
-				DAOFactory.freeConnection(con);
-			}
-		}
-		
 		return new HashSet<Integer>(resourcesMap.keySet());
 	}
 
@@ -197,9 +165,6 @@ public class ResourceDAO implements ResourceManager, Persistable {
 
 	@Override
 	public synchronized void pushPersistent() {
-		
-		if(!changed)
-			return;
 		
 		Connection con = DAOFactory.getConnection();
 		

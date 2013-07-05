@@ -9,6 +9,7 @@ public abstract class DAOManager {
 	public abstract WorldManager getWorldManager();
 	public abstract LinkManager getLinkManager();
 	public abstract void reset();
+	public abstract void load();
 	
 	private static DAOManager factory = null;
 	

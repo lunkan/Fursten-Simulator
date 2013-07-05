@@ -34,40 +34,15 @@ public class Startup  implements ServletContextListener {
 		autoSaveManager.addPersistable(DAOManager.get().getNodeManager());
 		autoSaveManager.addPersistable(DAOManager.get().getLinkManager());
 		
+		DAOManager.get().load();
+		
 		autoSaveProcess = new Thread(autoSaveManager);
 		autoSaveProcess.start();
 		
 		logger.log(Level.SEVERE, "Fursten simulator started with default settings.");
-		
-		
-		/*World world = Facade.getWorld();
-		
-		//If simulator is empty -> init blank world
-		if(world == null) {
-			logger.log(Level.SEVERE, "No world initiated - init default world.");
-			World newWorld = new World();
-			newWorld.setName("No name");
-			newWorld.setWidth(10000);
-			newWorld.setHeight(10000);
-			boolean success = Facade.init(newWorld);
-			if(!success) {
-				logger.log(Level.SEVERE, "Fursten simulator could not init default world.");
-				return;
-			}
-			else {
-				logger.log(Level.INFO, "Fursten simulator started with default settings.");
-			}
-		}
-		else {
-			logger.log(Level.INFO, "Fursten simulator started: " + world.toString());
-		}*/
-		
-		
-		
 	}
 	
 	public void contextDestroyed(ServletContextEvent contextEvent) {
 		//context = contextEvent.getServletContext();
-		//System.out.println("Context Destroyed - Startup");
 	}
 }
