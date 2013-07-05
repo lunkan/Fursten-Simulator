@@ -11,7 +11,6 @@ public class Link implements Serializable {
 
 	static final long serialVersionUID = 10275539472837495L;
 
-	private long id;
 	private Node parentNode;
 	private Node childNode;
 	private float weight;
@@ -53,12 +52,10 @@ public class Link implements Serializable {
 		//VOObject!
 	}
 	
-	public long getId() {
-		return id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
+	public Link(Node parentNode, Node childNode, float weight) {
+		this.parentNode = parentNode;
+		this.childNode = childNode;
+		this.weight = weight;
 	}
 	
 	public Node getParentNode() {
@@ -84,4 +81,9 @@ public class Link implements Serializable {
 	public void setWeight(float weight) {
 		this.weight = weight;
 	}
+	
+	public String toString() {
+		return "Link [parent:("+ parentNode +") child:("+ childNode +") weight:"+ weight +"]";
+	}
+	
 }

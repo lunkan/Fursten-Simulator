@@ -2,6 +2,7 @@ package fursten.simulator.command;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -37,10 +38,24 @@ public class LinkGetCommand implements SimulatorCommand {
 		Set<Link> links = new HashSet<Link>();
 		
 		for(Node linkNode : linkNodes) {
-			if(recursive)
-				links.addAll(LM.getAllByNode(linkNode));
-			else
-				links.addAll(LM.getByNode(linkNode));
+			if(recursive) {
+				List<Link> recursiveLinks = LM.get(linkNode);
+				
+				while(recursiveLinks.size() > 0) {
+					
+					links.addAll(recursiveLinks);
+					Iterator<Link> it = recursiveLinks.iterator();
+					
+					while(it.hasNext()) {
+						Link nextLink = it.next();
+						recursiveLinks.addAll(LM.get(nextLink.getChildNode()));
+						it.remove();
+					}
+				}
+			}
+			else {
+				links.addAll(LM.get(linkNode));
+			}
 		}
 		
 		logger.log(Level.INFO, "Fetched links num:" + links.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");

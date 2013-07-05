@@ -89,6 +89,7 @@ public class ResourceDAO implements ResourceManager, Persistable {
 	
 	public synchronized boolean reset() {
 		instance = null;
+		changed = true;
 		return false;
 	}
 	

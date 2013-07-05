@@ -30,7 +30,7 @@ public class TestResourceManager extends TestCase {
     public void setUp() {
     	TestStartup.init();
         RM = DAOManager.get().getResourceManager();
-        resourceSamples = TestCaseHelper.load("junit/testcase/resource/simple-resources.xml");
+        resourceSamples = TestCaseHelper.loadResources("junit/testcase/resource/simple-resources.xml");
     }
 
     @After

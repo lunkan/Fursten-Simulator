@@ -1,148 +1,135 @@
 package fursten.simulator.node;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Rectangle;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.net.URL;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
 import java.util.Set;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-
-import junit.framework.TestCase;
+import java.util.logging.Logger;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import fursten.simulator.TestCaseHelper;
 import fursten.simulator.TestShutDown;
 import fursten.simulator.TestStartup;
-import fursten.simulator.persistent.DAOManager;
-import fursten.simulator.persistent.WorldManager;
-import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
-import fursten.simulator.resource.ResourceCollection;
-import fursten.simulator.resource.ResourceKeyManager;
-import fursten.simulator.resource.ResourceWrapper;
-import fursten.simulator.world.World;
-import fursten.util.persistent.DAOTestHelper;
 
 public class TestNodeActivityManager {
 
-	//private final DAOTestHelper helper = DAOManager.getTestHelper();
+	//private static final Logger logger = Logger.getLogger(TestNodeActivityManager.class.getName());
 	
-    @Before
+	private HashMap<String, Resource> staticSamples;
+	private HashMap<String, Resource> dynamicSamples;
+	private HashMap<String, Node> nodeStaticSamples;
+	private HashMap<String, Node> nodeDynamicSamples;
+	
+	@Before
     public void setUp() {
-    	//helper.setUp();
-    	
-    	System.out.println("START");
-    	
-    	TestStartup.init();
-    	
-    	try{
-    	int A = ResourceKeyManager.getNext();
-    	System.out.println("A:" + A);
-    	int AA = ResourceKeyManager.getNext(A);
-    	System.out.println("AA:" + AA);
-    	int AB = ResourceKeyManager.getNext(A);
-    	System.out.println("AB:" + AB);
-    	int AAA = ResourceKeyManager.getNext(AA);
-    	System.out.println("AAA:" + AAA);
-    	int AAB = ResourceKeyManager.getNext(AA);
-    	System.out.println("AAB:" + AAB);
-    	int ABA = ResourceKeyManager.getNext(AB);
-    	System.out.println("ABA:" + ABA);
-    	int ABB = ResourceKeyManager.getNext(AB);
-    	System.out.println("ABB:" + ABB);
-    	//System.exit(0);
-    	}
-    	catch(Exception e) {
-    		System.out.println(e.getMessage());
-    	}
-    	
+        TestStartup.init();
+        staticSamples = TestCaseHelper.loadResources("junit/testcase/resource/static-resources.xml");
+        dynamicSamples = TestCaseHelper.loadResources("junit/testcase/resource/dynamic-resources.xml");
+        nodeStaticSamples = TestCaseHelper.loadNodes("junit/testcase/node/static-nodes.xml");
+        nodeDynamicSamples = TestCaseHelper.loadNodes("junit/testcase/node/dynamic-nodes.xml");
+        NodeActivityManager.clean();
     }
-    
+
     @After
     public void tearDown() {
-        //helper.tearDown();
         TestShutDown.destroy();
     }
     
     @Test
-    public void testNodeActivityManagerInvalidate() throws Exception {
+    public void testGetInvalidResources() {
     	
-    	/* SETUP
-    	 * Two layer of static root resources and two layers of dependent resources.
-    	 * Invalidate one type of the static resources in north west and south east sections
+    	/*
+    	 * invalidate root weight
     	 */
-    	/*String prefix = "sd";
-    	int numResources = 2;
-    	float mortality = 0.0f;
-    	float threshold = 0.0f;
-    	float weightValue = 1.0f;
-    	HashMap<String, Resource> resources = TestResourceHelper.setupDependentScenario(prefix, numResources, mortality, threshold, weightValue);
-    	*/
+    	NodeActivityManager.invalidate(
+    			Arrays.asList(new Node[]{
+    					nodeStaticSamples.get("static_1[0:0]"),
+    					nodeStaticSamples.get("static_2[0:0]")
+    			})
+    	);
+        
+    	Set<Integer> resourceKeys = NodeActivityManager.getInvalidResources();
+    	assertEquals(1, resourceKeys.size());
+    	assertTrue(
+    			resourceKeys.containsAll(Arrays.asList(new Integer[]{
+    					536870912
+    			}))
+    	);
     	
-    	HashMap<String, Resource> resources =  TestCaseHelper.load("testcase/resource/static-resources.xml");
-    	System.out.println("#--> " + resources.size());
+    	/*
+    	 * invalidate self
+    	 */
+    	NodeActivityManager.invalidate(
+    			Arrays.asList(new Node[]{
+    					nodeDynamicSamples.get("dynamic_1[0:0]"),
+    					nodeDynamicSamples.get("dynamic_11[250:250]")
+    			})
+    	);
     	
-    	/*float nodeValue = 1.0f;
-    	List<Node> invalidNodes = TestNodeHelper.setupArray(resources.get("sd_static_1_1"), new int[][]{{-250,0},{0,250}}, nodeValue);
+    	resourceKeys = NodeActivityManager.getInvalidResources();
+    	assertEquals(2, resourceKeys.size());
+    	assertTrue(
+    			resourceKeys.containsAll(Arrays.asList(new Integer[]{
+    					536870912, 805306368
+    			}))
+    	);
     	
-    	// TEST
-    	NodeActivityManager.invalidate(invalidNodes);
-    	Set<Integer> invalidResources = NodeActivityManager.getInvalidResources();
+    	/*
+    	 * invalidate child weight
+    	 */
+    	NodeActivityManager.invalidate(
+    			Arrays.asList(new Node[]{
+    					nodeStaticSamples.get("static_212[-650:650]")
+    			})
+    	);
     	
-    	List<Rectangle> invalidRects = NodeActivityManager.getInvalidRectByResourceKey(invalidResources.iterator().next());
-    	Assert.assertEquals(2, invalidRects.size());
-    	
-    	//Rectangles should contain at least one coordinate but not both
-    	for(Rectangle invalidRect : invalidRects) {
-    		Assert.assertFalse(invalidRect.contains(-250, 0) && invalidRect.contains(0, 250));
-    		Assert.assertFalse(!invalidRect.contains(-250, 0) && !invalidRect.contains(0, 250));
-    	}
-    	
-    	//No invalid resources after clean
-    	NodeActivityManager.clean();
-    	invalidResources = NodeActivityManager.getInvalidResources();
-    	Assert.assertEquals(0, invalidRects.size());*/
+    	resourceKeys = NodeActivityManager.getInvalidResources();
+    	assertEquals(3, resourceKeys.size());
+    	assertTrue(
+    			resourceKeys.containsAll(Arrays.asList(new Integer[]{
+    					805306368, 671088640, 536870912
+    			}))
+    	);
     }
     
     @Test
-    public void testNodeActivityManagerInvalidateAll() throws Exception {
+    public void testGetInvalidRectByResourceKey() {
+    	
+    	NodeActivityManager.invalidate(
+    			Arrays.asList(new Node[]{
+    					nodeStaticSamples.get("static_211[-650:650]"),
+    					nodeStaticSamples.get("static_12[-500:-500]"),
+    					nodeStaticSamples.get("static_21[-500:500]")
+    			})
+    	);
     
-    	/*String prefix = "sad";
-    	int numResources = 2;
-    	float mortality = 0.0f;
-    	float threshold = 0.0f;
-    	float weightValue = 1.0f;
-    	TestResourceHelper.setupDependentScenario(prefix, numResources, mortality, threshold, weightValue);
-    	
-    	WorldManager SM = DAOFactory.get().getWorldManager();
-		World world = SM.getActive();
-		Rectangle worldRect = world.getRect();
-		
-    	// TEST 
+    	List<Rectangle> invalidRects = NodeActivityManager.getInvalidRectByResourceKey(536870912);
+    	assertEquals(2, invalidRects.size());
+    	assertTrue(
+    			invalidRects.containsAll(Arrays.asList(new Rectangle[]{
+    					new Rectangle(-1024, 0, 1024, 1024),
+    					new Rectangle(-1024, -1024, 1024, 1024)
+    			}))
+    	);
+    }
+    
+    @Test
+    public void testNodeActivityManagerInvalidateAll() {
+
     	NodeActivityManager.invalidateAll();
-    	Set<Integer> invalidResources = NodeActivityManager.getInvalidResources();
-    	Assert.assertEquals(4, invalidResources.size());
-    	
-    	for(Integer invalidResource : invalidResources) {
-    		List<Rectangle> invalidRects = NodeActivityManager.getInvalidRectByResourceKey(invalidResource);
-	    	Assert.assertEquals(1, invalidRects.size());
-	    	Rectangle invalidRect = invalidRects.get(0);
-	    	Assert.assertTrue(invalidRect.equals(worldRect));
-    	}
-    	
-    	//No invalid resources after clean
-    	NodeActivityManager.clean();
-    	invalidResources = NodeActivityManager.getInvalidResources();
-    	Assert.assertEquals(0, invalidResources.size());*/
+        Set<Integer> resourceKeys = NodeActivityManager.getInvalidResources();
+        assertEquals(17, resourceKeys.size());
+        
+        NodeActivityManager.clean();
+        resourceKeys = NodeActivityManager.getInvalidResources();
+        assertEquals(0, resourceKeys.size());
     }
 }

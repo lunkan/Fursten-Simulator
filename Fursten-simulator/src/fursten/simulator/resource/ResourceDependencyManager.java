@@ -73,8 +73,6 @@ public class ResourceDependencyManager {
 	}
 	
 	public void _clear() {
-		ResourceManager RM = DAOFactory.get().getResourceManager();
-		resources = RM.get(RM.getKeys());
-		dependencyMap.clear();
+		instance = null;
 	}
 }

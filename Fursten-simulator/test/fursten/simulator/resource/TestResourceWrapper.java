@@ -28,8 +28,8 @@ public class TestResourceWrapper {
 	@Before
     public void setUp() {
         TestStartup.init();
-        staticSamples = TestCaseHelper.load("junit/testcase/resource/static-resources.xml");
-        dynamicSamples = TestCaseHelper.load("junit/testcase/resource/dynamic-resources.xml");
+        staticSamples = TestCaseHelper.loadResources("junit/testcase/resource/static-resources.xml");
+        dynamicSamples = TestCaseHelper.loadResources("junit/testcase/resource/dynamic-resources.xml");
     }
 
     @After
@@ -79,9 +79,9 @@ public class TestResourceWrapper {
     	for(HashMap<Integer, Float> weightGroup : weightMap) {
     		for(Integer resourceKey : weightGroup.keySet()) {
     			
-    			if(resourceKey == -1073741824 || resourceKey == 1879048192)
+    			if(resourceKey == -1073741824 || resourceKey == 1879048192 || resourceKey == 1744830464)
     				assertEquals(1f, weightGroup.get(resourceKey), 0.0001f);
-    			else if(resourceKey == -1610612736 || resourceKey == 1744830464)
+    			else if(resourceKey == -1610612736)
     				assertEquals(-1f, weightGroup.get(resourceKey), 0.0001f);
     			else
     				throw new Error("Non expected resource key!");
@@ -110,7 +110,7 @@ public class TestResourceWrapper {
     @Test
 	public void testIsStatic() {
     	assertTrue(ResourceWrapper.getWrapper(staticSamples.get("static_12")).isStatic());
-    	assertTrue(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_12")).isStatic());
+    	assertFalse(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_12")).isStatic());
     	assertFalse(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1")).isStatic());
 	}
 	

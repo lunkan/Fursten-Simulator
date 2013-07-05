@@ -12,7 +12,7 @@
             </weights>
             <weights>
                 <resource>1073741824</resource>
-				<value>-1</value>
+				<value>1</value>
             </weights>
         </weightGroups>
         <offsprings>
@@ -57,9 +57,16 @@
             	</weights>
             	<weights>
                 	<resource>1744830464</resource>
-					<value>-1</value>
+					<value>1</value>
             	</weights>
         	</weightGroups>
+        	<offsprings>
+	            <resource></resource>
+				<ratio>0.05</ratio>
+				<cost>0</cost>
+				<multiplier>1</multiplier>
+				<isLinked>false</isLinked>
+	        </offsprings>
     	</resources>
     	<resources>
         	<key>671088640</key>
@@ -84,5 +91,12 @@
 					<value>-0.5</value>
             	</weights>
         	</weightGroups>
+        	<offsprings>
+	            <resource></resource>
+				<ratio>0.05</ratio>
+				<cost>0</cost>
+				<multiplier>1</multiplier>
+				<isLinked>false</isLinked>
+	        </offsprings>
     	</resources>    
 </resourceCollection>

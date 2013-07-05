@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -48,45 +49,57 @@ public class NodeTransactionCommand implements SimulatorCommand {
 	public Object execute() throws Exception {
 	
 		long timeStampStart = System.currentTimeMillis();
-		int substractedNum = 0;
+		
+		int substractedNum = substractNodes.size();
 		int deleteLinks  = 0;
-		int deletedNum = 0;
 		int insertedNum = 0;
+		
 		NM = DAOFactory.get().getNodeManager();
 		RM = DAOFactory.get().getResourceManager();
 		LM = DAOFactory.get().getLinkManager();
 		
-		List<Node> jointNodes = new ArrayList<Node>();
-		
 		//Delete nodes
 		if(substractNodes != null) {
 			
-			//Remove attached joints
-			int resourceKey = 0;
-			boolean hasLinks = false;
+			List<Node> jointNodes = new ArrayList<Node>();
 			Collections.sort(substractNodes, new NodeSort());
-			for(Node deleteNode : substractNodes) {
+			
+			Iterator<Node> it = substractNodes.iterator();
+			while(it.hasNext()) {
 				
-				if(deleteNode.getR() != resourceKey) {
-					resourceKey = deleteNode.getR();
-					hasLinks = ResourceWrapper.getWrapper(RM.get(resourceKey)).hasLinks();
+				Node deleteNode = it.next();
+				if(ResourceWrapper.getWrapper(RM.get(deleteNode.getR())).hasLinks()) {
+					applyLinkedNodesSubstraction(deleteNode, deleteNode.getV(), jointNodes);
+					substractedNum -= 1;
+					it.remove();//remove joint nodes separately
 				}
-				
-				if(hasLinks)
-					applyLinkedNodesSubstraction(deleteNode, 1, deleteNode.getV(), jointNodes);
 			}
 			
 			if(jointNodes.size() > 0) {
-				substractNodes.addAll(jointNodes);
+				
 				List<Node> deletedJoints = NM.substractAll(jointNodes);
-				List<Link> deletedNodeLinks = LM.get(deletedJoints);
-				LM.delete(new ArrayList<Link>(deletedNodeLinks));
+				List<Link> deletedNodeLinks = LM.getAll(deletedJoints);
+				
+				//Destroy children of all linked children of deleted parents
+				ArrayList<Node> destroyedLinkNodes = new ArrayList<Node>();
+				for(Link link : deletedNodeLinks) {
+					Node deletedNodeLink = link.getChildNode().clone();
+					deletedNodeLink.setV(Float.MAX_VALUE);
+					destroyedLinkNodes.add(deletedNodeLink);
+				}
+				
+				substractedNum += jointNodes.size();
+				NM.substractAll(destroyedLinkNodes);
+						
+				NodeActivityManager.invalidate(jointNodes);
+				NodeActivityManager.invalidate(destroyedLinkNodes);
+				
+				LM.removeAll(new ArrayList<Link>(deletedNodeLinks));
 				deleteLinks += deletedNodeLinks.size();
-				deletedNum += deletedJoints.size();
+				
 			}
 			
-			deletedNum += NM.substractAll(substractNodes).size();
-			substractedNum += substractNodes.size();
+			NM.substractAll(substractNodes);
 			NodeActivityManager.invalidate(substractNodes);
 		}
 		
@@ -117,7 +130,7 @@ public class NodeTransactionCommand implements SimulatorCommand {
 		}
 		
 		
-		logger.log(Level.INFO, "Substracted " + substractedNum + " nodes - deleted " + deletedNum + " ("+ jointNodes.size() +" linked nodes) " + deleteLinks + " links removed. Inserted " + insertedNum + " nodes. Time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
+		logger.log(Level.INFO, "Substracted " + substractedNum + " " + deleteLinks + " links removed. Inserted " + insertedNum + " nodes. Time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return null;
 	}
 	
@@ -129,15 +142,17 @@ public class NodeTransactionCommand implements SimulatorCommand {
 	 * @param substraction
 	 * @param substractedLinkNodes
 	 */
-	private void applyLinkedNodesSubstraction(Node node, float weight, float substraction, List<Node> substractedLinkNodes) {
+	private void applyLinkedNodesSubstraction(Node node, float substraction, List<Node> substractedLinkNodes) {
 		
-		for(Link link : LM.getByNode(node)) {
+		substractedLinkNodes.add(node);
+		
+		for(Link link : LM.get(node)) {
 			float weightSum = substraction * link.getWeight();
-			if(weightSum > 0) {
+			
+			if(substraction > 0) {
 				Node childNode = link.getChildNode().clone();
-				childNode.setV(weightSum * substraction);
-				substractedLinkNodes.add(childNode);
-				applyLinkedNodesSubstraction(childNode, weightSum, substraction, substractedLinkNodes);
+				childNode.setV(weightSum);
+				applyLinkedNodesSubstraction(childNode, weightSum, substractedLinkNodes);
 			}
 		}
 	}
@@ -145,7 +160,7 @@ public class NodeTransactionCommand implements SimulatorCommand {
 	private static class NodeSort implements Comparator<Node>{
 		 
 	    public int compare(Node o1, Node o2) {
-	        return (o1.getR() > o2.getR() ? -1 : (o1.getR() == o2.getR() ? 0 : 1));
+	    	return (o1.getR() > o2.getR() ? -1 : (o1.getR() == o2.getR() ? 0 : 1));
 	    }
 	}
 }

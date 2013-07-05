@@ -20,6 +20,13 @@ public abstract class DAOManager {
 		return factory;
 	}
 	
+	public static void resetAll() {
+		get().getLinkManager().reset();
+		get().getNodeManager().reset();
+		get().getResourceManager().reset();
+		get().getWorldManager().reset();
+	}
+	
 	/*public static DAOTestHelper getTestHelper() {
 		return new fursten.simulator.persistent.mysql.TestHelper();
 	}*/

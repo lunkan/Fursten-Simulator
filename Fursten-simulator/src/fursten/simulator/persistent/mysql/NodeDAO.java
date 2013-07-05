@@ -62,7 +62,7 @@ class NodeDAO implements NodeManager {
 	public synchronized boolean reset() {
 		instance = null;
 		changed = true;
-		return false;
+		return true;
 	}
 	
 	public synchronized int add(Node... nodes) {

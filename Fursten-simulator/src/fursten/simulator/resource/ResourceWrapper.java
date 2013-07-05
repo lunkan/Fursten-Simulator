@@ -201,17 +201,16 @@ public class ResourceWrapper {
 		
 		if(hasLinks == null) {
 		
+			hasLinks = new Boolean(false);
 			for(Offspring offspring : getOffsprings()) {
 				if(offspring.getIsLinked()) {
 					hasLinks = new Boolean(true);
 					break;
 				}
 			}
-			
-			hasLinks = new Boolean(false);
 		}
 		
-		return hasLinks;
+		return hasLinks.booleanValue();
 	}
 	
 	public boolean isValid() {

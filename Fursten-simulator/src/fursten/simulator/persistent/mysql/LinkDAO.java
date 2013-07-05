@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -69,8 +70,11 @@ public class LinkDAO implements LinkManager {
 		return true;
 	}
 	
-	@Override
-	public int insert(List<Link> links) {
+	public int add(Link... links) {
+		return addAll(Arrays.asList(links));
+	}
+	
+	public int addAll(List<Link> links) {
 		
 		for(Link link : links) {
 			
@@ -85,43 +89,55 @@ public class LinkDAO implements LinkManager {
 		return links.size();
 	}
 
-	@Override
-	public int delete(List<Link> links) {
-		
-		for(Link link : links) {
-			List<Link> sourceLinks = cachedLinkMap.get(link.getParentNode());
-			if(sourceLinks.remove(link))
-				changedLinks.add(link.getParentNode());
-		}
-		
-		return 0;
+	public List<Link> remove(Link... links) {
+		return removeAll(Arrays.asList(links));
 	}
-
-	@Override
-	public List<Link> getByNode(Node node) {
-		return cachedLinkMap.get(node);
-	}
-
-	@Override
-	public List<Link> getAllByNode(Node node) {
+	
+	public List<Link> removeAll(List<Link> links) {
 		
-		List<Link> links = new ArrayList<Link>();
-		List<Link> parentLinks = cachedLinkMap.get(node);
-		if(parentLinks != null) {
+		ArrayList<Link> removedLinks = new ArrayList<Link>();
+		
+		Iterator<Link> it = links.iterator();
+		while(it.hasNext()) {
 			
-			for(Link link : parentLinks)
-				links.addAll(getAllByNode(link.getParentNode()));
+			Link removeLink = it.next();
+			
+			List<Link> sourceLinks = cachedLinkMap.get(removeLink.getParentNode());
+			if(sourceLinks != null) {
+				
+				for(Link sourceLink : sourceLinks) {
+					
+					/*System.out.println("#" + removeLink.getParentNode() + " - " + removeLink.getChildNode());
+					System.out.println("*" + sourceLink.getParentNode() + " - " + sourceLink.getChildNode());
+					System.out.println(sourceLink.equals(removeLink));*/
+					
+					if(sourceLink.equals(removeLink)) {
+						removedLinks.add(removeLink);
+						cachedLinkMap.get(removeLink.getParentNode()).remove(removeLink);
+						changedLinks.add(removeLink.getParentNode());
+						
+						if(cachedLinkMap.get(removeLink.getParentNode()).size() == 0)
+							cachedLinkMap.remove(removeLink.getParentNode());
+						
+						break;
+					}
+				}
+			}	
 		}
 		
-		return links;
+		return removedLinks;
 	}
 
-	@Override
-	public List<Link> get(List<Node> nodes) {
-		
+	public List<Link> get(Node... nodes) {
+		return getAll(Arrays.asList(nodes));
+	}
+	
+	public List<Link> getAll(List<Node> nodes) {
 		List<Link> links = new ArrayList<Link>();
 		for(Node node : nodes) {
-			links.addAll(cachedLinkMap.get(node));
+			List<Link> nodeLink = cachedLinkMap.get(node);
+			if(nodeLink != null)
+				links.addAll(cachedLinkMap.get(node));
 		}
 		
 		return links;

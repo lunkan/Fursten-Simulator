@@ -15,6 +15,7 @@ import org.junit.Test;
 import fursten.simulator.TestCaseHelper;
 import fursten.simulator.TestShutDown;
 import fursten.simulator.TestStartup;
+import fursten.simulator.persistent.DAOManager;
 
 public class TestResourceDependencyManager {
 
@@ -26,26 +27,8 @@ public class TestResourceDependencyManager {
 	@Before
     public void setUp() {
         TestStartup.init();
-        staticSamples = TestCaseHelper.load("junit/testcase/resource/static-resources.xml");
-        dynamicSamples = TestCaseHelper.load("junit/testcase/resource/dynamic-resources.xml");
-        
-        /*BigInteger bigIntC = BigInteger.valueOf(0);
-        
-        bigIntC = bigIntC.setBit(29);
-        	BigInteger bigIntCA = bigIntC.setBit(28);
-        		BigInteger bigIntCAA = bigIntCA.setBit(27);
-        		BigInteger bigIntCAB = bigIntCA.setBit(26);
-        	BigInteger bigIntCB = bigIntC.setBit(27);
-        		BigInteger bigIntCBA = bigIntCB.setBit(26);
-        		BigInteger bigIntCBB = bigIntCB.setBit(25);
-        		
-        System.out.println("bigIntC " + bigIntC.intValue());
-        System.out.println("bigIntCA " + bigIntCA.intValue());
-        System.out.println("bigIntCAA " + bigIntCAA.intValue());
-        System.out.println("bigIntCAB " + bigIntCAB.intValue());
-        System.out.println("bigIntCB " + bigIntCB.intValue());
-        System.out.println("bigIntCBA " + bigIntCBA.intValue());
-        System.out.println("bigIntCBB " + bigIntCBB.intValue());*/
+        staticSamples = TestCaseHelper.loadResources("junit/testcase/resource/static-resources.xml");
+        dynamicSamples = TestCaseHelper.loadResources("junit/testcase/resource/dynamic-resources.xml");
     }
 
     @After

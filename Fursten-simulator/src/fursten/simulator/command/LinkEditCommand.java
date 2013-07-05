@@ -39,7 +39,7 @@ public class LinkEditCommand implements SimulatorCommand {
 		
 		//Delete links
 		if(deleteLinks != null) {
-			deletedNum = LM.delete(deleteLinks);
+			deletedNum = LM.removeAll(deleteLinks).size();
 		}
 		
 		//Insert links
@@ -57,7 +57,7 @@ public class LinkEditCommand implements SimulatorCommand {
 				throw new Exception("Can not add links becouse one or more node joint does not exist.");
 			}
 			
-			insertedNum = LM.insert(insertLinks);
+			insertedNum = LM.addAll(insertLinks);
 			if(insertLinks.size() != insertedNum) {
 				throw new Exception("Database may be corrupt! Links where added but the response number does not equal the number of of links inserted. Inserted:" + insertLinks.size());
 			}

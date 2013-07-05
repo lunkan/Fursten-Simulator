@@ -101,7 +101,7 @@ public class ResourceKeyManager {
 	}
 	
 	public static void clear() {
-		instance = new ResourceKeyManager();
+		instance = null;//new ResourceKeyManager();
 	}
 	
 	public static boolean isDescendant(int descendantKey, int parentKey) {

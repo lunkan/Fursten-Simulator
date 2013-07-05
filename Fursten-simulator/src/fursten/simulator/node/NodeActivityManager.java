@@ -13,6 +13,7 @@ import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.ResourceDependencyManager;
+import fursten.simulator.resource.ResourceWrapper;
 import fursten.simulator.world.World;
 
 public class NodeActivityManager {
@@ -76,17 +77,11 @@ public class NodeActivityManager {
 	
 	public Set<Integer> _getInvalidResources() {
 		
-		//if(tick > startTick)
-		
 		if(!invalidateAll)
 			return activityMap.keySet();
 		
 		ResourceManager RM = DAOFactory.get().getResourceManager();
 		return RM.getKeys();
-		
-		//First tick after clear all resources are invalid
-		/*ResourceManager RM = DAOFactory.get().getResourceManager();
-		return RM.getKeys();*/
 	}
 	
 	public static List<Rectangle> getInvalidRectByResourceKey(int resourceKey) {
@@ -96,15 +91,6 @@ public class NodeActivityManager {
 	public List<Rectangle> _getInvalidRectByResourceKey(int resourceKey) {
 		
 		List<Rectangle> invalidRegions = new ArrayList<Rectangle>();
-		
-		//First tick after clear all regions are invalid
-		/*if(tick <= startTick) {
-			WorldManager SM = DAOFactory.get().getWorldManager();
-			World world = SM.getActive();
-			Rectangle worldRect = world.getRect();
-			invalidRegions.add(worldRect);
-			return invalidRegions;
-		}*/
 		
 		if(invalidateAll) {
 			WorldManager SM = DAOFactory.get().getWorldManager();
@@ -136,6 +122,10 @@ public class NodeActivityManager {
 	public void _clean() {
 		activityMap.clear();
 		invalidateAll = false;
+	}
+	
+	public static void clear() {
+		instance = null;
 	}
 	
 	/**

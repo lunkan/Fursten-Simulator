@@ -7,10 +7,13 @@ import fursten.simulator.node.Node;
 
 public interface LinkManager extends Persistable, PersistantManager {
 
-	public int insert(List<Link> links);
-	public int delete(List<Link> links);
+	public int add(Link... links);
+	public int addAll(List<Link> links);
 	
-	public List<Link> get(List<Node> nodes);
-	public List<Link> getByNode(Node node);
-	public List<Link> getAllByNode(Node node);
+	public List<Link> remove(Link... links);
+	public List<Link> removeAll(List<Link> links);
+	
+	public List<Link> get(Node... nodes);
+	public List<Link> getAll(List<Node> nodes);
+	
 }

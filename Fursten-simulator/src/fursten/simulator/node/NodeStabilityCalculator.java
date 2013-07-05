@@ -61,9 +61,8 @@ public class NodeStabilityCalculator {
 				allDependencies.add(dependencyKey);
 				for(Node neighbor : NM.get(rect, allDependencies)){
 					
-					int distance = (int) (Math.sqrt(Math.pow(x-neighbor.getX(),2) + Math.pow(y-neighbor.getY(),2)));
-					if(distance < NODE_RADIUS) {
-						float impact = (NODE_RADIUS - (float)distance) / (float)NODE_RADIUS;
+					double impact = 1 - (Math.sqrt(Math.pow(x-neighbor.getX(),2) + Math.pow(y-neighbor.getY(),2)) / NodeStabilityCalculator.NODE_RADIUS);
+					if(impact > 0) {
 						groupStability += resource.getWeight(weightGroup, dependencyKey) * impact * neighbor.getV();
 					}
 				}
@@ -72,30 +71,6 @@ public class NodeStabilityCalculator {
 			
 			stability = Math.min(stability, groupStability);
 		}
-		
-		//Negative impact from neighbors of same type
-		//Impact from same kind of recourse is always = -1
-		//Prevent impact from self is represented by a "-1" -> bonus can not be greater than 1.
-		//Only cloning resources have pinalty
-		//OBS! Remove size for selfPenelty
-		/*if(resource.isCloning()) {
-			
-			for(Node neighbor : NM.get(rect, resource.getKey())) {
-				
-				int distance = (int) (Math.sqrt(Math.pow(x-neighbor.getX(),2) + Math.pow(y-neighbor.getY(),2)));
-				if(distance == 0) {
-					if(ignoreSelf) {
-						stability -= neighbor.getV();
-					}
-					else {
-						stability -= Math.max(0, neighbor.getV()-1);
-					}
-				}
-				else if(distance < NODE_RADIUS) {
-					stability -= ((NODE_RADIUS - (float)distance) / (float)NODE_RADIUS) * neighbor.getV();
-				}
-			}
-		}*/
 		
 		//Self penelty is always self * -1. Acts as a base value
 		//Nodes must compensate with impact to be in balance -> impact = 0
