@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import fursten.simulator.command.CleanCommand;
 import fursten.simulator.command.LinkEditCommand;
 import fursten.simulator.command.LinkGetCommand;
+import fursten.simulator.command.LoadCommand;
 import fursten.simulator.command.NodeGetCommand;
 import fursten.simulator.command.NodeTransactionCommand;
 import fursten.simulator.command.ResourceGetCommand;
@@ -18,6 +19,7 @@ import fursten.simulator.command.ResourceEditCommand;
 import fursten.simulator.command.SampleCommand;
 import fursten.simulator.command.InitializeCommand;
 import fursten.simulator.command.RunCommand;
+import fursten.simulator.command.SaveCommand;
 import fursten.simulator.command.UpdateCommand;
 import fursten.simulator.link.Link;
 import fursten.simulator.node.Node;
@@ -76,6 +78,28 @@ public class Facade {
 		try {
 			new UpdateCommand(session.getRect()).execute();
 			new RunCommand(session.getRect()).execute();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean save() {
+		
+		try {
+			new SaveCommand().execute();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean load() {
+		
+		try {
+			new LoadCommand().execute();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

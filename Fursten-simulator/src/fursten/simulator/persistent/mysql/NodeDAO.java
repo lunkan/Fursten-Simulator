@@ -207,6 +207,12 @@ class NodeDAO implements NodeManager {
 		
 		try {
 			
+			//Delete all
+			//ToDo:Make more efficient
+			statement = con.prepareStatement("delete from nodes");
+			statement.executeUpdate();
+			statement.close();
+			
 			Iterator<Integer> it = nodeTreeMap.keySet().iterator();
 			while(it.hasNext()) {
 			
@@ -214,17 +220,17 @@ class NodeDAO implements NodeManager {
 				NodeTree updatedTree = nodeTreeMap.get(resourceKey);
 				
 				//Delete if tree is removed or new/update
-				if(updatedTree == null) {
+				/*if(updatedTree == null) {
 					statement = con.prepareStatement("delete from nodes where resource_key = ?");
 					statement.setInt(1, resourceKey);
 					statement.executeUpdate();
 					statement.close();
 				}
-				else {
+				else {*/
 					
 					Blob nodesBin = new SerialBlob(BinaryTranslator.objectToBinary(updatedTree));
 					
-					statement = con.prepareStatement("select node_tree from nodes where resource_key = ?");
+					/*statement = con.prepareStatement("select node_tree from nodes where resource_key = ?");
 					statement.setInt(1, resourceKey);
 					statement.setMaxRows(1);
 					ResultSet resultSet = statement.executeQuery();
@@ -237,14 +243,14 @@ class NodeDAO implements NodeManager {
 						statement.executeUpdate();
 						statement.close();
 					}
-					else {
+					else {*/
 						statement = con.prepareStatement("insert into nodes(resource_key, node_tree) values (?, ?)");
 						statement.setInt(1, resourceKey);
 						statement.setBlob(2, nodesBin);
 						statement.executeUpdate();
 						statement.close();
-					}
-				}
+					//}
+				//}
 			}
 			
 			changed = false;

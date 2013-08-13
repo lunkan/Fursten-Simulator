@@ -83,7 +83,7 @@ public class UpdateCommand implements SimulatorCommand {
 		NodeActivityManager.clean();
 		
 		if(removedNodes.size() > 0) {
-			new NodeTransactionCommand(removedNodes);
+			new NodeTransactionCommand(removedNodes).execute();
 			
 			/*NM.delete(removedNodes);
 			NodeActivityManager.invalidate(removedNodes);*/

@@ -19,7 +19,7 @@ public class ShutDown implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent contextEvent) {
 		
 		//Close autosave and push last changes to database
-		Startup.autoSaveProcess.interrupt();
+		/*Startup.autoSaveProcess.interrupt();
 		
 		try {
 			Startup.autoSaveProcess.join();
@@ -31,7 +31,7 @@ public class ShutDown implements ServletContextListener {
 		DAOManager.get().getWorldManager().pushPersistent();
 		DAOManager.get().getResourceManager().pushPersistent();
 		DAOManager.get().getNodeManager().pushPersistent();
-		DAOManager.get().getLinkManager().pushPersistent();
+		DAOManager.get().getLinkManager().pushPersistent();*/
 		
 		logger.log(Level.INFO, "ShutDown Fursten simulator. Last changes pushed to database");
 	}

@@ -67,6 +67,7 @@ public class RunCommand implements SimulatorCommand {
 			
 			ResourceWrapper resource = ResourceWrapper.getWrapper(RM.get(resourceKey));
 			
+			
 			//Check if it's the resource time to get updated
 			//0 = static -> never updated
 			if(resource.getUpdateintervall() != 0) {
@@ -86,10 +87,12 @@ public class RunCommand implements SimulatorCommand {
 						for(Offspring offspring : resource.getOffsprings()) {
 							
 							randVal = rand.nextFloat();
+							
 							if(offspring.getRatio() > randVal) {
 								
 								//No spores lower than 1 - to infinity protection
 								float value = offspring.getMultiplier() * node.getV();
+								
 								if(value < 1)
 									continue;
 								
@@ -138,7 +141,7 @@ public class RunCommand implements SimulatorCommand {
 			NM.insert(addedNodes);
 		}*/
 		
-		new NodeTransactionCommand(removedNodes, addedNodes);
+		new NodeTransactionCommand(removedNodes, addedNodes).execute();
 		
 		logger.log(Level.INFO, "Run: Deleted " + removedNodes.size() + " & Added " + addedNodes.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return null;
@@ -169,9 +172,6 @@ public class RunCommand implements SimulatorCommand {
 		//Check that no node is out of world bounds
 		if(!world.getRect().contains(spore.getX(), spore.getY()))
 			return null;
-		
-		//float stability = nodeMath.calculateStability(spore.getX(), spore.getY(), resourceWrapper);
-		//stability *= resourceWrapper.getThreshold();//nodeMath.normalizeStability(stability, resourceWrapper.getThreshold());
 		
 		//if(stability > rand.nextFloat())
 		float threshold = spore.getV() * resourceWrapper.getThreshold();

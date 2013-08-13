@@ -33,4 +33,26 @@ public class ProcessServlet {
 		else 
 			return Response.status(Response.Status.BAD_REQUEST).build();
 	}
+	
+	@POST
+	@Path("/save")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public Response save() {
+		
+		if(Facade.save()) 
+			return Response.status(Response.Status.OK).build();
+		else 
+			return Response.status(Response.Status.BAD_REQUEST).build();
+	}
+	
+	@POST
+	@Path("/load")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public Response load() {
+		
+		if(Facade.load()) 
+			return Response.status(Response.Status.OK).build();
+		else 
+			return Response.status(Response.Status.BAD_REQUEST).build();
+	}
 }

@@ -176,6 +176,12 @@ public class LinkDAO implements LinkManager {
 		
 		try {
 			
+			//Lazy Delete all
+			//ToDo:Make more efficient
+			statement = con.prepareStatement("delete from links");
+			statement.executeUpdate();
+			statement.close();
+			
 			Iterator<Node> it = linkMap.keySet().iterator();
 			while(it.hasNext()) {
 			
@@ -184,17 +190,17 @@ public class LinkDAO implements LinkManager {
 				List<Link> links = linkMap.get(node);
 				
 				//Delete if tree is removed or new/update
-				if(links == null) {
+				/*if(links == null) {
 					statement = con.prepareStatement("delete from links where node_hash = ?");
 					statement.setString(1, nodeHash);
 					statement.executeUpdate();
 					statement.close();
 				}
-				else {
+				else {*/
 					
 					Blob linksBin = new SerialBlob(BinaryTranslator.objectToBinary((Serializable)links));
 					
-					statement = con.prepareStatement("select links from links where node_hash = ?");
+					/*statement = con.prepareStatement("select links from links where node_hash = ?");
 					statement.setString(1, nodeHash);
 					statement.setMaxRows(1);
 					ResultSet resultSet = statement.executeQuery();
@@ -207,14 +213,14 @@ public class LinkDAO implements LinkManager {
 						statement.executeUpdate();
 						statement.close();
 					}
-					else {
+					else {*/
 						statement = con.prepareStatement("insert into links(node_hash, links) values (?, ?)");
 						statement.setString(1, nodeHash);
 						statement.setBlob(2, linksBin);
 						statement.executeUpdate();
 						statement.close();
-					}
-				}
+					//}
+				//}
 			}
 			
 			changed = false;
@@ -224,7 +230,7 @@ public class LinkDAO implements LinkManager {
 		}
 		finally {
 			DAOFactory.freeConnection(con);
-			logger.log(Level.INFO, "pushed nodes to server");
+			logger.log(Level.INFO, "pushed links to server");
 		}
 	}
 }
