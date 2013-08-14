@@ -15,6 +15,7 @@ public class Resource implements Serializable {
 	private boolean isLocked;
 	private float threshold;
 	private float mortality;
+	private float speed;
 	
 	private ArrayList<Offspring> offsprings;
 	private ArrayList<Offspring> mutations;
@@ -61,6 +62,14 @@ public class Resource implements Serializable {
 
 	public void setMortality(float mortality) {
 		this.mortality = mortality;
+	}
+	
+	public float getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(float speed) {
+		this.speed = speed;
 	}
 	
 	public void setOffsprings(ArrayList<Offspring> offsprings) {
@@ -144,7 +153,7 @@ public class Resource implements Serializable {
 		}
 		mutationsStr += "]";
 		
-		return "Resource@"+ this.hashCode() +":{key:"+ key +" name:" + name + " isLocked: " + isLocked + " mortality: " + mortality + " threshold:" + threshold + " weights:" + weightStr + " offsprings:" + offspringStr + " mutations:" +  mutationsStr +"}";
+		return "Resource@"+ this.hashCode() +":{key:"+ key +" name:" + name + " isLocked: " + isLocked + " mortality: " + mortality + " threshold:" + threshold + " speed:" + speed + " weights:" + weightStr + " offsprings:" + offspringStr + " mutations:" +  mutationsStr +"}";
 	}
 	
 	public static class Offspring implements Serializable {

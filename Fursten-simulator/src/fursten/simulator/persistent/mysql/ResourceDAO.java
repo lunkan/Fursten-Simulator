@@ -51,8 +51,9 @@ public class ResourceDAO implements ResourceManager, Persistable {
 	
 	public synchronized int putAll(List<Resource> resources)  {
 		
-		for(Resource insertResource : resources)
+		for(Resource insertResource : resources) {
 			resourcesMap.put(insertResource.getKey(), insertResource);
+		}
 		
 		changed = true;
 		return resources.size();

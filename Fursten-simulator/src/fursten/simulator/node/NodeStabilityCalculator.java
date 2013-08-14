@@ -78,8 +78,19 @@ public class NodeStabilityCalculator {
 			
 			int distance = (int) (Math.sqrt(Math.pow(x-selfNode.getX(),2) + Math.pow(y-selfNode.getY(),2)));
 			if(distance < NODE_RADIUS) {
-				float impact = (NODE_RADIUS - (float)distance) / (float)NODE_RADIUS;
-				stability -= impact * selfNode.getV();
+				
+				//Use a sigmoid function to get better distribution for nodes of same type
+				float sigX= 5.0f + ((float)(distance)/(float)NODE_RADIUS)*-10.0f;
+				float sigmoidImpact = 1.0f / (1.0f + (float)Math.exp(-sigX));
+				stability -= sigmoidImpact * selfNode.getV();//
+				
+				//Is it good to make stability proportional to strength?
+				//Below multiplier to stability will force nodes to stay away from eachother - always
+				//- no not good. Nodes must be able to stay tighter in more dense areas.
+				//* Math.max(1, stability);
+				
+				//float impact = (NODE_RADIUS - (float)distance) / (float)NODE_RADIUS;
+				//stability -= impact * selfNode.getV();
 			}
 		}
 		

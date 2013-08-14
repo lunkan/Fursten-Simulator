@@ -48,7 +48,7 @@ public class ResourceServlet {
 			@QueryParam("details") Boolean details,
 			@QueryParam("r") List<String> resourceKeys,
 			@QueryParam("method") String method) {
-
+		
 		Set<Integer> resourceFilter = getResourceKeysByParam(resourceKeys, method);	
 		ResourceCollection resourceCollection = new ResourceCollection();
 		List<Resource> resources = Facade.getResources(new ResourceSelection(resourceFilter));

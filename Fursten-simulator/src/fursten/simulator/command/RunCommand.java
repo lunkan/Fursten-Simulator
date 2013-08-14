@@ -76,8 +76,12 @@ public class RunCommand implements SimulatorCommand {
 				
 					for(Node node : NM.get(rect, resourceKey)) {
 						
+						//Validate mortality - node values are reduced by 1 for mortality
 						Float randVal = rand.nextFloat();
 						if(resource.getMortality() > randVal){
+							float reduceVal = Math.min(node.getV(), 1.0f); 
+							Node substractNode = node.clone();
+							substractNode.setV(reduceVal);
 							removedNodes.add(node);
 						}
 						
@@ -120,9 +124,6 @@ public class RunCommand implements SimulatorCommand {
 										reducedNode.setV(cost);
 										removedNodes.add(reducedNode);
 									}
-									
-									//System.out.println("#New " + spore + " " + cost + " - " + value + " # " + node.getV());
-									
 								}
 							}
 						}
@@ -130,16 +131,6 @@ public class RunCommand implements SimulatorCommand {
 				}
 			}
 		}
-		
-		/*if(removedNodes.size() > 0) {
-			NodeActivityManager.invalidate(removedNodes);
-			NM.delete(removedNodes);
-		}
-		
-		if(addedNodes.size() > 0) {
-			NodeActivityManager.invalidate(addedNodes);
-			NM.insert(addedNodes);
-		}*/
 		
 		new NodeTransactionCommand(removedNodes, addedNodes).execute();
 		
@@ -154,10 +145,36 @@ public class RunCommand implements SimulatorCommand {
 		
 		Node spore = new Node(r);
 		spore.setV(v);
-		float stability = 0;
 		
-		//Best of 3
-		for(int i = 0; i < 3; i++) {
+		int numIterations = 1;
+		double speed = resourceWrapper.getResource().getSpeed() * (NodeStabilityCalculator.NODE_RADIUS/(1 + numIterations));
+		
+		//Test initial direction
+		double direction = (Math.PI*2) * rand.nextDouble();
+		int sporeX = x + (int)(Math.sin(direction) * speed);
+		int sporeY = y + (int)(Math.cos(direction) * speed);
+		float stability = nodeMath.calculateStability(sporeX, sporeY, resourceWrapper);
+		spore.setX(sporeX);
+		spore.setY(sporeY);
+		
+		for(int i = 0; i < numIterations; i++) {
+			
+			direction = (direction + Math.PI*-0.5 + Math.PI*rand.nextDouble()) % Math.PI*2;
+			sporeX += (int)(Math.sin(direction) * (speed / Math.max(1, 2+stability)));
+			sporeY += (int)(Math.cos(direction) * (speed / Math.max(1, 2+stability)));
+			float nextStability = nodeMath.calculateStability(sporeX, sporeY, resourceWrapper);
+			
+			if(nextStability > stability) {
+				spore.setX(sporeX);
+				spore.setY(sporeY);
+				stability = nextStability;
+			}
+		}
+		
+		//float stability = 0;
+		
+		//Best of 3 - Simpel test
+		/*for(int i = 0; i < 3; i++) {
 			int seedX = rand.nextInt(NodeStabilityCalculator.NODE_RADIUS*8)-(NodeStabilityCalculator.NODE_RADIUS*4);
 			int seedY = rand.nextInt(NodeStabilityCalculator.NODE_RADIUS*8)-(NodeStabilityCalculator.NODE_RADIUS*4);
 			float nextStability = nodeMath.calculateStability(seedX, seedY, resourceWrapper);
@@ -167,13 +184,12 @@ public class RunCommand implements SimulatorCommand {
 				spore.setY(y + seedY);
 				stability = nextStability;
 			}
-		}
+		}*/
 		
 		//Check that no node is out of world bounds
 		if(!world.getRect().contains(spore.getX(), spore.getY()))
 			return null;
 		
-		//if(stability > rand.nextFloat())
 		float threshold = spore.getV() * resourceWrapper.getThreshold();
 		if(stability - threshold > 0)
     		return spore;

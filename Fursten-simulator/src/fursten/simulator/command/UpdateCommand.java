@@ -45,10 +45,8 @@ public class UpdateCommand implements SimulatorCommand {
 		RM = DAOFactory.get().getResourceManager();
 		nodeMath = NodeStabilityCalculator.getInstance();
 		
-		List<Node> removedNodes = new ArrayList<Node>();
+		List<Node> substractedNodes = new ArrayList<Node>();
 		Rectangle updateRect = new Rectangle();
-		
-		//System.out.println("*");
 		
 		//Loop all resources that have been updated
 		Set<Integer> invalidResources = NodeActivityManager.getInvalidResources();
@@ -72,8 +70,13 @@ public class UpdateCommand implements SimulatorCommand {
 					for(Node node : NM.get(updateRect, invalidResource)) {
 						numCalNode++;
 						float stability = nodeMath.calculateStability(node.getX(), node.getY(), resource);
+						
+						//Reduce node value as proportion of negative impact - have 1 as threshold
 						if(stability < 0)  {
-							removedNodes.add(node);
+							float reduceVal = Math.max(Math.abs(stability), 1.0f); 
+							Node substractNode = node.clone();
+							substractNode.setV(reduceVal);
+							substractedNodes.add(substractNode);
 				    	}
 					}
 				}
@@ -82,14 +85,11 @@ public class UpdateCommand implements SimulatorCommand {
 		
 		NodeActivityManager.clean();
 		
-		if(removedNodes.size() > 0) {
-			new NodeTransactionCommand(removedNodes).execute();
-			
-			/*NM.delete(removedNodes);
-			NodeActivityManager.invalidate(removedNodes);*/
+		if(substractedNodes.size() > 0) {
+			new NodeTransactionCommand(substractedNodes).execute();
 		}
 		
-		logger.log(Level.INFO, "Update: NumCal " + numCalNode + " Rects " + numRect + " Deleted " + removedNodes.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
+		logger.log(Level.INFO, "Update: NumCal " + numCalNode + " Rects " + numRect + " Substracted " + substractedNodes.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return null;
 	}
 }

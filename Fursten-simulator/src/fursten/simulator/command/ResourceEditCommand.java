@@ -49,7 +49,7 @@ public class ResourceEditCommand implements SimulatorCommand {
 		WorldManager WM = DAOFactory.get().getWorldManager();
 		NodeManager NM = DAOFactory.get().getNodeManager();
 		ResourceManager RM = DAOFactory.get().getResourceManager();
-		Set<Integer> validResourceKeys = RM.getKeys();
+		//Set<Integer> validResourceKeys = RM.getKeys();
 		
 		//Refresh resource dependent handlers
 		NodeStabilityCalculator.clean();
@@ -59,11 +59,7 @@ public class ResourceEditCommand implements SimulatorCommand {
 			//Delete all nodes in of the resource type
 			Rectangle worldBounds = WM.get().getRect();
 			List<Node> deletedNodes = NM.get(worldBounds, deleteResources);
-			new NodeTransactionCommand(deletedNodes);
-			
-			/*for(Integer resourceKey : validResourceKeys) {
-				NM.deleteByResourceKey(resourceKey);
-			}*/
+			new NodeTransactionCommand(deletedNodes).execute();
 			
 			//Delete all resources
 			numDeleted = RM.removeAll(deleteResources);
@@ -76,6 +72,7 @@ public class ResourceEditCommand implements SimulatorCommand {
 			//Validate resources
 			//ResourceWrapper resourceWrapper = new ResourceWrapper();
 			for(Resource resource : insertResources) {
+				
 				if(!ResourceWrapper.getWrapper(resource).isValid()) {
 					logger.log(Level.WARNING, "Resources is invalid: " + resource);
 					throw new Exception("Resources is invalid.");

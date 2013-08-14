@@ -40,6 +40,7 @@ public class ResourceCollection {
 		simpleResource.setThreshold(resource.getThreshold());
 		simpleResource.setIsLocked(resource.getIsLocked());
 		simpleResource.setMortality(resource.getMortality());
+		simpleResource.setSpeed(resource.getSpeed());
 		
 		resources.add(simpleResource);
 	}
