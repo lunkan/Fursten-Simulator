@@ -108,10 +108,10 @@ public class Facade {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static List<Sample> getSamples(List<Sample> samples, boolean prospecting) {
+	public static List<Sample> getSamples(List<Sample> samples, Integer snap) {
 		
 		try {
-			return (List<Sample>) new SampleCommand(samples, prospecting).execute();
+			return (List<Sample>) new SampleCommand(samples, snap).execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

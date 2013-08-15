@@ -44,7 +44,7 @@ public class ResourceDependencyManager {
 		for(Resource resource : resources) {
 			
 			//Loop and add dependencies - also descendants are dependent
-			ResourceWrapper wrapper = ResourceWrapper.getWrapper(resource);
+			ResourceWrapper wrapper = ResourceWrapper.getWrapper(resource.getKey());
 			
 			if(wrapper.isDependent()) {
 				

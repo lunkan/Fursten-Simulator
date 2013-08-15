@@ -20,25 +20,12 @@ public class SampleServlet {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, "application/x-protobuf"})
-	public SampleCollection getSamples(SampleCollection samples, @QueryParam("prospecting") Boolean prospecting) throws IOException {
+	public SampleCollection getSamples(SampleCollection samples, @QueryParam("snap") Integer snap) throws IOException {
 		
-		System.out.println("getSamples");
+		System.out.println("getSamples " + snap);
 		
-		//Prospecting default is null
-		if(samples.getProspecting())
-			prospecting = new Boolean(true);
-		else if(prospecting == null)
-			prospecting = new Boolean(false);
-		
-		List<Sample> sampleList = Facade.getSamples(samples.getSamples(), prospecting);
-		
-		if(sampleList != null) {
-			SampleCollection sampleCollection = new SampleCollection();
-			sampleCollection.setSamples(new ArrayList<Sample>(sampleList));
-			return sampleCollection;
-		}
-		else {
-			return new SampleCollection();
-		}
+		List<Sample> sampleList = Facade.getSamples(samples.getSamples(), snap);
+		samples.setSamples(new ArrayList<Sample>(sampleList));
+		return samples;
 	}
 }

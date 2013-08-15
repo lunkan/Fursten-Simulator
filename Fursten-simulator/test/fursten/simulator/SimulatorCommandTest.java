@@ -71,7 +71,7 @@ public class SimulatorCommandTest {
     		
     		Resource resourceData = new Resource();
     		resourceData.setKey(1);
-    		ResourceWrapper resource = ResourceWrapper.getWrapper(resourceData);
+    		ResourceWrapper resource = ResourceWrapper.getWrapper(resourceData.getKey());
     		Node node = new Node(1);
     		
     		ResourceManager RM = DAOManager.get().getResourceManager();
@@ -166,13 +166,13 @@ public class SimulatorCommandTest {
     	//Validate
     	for(Resource retrivedResourceObj : retrivedResources) {
     		
-    		ResourceWrapper retrivedResource = ResourceWrapper.getWrapper(retrivedResourceObj);
+    		ResourceWrapper retrivedResource = ResourceWrapper.getWrapper(retrivedResourceObj.getKey());
     		
     		//Get reference
     		ResourceWrapper refResource = null;
     		for(Resource refRes : resources) {
     			if(refRes.getKey() == retrivedResource.getKey()) {
-    				refResource = ResourceWrapper.getWrapper(refRes);
+    				refResource = ResourceWrapper.getWrapper(refRes.getKey());
     				break;
     			}
     		}

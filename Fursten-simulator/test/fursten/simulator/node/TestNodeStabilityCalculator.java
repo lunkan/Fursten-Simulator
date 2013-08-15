@@ -48,7 +48,7 @@ public class TestNodeStabilityCalculator {
     	expectedStability += Math.max(0, 1 - (Math.sqrt(Math.pow(500, 2) + Math.pow(500, 2)) / NodeStabilityCalculator.NODE_RADIUS)) * 4;//depth 1
     	expectedStability += Math.max(0, 1 - (Math.sqrt(Math.pow(650, 2) + Math.pow(650, 2)) / NodeStabilityCalculator.NODE_RADIUS)) * (0.5f * 8);//depth 2
     	
-    	float stability = NodeStabilityCalculator.getInstance().calculateStability(0, 0, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1")));
+    	float stability = NodeStabilityCalculator.getInstance().calculateStability(0, 0, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1").getKey()));
     	assertEquals(expectedStability, stability, 0.0001f);
     	
     	/*
@@ -58,7 +58,7 @@ public class TestNodeStabilityCalculator {
     	expectedStability += Math.max(0, 1 - (Math.sqrt(Math.pow(900, 2) + Math.pow(400, 2)) / NodeStabilityCalculator.NODE_RADIUS)) * 0.5f;//static_11 [-650:650]
     	expectedStability += Math.max(0, 1 - (Math.sqrt(Math.pow(900, 2) + Math.pow(400, 2)) / NodeStabilityCalculator.NODE_RADIUS)) * 0.5f;//static_12 [-650:650]
     	
-    	stability = NodeStabilityCalculator.getInstance().calculateStability(250, 250, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_11")));
+    	stability = NodeStabilityCalculator.getInstance().calculateStability(250, 250, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_11").getKey()));
     	assertEquals(expectedStability, stability, 0.0001f);
     }
 }

@@ -6,12 +6,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import fursten.simulator.Settings;
+import fursten.simulator.persistent.ResourceManager;
+import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource.Offspring;
 import fursten.simulator.resource.Resource.Weight;
 
 public class ResourceWrapper {
 	
-	private static final HashMap<Resource, ResourceWrapper> wrapperPool = new HashMap<Resource, ResourceWrapper>();
+	private static final HashMap<Integer, ResourceWrapper> wrapperPool = new HashMap<Integer, ResourceWrapper>();
+	private static ResourceWrapper currentWrapper;
 	
 	private int updateRatio;
 	private float adjustedMortality;
@@ -20,18 +23,50 @@ public class ResourceWrapper {
 	private Boolean hasLinks;
 	private Resource resource;
 	
-	public static ResourceWrapper getWrapper(Resource resource) {
+	/*public static ResourceWrapper getWrapper(Resource resource) {
+		
+		if(currentWrapper != null) {
+			if(currentWrapper.getKey() == resource.getKey()) {
+				return currentWrapper;
+			}
+		}
 		
 		ResourceWrapper wrapper = wrapperPool.get(resource);
 		if(wrapper == null) {
 			wrapper = new ResourceWrapper(resource);
-			wrapperPool.put(resource, wrapper);
+			wrapperPool.put(resource.getKey(), wrapper);
 		}
+		
+		currentWrapper = wrapper;
+		return wrapper;
+	}*/
+	
+	public static ResourceWrapper getWrapper(int resourceKey) {
+		
+		if(currentWrapper != null) {
+			if(currentWrapper.getKey() == resourceKey) {
+				return currentWrapper;
+			}
+		}
+		
+		ResourceWrapper wrapper = wrapperPool.get(resourceKey);
+		if(wrapper == null) {
+			ResourceManager RM = DAOFactory.get().getResourceManager();
+			Resource resource = RM.get(resourceKey);
 			
+			if(resource == null)
+				return null;
+				
+			wrapper = new ResourceWrapper(resource);
+			wrapperPool.put(resourceKey, wrapper);
+		}
+		
+		currentWrapper = wrapper;
 		return wrapper;
 	}
 	
 	public static void clear() {
+		currentWrapper = null;
 		wrapperPool.clear();
 	}
 	

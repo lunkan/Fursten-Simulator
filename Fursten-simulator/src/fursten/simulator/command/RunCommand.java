@@ -65,7 +65,7 @@ public class RunCommand implements SimulatorCommand {
 		
 		for(Integer resourceKey : resourceKeys) {
 			
-			ResourceWrapper resource = ResourceWrapper.getWrapper(RM.get(resourceKey));
+			ResourceWrapper resource = ResourceWrapper.getWrapper(resourceKey);
 			
 			
 			//Check if it's the resource time to get updated
@@ -141,7 +141,7 @@ public class RunCommand implements SimulatorCommand {
 	private Node runSpore(int x, int y, float v, int r) throws Exception {
 
 		Resource resource = RM.get(r);
-		ResourceWrapper resourceWrapper = ResourceWrapper.getWrapper(resource);
+		ResourceWrapper resourceWrapper = ResourceWrapper.getWrapper(resource.getKey());
 		
 		Node spore = new Node(r);
 		spore.setV(v);

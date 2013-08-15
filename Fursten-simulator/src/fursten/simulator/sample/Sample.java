@@ -12,21 +12,24 @@ public class Sample implements Serializable {
 	private int r;
 	private int x;
 	private int y;
+	private float v;
 	private float stability;
 	
 	public Sample(){
 	}
 	
-	public Sample(int resource, int x, int y){
+	public Sample(int resource, int x, int y, float v){
 		this.r = resource;
 		this.x = x;
 		this.y = y;
+		this.v = v;
 	}
 	
-	public Sample(int resource, int x, int y, float stability){
+	public Sample(int resource, int x, int y, float v, float stability){
 		this.r = resource;
 		this.x = x;
 		this.y = y;
+		this.v = v;
 		this.stability = stability;
 	}
 	
@@ -40,6 +43,10 @@ public class Sample implements Serializable {
 
 	public int getY() {
 		return y;
+	}
+	
+	public float getV() {
+		return v;
 	}
 	
 	public float getStability() {
@@ -58,11 +65,15 @@ public class Sample implements Serializable {
 		this.y = y;
 	}
 	
+	public void setV(float v) {
+		this.v = v;
+	}
+	
 	public void setStability(float stability) {
 		this.stability = stability;
 	}
 	
 	public String toString() {
-		return "Sample [x:"+x+" y:"+y+" r:"+r+" stability:"+stability+"]";
+		return "Sample [x:"+x+" y:"+y+" r:"+r+" v:"+v+" stability:"+stability+"]";
 	}
 }

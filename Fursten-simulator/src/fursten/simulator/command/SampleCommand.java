@@ -1,5 +1,6 @@
 package fursten.simulator.command;
 
+import java.awt.Rectangle;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -24,11 +25,17 @@ public class SampleCommand implements SimulatorCommand {
 	private ResourceManager RM;
 	private NodeManager NM;
 	private List<Sample> samples;
-	private boolean prospecting;
+	private int snapWidth;
 	
-	public SampleCommand(List<Sample> samples, boolean prospecting){
+	public SampleCommand(List<Sample> samples, Integer snap){
 		this.samples = samples;
-		this.prospecting = prospecting;
+		
+		if(snap == null)
+			this.snapWidth = 1;
+		else if(snap < 1)
+			this.snapWidth = 1;
+		else
+			this.snapWidth = snap * 2;
 	}
 	
 	public String getName() {
@@ -42,47 +49,53 @@ public class SampleCommand implements SimulatorCommand {
 		RM = DAOFactory.get().getResourceManager();
 		NM = DAOFactory.get().getNodeManager();
 		nodeMath = NodeStabilityCalculator.getInstance();
+		Rectangle bounds = new Rectangle();
 		
-		ResourceWrapper resource = null;
-		Collections.sort(samples, new SampleComparator());
-		
+		//Snap to closest nodes if snap option is set.
+		bounds.setSize(this.snapWidth, this.snapWidth);
+			
 		Iterator<Sample> it = samples.iterator();
 		while(it.hasNext()) {
 			
 			Sample sample = it.next();
+			ResourceWrapper resource = ResourceWrapper.getWrapper(sample.getR());
+			bounds.setLocation(sample.getX()-(int)Math.floor(this.snapWidth/2), sample.getY()-(int)Math.floor(this.snapWidth/2));
 			
-			if(!prospecting) {
-				if(!NM.contains(new Node(sample.getR(), sample.getX(), sample.getY(), 1.0f))) {
-					
-					//Sample node does not exist and we are not prospecting!
-					it.remove();
-					continue;
-				}
-			}
+			//Fetch nodes
+			List<Node> nodes = NM.get(bounds, sample.getR());
 			
-			if(resource == null)
-				resource = ResourceWrapper.getWrapper(RM.get(sample.getR()));
-			else if(resource.getResource().getKey() != sample.getR())
-				resource = ResourceWrapper.getWrapper(RM.get(sample.getR()));
-			
-			if(!resource.isStatic()) {
+			if(nodes.size() == 0) {
+				//No match found - in air sample. Value = 0
 				float stability = nodeMath.calculateStability(sample.getX(), sample.getY(), resource);
-				if(prospecting)
-					stability -= 1;
+				sample.setV(0.0f);
+				sample.setStability(stability);
+			}
+			else {
 				
+				Node snapNode = null;
+				
+				//Snap to closest
+				for(Node node : nodes) {
+					if(snapNode == null) {
+						snapNode = node;
+					}
+					else {
+						int distA = (int)Math.sqrt(Math.pow(sample.getX()-snapNode.getX(), 2) + Math.pow(sample.getY()-snapNode.getY(), 2));
+						int distB = (int)Math.sqrt(Math.pow(sample.getX()-node.getX(), 2) + Math.pow(sample.getY()-node.getY(), 2));
+						if(distB < distA)
+							snapNode = node;
+					}
+				}
+				
+				float stability = nodeMath.calculateStability(snapNode.getX(), snapNode.getY(), resource);
+				sample.setX(snapNode.getX());
+				sample.setY(snapNode.getY());
+				sample.setV(snapNode.getV());
 				sample.setStability(stability);
 			}
 		}
 		
 		logger.log(Level.INFO, "Sample " + samples.size() + ". time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
 		return samples;
-	}
-	
-	class SampleComparator implements Comparator<Sample>{
-		 
-	    @Override
-	    public int compare(Sample o1, Sample o2) {
-	        return (o1.getR() > o2.getR() ? -1 : (o1.getR() == o2.getR() ? 0 : 1));
-	    }
 	}
 }

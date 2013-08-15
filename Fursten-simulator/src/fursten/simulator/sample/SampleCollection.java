@@ -7,17 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class SampleCollection {
 	
 	private ArrayList<Sample> samples;
-	private boolean prospecting;
 	
 	public SampleCollection() {
-	}
-	
-	public boolean getProspecting() {
-		return prospecting;
-	}
-	
-	public void getProspecting(boolean prospecting) {
-		this.prospecting = prospecting;
 	}
 	
 	public ArrayList<Sample> getSamples() {

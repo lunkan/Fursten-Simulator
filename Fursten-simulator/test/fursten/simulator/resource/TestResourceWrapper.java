@@ -40,19 +40,19 @@ public class TestResourceWrapper {
     @Test
 	public void testGetUpdateintervall() {
     	//Update-precision = 4
-    	assertEquals(5, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1")).getUpdateintervall());
+    	assertEquals(5, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1").getKey()).getUpdateintervall());
 	}
     
     @Test
     public void testGetMortality() {
     	//Update-precision = 4
-    	assertEquals(0.004990009995001f, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1")).getMortality(), 0.0001f);
+    	assertEquals(0.004990009995001f, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1").getKey()).getMortality(), 0.0001f);
 	}
 	
     @Test
 	public void testGetOffsprings() {
     	
-    	List<Offspring> offsprings = ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1")).getOffsprings();
+    	List<Offspring> offsprings = ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1").getKey()).getOffsprings();
     	for(Offspring offspring : offsprings) {
     		
     		if(offspring.getResource() == 536870912) {
@@ -73,7 +73,7 @@ public class TestResourceWrapper {
     @Test
 	public void testGetWeightMap() {
     	
-    	List<HashMap<Integer, Float>> weightMap = ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_11")).getWeightMap();
+    	List<HashMap<Integer, Float>> weightMap = ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_11").getKey()).getWeightMap();
     	assertEquals(2, weightMap.size());
     	
     	for(HashMap<Integer, Float> weightGroup : weightMap) {
@@ -92,37 +92,37 @@ public class TestResourceWrapper {
     @Test
 	public void testGetWeight() {
     	
-    	Float weightValue = ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_12")).getWeight(1, 1744830464);
+    	Float weightValue = ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_12").getKey()).getWeight(1, 1744830464);
     	assertEquals(-0.5f, weightValue, 0.0001f);
 	}
     
     @Test
 	public void testGetDependencies() {
     	
-    	assertTrue(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_11")).getDependencies(1).containsAll(Arrays.asList(new Integer[]{ 1879048192, 1744830464 })));
+    	assertTrue(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_11").getKey()).getDependencies(1).containsAll(Arrays.asList(new Integer[]{ 1879048192, 1744830464 })));
 	}
 	
     @Test
 	public void testNumGroups() {
-    	assertEquals(2, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_12")).numGroups());
+    	assertEquals(2, ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_12").getKey()).numGroups());
 	}
 	
     @Test
 	public void testIsStatic() {
-    	assertTrue(ResourceWrapper.getWrapper(staticSamples.get("static_12")).isStatic());
-    	assertFalse(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_12")).isStatic());
-    	assertFalse(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1")).isStatic());
+    	assertTrue(ResourceWrapper.getWrapper(staticSamples.get("static_12").getKey()).isStatic());
+    	assertFalse(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_12").getKey()).isStatic());
+    	assertFalse(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1").getKey()).isStatic());
 	}
 	
     @Test
 	public void testIsDependent() {
-    	assertTrue(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_11")).isDependent());
-    	assertFalse(ResourceWrapper.getWrapper(staticSamples.get("static_11")).isDependent());
+    	assertTrue(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_11").getKey()).isDependent());
+    	assertFalse(ResourceWrapper.getWrapper(staticSamples.get("static_11").getKey()).isDependent());
 	}
 	
     @Test
 	public void testHasLinks() {
-    	assertFalse(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1")).hasLinks());
+    	assertFalse(ResourceWrapper.getWrapper(dynamicSamples.get("dynamic_1").getKey()).hasLinks());
 	}
 	
     @Test

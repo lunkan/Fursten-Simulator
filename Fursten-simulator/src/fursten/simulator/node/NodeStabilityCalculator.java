@@ -40,7 +40,8 @@ public class NodeStabilityCalculator {
 	
 	public float calculateStability(int x, int y, ResourceWrapper resource) {
 			
-		//, boolean ignoreSelf) {
+		if(resource.isStatic())
+			return 0.0f;
 		
 		//set bounds
 		rect.setBounds(x - NODE_RADIUS, y - NODE_RADIUS, NODE_RADIUS*2, NODE_RADIUS*2);

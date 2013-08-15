@@ -52,7 +52,7 @@ public class UpdateCommand implements SimulatorCommand {
 		Set<Integer> invalidResources = NodeActivityManager.getInvalidResources();
 		for(Integer invalidResource : invalidResources) {
 			
-			ResourceWrapper resource = ResourceWrapper.getWrapper(RM.get(invalidResource));
+			ResourceWrapper resource = ResourceWrapper.getWrapper(invalidResource);
 			if(resource.isDependent()){
 				
 				//Find and loop all regions where an update has occurred

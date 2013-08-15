@@ -79,7 +79,7 @@ public class NodeTransactionCommand implements SimulatorCommand {
 			while(it.hasNext()) {
 				
 				Node deleteNode = it.next();
-				if(ResourceWrapper.getWrapper(RM.get(deleteNode.getR())).hasLinks()) {
+				if(ResourceWrapper.getWrapper(deleteNode.getR()).hasLinks()) {
 					applyLinkedNodesSubstraction(deleteNode, deleteNode.getV(), jointNodes);
 					substractedNum -= 1;
 					it.remove();//remove joint nodes separately
