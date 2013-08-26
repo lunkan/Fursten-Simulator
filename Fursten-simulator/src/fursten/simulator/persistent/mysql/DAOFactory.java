@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import fursten.simulator.Settings;
 import fursten.simulator.Settings.DatabaseSettings;
 import fursten.simulator.persistent.DAOManager;
-import fursten.simulator.persistent.LinkManager;
+import fursten.simulator.persistent.JointManager;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.WorldManager;
@@ -73,8 +73,8 @@ public class DAOFactory extends DAOManager {
 		return WorldDAO.getInstance();
 	}
 	
-	public LinkManager getLinkManager() {
-		return LinkDAO.getInstance();
+	public JointManager getLinkManager() {
+		return JointDAO.getInstance();
 	}
 	
 	public void load() {
@@ -84,10 +84,17 @@ public class DAOFactory extends DAOManager {
 		getLinkManager().pullPersistent();
 	}
 	
-	public void reset() {
+	public void clear() {
+		getNodeManager().clear();
+		getResourceManager().clear();
+		getWorldManager().clear();
+		getLinkManager().clear();
+	}
+	
+	/*public void reset() {
 		getNodeManager().reset();
 		getResourceManager().reset();
 		getWorldManager().reset();
 		getLinkManager().reset();
-	}
+	}*/
 }

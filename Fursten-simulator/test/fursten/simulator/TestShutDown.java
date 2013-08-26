@@ -24,7 +24,8 @@ public class TestShutDown {
 		NodeActivityManager.clear();
 		
 		if(Settings.getInstance().settingsMode() == Settings.SettingsMode.JUNIT) {
-			DAOManager.get().reset();
+			//DAOManager.get().reset();
+			DAOManager.get().clear();
 			logger.log(Level.INFO, "ShutDown JUnit Fursten simulator complete - data cleared.");
 		}
 		else {

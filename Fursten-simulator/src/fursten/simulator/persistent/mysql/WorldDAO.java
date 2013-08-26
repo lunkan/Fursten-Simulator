@@ -51,11 +51,11 @@ class WorldDAO implements WorldManager, Persistable {
 		return false;
 	}
 
-	@Override
+	/*@Override
 	public synchronized boolean reset() {
 		instance = null;
 		return true;
-	}
+	}*/
 	
 	@Override
 	public World get() {

@@ -24,9 +24,11 @@ public class InitializeCommand implements SimulatorCommand {
 	public Object execute() throws Exception {
 		
 		//Clear all
-		DAOFactory.get().reset();
+		//DAOFactory.get().reset();
+		DAOFactory.get().clear();
 		
 		WorldManager SM = DAOFactory.get().getWorldManager();
+		System.out.println(world);
 		SM.set(world);
 		
 		//Important! Clear resource manager cache

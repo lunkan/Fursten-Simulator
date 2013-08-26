@@ -57,11 +57,17 @@ class NodeDAO implements NodeManager {
 		pullPersistent();
 	}
 	
-	public synchronized boolean reset() {
-		instance = null;
+	public synchronized boolean clear() {
+		nodeTreeMap.clear();
 		changed = true;
 		return true;
 	}
+	
+	/*public synchronized boolean reset() {
+		instance = null;
+		changed = true;
+		return true;
+	}*/
 	
 	public synchronized int add(Node... nodes) {
 		return addAll(Arrays.asList(nodes));
@@ -118,12 +124,6 @@ class NodeDAO implements NodeManager {
 		
 		changed = true;
 		return deletedNodes;
-	}
-	
-	public synchronized boolean clear() {
-		nodeTreeMap.clear();
-		changed = true;
-		return true;
 	}
 	
 	public List<Node> get(Rectangle bounds) {

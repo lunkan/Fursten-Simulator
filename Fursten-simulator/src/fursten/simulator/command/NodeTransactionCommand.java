@@ -1,22 +1,18 @@
 package fursten.simulator.command;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
+import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import fursten.simulator.world.World;
-import fursten.simulator.link.Link;
+import fursten.simulator.joint.Joint;
+import fursten.simulator.joint.Joint.Link;
 import fursten.simulator.node.Node;
 import fursten.simulator.node.NodeActivityManager;
-import fursten.simulator.persistent.LinkManager;
+import fursten.simulator.persistent.JointManager;
 import fursten.simulator.persistent.NodeManager;
-import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.ResourceWrapper;
@@ -30,8 +26,7 @@ public class NodeTransactionCommand implements SimulatorCommand {
 	private List<Node> insertNodes;
 	
 	private NodeManager NM;
-	private ResourceManager RM;
-	private LinkManager LM;
+	private JointManager LM;
 	
 	public NodeTransactionCommand(List<Node> substractNodes) {
 		if(substractNodes != null)
@@ -62,68 +57,67 @@ public class NodeTransactionCommand implements SimulatorCommand {
 		long timeStampStart = System.currentTimeMillis();
 		
 		int substractedNum = substractNodes.size();
-		int deleteLinks  = 0;
+		int deleteJoints  = 0;
 		int insertedNum = 0;
 		
+		List<Node> substractCommonNodes = new ArrayList<Node>();
+		List<Node> substractJointNodes = new ArrayList<Node>();
+		
 		NM = DAOFactory.get().getNodeManager();
-		RM = DAOFactory.get().getResourceManager();
 		LM = DAOFactory.get().getLinkManager();
 		
-		//Delete nodes
+		//Substract nodes
 		if(substractNodes != null) {
 			
-			List<Node> jointNodes = new ArrayList<Node>();
-			Collections.sort(substractNodes, new NodeSort());
+			Queue<Node> substractQueue = new LinkedList<Node>(substractNodes);
+			while(!substractQueue.isEmpty()) {
 			
-			Iterator<Node> it = substractNodes.iterator();
-			while(it.hasNext()) {
+				Node substractNode = substractQueue.poll();
 				
-				Node deleteNode = it.next();
-				if(ResourceWrapper.getWrapper(deleteNode.getR()).hasLinks()) {
-					applyLinkedNodesSubstraction(deleteNode, deleteNode.getV(), jointNodes);
-					substractedNum -= 1;
-					it.remove();//remove joint nodes separately
-				}
-			}
-			
-			if(jointNodes.size() > 0) {
+				//Check whether we need to substract joint nodes as well
+				//ToDo: Maybe set a flag on node or bit on resource key to make it faster.
+				if(ResourceWrapper.getWrapper(substractNode.getR()).hasLinks()) {
 				
-				List<Node> deletedJoints = NM.substractAll(jointNodes);
-				List<Link> deletedNodeLinks = LM.getAll(deletedJoints);
-				
-				//Destroy children of all linked children of deleted parents
-				ArrayList<Node> destroyedLinkNodes = new ArrayList<Node>();
-				for(Link link : deletedNodeLinks) {
-					Node deletedNodeLink = link.getChildNode().clone();
-					deletedNodeLink.setV(Float.MAX_VALUE);
-					destroyedLinkNodes.add(deletedNodeLink);
-				}
-				
-				substractedNum += jointNodes.size();
-				NM.substractAll(destroyedLinkNodes);
+					substractJointNodes.add(substractNode);
+					
+					Joint joint = LM.get(substractNode.getNodePoint());
+					if(joint != null) {
 						
-				NodeActivityManager.invalidate(jointNodes);
-				NodeActivityManager.invalidate(destroyedLinkNodes);
-				
-				LM.removeAll(new ArrayList<Link>(deletedNodeLinks));
-				deleteLinks += deletedNodeLinks.size();
-				
+						//Append joint nodes to substractQueue and substract nodes
+						for(Link link : joint.getLinks()) {
+							float substractVal = substractNode.getV() * link.getWeight();
+							Node jointNode = new Node(link.getNodePoint(), substractVal);
+							substractQueue.add(jointNode);
+						}
+					}
+				}
+				else {
+					substractCommonNodes.add(substractNode);
+				}
 			}
 			
-			NM.substractAll(substractNodes);
-			NodeActivityManager.invalidate(substractNodes);
+			//Substract nodes
+			NM.substractAll(substractCommonNodes);
+			List<Node> deletedJointNodes = NM.substractAll(substractJointNodes);
+			
+			//We need to delete all joints for deleted nodes
+			for(Node deletedJointNode : deletedJointNodes)
+				LM.remove(deletedJointNode.getNodePoint());
+			
+			//Invalidate All
+			NodeActivityManager.invalidate(substractCommonNodes);
+			NodeActivityManager.invalidate(substractJointNodes);
 		}
 		
-		//Insert nodes
+		//Add nodes
 		if(insertNodes != null) {
 			
 			WorldManager SM = DAOFactory.get().getWorldManager();
-			World activeSession = SM.get();
+			//World activeSession = SM.get();
 			
-			Set<Integer> validResourceKeys = RM.getKeys();
-			
+			//Set<Integer> validResourceKeys = RM.getKeys();
 			//Validate inserted nodes
-			for(Node node : insertNodes) {
+			/*for(Node node : insertNodes) {
 				if(!validResourceKeys.contains(node.getR())) {
 					logger.log(Level.WARNING, "Failed adding node becouse resourceId: " + node.getR() + " does not have a resource attached to it. No nodes where added.");
 					return null;
@@ -136,48 +130,17 @@ public class NodeTransactionCommand implements SimulatorCommand {
 					logger.log(Level.WARNING, "Failed adding node becouse node: " + node.toString() + " has no value.");
 					return null;
 				}
-			}
+			}*/
 			
 			insertedNum = NM.addAll(insertNodes);
-			NodeActivityManager.invalidate(insertNodes);
-			
 			if(insertNodes.size() != insertedNum) {
 				throw new Exception("Database may be corrupt! Nodes where added but the response number does not equal the number of of nodes inserted. Inserted:" + insertNodes.size());
 			}
-		}
-		
-		
-		logger.log(Level.INFO, "Substracted " + substractedNum + " " + deleteLinks + " links removed. Inserted " + insertedNum + " nodes. Time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
-		return null;
-	}
-	
-	/**
-	 * Calculate the amount to abstract from nodes linked (and there by impacted) when the parent node value is reduced
-	 * This method returns a list of thouse nodes that is to be reduced.
-	 * @param link
-	 * @param weight
-	 * @param substraction
-	 * @param substractedLinkNodes
-	 */
-	private void applyLinkedNodesSubstraction(Node node, float substraction, List<Node> substractedLinkNodes) {
-		
-		substractedLinkNodes.add(node);
-		
-		for(Link link : LM.get(node)) {
-			float weightSum = substraction * link.getWeight();
 			
-			if(substraction > 0) {
-				Node childNode = link.getChildNode().clone();
-				childNode.setV(weightSum);
-				applyLinkedNodesSubstraction(childNode, weightSum, substractedLinkNodes);
-			}
+			NodeActivityManager.invalidate(insertNodes);
 		}
-	}
-	
-	private static class NodeSort implements Comparator<Node>{
-		 
-	    public int compare(Node o1, Node o2) {
-	    	return (o1.getR() > o2.getR() ? -1 : (o1.getR() == o2.getR() ? 0 : 1));
-	    }
+		
+		logger.log(Level.INFO, "Substracted " + substractedNum + " " + deleteJoints + " joints removed. Inserted " + insertedNum + " nodes. Time: " + (System.currentTimeMillis() - timeStampStart) + "ms");
+		return null;
 	}
 }

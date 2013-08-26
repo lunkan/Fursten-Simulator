@@ -7,8 +7,9 @@ public abstract class DAOManager {
 	public abstract NodeManager getNodeManager();
 	public abstract ResourceManager getResourceManager();
 	public abstract WorldManager getWorldManager();
-	public abstract LinkManager getLinkManager();
-	public abstract void reset();
+	public abstract JointManager getLinkManager();
+	//public abstract void reset();
+	public abstract void clear();
 	public abstract void load();
 	
 	private static DAOManager factory = null;
@@ -22,10 +23,14 @@ public abstract class DAOManager {
 	}
 	
 	public static void resetAll() {
-		get().getLinkManager().reset();
+		/*get().getLinkManager().reset();
 		get().getNodeManager().reset();
 		get().getResourceManager().reset();
-		get().getWorldManager().reset();
+		get().getWorldManager().reset();*/
+		get().getLinkManager().clear();
+		get().getNodeManager().clear();
+		get().getResourceManager().clear();
+		get().getWorldManager().clear();
 	}
 	
 	/*public static DAOTestHelper getTestHelper() {

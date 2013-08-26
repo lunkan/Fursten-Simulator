@@ -28,6 +28,13 @@ public class Node implements Serializable {
 		this.y = y;
 		this.v = v;
 	}
+	
+	public Node(NodePoint nodePoint, float v){
+		this.r = nodePoint.getR();
+		this.x = nodePoint.getX();
+		this.y = nodePoint.getY();
+		this.v = v;
+	}
 
 	public float getV() {
 		return v;
@@ -103,6 +110,10 @@ public class Node implements Serializable {
 		newNode.setY(y);
 		newNode.setV(v);
 		return newNode;
+	}
+	
+	public NodePoint getNodePoint() {
+		return new NodePoint(x, y, r);
 	}
 	
 	public String toString() {

@@ -1,10 +1,7 @@
 package fursten.simulator.command;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -12,10 +9,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fursten.simulator.world.World;
-import fursten.simulator.link.Link;
+import fursten.simulator.joint.Joint;
 import fursten.simulator.node.Node;
-import fursten.simulator.node.NodeActivityManager;
+import fursten.simulator.node.NodePoint;
 import fursten.simulator.node.NodeStabilityCalculator;
+import fursten.simulator.persistent.JointManager;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.WorldManager;
@@ -59,9 +57,11 @@ public class RunCommand implements SimulatorCommand {
 		Set<Integer> resourceKeys = RM.getKeys();
 		nodeMath = NodeStabilityCalculator.getInstance();
 		
+		JointManager LM = DAOFactory.get().getLinkManager();
+		
 		List<Node> removedNodes = new ArrayList<Node>();
 		List<Node> addedNodes = new ArrayList<Node>();
-		List<Link> addedLinks = new ArrayList<Link>();
+		List<Joint> addedJoints = new ArrayList<Joint>();
 		
 		for(Integer resourceKey : resourceKeys) {
 			
@@ -112,10 +112,15 @@ public class RunCommand implements SimulatorCommand {
 									
 									//Add a link if of link type
 									if(offspring.getIsLinked()) {
-										Link newLink = new Link();
-										newLink.setChildNode(spore);
-										newLink.setParentNode(node);
-										addedLinks.add(newLink);
+										
+										NodePoint nodePoint = node.getNodePoint();
+										Joint joint = LM.get(nodePoint);
+										if(joint == null) {
+											joint = new Joint(nodePoint);
+										}
+										
+										joint.addLink(spore.getNodePoint(), offspring.getMultiplier());
+										addedJoints.add(joint);
 									}
 										
 									//Reduce cost from parent

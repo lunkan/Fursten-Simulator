@@ -69,19 +69,20 @@ public class SimulatorCommandTest {
     				rand.nextInt(Integer.MAX_VALUE)
     			);
     		
-    		Resource resourceData = new Resource();
-    		resourceData.setKey(1);
-    		ResourceWrapper resource = ResourceWrapper.getWrapper(resourceData.getKey());
-    		Node node = new Node(1);
-    		
     		ResourceManager RM = DAOManager.get().getResourceManager();
     		NodeManager NM = DAOManager.get().getNodeManager();
     		WorldManager SM = DAOManager.get().getWorldManager();
     		
-    		RM.put(resource.getResource());
+    		Resource resourceData = new Resource();
+    		resourceData.setKey(1);
+    		RM.put(resourceData);
+    		
+    		ResourceWrapper resource = ResourceWrapper.getWrapper(resourceData.getKey());
+    		Node node = new Node(1);
+    		
     		NM.addAll(new ArrayList<Node>(Arrays.asList(node)));
     		
-    		World session = new World()
+    		World world = new World()
     			.setName(TEST_NAME)
     			.setWidth(Integer.MAX_VALUE)
     			.setHeight(Integer.MAX_VALUE);
@@ -89,14 +90,14 @@ public class SimulatorCommandTest {
     		//Perform test and measure time
     		long startTime = System.currentTimeMillis();
     		
-    		new InitializeCommand(session).execute();
+    		new InitializeCommand(world).execute();
     		
     		//Log result
     		exeLog.add("Initialize Tot exe time =  " + (System.currentTimeMillis() - startTime) + "ms");
     		
-    		World activeSession = SM.get();
-    		assertEquals(session.getRect(), activeSession.getRect());
-    		assertEquals(session.getName(), activeSession.getName());
+    		World activeWorld = SM.get();
+    		assertEquals(world.getRect(), activeWorld.getRect());
+    		assertEquals(world.getName(), activeWorld.getName());
     		
     		assertEquals(null, RM.get(1));
     	}

@@ -10,12 +10,13 @@ import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
-import fursten.simulator.link.Link;
-import fursten.simulator.link.LinkCollection;
+import fursten.simulator.joint.Joint;
+import fursten.simulator.joint.JointCollection;
 import fursten.simulator.node.Node;
 import fursten.simulator.node.NodeCollection;
+import fursten.simulator.node.NodePoint;
 import fursten.simulator.persistent.DAOManager;
-import fursten.simulator.persistent.LinkManager;
+import fursten.simulator.persistent.JointManager;
 import fursten.simulator.persistent.NodeManager;
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.resource.Resource;
@@ -79,31 +80,27 @@ public class TestCaseHelper {
 		}
 	}
 	
-	public static HashMap<String, Link> loadLinks(String testCase) {
+	public static HashMap<String, Joint> loadJoints(String testCase) {
 		
 		try {
-			JAXBContext context = JAXBContext.newInstance(Node.class, Link.class, LinkCollection.class);
+			JAXBContext context = JAXBContext.newInstance(NodePoint.class, Joint.class, JointCollection.class);
 			Unmarshaller unMarshaller = context.createUnmarshaller();
-			LinkCollection linkCollection = (LinkCollection) unMarshaller.unmarshal(new FileInputStream(testCase));
+			JointCollection jointCollection = (JointCollection) unMarshaller.unmarshal(new FileInputStream(testCase));
 			
-			ArrayList<Link> linkList = linkCollection.getLinks();
-			LinkManager LM = DAOManager.get().getLinkManager();
-			LM.addAll(linkList);
-	    	
+			ArrayList<Joint> joints = jointCollection.getJoints();
+			JointManager LM = DAOManager.get().getLinkManager();
+			LM.putAll(joints);
+			
 	    	ResourceManager RM = DAOManager.get().getResourceManager();
 	    	
-	    	HashMap<String, Link> linkMap = new HashMap<String, Link>();
-			for(Link link : linkList) {
-				Resource parentResource = RM.get(link.getParentNode().getR());
-				Resource childResource = RM.get(link.getChildNode().getR());
-				
-				String linkName = parentResource.getName() + "["+link.getParentNode().getX()+":"+link.getParentNode().getY()+"]";
-				linkName += " " + childResource.getName() + "["+link.getChildNode().getX()+":"+link.getChildNode().getY()+"]";
-				
-				linkMap.put(linkName, link);
+	    	HashMap<String, Joint> jointMap = new HashMap<String, Joint>();
+			for(Joint joint : joints) {
+				Resource parentResource = RM.get(joint.getNodePoint().getR());
+				String jointName = parentResource.getName() + "["+joint.getNodePoint().getX()+":"+joint.getNodePoint().getY()+"]";
+				jointMap.put(jointName, joint);
 			}
 	    	
-			return linkMap;
+			return jointMap;
 			
 		}
 		catch(Exception e) {

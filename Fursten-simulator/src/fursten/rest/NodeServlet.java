@@ -51,7 +51,7 @@ public class NodeServlet {
 			@QueryParam("r") List<String> resourceKeys,
 			@QueryParam("method") String method) {
 		
-		Set<Integer> resourceFilter = getResourceKeysByParam(resourceKeys, method);
+		Set<Integer> resourceFilter = ResourceKeyManager.getResourceKeysByMethod(resourceKeys, method);
 		Rectangle rect = getRectByParam(x, y, w, h);
 		
 		List<Node> nodes = Facade.getNodes(rect, resourceFilter);
@@ -72,7 +72,7 @@ public class NodeServlet {
 			@QueryParam("r") List<String> resourceKeys,
 			@QueryParam("method") String method) throws IOException {
 		
-		Set<Integer> resourceFilter = getResourceKeysByParam(resourceKeys, method);
+		Set<Integer> resourceFilter = ResourceKeyManager.getResourceKeysByMethod(resourceKeys, method);
 		Rectangle rect = getRectByParam(x, y, w, h);
 		List<Node> deleteNodes = Facade.getNodes(rect, resourceFilter);
 		if(Facade.editNodes(deleteNodes, nodes.getNodes()))
@@ -100,7 +100,7 @@ public class NodeServlet {
 			@QueryParam("r") List<String> resourceKeys,
 			@QueryParam("method") String method) {
 		
-		Set<Integer> resourceFilter = getResourceKeysByParam(resourceKeys, method);
+		Set<Integer> resourceFilter = ResourceKeyManager.getResourceKeysByMethod(resourceKeys, method);
 		Rectangle rect = getRectByParam(x, y, w, h);
 		
 		List<Node> nodes = Facade.getNodes(rect, resourceFilter);
@@ -121,95 +121,16 @@ public class NodeServlet {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 	}
 	
-	/**
-	 * OBSOLITE
-	 * @param nodes
-	 * @return
-	 * @throws IOException
-	 */
-	@POST
-	@Path("/inject")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response injectNodes(NodeCollection nodes) throws IOException {
-		
-		if(Facade.editNodes(null, nodes.getNodes()))
-			return Response.status(Response.Status.OK).build();
-		else
-			return Response.status(Response.Status.BAD_REQUEST).build();
-	}
-	
-	/**
-	 * OBSOLITE
-	 * @param nodes
-	 * @return
-	 * @throws IOException
-	 */
-	@POST
-	@Path("/remove")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response removeNodes(NodeCollection nodes) throws IOException {
-		
-		if(Facade.editNodes(nodes.getNodes(), null))
-			return Response.status(Response.Status.OK).build();
-		else
-			return Response.status(Response.Status.BAD_REQUEST).build();
-	}
-	
-	
 	private Rectangle getRectByParam(Integer x, Integer y, Integer w, Integer h) {
-	
+		
 		Rectangle rect;
 		if(x != null && y != null && w != null && h != null)
 			rect = new Rectangle(x, y, w, h);
+		else if(x != null && y != null)
+			rect = new Rectangle(x, y, 1, 1);
 		else
 			rect = new Rectangle(Integer.MIN_VALUE/2, Integer.MIN_VALUE/2, Integer.MAX_VALUE, Integer.MAX_VALUE);
 		
 		return rect;
-	}
-	
-	/**
-	 * Helper Method
-	 * @param resourceKeys
-	 * @param method
-	 * @return
-	 */
-	private Set<Integer> getResourceKeysByParam(List<String> resourceKeys, String method) {
-		
-		Set<Integer> keys = null;
-		
-		if(resourceKeys == null)
-			return keys;
-		
-		if(resourceKeys.size() == 0)
-			return keys;
-		
-		keys = new TreeSet<Integer>();
-		for(String key : resourceKeys) {
-			try {
-				keys.add(Integer.parseInt(key));
-			}
-			catch(Exception e) {
-				logger.log(Level.WARNING, "Resource key string could not be parsed to resource int");
-			}
-		}
-		
-		if(method != null && keys != null) {
-			
-			Set<Integer> relatedKeys = new HashSet<Integer>();
-			if(ResourceSelectMethod.CHILDREN.value.equals(method.toLowerCase())) {
-				for(Integer key : keys)
-					relatedKeys.addAll(ResourceKeyManager.getChildren(key));
-			}
-			else if(ResourceSelectMethod.PARENTS.value.equals(method.toLowerCase())) {
-				for(Integer key : keys)
-					relatedKeys.addAll(ResourceKeyManager.getParents(key));
-			}
-			
-			keys = relatedKeys;
-		}
-		
-		return keys;
 	}
 }

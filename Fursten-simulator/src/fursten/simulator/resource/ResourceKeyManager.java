@@ -1,8 +1,11 @@
 package fursten.simulator.resource;
 
 import java.math.BigInteger;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.logging.Level;
 
 import fursten.simulator.persistent.ResourceManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
@@ -127,5 +130,47 @@ public class ResourceKeyManager {
 		}
 
 		return keyString;
+	}
+	
+	public static Set<Integer> getResourceKeysByMethod(List<String> keys, String method) {
+		return getInstance()._getResourceKeysByMethod(keys, method);
+	}
+	
+	private Set<Integer> _getResourceKeysByMethod(List<String> keys, String method) {
+		
+		Set<Integer> keySet = null;
+		
+		if(keys == null)
+			return keySet;
+		else if(keys.size() == 0)
+			return keySet;
+		
+		keySet = new TreeSet<Integer>();
+		for(String key : keys) {
+			try {
+				keySet.add(Integer.parseInt(key));
+			}
+			catch(Exception e) {
+				//logger.log(Level.WARNING, "Resource key string could not be parsed to resource int");
+				//...
+			}
+		}
+		
+		if(method != null && keySet != null) {
+			
+			Set<Integer> relatedKeys = new HashSet<Integer>();
+			if(ResourceSelectMethod.CHILDREN.value.equals(method.toLowerCase())) {
+				for(Integer key : keySet)
+					relatedKeys.addAll(_getChildren(key));
+			}
+			else if(ResourceSelectMethod.PARENTS.value.equals(method.toLowerCase())) {
+				for(Integer key : keySet)
+					relatedKeys.addAll(_getParents(key));
+			}
+			
+			keySet = relatedKeys;
+		}
+		
+		return keySet;
 	}
 }

@@ -40,11 +40,15 @@ public class TestNodeStabilityCalculator {
     @Test
     public void testCalculateStability() throws Exception {
     	
+    	//Use a sigmoid function to get better distribution for nodes of same type
+    	float sigX= 5.0f + ((float)(0)/(float)NodeStabilityCalculator.NODE_RADIUS)*-10.0f;
+    	float sigmoidImpact = 1.0f / (1.0f + (float)Math.exp(-sigX));
+    			
     	/*
     	 * Test root node [0:0]
     	 */
-    	float expectedStability = -1;//negative from self
-    	expectedStability += 2f*2;//depth 0
+    	float expectedStability = -sigmoidImpact;//negative from self
+    	expectedStability += 2.0f*2.0f;//depth 0
     	expectedStability += Math.max(0, 1 - (Math.sqrt(Math.pow(500, 2) + Math.pow(500, 2)) / NodeStabilityCalculator.NODE_RADIUS)) * 4;//depth 1
     	expectedStability += Math.max(0, 1 - (Math.sqrt(Math.pow(650, 2) + Math.pow(650, 2)) / NodeStabilityCalculator.NODE_RADIUS)) * (0.5f * 8);//depth 2
     	
@@ -54,7 +58,7 @@ public class TestNodeStabilityCalculator {
     	/*
     	 * Test child node [250:250]
     	 */
-    	expectedStability = -1;//negative from self
+    	expectedStability = -sigmoidImpact;//-1;//negative from self
     	expectedStability += Math.max(0, 1 - (Math.sqrt(Math.pow(900, 2) + Math.pow(400, 2)) / NodeStabilityCalculator.NODE_RADIUS)) * 0.5f;//static_11 [-650:650]
     	expectedStability += Math.max(0, 1 - (Math.sqrt(Math.pow(900, 2) + Math.pow(400, 2)) / NodeStabilityCalculator.NODE_RADIUS)) * 0.5f;//static_12 [-650:650]
     	

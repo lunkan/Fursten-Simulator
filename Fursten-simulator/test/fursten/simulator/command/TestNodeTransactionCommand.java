@@ -17,7 +17,7 @@ import org.junit.Test;
 import fursten.simulator.TestCaseHelper;
 import fursten.simulator.TestShutDown;
 import fursten.simulator.TestStartup;
-import fursten.simulator.link.Link;
+import fursten.simulator.joint.Joint;
 import fursten.simulator.node.Node;
 import fursten.simulator.node.NodeActivityManager;
 import fursten.simulator.persistent.NodeManager;
@@ -36,7 +36,7 @@ public class TestNodeTransactionCommand extends TestCase {
 	private HashMap<String, Node> nodeDynamicSamples;
 	private HashMap<String, Node> nodeLinkedSamples;
 	
-	private HashMap<String, Link> linkSamples;
+	private HashMap<String, Joint> jointsSamples;
 	
 	private NodeManager NM;
 	
@@ -46,38 +46,15 @@ public class TestNodeTransactionCommand extends TestCase {
     	TestStartup.init();
     	staticSamples = TestCaseHelper.loadResources("junit/testcase/resource/static-resources.xml");
         dynamicSamples = TestCaseHelper.loadResources("junit/testcase/resource/dynamic-resources.xml");
-        linkedSamples = TestCaseHelper.loadResources("junit/testcase/resource/linked-resources.xml");
+        linkedSamples = TestCaseHelper.loadResources("junit/testcase/resource/joint-resources.xml");
         
         nodeStaticSamples = TestCaseHelper.loadNodes("junit/testcase/node/static-nodes.xml");
         nodeDynamicSamples = TestCaseHelper.loadNodes("junit/testcase/node/dynamic-nodes.xml");
-        nodeLinkedSamples = TestCaseHelper.loadNodes("junit/testcase/node/linked-nodes.xml");
+        nodeLinkedSamples = TestCaseHelper.loadNodes("junit/testcase/node/joint-nodes.xml");
         
-        linkSamples = TestCaseHelper.loadLinks("junit/testcase/link/links.xml");
+        jointsSamples = TestCaseHelper.loadJoints("junit/testcase/joint/joints.xml");
         
         NM = DAOFactory.get().getNodeManager();
-        
-        /*for(String str : linkSamples.keySet()) {
-        	System.out.println(linkSamples.get(str));
-        }*/
-        
-        /*BigInteger bigIntA = BigInteger.valueOf(0);
-        
-        bigIntA = bigIntA.setBit(28);
-        BigInteger bigIntAA = bigIntA.setBit(27);
-        BigInteger bigIntAB = bigIntA.setBit(26);
-        		
-        System.out.println("bigIntA " + bigIntA.intValue());
-        System.out.println("bigIntAA " + bigIntAA.intValue());
-        System.out.println("bigIntAB " + bigIntAB.intValue());
-        
-        bigIntA 268435456
-        2013-jul-04 14:22:19 fursten.simulator.TestShutDown destroy
-        INFO: ShutDown JUnit Fursten simulator.
-        2013-jul-04 14:22:19 fursten.simulator.TestShutDown destroy
-        INFO: ShutDown JUnit Fursten simulator complete - data cleared.
-        bigIntAA 402653184
-        bigIntAB 335544320*/
-        
     }
 
     @After
@@ -139,9 +116,9 @@ public class TestNodeTransactionCommand extends TestCase {
 	public void testLinkedTransaction() throws Exception {
 		
     	HashMap<String, Node> substractMap = new HashMap<String, Node>();
-    	substractMap.put("linked_1[0:0]", new Node(nodeLinkedSamples.get("linked_1[0:0]").getR(), 0, 0, 2.0f));
-    	substractMap.put("linked_1[500:-500]", new Node(nodeLinkedSamples.get("linked_1[500:-500]").getR(), 500, -500, 5.0f));
-    	substractMap.put("linked_1[-500:500]", new Node(nodeLinkedSamples.get("linked_1[-500:500]").getR(), -500, 500, 5.0f));
+    	substractMap.put("substract[0:0]", new Node(nodeLinkedSamples.get("linked_1[0:0]").getR(), 0, 0, 2.0f));
+    	substractMap.put("substract[500:-500]", new Node(nodeLinkedSamples.get("linked_1[500:-500]").getR(), 500, -500, 5.0f));
+    	substractMap.put("substract[-500:500]", new Node(nodeLinkedSamples.get("linked_1[-500:500]").getR(), -500, 500, 5.0f));
     	
     	//Execute command
     	try {
@@ -168,6 +145,6 @@ public class TestNodeTransactionCommand extends TestCase {
     	assertEquals(5.0f, nodes.get(nodes.indexOf(nodeLinkedSamples.get("linked_1[500:-500]"))).getV());
     	assertEquals(5.0f, nodes.get(nodes.indexOf(nodeLinkedSamples.get("linked_1[-500:500]"))).getV());
     	assertEquals(-1, nodes.indexOf(nodeLinkedSamples.get("linked_11[0:0]")));
-    	assertEquals(-1, nodes.indexOf(nodeLinkedSamples.get("linked_11[500:0]")));
+		assertEquals(-1, nodes.indexOf(nodeLinkedSamples.get("linked_11[500:0]")));
 	}
 }

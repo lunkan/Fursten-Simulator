@@ -9,8 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fursten.simulator.command.CleanCommand;
-import fursten.simulator.command.LinkEditCommand;
-import fursten.simulator.command.LinkGetCommand;
+import fursten.simulator.command.JointEditCommand;
+import fursten.simulator.command.JointGetCommand;
 import fursten.simulator.command.LoadCommand;
 import fursten.simulator.command.NodeGetCommand;
 import fursten.simulator.command.NodeTransactionCommand;
@@ -21,9 +21,9 @@ import fursten.simulator.command.InitializeCommand;
 import fursten.simulator.command.RunCommand;
 import fursten.simulator.command.SaveCommand;
 import fursten.simulator.command.UpdateCommand;
-import fursten.simulator.link.Link;
+import fursten.simulator.joint.Joint;
 import fursten.simulator.node.Node;
-import fursten.simulator.persistent.ResourceManager;
+import fursten.simulator.node.NodePoint;
 import fursten.simulator.persistent.WorldManager;
 import fursten.simulator.persistent.mysql.DAOFactory;
 import fursten.simulator.resource.Resource;
@@ -194,20 +194,20 @@ public class Facade {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static List<Link> getLinks(List<Node> linkNodes, boolean recursive) {
+	public static List<Joint> getJoints(List<NodePoint> nodespoints, boolean recursive) {
 		
 		try {
-			return (List<Link>) new LinkGetCommand(linkNodes, recursive).execute();
+			return (List<Joint>) new JointGetCommand(nodespoints, recursive).execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public static boolean editLinks(List<Link> delete, List<Link> put) {
+	public static boolean editJoints(List<NodePoint> delete, List<Joint> put, boolean deleteRecursive) {
 		
 		try {
-			new LinkEditCommand(delete, put).execute();
+			new JointEditCommand(delete, put, deleteRecursive).execute();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
